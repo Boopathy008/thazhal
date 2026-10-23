@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; font-size: 17px; }
+body { @apply bg-paper text-navy font-sans antialiased; overflow-x: hidden; line-height: 1.75; }
+h1, h2, h3, h4 { @apply font-display; }
+:focus-visible { outline: 2px solid #A9B887; outline-offset: 3px; border-radius: 4px; }
+.eyebrow { @apply font-mono text-sm tracking-[0.18em] uppercase text-emerald; }
+.wrap { @apply mx-auto w-full max-w-7xl px-5 sm:px-8; }
+.section { @apply py-20 sm:py-28; }
+
+/* Gradient background for green sections */
+.section-gradient {
+  background: linear-gradient(135deg, #2E3D28 0%, #3D5234 40%, #2a3a24 70%, #1e2b1a 100%);
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *:not(video) { animation: none !important; transition-duration: .01ms !important; } }
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-track-slow { display: flex; width: max-content; animation: marquee 20s linear infinite; }
+.marquee-track-slow:hover { animation-play-state: paused; }
+
