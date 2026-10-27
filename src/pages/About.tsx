@@ -6,7 +6,7 @@ import { usePageMeta } from '../hooks/usePageMeta'
 
 function MemberCard({ m }: { m: TeamMember }) {
   return (
-    <div className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       <div className="relative aspect-[4/4.5] overflow-hidden bg-slate-100">
         {m.image ? (
           <img
@@ -43,9 +43,11 @@ function MemberCard({ m }: { m: TeamMember }) {
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
-        <h4 className="text-xl font-bold text-navy">{m.name}</h4>
-        <p className="mt-2 text-sm font-medium leading-snug text-slate-600">{m.role}</p>
+      <div className="flex flex-1 flex-col justify-between p-6">
+        <div>
+          <h4 className="text-xl font-bold text-navy">{m.name}</h4>
+          <p className="mt-2 text-sm font-medium leading-snug text-slate-600">{m.role}</p>
+        </div>
       </div>
     </div>
   )
@@ -92,9 +94,9 @@ export default function About() {
           <Reveal>
             <SectionHeading eyebrow="People behind THAZHAL" title="Our Team" text="A passionate interdisciplinary team driving innovations at the intersection of geospatial sciences, AI, and environmental resilience." center />
           </Reveal>
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
             {teamMembers.map((m, i) => (
-              <Reveal key={m.name} delay={(i % 4) * 0.08}>
+              <Reveal key={m.name} delay={(i % 4) * 0.08} className="h-full flex flex-col">
                 <MemberCard m={m} />
               </Reveal>
             ))}
@@ -105,9 +107,9 @@ export default function About() {
             <Reveal>
               <SectionHeading eyebrow="Guidance & Scientific Leadership" title="Advisors" text="Distinguished researchers and scientists helping guide THAZHAL's technological horizon and global impact." center />
             </Reveal>
-            <div className="mx-auto mt-14 grid max-w-4xl gap-8 sm:grid-cols-2">
+            <div className="mx-auto mt-14 grid max-w-4xl gap-8 sm:grid-cols-2 items-stretch">
               {advisors.map((m, i) => (
-                <Reveal key={m.name} delay={i * 0.1}>
+                <Reveal key={m.name} delay={i * 0.1} className="h-full flex flex-col">
                   <MemberCard m={m} />
                 </Reveal>
               ))}
