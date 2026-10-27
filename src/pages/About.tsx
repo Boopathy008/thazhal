@@ -1,55 +1,57 @@
 import { Linkedin, User } from 'lucide-react'
-import { CTA, Reveal, SectionHeading, Art } from '../components/ui'
+import { CTA, Reveal, SectionHeading, Art, Card3D } from '../components/ui'
 import { LogoMarquee } from './Home'
 import { advisors, partners, teamMembers, TeamMember } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
 
 function MemberCard({ m }: { m: TeamMember }) {
   return (
-    <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <div className="relative aspect-[4/4.5] overflow-hidden bg-slate-100">
-        {m.image ? (
-          <img
-            src={m.image}
-            alt={m.name}
-            onError={(e) => {
-              // Gracefully fallback to avatar placeholder if image hasn't been uploaded yet
-              (e.currentTarget as HTMLElement).style.display = 'none'
-              const fallback = e.currentTarget.parentElement?.querySelector('.fallback-avatar')
-              if (fallback) (fallback as HTMLElement).style.display = 'flex'
-            }}
-            loading="lazy"
-            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-          />
-        ) : null}
-        <div
-          className={`fallback-avatar h-full w-full items-center justify-center bg-gradient-to-br from-forest/10 via-paper to-emerald/20 text-forest/40 ${
-            m.image ? 'hidden' : 'flex'
-          }`}
-        >
-          <User size={64} strokeWidth={1.5} />
-        </div>
-
-        {m.linkedin && (
-          <a
-            href={m.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${m.name} on LinkedIn`}
-            className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-navy shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:bg-emerald hover:text-navy"
+    <Card3D className="h-full">
+      <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm transition-shadow duration-300 hover:shadow-2xl">
+        <div className="relative aspect-[4/4.5] overflow-hidden bg-slate-100">
+          {m.image ? (
+            <img
+              src={m.image}
+              alt={m.name}
+              onError={(e) => {
+                // Gracefully fallback to avatar placeholder if image hasn't been uploaded yet
+                (e.currentTarget as HTMLElement).style.display = 'none'
+                const fallback = e.currentTarget.parentElement?.querySelector('.fallback-avatar')
+                if (fallback) (fallback as HTMLElement).style.display = 'flex'
+              }}
+              loading="lazy"
+              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : null}
+          <div
+            className={`fallback-avatar h-full w-full items-center justify-center bg-gradient-to-br from-forest/10 via-paper to-emerald/20 text-forest/40 ${
+              m.image ? 'hidden' : 'flex'
+            }`}
           >
-            <Linkedin size={18} />
-          </a>
-        )}
-      </div>
+            <User size={64} strokeWidth={1.5} />
+          </div>
 
-      <div className="flex flex-1 flex-col justify-between p-6">
-        <div>
-          <h4 className="text-xl font-bold text-navy">{m.name}</h4>
-          <p className="mt-2 text-sm font-medium leading-snug text-slate-600">{m.role}</p>
+          {m.linkedin && (
+            <a
+              href={m.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${m.name} on LinkedIn`}
+              className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-navy shadow-md backdrop-blur-sm transition-transform hover:scale-110 hover:bg-emerald hover:text-navy"
+            >
+              <Linkedin size={18} />
+            </a>
+          )}
+        </div>
+
+        <div className="flex flex-1 flex-col justify-between p-6">
+          <div>
+            <h4 className="text-xl font-bold text-navy">{m.name}</h4>
+            <p className="mt-2 text-sm font-medium leading-snug text-slate-600">{m.role}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </Card3D>
   )
 }
 

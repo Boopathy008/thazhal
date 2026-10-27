@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
@@ -34,9 +34,69 @@ export function Visual({ variant, image, label, className = '' }: { variant: num
 export function Reveal({ children, delay = 0, className = '' }: { children: ReactNode; delay?: number; className?: string }) {
   const reduce = useReducedMotion()
   return (
-    <motion.div className={className} initial={reduce ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}>
+    <motion.div
+      className={className}
+      initial={reduce ? false : { opacity: 0, y: 36, rotateX: 6, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+      viewport={{ once: true, margin: '-70px' }}
+      transition={{ duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] }}
+      style={{ perspective: 1000 }}
+    >
       {children}
+    </motion.div>
+  )
+}
+
+export function Card3D({ children, className = '' }: { children: ReactNode; className?: string }) {
+  const [rotateX, setRotateX] = useState(0)
+  const [rotateY, setRotateY] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
+  const reduce = useReducedMotion()
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (reduce) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+    const rotX = -((y - centerY) / centerY) * 7
+    const rotY = ((x - centerX) / centerX) * 7
+    setRotateX(rotX)
+    setRotateY(rotY)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+    setRotateX(0)
+    setRotateY(0)
+  }
+
+  return (
+    <motion.div
+      className={`relative ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      animate={
+        reduce
+          ? {}
+          : isHovered
+          ? { rotateX, rotateY, scale: 1.025, z: 25 }
+          : { rotateX: 0, rotateY: 0, scale: 1, z: 0 }
+      }
+      transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+      style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
+    >
+      {children}
+      {/* Dynamic 3D lighting sheen overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300"
+        style={{
+          opacity: isHovered ? 0.15 : 0,
+          background: `radial-gradient(circle at ${50 + rotateY * 5}% ${50 - rotateX * 5}%, rgba(255,255,255,0.8), transparent 70%)`,
+        }}
+      />
     </motion.div>
   )
 }

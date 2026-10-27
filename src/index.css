@@ -15,6 +15,24 @@ h1, h2, h3, h4 { @apply font-display; }
   background: linear-gradient(135deg, #2E3D28 0%, #3D5234 40%, #2a3a24 70%, #1e2b1a 100%);
 }
 
+/* 3D Perspective & interactive motion styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Card 3D hover depth */
+.card-3d {
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0);
+}
+.card-3d:hover {
+  transform: perspective(1000px) translateY(-8px) translateZ(18px) rotateX(3deg);
+  box-shadow: 0 25px 50px -12px rgba(46, 61, 40, 0.25);
+}
+
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *:not(video) { animation: none !important; transition-duration: .01ms !important; } }
 
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
