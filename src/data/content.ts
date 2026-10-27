@@ -137,9 +137,41 @@ export const articles: Article[] = [
     author: 'Thazhal',
     date: '22 NOV',
     excerpt: 'How spatial digital twins and geospatial technologies are transforming surface and groundwater monitoring, predictive management, and resilience.',
-    body: body('Digital Water Twin: Revolutionizing Water Management with Geospatial Technologies.'),
     variant: 0,
     image: '/images/blog/blog-1.jpg',
+    body: [
+      '### What is a Digital Water Twin?',
+      'A Digital Water Twin is a virtual, dynamic representation of physical water systems—ranging from river basins and urban drainage networks to reservoirs, aquifers, and irrigation canals. By synchronizing real-time sensor data, spatial earth observation, and high-fidelity hydrological models, a Digital Water Twin replicates the real-world behavior of water assets in a computational environment. It allows water authorities, environmental scientists, and civil engineers to simulate scenarios, forecast flood or drought events, and optimize distribution with unprecedented accuracy.',
+
+      '### Current Global Developments in Digital Water Twins',
+      'Across the globe, governments and research institutions are deploying digital twins to tackle freshwater stress and climate volatility:',
+      '**1. Europe: Leading the Innovation**\nInitiatives like the European Union’s Destination Earth (DestinE) and national water agency projects are setting benchmarks. European water utilities use digital twins for watershed-scale flood early warning, asset management, and wastewater quality control.',
+      '**2. Australia: Smart Solutions for Scarcity**\nFacing prolonged droughts and acute arid conditions, Australian basin authorities utilize digital water twins to simulate water allocation across agricultural corridors and safeguard ecological flow requirements in vulnerable river basins.',
+      '**3. North America: Enhancing Water Quality**\nIn North America, municipal utilities leverage digital twins coupled with storm surge and runoff simulations to detect combined sewer overflows, monitor contaminant plumes, and safeguard municipal drinking reservoirs.',
+      '**4. Asia: Urban Water Revolution**\nMegacities across Asia are adopting digital twin frameworks to manage extreme monsoonal inundation, urban storm runoff, and aquifer depletion caused by rapid urbanization.',
+      '**5. Innovative Case Studies**\nFrom automated gate controls in smart canals to predictive reservoir drawdown ahead of severe typhoons, digital twins are proving that virtual simulations translate directly into saved lives, preserved resources, and reduced municipal operating costs.',
+
+      '### Geospatial Technologies: The Backbone of Digital Water Twins',
+      'A digital twin is only as good as the spatial data feeding it. The convergence of modern geospatial technologies provides the foundational infrastructure:',
+      '**1. Satellite Remote Sensing**\nMulti-spectral and Synthetic Aperture Radar (SAR) imagery provide frequent, cloud-penetrating views of surface water extent, wetland health, soil moisture levels, and reservoir surface elevations over vast geographical expanses.',
+      '**2. Geographic Information Systems (GIS)**\nGIS serves as the central spatial operating system, organizing multi-layered environmental parameters—such as digital elevation models (DEMs), land use land cover (LULC), soil permeability, and hydrographic network vectors.',
+      '**3. IoT and Real-Time Monitoring**\nTelemetry stations, acoustic flow meters, water level radar sensors, and water quality probes deliver high-frequency ground truth measurements directly into the digital twin stream.',
+      '**4. AI and Machine Learning**\nDeep learning models analyze spatial-temporal trends, predict flow velocities, automate anomaly detection in sensor feeds, and accelerate compute-intensive hydrodynamic calculations.',
+      '**5. Hydrological and Hydraulic Modeling**\nPhysics-based 1D, 2D, and 3D hydrodynamic models calculate overland flow, sediment transport, and subsurface infiltration, giving the twin its predictive intelligence.',
+
+      '### Thazhal Geospatial Analytics: Innovating with SWOAD',
+      'At THAZHAL, we are at the forefront of this digital transformation with **SWOAD (Surface Water Observation and Assessment Dashboard)**. SWOAD combines multi-satellite observation with intelligent localized modeling to deliver continuous water surface tracking, catchment capacity estimation, and early anomaly alerts. By bridging the gap between raw spatial observation and actionable municipal analytics, SWOAD turns complex geospatial data into an intuitive operational tool for stakeholders.',
+
+      '### Challenges in Implementing Digital Water Twins',
+      'While the potential is vast, real-world deployment faces distinct challenges:',
+      '• **Data Fragmentation:** Siloed datasets between meteorology, irrigation, and municipal departments.\n• **High Computational Demands:** Running real-time 2D hydraulic models requires robust cloud infrastructure.\n• **Sensor Maintenance:** In-situ IoT networks demand sustained calibration and maintenance in harsh environmental conditions.\n• **Calibration Uncertainty:** Bridging macroscopic satellite observations with micro-level ground truth requires advanced domain expertise.',
+
+      '### The Path Forward',
+      'The evolution of cloud geospatial computing, open data APIs, and edge AI is lowering the barrier to entry for digital water twins. As high-cadence satellite constellations expand, digital twins will shift from reactive monitoring dashboards to proactive, autonomous decision-support systems that govern smart sluice gates, optimize regional irrigation schedules, and safeguard municipal water reserves.',
+
+      '### Conclusion',
+      'Digital Water Twins represent a paradigm shift in how humanity manages its most vital resource. By fusing geospatial intelligence, real-time IoT feeds, and hydrodynamic modeling, organizations can anticipate risks rather than merely react to crises. THAZHAL remains committed to pioneering forward-looking geospatial technologies that foster resilient water governance for a sustainable planet.',
+    ],
   },
   {
     slug: 'revolutionizing-farm-management-automated-boundary-delineation',
@@ -148,9 +180,24 @@ export const articles: Article[] = [
     author: 'Thazhal',
     date: '25 OCT',
     excerpt: 'Automating agricultural field boundary mapping with high-resolution imagery and computer vision to empower precision farming and crop auditing.',
-    body: body('Revolutionizing Farm Management with Automated Boundary Delineation.'),
     variant: 1,
     image: '/images/blog/blog-2.jpg',
+    body: [
+      '### Introducing Thazhal’s Automated Farm Boundary Detection',
+      'Accurate parcel and field boundary mapping is the bedrock of digital agriculture, precision farming, crop insurance, and subsidy administration. Historically, delineating farm boundaries relied on labor-intensive manual GPS surveys or subjective on-screen digitization. THAZHAL introduces an automated farm boundary detection engine that leverages high-resolution satellite imagery, multi-temporal vegetation indices, and state-of-the-art computer vision segmentation models to delineate individual crop fields with pinpoint precision.',
+
+      '### Key Benefits of Thazhal’s Automated Boundary Detection',
+      '• **Rapid Scalability:** Process thousands of square kilometers of agricultural land in hours rather than months.\n• **Sub-Meter Boundary Precision:** Accurately identifies natural hedges, access tracks, irrigation bunds, and ditch lines.\n• **Temporal Consistency:** Tracks boundary changes season-over-season, capturing crop rotations, parcel consolidation, or land-use conversions.\n• **Fraud Reduction for Insurance & Subsidies:** Eliminates fraudulent overlapping claims and boundary disputes through indisputable spatial verification.\n• **Optimized Input Delivery:** Provides the spatial foundation for variable-rate fertilizer application, autonomous machinery guidance, and targeted drone spraying.',
+
+      '### How Does It Work?',
+      '**1. Multi-Spectral & High-Resolution Ingestion:** The pipeline acquires high-resolution imagery along with multi-temporal Sentinel and Planet data to capture contrasting crop cycles and vegetation vigor.\n\n**2. Feature Extraction & Edge Filtering:** Deep convolutional and transformer-based segmentation models analyze spatial textures, elevation gradients, and spectral reflectance differences across adjoining plots.\n\n**3. Vectorization & Cadastral Alignment:** Raw raster masks are converted into clean, topologically valid polygon vectors that can integrate seamlessly with existing cadastral land records and farm management information systems (FMIS).\n\n**4. Continuous Learning Loop:** The system continuously refines its accuracy against diverse agricultural topologies, from fragmented smallholder holdings in Asia to expansive industrial farms.',
+
+      '### Embrace the Future of Agriculture',
+      'As climate volatility intensifies and global food demand rises, farming must become smarter and more resource-efficient. Automated boundary delineation is not just about drawing lines on a map; it is about unlocking actionable plot-level intelligence that empowers agritech enterprises, financial institutions, and agricultural cooperatives to support farmers with tailored, timely agronomic guidance.',
+
+      '### Join the Thazhal Revolution',
+      'Whether you are an agricultural bank evaluating crop loan risks, an insurance provider streamlining damage assessments, or a regional agricultural department modernizing land records, THAZHAL provides the precision geospatial infrastructure your operations require. Get in touch with our geospatial solutions team today to see a demonstration of our automated boundary delineation in action.',
+    ],
   },
   {
     slug: 'thazhal-geospatial-analytics-japan-india-innovation-pitch',
@@ -159,9 +206,24 @@ export const articles: Article[] = [
     author: 'Thazhal',
     date: '07 AUG',
     excerpt: 'THAZHAL showcases its cutting-edge remote sensing and climate intelligence solutions on the global stage at the Japan-India Innovation Pitch.',
-    body: body('Thazhal Geospatial Analytics Shines at Japan-India Innovation Pitch.'),
     variant: 2,
-    image: '/images/blog/blog-3.jpg',
+    image: '/images/blog/blog-3.png',
+    body: [
+      '### Introduction',
+      'We’re thrilled to announce that Thazhal Geospatial Analytics has been selected as one of the top 15 startup finalists for the prestigious Japan-India Innovation Pitch! Hosted by JETRO (Japan External Trade Organization) and the Ministry of Economy, Trade, and Industry (METI), this esteemed event brought together innovators and industry leaders from Japan and India.',
+
+      '### The Pitch',
+      'Our team presented our cutting-edge geospatial solution for the Infosys Challenge, showcasing our expertise in harnessing location intelligence to drive business success. The event provided a unique platform to connect with fellow innovators, challenge owners, and potential partners.',
+
+      '### Bridging Global Technology & Local Impact',
+      'Participating in the Japan-India Innovation Pitch underscored the growing international appetite for scalable, satellite-driven climate risk intelligence. During our technical presentation, the THAZHAL team demonstrated how our proprietary processing pipelines turn complex multi-spectral radar and optical data streams into automated decision metrics for sustainable enterprise operations and infrastructure resilience.',
+
+      '### High-Level Industry Feedback & Collaboration',
+      'The jury and challenge evaluators commended THAZHAL for our lean architecture, spatial modeling accuracy, and practical focus on real-world environmental challenges. The interactions opened up exciting avenues for bilateral technical collaborations, cross-border pilot deployments, and enterprise partnerships with leading Japanese technology conglomerates interested in advanced geospatial AI.',
+
+      '### Looking Ahead',
+      'Being recognized among the top 15 innovators in an international bilateral forum validates our core mission: developing geospatial technologies that combine scientific rigor with real-world accessibility. We extend our sincere gratitude to JETRO, METI, and Infosys for this honor. THAZHAL continues to accelerate its product roadmap, expanding into enterprise environmental monitoring and global sustainability intelligence.',
+    ],
   },
   {
     slug: 'wayanad-landslide-damage-assessment',
@@ -170,9 +232,24 @@ export const articles: Article[] = [
     author: 'Thazhal',
     date: '03 AUG',
     excerpt: 'Comprehensive geospatial assessment and rapid imagery analytics to evaluate slope failures, infrastructure impact, and terrain changes in Wayanad.',
-    body: body('Wayanad Landslide Damage Assessment using satellite imagery and geospatial analysis.'),
     variant: 3,
     image: '/images/blog/blog-4.jpg',
+    body: [
+      '### Wayanad Damage Assessment',
+      'In the wake of the catastrophic landslides that devastated communities across the Wayanad district of Kerala, THAZHAL deployed its rapid geospatial response workflow. Using high-resolution satellite imagery, multi-temporal Synthetic Aperture Radar (SAR), and terrain elevation models, our analytics team conducted an extensive damage assessment to map the initiation zones, debris flow trajectories, and downstream deposition extents.',
+
+      '### The Role of Extreme Weather',
+      'The disaster was triggered by unprecedented localized cloudburst events, dumping hundreds of millimeters of rainfall onto saturated mountainous slopes within hours. The intense precipitation destabilized fragile upper slope soils, triggering massive debris flows that channeled through river valleys, sweeping away homes, roads, bridges, and agricultural plantations. Geospatial terrain analysis reveals critical slope failure dynamics, underscoring how micro-climatic extremes interact with topography to create acute landslide vulnerability.',
+
+      '### Our Commitment to Support',
+      'During moments of acute humanitarian and environmental crisis, timely and objective spatial data is essential. THAZHAL stands committed to supporting relief organizations, local administrative authorities, and disaster management teams with high-confidence geospatial intelligence that aids rapid situational awareness and informed recovery efforts.',
+
+      '### Our Services Include:',
+      '**• Damage Assessment:**\nComprehensive delineation of debris tracks, identification of submerged and obliterated structures, and quantitative mapping of destroyed agricultural and forest acreage.',
+      '**• Impact Analysis:**\nDetailed evaluation of severed transportation arteries, damaged bridges, blocked river channels, and utilities infrastructure disruption to identify cut-off settlements.',
+      '**• Prioritization of Needs:**\nSpatial vulnerability overlays highlighting isolated zones, emergency staging points, safe evacuation corridors, and areas requiring immediate search-and-rescue or logistical access.',
+      '**• Recovery Planning:**\nHigh-resolution slope stability modeling, runout zone hazard mapping, and land suitability assessments to guide sustainable, safe long-term rehabilitation and resilient infrastructure reconstruction away from critical hazard paths.',
+    ],
   },
   {
     slug: 'assessing-flood-damage-agricultural-land',
@@ -181,9 +258,18 @@ export const articles: Article[] = [
     author: 'Thazhal',
     date: '20 JUL',
     excerpt: 'Leveraging SAR and multi-spectral satellite data to map inundation extent, soil waterlogging, and quantify crop losses accurately for farming communities.',
-    body: body("Assessing Flood Damage in Agricultural Land with Thazhal's Geospatial Solutions."),
     variant: 4,
     image: '/images/blog/blog-5.jpg',
+    body: [
+      '### The Challenge of Agricultural Flood Assessment',
+      'Flood disasters across agricultural landscapes cause devastating economic losses that often go under-reported or take months to assess manually. Traditional field inspections are hindered by impassable roads, waterlogged fields, and limited surveyor availability. THAZHAL’s geospatial solution provides instant, objective flood impact intelligence at regional scale.',
+
+      '### Satellite Radar (SAR): Seeing Through the Clouds',
+      'Optical satellites cannot observe flood events through dense monsoon cloud covers. THAZHAL leverages Synthetic Aperture Radar (SAR) sensors like Sentinel-1 to penetrate thick clouds, day and night, mapping standing water surfaces with sub-pixel sensitivity.',
+
+      '### Precision Crop Loss Quantification',
+      'By intersecting inundation extent maps with parcel boundaries and pre-flood crop vigor indices (NDVI/EVI), our platform accurately differentiates between fully submerged crops, lodging damage, and recoverable vegetation. This enables insurance agencies and relief bodies to expedite payouts directly to affected farming families.',
+    ],
   },
   {
     slug: 'introducing-swoad-surface-water-management',
@@ -192,9 +278,18 @@ export const articles: Article[] = [
     author: 'Thazhal',
     date: '20 JUN',
     excerpt: 'Meet SWOAD — an intelligent, sensor-to-satellite platform engineered for continuous surface water observation, depth estimation, and quality metrics.',
-    body: body('Introducing SWOAD: A Revolutionary Solution for Surface Water Management.'),
     variant: 0,
     image: '/images/blog/blog-6.jpg',
+    body: [
+      '### The Vision Behind SWOAD',
+      'Water bodies are under unprecedented pressure from urbanization, encroachment, climate change, and unmonitored extraction. THAZHAL introduces **SWOAD (Surface Water Observation and Assessment Dashboard)**—an all-in-one spatial platform designed to give decision-makers total visibility over lakes, reservoirs, and urban wetlands.',
+
+      '### Core Capabilities of SWOAD',
+      '• **Automated Water Spread Area (WSA) Tracking:** Frequent satellite mapping of surface water boundaries over time.\n• **Storage Capacity Estimation:** Integrating bathymetric survey inputs and satellite altimetry to calculate live water volume trends.\n• **Encroachment & Siltation Alerts:** Detecting shoreline land-use changes and shallowing sediment build-up.\n• **Water Quality Indexing:** Estimating turbidity, chlorophyll concentration, and algal proliferation from spectral reflectance bands.',
+
+      '### Transforming Urban & Rural Water Planning',
+      'SWOAD equips municipal authorities, irrigation departments, and conservationists with the continuous empirical evidence needed to protect surface water bodies, restore historical catchments, and ensure long-term regional water security.',
+    ],
   },
   {
     slug: 'water-pollution-a-growing-crisis',
@@ -203,9 +298,18 @@ export const articles: Article[] = [
     author: 'Thazhal',
     date: '10 JUN',
     excerpt: 'Analyzing industrial runoff, urban effluents, and turbidity trends across water bodies through high-cadence satellite monitoring and spectral indicators.',
-    body: body('Water Pollution: A Growing Crisis and how earth observation provides solutions.'),
     variant: 1,
     image: '/images/blog/blog-7.jpg',
+    body: [
+      '### The Invisible Crisis in Our Waterways',
+      'Industrial discharge, untreated sewage, and agricultural runoff are quietly degrading lakes, rivers, and coastal wetlands. Traditional grab-sampling methods only provide point-in-time measurements that miss non-point source discharges and intermittent polluters.',
+
+      '### Space-Based Water Quality Surveillance',
+      'THAZHAL deploys multi-spectral satellite imagery to monitor water quality parameters across entire water bodies continuously. By examining spectral absorption and scattering signatures, our algorithms map Total Suspended Solids (TSS), Turbidity, Dissolved Organic Matter (CDOM), and thermal discharges.',
+
+      '### Enabling Proactive Environmental Enforcement',
+      'Continuous spatial water quality mapping allows environmental protection agencies and civil society to pinpoint pollution hotspots, trace discharge plumes back to their origin, and enforce compliance before irreversible ecological collapse occurs.',
+    ],
   },
   {
     slug: 'harmful-algae-bloom-monitoring-from-space',
@@ -214,9 +318,18 @@ export const articles: Article[] = [
     author: 'Thazhal',
     date: '25 MAY',
     excerpt: 'Early detection and predictive tracking of chlorophyll anomalies and toxic algal blooms in inland reservoirs and coastal waters using satellite spectra.',
-    body: body('Harmful Algae Bloom Monitoring from Space using advanced spectral analysis.'),
     variant: 2,
     image: '/images/blog/blog-8.jpg',
+    body: [
+      '### What Are Harmful Algae Blooms (HABs)?',
+      'Harmful Algae Blooms occur when colonies of cyanobacteria or algae proliferate uncontrollably in nutrient-rich, warm water bodies. HABs deplete dissolved oxygen, producing potent neurotoxins that endanger aquatic life, contaminate drinking water supplies, and force closures of aquaculture and recreational zones.',
+
+      '### Early Detection with Spectral Remote Sensing',
+      'Because algae contains unique pigments like Chlorophyll-a and Phycocyanin, their presence causes distinct spectral absorption troughs and near-infrared reflectance spikes. THAZHAL’s analytical models process Sentinel-2 and Landsat observations to detect bloom inception days before they become visible to the naked eye.',
+
+      '### Safeguarding Communities and Ecosystems',
+      'Early warning empowers water treatment plants to adjust purification processes, prevents toxic water intake into municipal supply networks, and alerts fisheries managers in time to mitigate devastating economic losses.',
+    ],
   },
 ]
 export const categories = ['All', ...Array.from(new Set(articles.map((a) => a.category)))]
