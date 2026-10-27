@@ -261,14 +261,20 @@ export const articles: Article[] = [
     variant: 4,
     image: '/images/blog/blog-5.jpg',
     body: [
-      '### The Challenge of Agricultural Flood Assessment',
-      'Flood disasters across agricultural landscapes cause devastating economic losses that often go under-reported or take months to assess manually. Traditional field inspections are hindered by impassable roads, waterlogged fields, and limited surveyor availability. THAZHAL’s geospatial solution provides instant, objective flood impact intelligence at regional scale.',
+      '### Assessing Flood Damage in Agricultural Land with Thazhal’s Geospatial Solutions',
+      'When extreme monsoon rains and overflowing river systems breach embankments, agricultural fields bear the brunt of devastating inundation. Swift response and recovery hinge on immediate, reliable data detailing where water has accumulated, how long fields have remained submerged, and the specific crops affected.',
 
-      '### Satellite Radar (SAR): Seeing Through the Clouds',
-      'Optical satellites cannot observe flood events through dense monsoon cloud covers. THAZHAL leverages Synthetic Aperture Radar (SAR) sensors like Sentinel-1 to penetrate thick clouds, day and night, mapping standing water surfaces with sub-pixel sensitivity.',
+      '### Harnessing Satellite Imagery for Rapid Damage Assessment',
+      'Traditional ground-based surveys take weeks to organize, are stalled by flooded roads, and often fail to cover remote rural acreage. By harnessing optical and Synthetic Aperture Radar (SAR) satellite imagery, THAZHAL cuts through cloud cover and precipitation to capture a bird’s-eye, verifiable view of agricultural damage as events unfold.',
 
-      '### Precision Crop Loss Quantification',
-      'By intersecting inundation extent maps with parcel boundaries and pre-flood crop vigor indices (NDVI/EVI), our platform accurately differentiates between fully submerged crops, lodging damage, and recoverable vegetation. This enables insurance agencies and relief bodies to expedite payouts directly to affected farming families.',
+      '### Thazhal’s Geospatial Solutions',
+      '**• Rapid Assessment:**\nWithin hours of satellite acquisition, our automated processing pipelines generate regional flood inundation masks, pinpointing submerged agricultural zones before waters recede.',
+      '**• Accurate Damage Estimation:**\nBy combining high-resolution imagery with historical crop signatures and pre-disaster vegetation indices (NDVI/EVI), we accurately quantify crop destruction rates, differentiating between recoverable plots and total harvest losses.',
+      '**• Enhanced Decision Making:**\nSpatial vulnerability heatmaps and parcel-level loss figures equip government relief commissions, disaster response units, and agricultural extension offices with objective intelligence to allocate resources where they are needed most.',
+      '**• Cost-Effective:**\nReplaces expensive, fragmented field teams with comprehensive, scalable satellite intelligence, cutting assessment expenditures while dramatically increasing coverage and accuracy.',
+
+      '### Let’s Connect',
+      'Whether you represent a state disaster management authority, an agricultural insurance provider, or a cooperative seeking to build climate resilience for farming communities, THAZHAL is ready to assist. Contact our team to learn how our flood assessment models can be integrated into your disaster recovery strategy.',
     ],
   },
   {
@@ -281,14 +287,23 @@ export const articles: Article[] = [
     variant: 0,
     image: '/images/blog/blog-6.jpg',
     body: [
-      '### The Vision Behind SWOAD',
-      'Water bodies are under unprecedented pressure from urbanization, encroachment, climate change, and unmonitored extraction. THAZHAL introduces **SWOAD (Surface Water Observation and Assessment Dashboard)**—an all-in-one spatial platform designed to give decision-makers total visibility over lakes, reservoirs, and urban wetlands.',
+      '### Introducing SWOAD: A Revolutionary Solution for Surface Water Management',
+      'Freshwater bodies across the globe are under severe stress from urbanization, unregulated extraction, pollution, and climate variability. To safeguard these critical assets, THAZHAL introduces **SWOAD (Surface Water Observation and Assessment Dashboard)**—an advanced geospatial intelligence platform engineered for comprehensive surface water tracking.',
 
-      '### Core Capabilities of SWOAD',
-      '• **Automated Water Spread Area (WSA) Tracking:** Frequent satellite mapping of surface water boundaries over time.\n• **Storage Capacity Estimation:** Integrating bathymetric survey inputs and satellite altimetry to calculate live water volume trends.\n• **Encroachment & Siltation Alerts:** Detecting shoreline land-use changes and shallowing sediment build-up.\n• **Water Quality Indexing:** Estimating turbidity, chlorophyll concentration, and algal proliferation from spectral reflectance bands.',
+      '### Harnessing the Power of Space for Water Conservation',
+      'SWOAD combines high-cadence satellite earth observation, radar altimetry, and predictive hydrological models. It transforms raw spectral and topographic data into an intuitive, real-time command center for lakes, reservoirs, river basins, and urban wetland systems.',
 
-      '### Transforming Urban & Rural Water Planning',
-      'SWOAD equips municipal authorities, irrigation departments, and conservationists with the continuous empirical evidence needed to protect surface water bodies, restore historical catchments, and ensure long-term regional water security.',
+      '### Key Features of SWOAD',
+      '**• Real-Time Water Level Monitoring:** Continuous observation of water spread dynamics and storage capacities across seasons.\n**• Historical Data Analysis:** Deep retrospective analytics comparing decadal trends in water retention, seasonal shrinkage, and catchment health.\n**• Anomaly Detection:** Automated alert triggers for unexpected depletion rates, sudden flash-inundation, or industrial discharge plumes.\n**• Data-Driven Decision Making:** Interactive analytics and scenario modeling that empower water authorities to manage releases, storage, and conservation proactively.',
+
+      '### How SWOAD Works:',
+      '**• Water Level Measurements:** Combines satellite altimetry data and multi-spectral surface extent delineations with localized bathymetric curves to estimate accurate volumetric capacity.\n**• Water Quality Assessment:** Analyzes optical spectral bands to continuously estimate key environmental health parameters, including Turbidity, Chlorophyll-a concentration, and Total Suspended Solids (TSS).\n**• Encroachment Detection:** Automated change-detection algorithms monitor shoreline buffer zones, identifying unauthorized construction, dumping, and vegetation clearing.',
+
+      '### Why Choose SWOAD?',
+      '**• Enhanced Water Management:** Gain unprecedented visibility into regional freshwater reserves without deploying expensive manual survey teams across every reservoir.\n**• Environmental Protection:** Safeguard delicate aquatic biomes, wetlands, and groundwater recharge zones from irreversible ecological degradation.\n**• Sustainable Development:** Provide urban planners and irrigation engineers with the empirical foundation for climate-resilient water allocation.\n**• Cost-Effective Solution:** A single scalable software platform serving municipal, regional, and national water agencies.',
+
+      '### Let’s Work Together:',
+      'Are you looking to modernize your water monitoring infrastructure and ensure long-term regional water security? Connect with THAZHAL today to explore how SWOAD can be deployed for your water bodies.',
     ],
   },
   {
@@ -301,14 +316,23 @@ export const articles: Article[] = [
     variant: 1,
     image: '/images/blog/blog-7.jpg',
     body: [
-      '### The Invisible Crisis in Our Waterways',
-      'Industrial discharge, untreated sewage, and agricultural runoff are quietly degrading lakes, rivers, and coastal wetlands. Traditional grab-sampling methods only provide point-in-time measurements that miss non-point source discharges and intermittent polluters.',
+      '### From Last Year to Now: A Disturbing Trend',
+      'Water quality monitoring across major water basins reveals an alarming upward trajectory in industrial chemical effluents, untreated municipal wastewater, and agricultural runoff. Over the past year alone, multi-temporal satellite analyses indicate a steep rise in eutrophic conditions and chronic turbidity spikes across urban lakes and river tributaries.',
 
-      '### Space-Based Water Quality Surveillance',
-      'THAZHAL deploys multi-spectral satellite imagery to monitor water quality parameters across entire water bodies continuously. By examining spectral absorption and scattering signatures, our algorithms map Total Suspended Solids (TSS), Turbidity, Dissolved Organic Matter (CDOM), and thermal discharges.',
+      '### A Growing Threat to Children',
+      'Contaminated water supplies pose the gravest threat to vulnerable populations, particularly children. Waterborne pathogens, heavy metal contamination, and toxic chemical concentrations lead to severe gastrointestinal illnesses, developmental issues, and chronic health crises in communities living downstream of unmonitored effluent discharges.',
 
-      '### Enabling Proactive Environmental Enforcement',
-      'Continuous spatial water quality mapping allows environmental protection agencies and civil society to pinpoint pollution hotspots, trace discharge plumes back to their origin, and enforce compliance before irreversible ecological collapse occurs.',
+      '### The Economic Toll',
+      'Beyond its profound human cost, water pollution exerts a massive economic drag on regional economies. Fisheries suffer catastrophic stock declines, municipal water treatment facilities face escalating chemical purification costs, and fertile agricultural soils suffer salinity buildup and toxicity from contaminated irrigation channels.',
+
+      '### Thazhal: A Solution to the Crisis',
+      'THAZHAL deploys multi-spectral satellite earth observation and intelligent spectral profiling to turn the tide against water pollution. By examining spectral absorption and reflectance anomalies from space, our algorithms map pollution plumes, pinpoint non-point industrial discharge sources, and track pollutant dispersion in real time across vast watersheds.',
+
+      '### Join Us in the Fight',
+      'Combating the global water crisis requires concerted action from governments, industries, and civil society:',
+      '**• Promote awareness:** Spread knowledge about the critical importance of catchment conservation, responsible waste disposal, and clean freshwater access.',
+      '**• Support sustainable practices:** Advocate for industrial circular-water recycling, regenerative agricultural methods that reduce fertilizer runoff, and strict municipal effluent enforcement.',
+      '**• Invest in innovative solutions:** Harness scalable, transparent geospatial technologies like THAZHAL’s water intelligence dashboards to monitor water health objectively and hold polluters accountable.',
     ],
   },
   {
@@ -321,14 +345,15 @@ export const articles: Article[] = [
     variant: 2,
     image: '/images/blog/blog-8.jpg',
     body: [
-      '### What Are Harmful Algae Blooms (HABs)?',
-      'Harmful Algae Blooms occur when colonies of cyanobacteria or algae proliferate uncontrollably in nutrient-rich, warm water bodies. HABs deplete dissolved oxygen, producing potent neurotoxins that endanger aquatic life, contaminate drinking water supplies, and force closures of aquaculture and recreational zones.',
+      '### How Satellite Remote Sensing Works',
+      'Harmful Algae Blooms (HABs) are characterized by dense concentrations of phytoplankton and cyanobacteria that alter the optical properties of water. Chlorophyll-a and phycocyanin pigments inside algae absorb blue and red light while strongly reflecting green and near-infrared (NIR) wavelengths. Multi-spectral sensors aboard satellites like Sentinel-2, Sentinel-3, and Landsat capture these subtle spectral reflections, allowing automated algorithms to detect microscopic algae proliferation long before it forms visible surface scums.',
 
-      '### Early Detection with Spectral Remote Sensing',
-      'Because algae contains unique pigments like Chlorophyll-a and Phycocyanin, their presence causes distinct spectral absorption troughs and near-infrared reflectance spikes. THAZHAL’s analytical models process Sentinel-2 and Landsat observations to detect bloom inception days before they become visible to the naked eye.',
-
-      '### Safeguarding Communities and Ecosystems',
-      'Early warning empowers water treatment plants to adjust purification processes, prevents toxic water intake into municipal supply networks, and alerts fisheries managers in time to mitigate devastating economic losses.',
+      '### Applications of Satellite Remote Sensing in HAB Monitoring',
+      'Space-based observation provides unmatched spatial coverage and frequent revisit intervals for coastal waters, inland lakes, and drinking reservoirs:',
+      '**• Early warning systems:**\nDetect subtle, early-stage chlorophyll anomalies days before full-blown toxic bloom outbreaks occur, allowing municipal water utilities to activate advanced filtration or modify intake depths.',
+      '**• Risk assessment:**\nQuantify the spatial extent, intensity, and historical recurrence of algal blooms across different seasons to identify high-risk catchments and nutrient-loading hotspots.',
+      '**• HAB forecasting:**\nCombine satellite-derived surface temperature, spectral indices, and hydrodynamic current models with weather forecasts to predict the likely growth trajectory of blooms.',
+      '**• Tracking HAB movement:**\nObserve bloom drift patterns across coastal waters and reservoirs in real time to protect aquaculture farms, commercial fisheries, and public recreational beaches.',
     ],
   },
 ]

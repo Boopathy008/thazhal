@@ -14,7 +14,15 @@ export default function Footer() {
       <Art variant={4} className="absolute inset-0 h-full w-full opacity-40" />
       <div className="wrap relative grid gap-12 pb-14 md:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <p className="font-display text-2xl font-bold tracking-[0.2em]">THAZHAL</p>
+          <Link to="/" className="inline-flex items-center gap-3 text-white" aria-label="THAZHAL home">
+            <img
+              src="/images/logo.png"
+              alt="THAZHAL Logo"
+              onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none' }}
+              className="h-8 w-auto max-w-[140px] object-contain"
+            />
+            <span className="font-display text-2xl font-bold tracking-[0.2em]">THAZHAL</span>
+          </Link>
           <p className="mt-4 max-w-xs text-white/70">Geospatial intelligence for a more informed and sustainable future.</p>
           <div className="mt-6 flex gap-3">
             {soc.map(({ n, I, u }) => u
