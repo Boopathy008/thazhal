@@ -31,14 +31,13 @@ export default function Navbar() {
   return (
     <header ref={ref} className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solid ? 'border-b border-white/10 bg-navy/90 backdrop-blur-md' : 'bg-transparent'}`}>
       <div className="wrap flex h-[72px] items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 text-white" aria-label="THAZHAL home">
+        <Link to="/" className="flex items-center gap-3 transition-opacity hover:opacity-90" aria-label="THAZHAL home">
           <img
             src="/images/logo.png"
             alt="THAZHAL Logo"
-            onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none' }}
-            className="h-9 w-auto max-w-[160px] object-contain"
+            className="h-10 w-auto max-w-[170px] object-contain brightness-105"
           />
-          <span className="font-sans text-xl font-bold tracking-[0.2em]">THAZHAL</span>
+          <span className="font-sans text-xl font-bold tracking-[0.2em] text-white">THAZHAL</span>
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
