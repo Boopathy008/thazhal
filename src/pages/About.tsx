@@ -57,7 +57,7 @@ export default function About() {
   usePageMeta('About', 'THAZHAL combines geospatial technologies, imagery analytics and intelligent monitoring.')
   return (
     <>
-      <section className="relative overflow-hidden bg-navy pb-24 pt-36">
+      <section className="relative flex min-h-[420px] items-center overflow-hidden bg-navy pb-24 pt-36 sm:min-h-[480px]">
         {/* Background photo with subtle overlay, fallback to Art SVG */}
         <div className="absolute inset-0">
           <img

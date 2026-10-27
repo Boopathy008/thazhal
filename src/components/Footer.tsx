@@ -100,10 +100,9 @@ export default function Footer() {
             {contact.hq}
           </p>
           <a
-            className="group mt-4 inline-flex items-center gap-1.5 text-sm text-white/70 transition-all duration-300 hover:translate-x-1.5 hover:text-emerald"
+            className="mt-4 inline-block text-sm text-white/70 transition-colors hover:text-emerald"
             href={`mailto:${contact.email}`}
           >
-            <span className="h-0.5 w-0 bg-emerald transition-all duration-300 group-hover:w-2" />
             {contact.email}
           </a>
         </div>

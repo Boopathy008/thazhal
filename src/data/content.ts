@@ -158,9 +158,9 @@ export const supporters: { name: string; logo: string }[] = [
 ]
 
 export const social = {
-  x: import.meta.env.VITE_X_URL as string | undefined,
+  x: (import.meta.env.VITE_X_URL as string | undefined) || 'https://x.com/thazhal_in',
   linkedin: (import.meta.env.VITE_LINKEDIN_URL as string | undefined) || 'https://www.linkedin.com/company/thazhal',
-  instagram: import.meta.env.VITE_INSTAGRAM_URL as string | undefined,
+  instagram: (import.meta.env.VITE_INSTAGRAM_URL as string | undefined) || 'https://www.instagram.com/thazhal_in',
 }
 export const contact = { hq: 'Tirunelveli, Tamil Nadu, India', email: 'contact@thazhal.in' }
 
