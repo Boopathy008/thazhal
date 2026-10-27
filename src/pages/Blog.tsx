@@ -13,9 +13,19 @@ export default function Blog() {
   const list = useMemo(() => articles.filter((a) => (cat === 'All' || a.category === cat) && `${a.title} ${a.excerpt}`.toLowerCase().includes(q.toLowerCase())), [cat, q])
   return (
     <>
-      <section className="bg-navy pb-16 pt-36"><div className="wrap"><p className="eyebrow mb-4">Insights & perspectives</p>
-        <h1 className="max-w-3xl text-4xl font-bold text-white sm:text-6xl">Ideas Shaping a Smarter, More Sustainable Future</h1>
-        <p className="mt-4 text-sm text-white/50">Articles are draft content until final copy and dates are supplied.</p></div></section>
+      <section className="relative overflow-hidden bg-navy pb-16 pt-36">
+        <div className="absolute inset-0">
+          <img
+            src="/images/blog-hero.jpg"
+            alt="THAZHAL blog hero background"
+            onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none' }}
+            className="h-full w-full object-cover opacity-25"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent" />
+        </div>
+        <div className="wrap relative"><p className="eyebrow mb-4">Insights & perspectives</p>
+          <h1 className="max-w-3xl text-4xl font-bold text-white sm:text-6xl">Ideas Shaping a Smarter, More Sustainable Future</h1>
+          <p className="mt-4 text-sm text-white/50">Articles are draft content until final copy and dates are supplied.</p></div></section>
       <section className="section"><div className="wrap">
         <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by category">

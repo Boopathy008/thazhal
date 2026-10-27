@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom'
-import { Instagram, Twitter } from 'lucide-react'
+import { Instagram, Linkedin, Twitter } from 'lucide-react'
 import { contact, nav, social } from '../data/content'
 import { Art } from './ui'
 
 const col = 'text-sm text-white/70 transition-colors hover:text-emerald'
 export default function Footer() {
-  const soc = [{ n: 'X', I: Twitter, u: social.x }, { n: 'Instagram', I: Instagram, u: social.instagram }]
+  const soc = [
+    { n: 'X', I: Twitter, u: social.x },
+    { n: 'LinkedIn', I: Linkedin, u: social.linkedin },
+    { n: 'Instagram', I: Instagram, u: social.instagram },
+  ]
   return (
     <footer className="relative overflow-hidden bg-navy pt-20 text-white">
       <Art variant={4} className="absolute inset-0 h-full w-full opacity-40" />

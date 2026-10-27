@@ -18,7 +18,7 @@ export default function BlogPost() {
         <h1 className="text-3xl font-bold text-white sm:text-5xl">{a.title}</h1>
       </div></section>
       <article className="section"><div className="wrap max-w-3xl">
-        <div className="mb-10 aspect-[16/9] overflow-hidden"><Visual variant={a.variant} label={`Cover for ${a.title}`} /></div>
+        <div className="mb-10 aspect-[16/9] overflow-hidden rounded-xl"><Visual variant={a.variant} image={a.image} label={`Cover for ${a.title}`} /></div>
         <div className="space-y-5 text-lg leading-relaxed text-slate-700">{a.body.map((p) => <p key={p}>{p}</p>)}</div>
       </div></article>
       <CTA />

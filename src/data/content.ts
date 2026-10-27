@@ -122,19 +122,19 @@ export const nav = {
   solutions: solutions.map((s, i) => ({ label: s.name, to: pathOf(s), desc: s.tagline, icon: ['Trees', 'Building2'][i] })),
 }
 
-export type Article = { slug: string; title: string; category: string; date: string; excerpt: string; body: string[]; variant: number }
+export type Article = { slug: string; title: string; category: string; date: string; excerpt: string; body: string[]; variant: number; image?: string }
 const body = (t: string) => [
   `Draft article. ${t}`,
   'The full article text will be added here. This placeholder keeps the layout, routing and filters fully working in the meantime.',
   'Edit src/data/articles in content.ts to replace titles, dates, excerpts and body copy.',
 ]
 export const articles: Article[] = [
-  { slug: 'geospatial-intelligence-environmental-decision-making', title: 'How Geospatial Intelligence Supports Environmental Decision-Making', category: 'Environment', date: 'Draft', excerpt: 'How spatial information helps teams understand environmental change and act on it.', body: body('Geospatial intelligence and environmental decisions.'), variant: 0 },
-  { slug: 'understanding-infrastructure-satellite-imagery', title: 'Understanding Infrastructure Through Satellite Imagery', category: 'Infrastructure', date: 'Draft', excerpt: 'What imagery can and cannot reveal about roads, bridges and industrial sites.', body: body('Infrastructure and imagery.'), variant: 1 },
-  { slug: 'spatial-data-climate-risk-assessment', title: 'The Role of Spatial Data in Climate Risk Assessment', category: 'Climate', date: 'Draft', excerpt: 'Why location matters when assessing climate-related risk.', body: body('Spatial data and climate risk.'), variant: 2 },
-  { slug: 'reading-landscape-change-over-time', title: 'Reading Landscape Change Over Time', category: 'Environment', date: 'Draft', excerpt: 'A primer on comparing imagery across seasons and years.', body: body('Landscape change.'), variant: 3 },
-  { slug: 'planning-with-spatial-context', title: 'Planning With Spatial Context', category: 'Infrastructure', date: 'Draft', excerpt: 'Using maps and imagery to support operational planning.', body: body('Spatial planning.'), variant: 4 },
-  { slug: 'fire-risk-and-the-landscape', title: 'Fire Risk and the Landscape', category: 'Climate', date: 'Draft', excerpt: 'How vegetation, terrain and assets shape fire-risk conversations.', body: body('Fire risk and terrain.'), variant: 0 },
+  { slug: 'geospatial-intelligence-environmental-decision-making', title: 'How Geospatial Intelligence Supports Environmental Decision-Making', category: 'Environment', date: 'Draft', excerpt: 'How spatial information helps teams understand environmental change and act on it.', body: body('Geospatial intelligence and environmental decisions.'), variant: 0, image: '/images/blog/blog-1.jpg' },
+  { slug: 'understanding-infrastructure-satellite-imagery', title: 'Understanding Infrastructure Through Satellite Imagery', category: 'Infrastructure', date: 'Draft', excerpt: 'What imagery can and cannot reveal about roads, bridges and industrial sites.', body: body('Infrastructure and imagery.'), variant: 1, image: '/images/blog/blog-2.jpg' },
+  { slug: 'spatial-data-climate-risk-assessment', title: 'The Role of Spatial Data in Climate Risk Assessment', category: 'Climate', date: 'Draft', excerpt: 'Why location matters when assessing climate-related risk.', body: body('Spatial data and climate risk.'), variant: 2, image: '/images/blog/blog-3.jpg' },
+  { slug: 'reading-landscape-change-over-time', title: 'Reading Landscape Change Over Time', category: 'Environment', date: 'Draft', excerpt: 'A primer on comparing imagery across seasons and years.', body: body('Landscape change.'), variant: 3, image: '/images/blog/blog-4.jpg' },
+  { slug: 'planning-with-spatial-context', title: 'Planning With Spatial Context', category: 'Infrastructure', date: 'Draft', excerpt: 'Using maps and imagery to support operational planning.', body: body('Spatial planning.'), variant: 4, image: '/images/blog/blog-5.jpg' },
+  { slug: 'fire-risk-and-the-landscape', title: 'Fire Risk and the Landscape', category: 'Climate', date: 'Draft', excerpt: 'How vegetation, terrain and assets shape fire-risk conversations.', body: body('Fire risk and terrain.'), variant: 0, image: '/images/blog/blog-6.jpg' },
 ]
 export const categories = ['All', ...Array.from(new Set(articles.map((a) => a.category)))]
 
@@ -159,6 +159,104 @@ export const supporters: { name: string; logo: string }[] = [
 
 export const social = {
   x: import.meta.env.VITE_X_URL as string | undefined,
+  linkedin: (import.meta.env.VITE_LINKEDIN_URL as string | undefined) || 'https://www.linkedin.com/company/thazhal',
   instagram: import.meta.env.VITE_INSTAGRAM_URL as string | undefined,
 }
 export const contact = { hq: 'Tirunelveli, Tamil Nadu, India', email: 'contact@thazhal.in' }
+
+export type TeamMember = {
+  name: string
+  role: string
+  image?: string
+  linkedin?: string
+}
+
+export const teamMembers: TeamMember[] = [
+  {
+    name: 'Vignesh Kandasamy',
+    role: 'Founder / CEO',
+    image: '/images/team/vignesh-kandasamy.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+  {
+    name: 'Nivedhitha',
+    role: 'Co-Founder / CTO',
+    image: '/images/team/nivedhitha.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+  {
+    name: 'Dinesh Kumar',
+    role: 'Team Lead Geospatial Expert',
+    image: '/images/team/dinesh-kumar.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+  {
+    name: 'Robinson',
+    role: 'Remote Sensing Specialist',
+    image: '/images/team/robinson.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+  {
+    name: 'Sree sutha',
+    role: 'Remote Sensing & AI Developer',
+    image: '/images/team/sree-sutha.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+  {
+    name: 'Aruna',
+    role: 'Remote Sensing & AI Developer',
+    image: '/images/team/aruna.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+  {
+    name: 'Antony Jeri Christo',
+    role: 'IoT Engineer',
+    image: '/images/team/antony-jeri-christo.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+  {
+    name: 'Robin Sam Paul',
+    role: 'Business Development Analyst',
+    image: '/images/team/robin-sam-paul.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+  {
+    name: 'Bhuvaneswari',
+    role: 'Product Manager',
+    image: '/images/team/bhuvaneswari.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+  {
+    name: 'Bala Krishnan',
+    role: 'Full Stack Developer',
+    image: '/images/team/bala-krishnan.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+  {
+    name: 'Stalin Saran',
+    role: 'Business Development Analyst',
+    image: '/images/team/stalin-saran.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+  {
+    name: 'Ramki',
+    role: 'Geospatial AI Analyst',
+    image: '/images/team/ramki.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+]
+
+export const advisors: TeamMember[] = [
+  {
+    name: 'Sayantan Majumdar',
+    role: 'Assistant Research Professor, Desert Research Institute, Nevada, USA',
+    image: '/images/team/sayantan-majumdar.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+  {
+    name: 'Manoj Hari',
+    role: 'Earth System Scientist, University of Cambridge',
+    image: '/images/team/manoj-hari.jpg',
+    linkedin: 'https://www.linkedin.com/in/',
+  },
+]

@@ -51,7 +51,7 @@ export function BlogCard({ a, dark }: { a: Article; dark?: boolean }) {
   return (
     <article className="group">
       <Link to={`/blog/${a.slug}`}>
-        <div className="aspect-[16/10] overflow-hidden rounded-xl"><div className="h-full transition-transform duration-700 group-hover:scale-105"><Visual variant={a.variant} label={`Cover for ${a.title}`} /></div></div>
+        <div className="aspect-[16/10] overflow-hidden rounded-xl"><div className="h-full transition-transform duration-700 group-hover:scale-105"><Visual variant={a.variant} image={a.image} label={`Cover for ${a.title}`} /></div></div>
         <p className={`mt-5 font-mono text-sm uppercase tracking-widest ${dark ? 'text-emerald' : 'text-forest'}`}>{a.category} <span className={dark ? 'text-white/50' : 'text-slate2'}>· {a.date}</span></p>
         <h3 className={`mt-3 text-xl font-bold leading-snug ${dark ? 'text-white group-hover:text-emerald' : 'group-hover:text-forest'}`}>{a.title}</h3>
         <p className={`mt-3 text-lg leading-relaxed ${dark ? 'text-white/65' : 'text-slate-600'}`}>{a.excerpt}</p>
