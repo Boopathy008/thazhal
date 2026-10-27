@@ -14,14 +14,14 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
   const label = kind === 'product' ? 'Product' : 'Solution'
   return (
     <>
-      <section className="relative flex min-h-[70vh] items-end overflow-hidden bg-navy pb-16 pt-36">
+      <section className="relative flex min-h-[60vh] items-end overflow-hidden bg-navy pb-16 pt-32">
         <div className="absolute inset-0"><Visual variant={d.variant} image={d.image} label={`${d.name} visual`} /></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-navy/20" />
+        <div className="absolute inset-0 bg-navy/60" />
         <div className="wrap relative">
-          <p className="eyebrow mb-4">{label}</p>
-          <h1 className="text-5xl font-bold text-white sm:text-7xl">{d.name}</h1>
-          <p className="mt-5 max-w-2xl text-xl text-white/75">{d.tagline}</p>
-          <div className="mt-8"><Btn to="/contact">Talk to Our Team</Btn></div>
+          <p className="eyebrow mb-3">{label}</p>
+          <h1 className="text-4xl font-bold text-white sm:text-6xl">{d.name}</h1>
+          <p className="mt-4 max-w-2xl text-lg text-white/80">{d.tagline}</p>
+          <div className="mt-7"><Btn to="/contact">Talk to Our Team</Btn></div>
         </div>
       </section>
 

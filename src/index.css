@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-html { scroll-behavior: smooth; font-size: 17px; }
-body { @apply bg-paper text-navy font-sans antialiased; overflow-x: hidden; line-height: 1.75; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body { @apply bg-paper text-navy font-sans antialiased; overflow-x: hidden; line-height: 1.6; }
 h1, h2, h3, h4 { @apply font-display; }
 :focus-visible { outline: 2px solid #A9B887; outline-offset: 3px; border-radius: 4px; }
-.eyebrow { @apply font-mono text-sm tracking-[0.18em] uppercase text-emerald; }
+.eyebrow { @apply font-mono text-xs tracking-[0.18em] uppercase text-emerald; }
 .wrap { @apply mx-auto w-full max-w-7xl px-5 sm:px-8; }
-.section { @apply py-20 sm:py-28; }
+.section { @apply py-16 sm:py-24; }
 
 /* Gradient background for green sections */
 .section-gradient {

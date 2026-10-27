@@ -51,12 +51,12 @@ export default function Hero() {
         <source src="/media/hero.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark overlay so text stays readable */}
+      {/* Dark overlay so text stays readable without strong color grading */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to top, rgba(46,61,40,0.88) 0%, rgba(46,61,40,0.40) 50%, rgba(46,61,40,0.15) 100%)',
+          backgroundColor: 'rgba(10, 16, 12, 0.45)',
           zIndex: 1,
         }}
       />

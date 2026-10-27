@@ -55,9 +55,9 @@ export function Btn({ to, children, variant = 'primary', onClick }: { to?: strin
 export function SectionHeading({ eyebrow, title, text, dark, center }: { eyebrow?: string; title: string; text?: string; dark?: boolean; center?: boolean }) {
   return (
     <div className={`max-w-3xl ${center ? 'mx-auto text-center' : ''}`}>
-      {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
-      <h2 className={`text-4xl font-bold leading-[1.1] sm:text-5xl ${dark ? 'text-white' : 'text-navy'}`}>{title}</h2>
-      {text && <p className={`mt-6 max-w-2xl text-xl leading-relaxed ${center ? 'mx-auto' : ''} ${dark ? 'text-white/75' : 'text-slate-600'}`}>{text}</p>}
+      {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
+      <h2 className={`text-3xl font-bold leading-[1.15] sm:text-4xl ${dark ? 'text-white' : 'text-navy'}`}>{title}</h2>
+      {text && <p className={`mt-4 max-w-2xl text-base leading-relaxed ${center ? 'mx-auto' : ''} ${dark ? 'text-white/75' : 'text-slate-600'}`}>{text}</p>}
     </div>
   )
 }
@@ -67,9 +67,9 @@ export function CTA({ title = "Let's Turn Geospatial Data Into Meaningful Action
     <section className="relative overflow-hidden bg-white section border-t border-slate-100">
       <div className="wrap relative">
         <Reveal>
-          <h2 className="max-w-4xl text-4xl font-bold leading-tight text-navy sm:text-5xl">{title}</h2>
-          <p className="mt-6 max-w-2xl text-xl text-slate-500">{text}</p>
-          <div className="mt-9 flex flex-wrap gap-4">
+          <h2 className="max-w-4xl text-3xl font-bold leading-tight text-navy sm:text-4xl">{title}</h2>
+          <p className="mt-4 max-w-2xl text-base text-slate-500 leading-relaxed">{text}</p>
+          <div className="mt-8 flex flex-wrap gap-4">
             <Btn to="/contact">Talk to Our Team</Btn>
             <Btn to="/#solutions" variant="dark">Explore Our Solutions</Btn>
           </div>

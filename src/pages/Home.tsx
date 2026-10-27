@@ -49,11 +49,11 @@ export default function Home() {
         <div className="wrap relative grid items-center gap-14 lg:grid-cols-2">
           <Reveal>
             <SectionHeading eyebrow="About us" title="Welcome to THAZHAL" />
-                    <p className="mt-4 font-display text-xl text-emerald">Innovation meets geospatial intelligence.</p>
-            <p className="mt-6 text-lg text-slate-600">THAZHAL focuses on developing forward-thinking solutions that combine geospatial technologies, imagery analytics, and intelligent monitoring to help organizations better understand the world around them.</p>
-            <p className="mt-4 text-lg text-slate-600">We bring data and technology together to support informed decision-making, environmental awareness, and more resilient infrastructure.</p>
-            <ul className="mt-8 space-y-4 text-navy">{['Environmental Monitoring', 'Imagery Analytics for Informed Decision-Making', 'Cutting-Edge Technology for Comprehensive Surveys', 'Geospatial Intelligence for Infrastructure Assessment'].map((x) => <li key={x} className="flex items-center gap-3 text-lg"><span className="h-px w-6 shrink-0 bg-emerald" />{x}</li>)}</ul>
-            <div className="mt-10"><Btn to="/contact">Contact Us</Btn></div>
+            <p className="mt-4 font-display text-lg text-emerald">Innovation meets geospatial intelligence.</p>
+            <p className="mt-5 text-base text-slate-600">THAZHAL focuses on developing forward-thinking solutions that combine geospatial technologies, imagery analytics, and intelligent monitoring to help organizations better understand the world around them.</p>
+            <p className="mt-3.5 text-base text-slate-600">We bring data and technology together to support informed decision-making, environmental awareness, and more resilient infrastructure.</p>
+            <ul className="mt-6 space-y-3 text-navy">{['Environmental Monitoring', 'Imagery Analytics for Informed Decision-Making', 'Cutting-Edge Technology for Comprehensive Surveys', 'Geospatial Intelligence for Infrastructure Assessment'].map((x) => <li key={x} className="flex items-center gap-2.5 text-base"><span className="h-px w-5 shrink-0 bg-emerald" />{x}</li>)}</ul>
+            <div className="mt-9"><Btn to="/contact">Contact Us</Btn></div>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="aspect-[4/5] overflow-hidden rounded-xl shadow-xl">
@@ -80,10 +80,10 @@ export default function Home() {
       <section className="section-gradient section">
         <div className="wrap">
           <Reveal><SectionHeading dark title="From Observation to Insight" /></Reveal>
-          <ol className="relative mt-14 grid gap-10 md:grid-cols-3">
-            <div className="absolute left-0 right-0 top-8 hidden h-px bg-emerald/50 md:block" aria-hidden />
+          <ol className="relative mt-12 grid gap-8 md:grid-cols-3">
+            <div className="absolute left-0 right-0 top-7 hidden h-px bg-emerald/50 md:block" aria-hidden />
             {[['01', 'Observe', 'Gather relevant geospatial information and imagery.'], ['02', 'Understand', 'Analyze spatial information to identify patterns, changes, and useful insights.'], ['03', 'Act', 'Support better-informed planning and decisions.']].map(([n, t, d], i) => (
-              <Reveal key={n} delay={i * 0.12}><li className="relative"><span className="relative inline-block pr-4 font-display text-7xl font-bold text-emerald/60">{n}</span><h3 className="mt-4 text-2xl font-bold text-white">{t}</h3><p className="mt-3 text-lg text-white/75">{d}</p></li></Reveal>
+              <Reveal key={n} delay={i * 0.12}><li className="relative"><span className="relative inline-block pr-3 font-display text-5xl font-bold text-emerald/60">{n}</span><h3 className="mt-3 text-xl font-bold text-white">{t}</h3><p className="mt-2 text-sm text-white/75 leading-relaxed">{d}</p></li></Reveal>
             ))}
           </ol>
         </div>
@@ -97,7 +97,7 @@ export default function Home() {
           <LogoMarquee list={partners} />
         </div>
         <div className="wrap">
-          <h3 className="mb-10 mt-20 text-center text-3xl font-bold text-navy">Supported By</h3>
+          <h3 className="mb-8 mt-16 text-center text-2xl font-bold text-navy">Supported By</h3>
           <SupporterGrid list={supporters} />
         </div>
       </section>

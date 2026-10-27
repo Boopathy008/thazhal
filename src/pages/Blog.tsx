@@ -4,7 +4,7 @@ import { BlogCard } from '../components/Cards'
 import { articles, categories } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
 
-const PAGE = 3
+const PAGE = 8
 export default function Blog() {
   usePageMeta('Blog', 'Perspectives on geospatial intelligence, environmental monitoring and infrastructure resilience.')
   const [cat, setCat] = useState('All')
@@ -13,19 +13,20 @@ export default function Blog() {
   const list = useMemo(() => articles.filter((a) => (cat === 'All' || a.category === cat) && `${a.title} ${a.excerpt}`.toLowerCase().includes(q.toLowerCase())), [cat, q])
   return (
     <>
-      <section className="relative flex min-h-[420px] items-center overflow-hidden bg-navy pb-24 pt-36 sm:min-h-[480px]">
+      <section className="relative flex min-h-[380px] items-center overflow-hidden bg-navy pb-20 pt-32 sm:min-h-[440px]">
+        {/* Real photo background with clean uniform neutral dark tint */}
         <div className="absolute inset-0">
           <img
             src="/images/blog-hero.jpg"
             alt="THAZHAL blog hero background"
             onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none' }}
-            className="h-full w-full object-cover opacity-35"
+            className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent" />
+          <div className="absolute inset-0 bg-navy/60" />
         </div>
-        <div className="wrap relative"><p className="eyebrow mb-4">Insights & perspectives</p>
-          <h1 className="max-w-4xl text-4xl font-bold text-white sm:text-6xl">Ideas Shaping a Smarter, More Sustainable Future</h1>
-          <p className="mt-6 max-w-2xl text-xl leading-relaxed text-white/75">Articles are draft content until final copy and dates are supplied.</p></div></section>
+        <div className="wrap relative"><p className="eyebrow mb-3">Insights & perspectives</p>
+          <h1 className="max-w-4xl text-3xl font-bold text-white sm:text-5xl">Ideas Shaping a Smarter, More Sustainable Future</h1>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">Explore perspectives on geospatial intelligence, environmental monitoring, and climate resilience.</p></div></section>
       <section className="section"><div className="wrap">
         <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by category">
