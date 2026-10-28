@@ -33,11 +33,42 @@ h1, h2, h3, h4 { @apply font-display; }
   box-shadow: 0 25px 50px -12px rgba(46, 61, 40, 0.25);
 }
 
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *:not(video) { animation: none !important; transition-duration: .01ms !important; } }
+/* Geospatial Scanning Radar & Orbital Animations */
+@keyframes geoScan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.08); opacity: 0.8; }
+}
+
+@keyframes orbitalFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1.5deg); }
+}
+
+.animate-geo-scan {
+  animation: geoScan 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-orbital-float {
+  animation: orbitalFloat 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) { 
+  html { scroll-behavior: auto; } 
+  *:not(video) { animation: none !important; transition-duration: .01ms !important; } 
+}
 
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .marquee-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
 .marquee-track:hover { animation-play-state: paused; }
 .marquee-track-slow { display: flex; width: max-content; animation: marquee 20s linear infinite; }
 .marquee-track-slow:hover { animation-play-state: paused; }
-
