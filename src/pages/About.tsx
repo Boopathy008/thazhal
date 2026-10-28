@@ -13,31 +13,33 @@ function MemberCard({ m }: { m: TeamMember }) {
   return (
     <Card3D className="h-full">
       <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-sm transition-all duration-350 hover:shadow-xl hover:border-emerald/25">
-        {/* Photo */}
-        <div className="relative aspect-[4/4.5] overflow-hidden bg-slate-50">
-          {m.image ? (
-            <img
-              src={m.image}
-              alt={m.name}
-              onError={(e) => {
-                (e.currentTarget as HTMLElement).style.display = 'none'
-                const fallback = e.currentTarget.parentElement?.querySelector('.fallback-avatar')
-                if (fallback) (fallback as HTMLElement).style.display = 'flex'
-              }}
-              loading="lazy"
-              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-104"
-            />
-          ) : null}
-          <div
-            className={`fallback-avatar h-full w-full items-center justify-center bg-gradient-to-br from-forest/8 via-paper to-emerald/15 text-forest/35 ${
-              m.image ? 'hidden' : 'flex'
-            }`}
-          >
-            <User size={56} strokeWidth={1.5} />
-          </div>
+        {/* Photo with reduced, elegant size */}
+        <div className="relative aspect-[16/11] overflow-hidden bg-slate-50 flex items-center justify-center p-2">
+          <div className="relative h-full w-full overflow-hidden rounded-xl">
+            {m.image ? (
+              <img
+                src={m.image}
+                alt={m.name}
+                onError={(e) => {
+                  (e.currentTarget as HTMLElement).style.display = 'none'
+                  const fallback = e.currentTarget.parentElement?.querySelector('.fallback-avatar')
+                  if (fallback) (fallback as HTMLElement).style.display = 'flex'
+                }}
+                loading="lazy"
+                className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
+            ) : null}
+            <div
+              className={`fallback-avatar h-full w-full items-center justify-center bg-gradient-to-br from-forest/8 via-paper to-emerald/15 text-forest/35 ${
+                m.image ? 'hidden' : 'flex'
+              }`}
+            >
+              <User size={40} strokeWidth={1.5} />
+            </div>
 
-          {/* Scan line on hover */}
-          <div className="scan-line pointer-events-none" />
+            {/* Scan line on hover */}
+            <div className="scan-line pointer-events-none" />
+          </div>
 
           {m.linkedin && (
             <a
@@ -45,18 +47,18 @@ function MemberCard({ m }: { m: TeamMember }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${m.name} on LinkedIn`}
-              className="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/95 text-navy shadow-md backdrop-blur-sm transition-all duration-250 hover:scale-110 hover:bg-emerald hover:text-navy"
+              className="absolute bottom-4 right-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/95 text-navy shadow-md backdrop-blur-sm transition-all duration-250 hover:scale-110 hover:bg-emerald hover:text-navy"
             >
-              <Linkedin size={16} />
+              <Linkedin size={14} />
             </a>
           )}
         </div>
 
         {/* Name & role */}
-        <div className="flex flex-1 flex-col justify-between p-5">
+        <div className="flex flex-1 flex-col justify-between p-4">
           <div>
-            <h4 className="text-[17px] font-bold text-navy leading-snug">{m.name}</h4>
-            <p className="mt-1.5 text-[13px] leading-snug text-slate-500">{m.role}</p>
+            <h4 className="text-[15px] font-bold text-navy leading-snug">{m.name}</h4>
+            <p className="mt-1 text-[12px] leading-snug text-slate-500">{m.role}</p>
           </div>
         </div>
       </div>
@@ -96,39 +98,38 @@ export default function About() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
+      {/* Mission & Vision - Equal High-Elevation Cards */}
       <section className="section bg-white">
         <div className="wrap">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 dot-grid opacity-50"
-            style={{ position: 'absolute' }}
-          />
-          <div className="grid gap-10 md:grid-cols-2">
-            <Reveal>
-              <div className="rounded-2xl border border-slate-200/70 bg-white p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
-                <div className="mb-4 flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald" />
-                  <p className="eyebrow">Mission</p>
+          <div className="grid gap-8 md:grid-cols-2 items-stretch">
+            <Reveal className="h-full flex flex-col">
+              <div className="flex h-full flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 border-t-4 border-t-emerald">
+                <div>
+                  <div className="mb-4 flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-emerald" />
+                    <p className="eyebrow">Mission</p>
+                  </div>
+                  <h2 className="text-2xl font-bold text-navy sm:text-3xl">Our Mission</h2>
+                  <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
+                    To make geospatial intelligence more useful for environmental understanding,
+                    infrastructure assessment, and informed decision-making. We empower organizations with precision monitoring and high-accuracy predictive insights.
+                  </p>
                 </div>
-                <h2 className="text-2xl font-bold text-navy">Our Mission</h2>
-                <p className="mt-3 text-[15px] leading-relaxed text-slate-500">
-                  To make geospatial intelligence more useful for environmental understanding,
-                  infrastructure assessment, and informed decision-making.
-                </p>
               </div>
             </Reveal>
-            <Reveal delay={0.1}>
-              <div className="rounded-2xl border border-slate-200/70 bg-white p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
-                <div className="mb-4 flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald" />
-                  <p className="eyebrow">Vision</p>
+            <Reveal delay={0.1} className="h-full flex flex-col">
+              <div className="flex h-full flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 border-t-4 border-t-emerald">
+                <div>
+                  <div className="mb-4 flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-emerald" />
+                    <p className="eyebrow">Vision</p>
+                  </div>
+                  <h2 className="text-2xl font-bold text-navy sm:text-3xl">Our Vision</h2>
+                  <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
+                    To contribute to a future where better spatial information supports a more resilient
+                    and sustainable world. Leading the shift from reactive response to proactive stewardship of Earth's critical ecosystems and infrastructure.
+                  </p>
                 </div>
-                <h2 className="text-2xl font-bold text-navy">Our Vision</h2>
-                <p className="mt-3 text-[15px] leading-relaxed text-slate-500">
-                  To contribute to a future where better spatial information supports a more resilient
-                  and sustainable world.
-                </p>
               </div>
             </Reveal>
           </div>
@@ -175,7 +176,7 @@ export default function About() {
               center
             />
           </Reveal>
-          <div className="mt-14 grid gap-7 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-stretch">
             {teamMembers.map((m, i) => (
               <Reveal key={m.name} delay={(i % 4) * 0.07} className="h-full flex flex-col">
                 <MemberCard m={m} />
@@ -192,7 +193,7 @@ export default function About() {
                 center
               />
             </Reveal>
-            <div className="mx-auto mt-12 grid max-w-3xl gap-7 sm:grid-cols-2 items-stretch">
+            <div className="mx-auto mt-12 grid max-w-3xl gap-6 sm:grid-cols-2 items-stretch">
               {advisors.map((m, i) => (
                 <Reveal key={m.name} delay={i * 0.1} className="h-full flex flex-col">
                   <MemberCard m={m} />
