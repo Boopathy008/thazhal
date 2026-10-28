@@ -26,19 +26,16 @@ export default function Hero() {
       style={{ background: '#02040A' }}
     >
       {/* ── 3D Interactive Terra Dusk Globe ────────────────────────── */}
-      {/* Positioned towards the right side on desktop, filling screen on mobile */}
-      <div
-        aria-hidden
-        className="pointer-events-auto absolute inset-0 z-0 flex items-center justify-end"
-      >
+      {/* pointer-events-auto and proper z-index so hover and drag work seamlessly */}
+      <div className="pointer-events-auto absolute inset-0 z-0 flex items-center justify-end">
         <div className="absolute right-0 top-0 h-full w-full lg:w-[65%] xl:w-[60%]">
           <TerraDusk
             background="transparent"
             size={760}
             sun="cursor"
             drag={true}
-            hover={7.5}
-            speed={7.5}
+            hover={8.5}
+            speed={7}
             stars={7}
             daylight={86}
             look={{
@@ -51,7 +48,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── High-contrast gradient veil to keep left side text razor sharp ── */}
+      {/* ── High-contrast gradient veil to keep left side text razor sharp (pointer-events-none so it doesn't block mouse) ── */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-[1]"
@@ -71,9 +68,46 @@ export default function Hero() {
         }}
       />
 
+      {/* ── Floating 3D Geospatial Satellites & Orbital telemetry markers ── */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-[2] overflow-hidden">
+        {/* Orbit ring 1 */}
+        <div 
+          className="absolute right-[-10%] top-[15%] h-[500px] w-[500px] rounded-full border border-emerald/15 opacity-40 animate-spin"
+          style={{ animationDuration: '65s' }}
+        />
+        {/* Orbit ring 2 */}
+        <div 
+          className="absolute right-[5%] top-[8%] h-[680px] w-[680px] rounded-full border border-dashed border-emerald/20 opacity-30 animate-spin"
+          style={{ animationDuration: '95s', animationDirection: 'reverse' }}
+        />
+
+        {/* Floating Telemetry Coordinates Tag */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="absolute right-8 top-28 hidden lg:flex items-center gap-2 rounded-lg border border-emerald/20 bg-navy/60 px-3 py-1.5 backdrop-blur-md text-[11px] font-mono text-emerald/90 shadow-xl"
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald animate-ping" />
+          <span>LAT 13.0827° N · LON 80.2707° E · ORBIT SYNCHRONIZED</span>
+        </motion.div>
+
+        {/* Floating Real-time Altitude Tag */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="absolute right-12 bottom-20 hidden lg:flex items-center gap-2 rounded-lg border border-white/10 bg-navy/60 px-3 py-1.5 backdrop-blur-md text-[11px] font-mono text-white/70 shadow-xl"
+        >
+          <Satellite size={13} className="text-emerald" />
+          <span>ALT 550KM · MULTISPECTRAL RESOLUTION 0.5M</span>
+        </motion.div>
+      </div>
+
       {/* ── Hero content: Strictly aligned to the left side ─────────── */}
-      <div className="wrap relative z-10 w-full py-28 sm:py-36">
-        <div className="max-w-xl text-left lg:max-w-2xl">
+      {/* wrap has pointer-events-none with inner items pointer-events-auto so globe behind can be clicked/dragged freely */}
+      <div className="wrap pointer-events-none relative z-10 w-full py-28 sm:py-36">
+        <div className="pointer-events-auto max-w-xl text-left lg:max-w-2xl">
           {/* Geospatial Radar Eyebrow Badge */}
           <motion.div
             {...item(0, reduce)}
@@ -115,13 +149,13 @@ export default function Hero() {
             {...item(3, reduce)}
             className="mt-6 flex flex-wrap items-center gap-4 text-xs font-medium text-white/60"
           >
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 rounded-md border border-white/5 bg-white/5 px-2.5 py-1 backdrop-blur-sm">
               <Satellite size={15} className="text-emerald" /> Satellite Observation
             </div>
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 rounded-md border border-white/5 bg-white/5 px-2.5 py-1 backdrop-blur-sm">
               <Orbit size={15} className="text-emerald" /> Real-Time Analytics
             </div>
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 rounded-md border border-white/5 bg-white/5 px-2.5 py-1 backdrop-blur-sm">
               <Globe size={15} className="text-emerald" /> 3D Digital Twin
             </div>
           </motion.div>
@@ -138,7 +172,7 @@ export default function Hero() {
       <a
         href="#impact"
         aria-label="Scroll to content"
-        className="absolute bottom-6 left-8 z-10 flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-white/40 transition-colors hover:text-emerald"
+        className="pointer-events-auto absolute bottom-6 left-8 z-10 flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-white/40 transition-colors hover:text-emerald"
       >
         <ChevronDown size={18} className={reduce ? '' : 'animate-bounce'} />
         <span>Scroll Down</span>

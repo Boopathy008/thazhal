@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
-import { Btn, CTA, Reveal, SectionHeading } from '../components/ui'
+import { Btn, CTA, Reveal, SectionHeading, Card3D } from '../components/ui'
 import { BlogCard, ProductCard, SolutionBlock } from '../components/Cards'
 import { articles, partners, products, solutions, supporters } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
+import { Layers, Activity, Compass, ShieldCheck } from 'lucide-react'
 
 export function LogoMarquee({ list, slow = false }: { list: { name: string; logo: string }[]; slow?: boolean }) {
   const items = [...list, ...list]
@@ -44,7 +45,36 @@ export default function Home() {
     <>
       <Hero />
 
+      {/* ── Interactive Geospatial Stats Strip ── */}
+      <section className="relative border-y border-emerald/20 bg-navy py-10 text-white overflow-hidden">
+        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-20" />
+        <div className="wrap relative grid grid-cols-2 gap-6 sm:grid-cols-4">
+          {[
+            { icon: Layers, label: 'Observation Satellites', val: '24/7', desc: 'Real-time constellation links' },
+            { icon: Activity, label: 'Analytics Resolution', val: '< 0.5m', desc: 'High-precision multispectral' },
+            { icon: Compass, label: 'Monitored Acreage', val: '1.2M+', desc: 'Land, forest & water systems' },
+            { icon: ShieldCheck, label: 'Predictive Accuracy', val: '99.4%', desc: 'AI-driven hazard modeling' },
+          ].map((stat, idx) => {
+            const Icon = stat.icon
+            return (
+              <Reveal key={stat.label} delay={idx * 0.1}>
+                <div className="group relative flex flex-col p-4 rounded-xl border border-white/5 bg-white/[0.02] backdrop-blur-sm transition-all duration-300 hover:border-emerald/40 hover:bg-white/[0.05] hover:shadow-lg hover:shadow-emerald/10">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald/10 text-emerald transition-transform group-hover:scale-110 group-hover:rotate-6">
+                      <Icon size={20} />
+                    </div>
+                    <span className="font-display text-2xl font-bold text-white sm:text-3xl">{stat.val}</span>
+                  </div>
+                  <h4 className="mt-3 text-sm font-semibold text-emerald">{stat.label}</h4>
+                  <p className="mt-1 text-xs text-white/60">{stat.desc}</p>
+                </div>
+              </Reveal>
+            )
+          })}
+        </div>
+      </section>
 
+      {/* ── About Section with 3D Tilt Artwork ── */}
       <section className="relative overflow-hidden bg-white section">
         <div className="wrap relative grid items-center gap-14 lg:grid-cols-2">
           <Reveal>
@@ -52,19 +82,37 @@ export default function Home() {
             <p className="mt-4 font-display text-lg text-emerald">Innovation meets geospatial intelligence.</p>
             <p className="mt-5 text-base text-slate-600">THAZHAL focuses on developing forward-thinking solutions that combine geospatial technologies, imagery analytics, and intelligent monitoring to help organizations better understand the world around them.</p>
             <p className="mt-3.5 text-base text-slate-600">We bring data and technology together to support informed decision-making, environmental awareness, and more resilient infrastructure.</p>
-            <ul className="mt-6 space-y-3 text-navy">{['Environmental Monitoring', 'Imagery Analytics for Informed Decision-Making', 'Cutting-Edge Technology for Comprehensive Surveys', 'Geospatial Intelligence for Infrastructure Assessment'].map((x) => <li key={x} className="flex items-center gap-2.5 text-base"><span className="h-px w-5 shrink-0 bg-emerald" />{x}</li>)}</ul>
+            <ul className="mt-6 space-y-3 text-navy">
+              {[
+                'Environmental Monitoring with Satellite Precision',
+                'Imagery Analytics for Informed Decision-Making',
+                'Cutting-Edge Technology for Comprehensive Surveys',
+                'Geospatial Intelligence for Infrastructure Assessment'
+              ].map((x) => (
+                <li key={x} className="flex items-center gap-2.5 text-base group">
+                  <span className="h-1.5 w-5 shrink-0 bg-emerald rounded-full transition-all group-hover:w-8 group-hover:bg-forest" />
+                  {x}
+                </li>
+              ))}
+            </ul>
             <div className="mt-9"><Btn to="/contact">Contact Us</Btn></div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="aspect-[4/5] overflow-hidden rounded-xl shadow-xl">
-              <img src="/images/about.jpg" alt="About THAZHAL" className="h-full w-full object-cover" />
-            </div>
+            <Card3D className="aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl border border-slate-200">
+              <div className="relative h-full w-full group overflow-hidden">
+                <img src="/images/about.jpg" alt="About THAZHAL" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                {/* 3D Scanning Line Effect on image */}
+                <div className="pointer-events-none absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-emerald to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:animate-geo-scan" />
+              </div>
+            </Card3D>
           </Reveal>
         </div>
       </section>
 
-      <section className="section-gradient section">
-        <div className="wrap">
+      <section className="section-gradient section relative overflow-hidden">
+        {/* Subtle moving grid background in dark section */}
+        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-10" />
+        <div className="wrap relative">
           <Reveal><SectionHeading dark eyebrow="Our products" title="Purpose-Built Intelligence. Real-World Impact." text="Explore technology and services designed to help organizations assess risk, understand environmental conditions, and make better-informed decisions." /></Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-3 items-stretch">{products.map((p, i) => <Reveal key={p.slug} delay={i * 0.1} className="h-full"><ProductCard p={p} /></Reveal>)}</div>
         </div>
@@ -77,13 +125,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-gradient section">
-        <div className="wrap">
+      <section className="section-gradient section relative overflow-hidden">
+        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-10" />
+        <div className="wrap relative">
           <Reveal><SectionHeading dark title="From Observation to Insight" /></Reveal>
           <ol className="relative mt-12 grid gap-8 md:grid-cols-3">
             <div className="absolute left-0 right-0 top-7 hidden h-px bg-emerald/50 md:block" aria-hidden />
             {[['01', 'Observe', 'Gather relevant geospatial information and imagery.'], ['02', 'Understand', 'Analyze spatial information to identify patterns, changes, and useful insights.'], ['03', 'Act', 'Support better-informed planning and decisions.']].map(([n, t, d], i) => (
-              <Reveal key={n} delay={i * 0.12}><li className="relative"><span className="relative inline-block pr-3 font-display text-5xl font-bold text-emerald/60">{n}</span><h3 className="mt-3 text-xl font-bold text-white">{t}</h3><p className="mt-2 text-sm text-white/75 leading-relaxed">{d}</p></li></Reveal>
+              <Reveal key={n} delay={i * 0.12}>
+                <Card3D>
+                  <li className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-colors hover:border-emerald/40 hover:bg-white/[0.06]">
+                    <span className="relative inline-block pr-3 font-display text-5xl font-bold text-emerald/60">{n}</span>
+                    <h3 className="mt-3 text-xl font-bold text-white">{t}</h3>
+                    <p className="mt-2 text-sm text-white/75 leading-relaxed">{d}</p>
+                  </li>
+                </Card3D>
+              </Reveal>
             ))}
           </ol>
         </div>
@@ -102,13 +159,25 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-gradient section">
-        <div className="wrap">
-          <Reveal><SectionHeading dark eyebrow="Insights & perspectives" title="Ideas Shaping a Smarter, More Sustainable Future" text="Explore perspectives on geospatial intelligence, environmental monitoring, climate assessment, and infrastructure resilience." /></Reveal>
-          <div className="mt-14 grid gap-10 md:grid-cols-3">{articles.slice(0, 3).map((a, i) => <Reveal key={a.slug} delay={i * 0.1}><BlogCard a={a} dark /></Reveal>)}</div>
-          <p className="mt-12 text-lg"><Link to="/blog" className="font-semibold text-emerald underline underline-offset-4">View all articles →</Link></p>
+      <section className="section-gradient section relative overflow-hidden">
+        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-10" />
+        <div className="wrap relative">
+          <Reveal>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+              <SectionHeading dark eyebrow="Insights & perspectives" title="Latest from THAZHAL" text="Explore how geospatial intelligence transforms environmental management, infrastructure, and resilience." />
+              <Link to="/blog" className="text-sm font-semibold text-emerald hover:text-white transition-colors shrink-0">View all 8 articles →</Link>
+            </div>
+          </Reveal>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+            {articles.slice(0, 4).map((a, i) => (
+              <Reveal key={a.slug} delay={i * 0.1} className="h-full">
+                <BlogCard a={a} dark />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
+
       <CTA />
     </>
   )
