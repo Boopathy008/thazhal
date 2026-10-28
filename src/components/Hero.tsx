@@ -1,6 +1,7 @@
 /**
  * Hero — homepage hero with the authentic Originkit Terra Dusk 3D Earth globe.
- * Clean layout: Hero text strictly aligned on the left, interactive 3D globe filling right side.
+ * Premium layout: editorial left text, interactive 3D globe right.
+ * Design: taste-skill anti-slop + awesome-design-md Linear/Vercel principles.
  */
 
 import { motion, useReducedMotion } from 'framer-motion'
@@ -11,9 +12,9 @@ import TerraDusk from './TerraDusk'
 /* ── Animation factory ─────────────────────────────────────────── */
 function item(i: number, reduce: boolean | null) {
   return {
-    initial: reduce ? false : { opacity: 0, x: -36, filter: 'blur(4px)' },
+    initial: reduce ? false : { opacity: 0, x: -28, filter: 'blur(6px)' },
     animate: { opacity: 1, x: 0, filter: 'blur(0px)' },
-    transition: { duration: 0.8, delay: 0.15 + i * 0.16, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.85, delay: 0.12 + i * 0.14, ease: [0.22, 1, 0.36, 1] as const },
   }
 }
 
@@ -23,159 +24,202 @@ export default function Hero() {
   return (
     <section
       className="relative flex min-h-[100svh] items-center overflow-hidden"
-      style={{ background: '#02040A' }}
+      style={{ background: '#020806' }}
     >
-      {/* ── 3D Interactive Terra Dusk Globe ────────────────────────── */}
-      {/* pointer-events-auto and proper z-index so hover and drag work seamlessly */}
+      {/* ── Subtle dot-grid texture on very dark background ── */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0 opacity-30"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(169,184,135,0.15) 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
+        }}
+      />
+
+      {/* ── 3D Interactive Terra Dusk Globe ── */}
       <div className="pointer-events-auto absolute inset-0 z-0 flex items-center justify-end">
-        <div className="absolute right-0 top-0 h-full w-full lg:w-[65%] xl:w-[60%]">
+        <div className="absolute right-0 top-0 h-full w-full lg:w-[65%] xl:w-[62%]">
           <TerraDusk
             background="transparent"
             size={760}
             sun="cursor"
             drag={true}
-            hover={8.5}
+            hover={9}
             speed={7}
-            stars={7}
+            stars={8}
             daylight={86}
             look={{
               clouds: 6,
               lights: 6,
-              atmosphere: '#A9B887', // Brand sage green atmosphere glow
+              atmosphere: '#A9B887',
             }}
             style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
           />
         </div>
       </div>
 
-      {/* ── High-contrast gradient veil to keep left side text razor sharp (pointer-events-none so it doesn't block mouse) ── */}
+      {/* ── Left-to-right gradient veil keeping text sharp ── */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            'linear-gradient(to right, rgba(2,4,10,0.96) 0%, rgba(2,4,10,0.92) 36%, rgba(2,4,10,0.65) 54%, rgba(2,4,10,0.15) 75%, transparent 100%)',
+            'linear-gradient(to right, rgba(2,8,6,0.97) 0%, rgba(2,8,6,0.93) 34%, rgba(2,8,6,0.68) 52%, rgba(2,8,6,0.18) 72%, transparent 100%)',
         }}
       />
 
-      {/* ── Mobile bottom veil for readable text on smaller viewports ── */}
+      {/* ── Mobile bottom veil ── */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-[1] lg:hidden"
         style={{
           background:
-            'linear-gradient(to top, rgba(2,4,10,0.95) 45%, rgba(2,4,10,0.6) 75%, transparent 100%)',
+            'linear-gradient(to top, rgba(2,8,6,0.96) 48%, rgba(2,8,6,0.6) 76%, transparent 100%)',
         }}
       />
 
-      {/* ── Floating 3D Geospatial Satellites & Orbital telemetry markers ── */}
+      {/* ── Orbital rings ── */}
       <div aria-hidden className="pointer-events-none absolute inset-0 z-[2] overflow-hidden">
-        {/* Orbit ring 1 */}
-        <div 
-          className="absolute right-[-10%] top-[15%] h-[500px] w-[500px] rounded-full border border-emerald/15 opacity-40 animate-spin"
-          style={{ animationDuration: '65s' }}
+        {/* Orbit ring 1 — slow clockwise */}
+        <div
+          className="absolute right-[-8%] top-[12%] h-[520px] w-[520px] rounded-full border border-emerald/12 opacity-50"
+          style={{ animation: 'orbitSpin 70s linear infinite' }}
         />
-        {/* Orbit ring 2 */}
-        <div 
-          className="absolute right-[5%] top-[8%] h-[680px] w-[680px] rounded-full border border-dashed border-emerald/20 opacity-30 animate-spin"
-          style={{ animationDuration: '95s', animationDirection: 'reverse' }}
+        {/* Orbit ring 2 — slow counter-clockwise */}
+        <div
+          className="absolute right-[4%] top-[6%] h-[700px] w-[700px] rounded-full border border-dashed border-emerald/18 opacity-35"
+          style={{ animation: 'orbitSpin 100s linear infinite reverse' }}
+        />
+        {/* Inner orbital accent */}
+        <div
+          className="absolute right-[18%] top-[28%] h-[280px] w-[280px] rounded-full border border-emerald/20 opacity-25"
+          style={{ animation: 'orbitSpin 45s linear infinite' }}
         />
 
-        {/* Floating Telemetry Coordinates Tag */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="absolute right-8 top-28 hidden lg:flex items-center gap-2 rounded-lg border border-emerald/20 bg-navy/60 px-3 py-1.5 backdrop-blur-md text-[11px] font-mono text-emerald/90 shadow-xl"
+        {/* HUD telemetry: coordinate tag */}
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.7 }}
+          className="absolute right-8 top-28 hidden lg:flex items-center gap-2 hud-tag"
         >
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald animate-ping" />
-          <span>LAT 13.0827° N · LON 80.2707° E · ORBIT SYNCHRONIZED</span>
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping-slow rounded-full bg-emerald opacity-75" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald" />
+          </span>
+          <span>LAT 13.0827° N · LON 80.2707° E · LIVE</span>
         </motion.div>
 
-        {/* Floating Real-time Altitude Tag */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="absolute right-12 bottom-20 hidden lg:flex items-center gap-2 rounded-lg border border-white/10 bg-navy/60 px-3 py-1.5 backdrop-blur-md text-[11px] font-mono text-white/70 shadow-xl"
+        {/* HUD telemetry: altitude tag */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.95 }}
+          className="absolute right-12 bottom-24 hidden lg:flex items-center gap-2 hud-tag"
         >
-          <Satellite size={13} className="text-emerald" />
-          <span>ALT 550KM · MULTISPECTRAL RESOLUTION 0.5M</span>
+          <Satellite size={12} className="text-emerald" aria-hidden />
+          <span>ALT 550KM · 0.5M RESOLUTION · MULTISPECTRAL</span>
+        </motion.div>
+
+        {/* HUD telemetry: analytics tag */}
+        <motion.div
+          initial={{ opacity: 0, x: 12 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 1.2 }}
+          className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-1.5"
+        >
+          {[
+            { label: 'NDVI INDEX', value: '0.842', status: 'NOMINAL' },
+            { label: 'CLOUD COVER', value: '14%', status: 'CLEAR' },
+          ].map((item) => (
+            <div key={item.label} className="hud-tag flex-col !items-start gap-0.5 px-3 py-2">
+              <span className="text-white/40 text-[9px] tracking-widest">{item.label}</span>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald text-[13px] font-bold font-mono">{item.value}</span>
+                <span className="text-emerald/60 text-[9px] border border-emerald/20 rounded px-1 py-0.5">{item.status}</span>
+              </div>
+            </div>
+          ))}
         </motion.div>
       </div>
 
-      {/* ── Hero content: Strictly aligned to the left side ─────────── */}
-      {/* wrap has pointer-events-none with inner items pointer-events-auto so globe behind can be clicked/dragged freely */}
+      {/* ── Hero content — strictly left-aligned ── */}
       <div className="wrap pointer-events-none relative z-10 w-full py-28 sm:py-36">
-        <div className="pointer-events-auto max-w-xl text-left lg:max-w-2xl">
-          {/* Geospatial Radar Eyebrow Badge */}
+        <div className="pointer-events-auto max-w-lg text-left lg:max-w-xl">
+
+          {/* Eyebrow badge */}
           <motion.div
             {...item(0, reduce)}
-            className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-emerald/30 bg-emerald/10 px-4 py-1.5 backdrop-blur-md"
+            className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-emerald/25 bg-emerald/10 px-4 py-1.5 backdrop-blur-sm"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald" />
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping-slow rounded-full bg-emerald opacity-70" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald" />
             </span>
-            <span className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-emerald">
+            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-emerald">
               Geospatial Intelligence · Environmental Innovation
             </span>
           </motion.div>
 
-          {/* Heading */}
+          {/* Heading — tight tracking, editorial feel */}
           <motion.h1
             {...item(1, reduce)}
-            className="text-left text-4xl font-bold leading-[1.06] tracking-tight text-white sm:text-6xl lg:text-7xl"
+            className="text-left font-display text-[42px] font-bold leading-[1.04] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl"
           >
             See the Earth{' '}
             <span className="text-emerald">Differently.</span>
             <br />
             Build a More{' '}
-            <span className="text-emerald">Resilient</span> Future.
+            <span className="text-emerald">Resilient</span>{' '}
+            Future.
           </motion.h1>
 
           {/* Description */}
           <motion.p
             {...item(2, reduce)}
-            className="mt-6 max-w-xl text-left text-base leading-relaxed text-white/75 sm:text-lg"
+            className="mt-6 max-w-md text-left text-[15px] leading-[1.7] text-white/65 sm:text-base"
           >
             THAZHAL transforms geospatial data into meaningful intelligence, helping
             organisations understand environmental change, monitor critical infrastructure,
             and make informed decisions for a sustainable future.
           </motion.p>
 
-          {/* Feature Badges for Geospatial Tech */}
+          {/* Feature chips */}
           <motion.div
             {...item(3, reduce)}
-            className="mt-6 flex flex-wrap items-center gap-4 text-xs font-medium text-white/60"
+            className="mt-6 flex flex-wrap items-center gap-2.5"
           >
-            <div className="flex items-center gap-1.5 rounded-md border border-white/5 bg-white/5 px-2.5 py-1 backdrop-blur-sm">
-              <Satellite size={15} className="text-emerald" /> Satellite Observation
-            </div>
-            <div className="flex items-center gap-1.5 rounded-md border border-white/5 bg-white/5 px-2.5 py-1 backdrop-blur-sm">
-              <Orbit size={15} className="text-emerald" /> Real-Time Analytics
-            </div>
-            <div className="flex items-center gap-1.5 rounded-md border border-white/5 bg-white/5 px-2.5 py-1 backdrop-blur-sm">
-              <Globe size={15} className="text-emerald" /> 3D Digital Twin
-            </div>
+            {[
+              { icon: Satellite, label: 'Satellite Observation' },
+              { icon: Orbit, label: 'Real-Time Analytics' },
+              { icon: Globe, label: '3D Digital Twin' },
+            ].map(({ icon: Icon, label }) => (
+              <div
+                key={label}
+                className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[12px] font-medium text-white/55 backdrop-blur-sm transition-all duration-300 hover:border-emerald/30 hover:text-emerald"
+              >
+                <Icon size={13} className="text-emerald" aria-hidden />
+                {label}
+              </div>
+            ))}
           </motion.div>
 
-          {/* CTA Buttons */}
-          <motion.div {...item(4, reduce)} className="mt-9 flex flex-wrap items-center gap-4">
+          {/* CTA buttons */}
+          <motion.div {...item(4, reduce)} className="mt-9 flex flex-wrap items-center gap-3.5">
             <Btn to="/#solutions">Explore Our Solutions</Btn>
             <Btn to="/about" variant="ghost">Discover THAZHAL</Btn>
           </motion.div>
         </div>
       </div>
 
-      {/* ── Scroll chevron indicator ─────────────────────────────────── */}
+      {/* ── Scroll cue ── */}
       <a
         href="#impact"
         aria-label="Scroll to content"
-        className="pointer-events-auto absolute bottom-6 left-8 z-10 flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-white/40 transition-colors hover:text-emerald"
+        className="pointer-events-auto absolute bottom-7 left-8 z-10 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-white/35 transition-colors hover:text-emerald"
       >
-        <ChevronDown size={18} className={reduce ? '' : 'animate-bounce'} />
-        <span>Scroll Down</span>
+        <ChevronDown size={16} className={reduce ? '' : 'animate-bounce'} />
+        <span>Scroll</span>
       </a>
     </section>
   )

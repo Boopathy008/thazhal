@@ -1,3 +1,9 @@
+/**
+ * ui.tsx — THAZHAL design system primitives
+ * Anti-slop design: purposeful typography, spacing, motion, and color hierarchy.
+ * Based on taste-skill + awesome-design-md principles.
+ */
+
 import { ReactNode, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
@@ -31,22 +37,23 @@ export function Visual({ variant, image, label, className = '' }: { variant: num
     : <Art variant={variant} label={label} className={`h-full w-full ${className}`} />
 }
 
+/** Scroll-triggered reveal with 3D depth entrance */
 export function Reveal({ children, delay = 0, className = '' }: { children: ReactNode; delay?: number; className?: string }) {
   const reduce = useReducedMotion()
   return (
     <motion.div
       className={className}
-      initial={reduce ? false : { opacity: 0, y: 38, rotateX: 8, scale: 0.97 }}
-      whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
-      viewport={{ once: true, margin: '-70px' }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-      style={{ perspective: 1000 }}
+      initial={reduce ? false : { opacity: 0, y: 32, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
   )
 }
 
+/** Interactive 3D perspective tilt card */
 export function Card3D({ children, className = '' }: { children: ReactNode; className?: string }) {
   const [rotateX, setRotateX] = useState(0)
   const [rotateY, setRotateY] = useState(0)
@@ -60,8 +67,8 @@ export function Card3D({ children, className = '' }: { children: ReactNode; clas
     const y = e.clientY - rect.top
     const centerX = rect.width / 2
     const centerY = rect.height / 2
-    const rotX = -((y - centerY) / centerY) * 8
-    const rotY = ((x - centerX) / centerX) * 8
+    const rotX = -((y - centerY) / centerY) * 7
+    const rotY = ((x - centerX) / centerX) * 7
     setRotateX(rotX)
     setRotateY(rotY)
   }
@@ -82,19 +89,19 @@ export function Card3D({ children, className = '' }: { children: ReactNode; clas
         reduce
           ? {}
           : isHovered
-          ? { rotateX, rotateY, scale: 1.03, z: 30 }
+          ? { rotateX, rotateY, scale: 1.025, z: 28 }
           : { rotateX: 0, rotateY: 0, scale: 1, z: 0 }
       }
-      transition={{ type: 'spring', stiffness: 280, damping: 20 }}
-      style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
+      transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+      style={{ transformStyle: 'preserve-3d', perspective: 1200 }}
     >
       {children}
-      {/* Dynamic 3D lighting sheen overlay */}
+      {/* Specular lighting sheen */}
       <div
-        className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300"
+        className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-400"
         style={{
-          opacity: isHovered ? 0.18 : 0,
-          background: `radial-gradient(circle at ${50 + rotateY * 5}% ${50 - rotateX * 5}%, rgba(255,255,255,0.85), transparent 65%)`,
+          opacity: isHovered ? 0.14 : 0,
+          background: `radial-gradient(circle at ${50 + rotateY * 6}% ${50 - rotateX * 6}%, rgba(255,255,255,0.9), transparent 62%)`,
         }}
       />
     </motion.div>
@@ -102,7 +109,7 @@ export function Card3D({ children, className = '' }: { children: ReactNode; clas
 }
 
 /**
- * 3D Animated Button with spring physics, elevation depth, and subtle glowing highlight
+ * Primary button — premium spring physics, sheen sweep, elevation depth.
  */
 export function Btn({
   to,
@@ -113,43 +120,45 @@ export function Btn({
 }: {
   to?: string
   children: ReactNode
-  variant?: 'primary' | 'ghost' | 'dark'
+  variant?: 'primary' | 'ghost' | 'dark' | 'outline'
   onClick?: () => void
   className?: string
 }) {
   const reduce = useReducedMotion()
 
-  const cls = {
+  const styles = {
     primary:
-      'bg-emerald text-navy shadow-lg shadow-emerald/20 hover:bg-white hover:shadow-emerald/40 hover:shadow-xl',
+      'bg-emerald text-navy font-bold shadow-md shadow-emerald/25 hover:bg-[#c0cfa0] hover:shadow-lg hover:shadow-emerald/30',
     ghost:
-      'border border-white/40 text-white backdrop-blur-sm hover:border-emerald hover:text-emerald hover:bg-emerald/10 hover:shadow-lg hover:shadow-emerald/10',
+      'border border-white/30 text-white backdrop-blur-sm hover:border-emerald/60 hover:text-emerald hover:bg-emerald/8 hover:shadow-md hover:shadow-emerald/10',
     dark:
-      'bg-navy text-white shadow-lg shadow-navy/20 hover:bg-forest hover:shadow-xl hover:shadow-forest/30',
+      'bg-navy text-white shadow-md shadow-navy/20 hover:bg-forest hover:shadow-lg hover:shadow-forest/25',
+    outline:
+      'border border-navy/20 text-navy bg-transparent hover:bg-navy hover:text-white hover:shadow-md',
   }[variant]
 
-  const base = `group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-300 ${cls} ${className}`
+  const base = `group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-300 ${styles} ${className}`
 
   const motionProps = reduce
     ? {}
     : {
-        whileHover: { scale: 1.05, y: -2.5 },
-        whileTap: { scale: 0.96, y: 1 },
-        transition: { type: 'spring', stiffness: 420, damping: 22 },
+        whileHover: { scale: 1.04, y: -2 },
+        whileTap: { scale: 0.97, y: 0.5 },
+        transition: { type: 'spring', stiffness: 400, damping: 24 },
       }
 
   const inner = (
     <>
-      {/* Light sheen animation across button on hover */}
+      {/* Sheen sweep on hover */}
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-in-out group-hover:translate-x-full"
+        className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-in-out group-hover:translate-x-full"
       />
       <span className="relative z-10 flex items-center gap-2">
         {children}
         <ArrowRight
-          size={16}
-          className="transition-transform duration-300 group-hover:translate-x-1.5"
+          size={15}
+          className="transition-transform duration-300 group-hover:translate-x-1"
           aria-hidden
         />
       </span>
@@ -169,44 +178,56 @@ export function Btn({
   )
 }
 
-export function SectionHeading({ eyebrow, title, text, dark, center }: { eyebrow?: string; title: string; text?: string; dark?: boolean; center?: boolean }) {
+/** Section heading — enforces typography hierarchy, left-aligned by default */
+export function SectionHeading({ eyebrow, title, text, dark, center }: {
+  eyebrow?: string; title: string; text?: string; dark?: boolean; center?: boolean
+}) {
   return (
     <div className={`max-w-3xl ${center ? 'mx-auto text-center' : ''}`}>
       {eyebrow && (
-        <div className="flex items-center gap-2 mb-3">
-          <span className="inline-block h-2 w-2 rounded-full bg-emerald animate-ping" />
+        <div className={`mb-4 flex items-center gap-2.5 ${center ? 'justify-center' : ''}`}>
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald animate-pulse" />
           <p className="eyebrow">{eyebrow}</p>
         </div>
       )}
-      <h2 className={`text-3xl font-bold leading-[1.15] sm:text-4xl ${dark ? 'text-white' : 'text-navy'}`}>{title}</h2>
-      {text && <p className={`mt-4 max-w-2xl text-base leading-relaxed ${center ? 'mx-auto' : ''} ${dark ? 'text-white/75' : 'text-slate-600'}`}>{text}</p>}
+      <h2 className={`text-3xl font-bold leading-[1.1] sm:text-4xl ${dark ? 'text-white' : 'text-navy'}`}>
+        {title}
+      </h2>
+      {text && (
+        <p className={`mt-4 max-w-2xl text-[15px] leading-relaxed ${center ? 'mx-auto' : ''} ${dark ? 'text-white/65' : 'text-slate-500'}`}>
+          {text}
+        </p>
+      )}
     </div>
   )
 }
 
-export function CTA({ title = "Let's Turn Geospatial Data Into Meaningful Action.", text = "Have a project, a monitoring challenge, or an idea worth exploring? Let's discuss how THAZHAL's geospatial expertise can support your goals." }: { title?: string; text?: string }) {
+/** CTA section — full-width call to action with dot-grid texture */
+export function CTA({
+  title = "Let's Turn Geospatial Data Into Meaningful Action.",
+  text = "Have a project, a monitoring challenge, or an idea worth exploring? Let's discuss how THAZHAL's geospatial expertise can support your goals.",
+}: { title?: string; text?: string }) {
   return (
     <section className="relative overflow-hidden bg-white section border-t border-slate-100">
-      {/* Background geospatial subtle grid line */}
-      <div 
-        aria-hidden 
-        className="pointer-events-none absolute inset-0 opacity-[0.03]" 
-        style={{
-          backgroundImage: 'radial-gradient(#2E3D28 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
-        }}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 dot-grid opacity-100"
       />
       <div className="wrap relative">
         <Reveal>
-          <div className="flex items-center gap-2 mb-3">
-            <span className="h-2 w-2 rounded-full bg-emerald" />
-            <p className="eyebrow">Connect With Us</p>
+          <div className="flex items-center gap-2.5 mb-4">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald animate-pulse" />
+            <p className="eyebrow">Connect with us</p>
           </div>
-          <h2 className="max-w-4xl text-3xl font-bold leading-tight text-navy sm:text-4xl">{title}</h2>
-          <p className="mt-4 max-w-2xl text-base text-slate-500 leading-relaxed">{text}</p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <h2 className="max-w-4xl text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl">
+            {title}
+          </h2>
+          <p className="mt-5 max-w-2xl text-[15px] text-slate-500 leading-relaxed">
+            {text}
+          </p>
+          <div className="mt-9 flex flex-wrap gap-4">
             <Btn to="/contact">Talk to Our Team</Btn>
-            <Btn to="/#solutions" variant="dark">Explore Our Solutions</Btn>
+            <Btn to="/#solutions" variant="outline">Explore Our Solutions</Btn>
           </div>
         </Reveal>
       </div>

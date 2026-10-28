@@ -2,95 +2,145 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── DESIGN SYSTEM — THAZHAL Geospatial Intelligence ─────────────────────────
+   Based on taste-skill anti-slop principles + awesome-design-md framework.
+   Palette: navy #2E3D28 · forest #3D5234 · emerald #A9B887 · paper #E8E9DF
+   Fonts: Playfair Display (display) · DM Sans (body) · JetBrains Mono (mono)
+   Motion intensity: purposeful, hardware-accelerated, scroll-driven only.
+   ─────────────────────────────────────────────────────────────────────────── */
+
 html { scroll-behavior: smooth; font-size: 15px; }
-body { @apply bg-paper text-navy font-sans antialiased; overflow-x: hidden; line-height: 1.6; }
-h1, h2, h3, h4 { @apply font-display; }
+body { @apply bg-paper text-navy font-sans antialiased; overflow-x: hidden; line-height: 1.65; }
+h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.02em; line-height: 1.1; }
 :focus-visible { outline: 2px solid #A9B887; outline-offset: 3px; border-radius: 4px; }
-.eyebrow { @apply font-mono text-xs tracking-[0.18em] uppercase text-emerald; }
+
+/* ── Utility classes ──────────────────────────────────────────────────────── */
+.eyebrow {
+  @apply font-mono text-[11px] tracking-[0.22em] uppercase text-emerald;
+}
 .wrap { @apply mx-auto w-full max-w-7xl px-5 sm:px-8; }
-.section { @apply py-16 sm:py-24; }
+.section { @apply py-20 sm:py-28; }
 
-/* Gradient background for green sections */
+/* ── Surface backgrounds ──────────────────────────────────────────────────── */
+.section-dark {
+  background: #0f1a0e;
+}
 .section-gradient {
-  background: linear-gradient(135deg, #2E3D28 0%, #3D5234 40%, #2a3a24 70%, #1e2b1a 100%);
+  background: linear-gradient(160deg, #1a2818 0%, #2E3D28 45%, #1a2818 100%);
 }
 
-/* 3D Perspective & interactive motion styles */
-.perspective-1000 {
-  perspective: 1000px;
-}
-.preserve-3d {
-  transform-style: preserve-3d;
-}
-
-/* Card 3D hover depth */
-.card-3d {
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
-  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0);
-}
-.card-3d:hover {
-  transform: perspective(1000px) translateY(-8px) translateZ(18px) rotateX(3deg);
-  box-shadow: 0 25px 50px -12px rgba(46, 61, 40, 0.25);
+/* ── Geospatial grid background texture ──────────────────────────────────── */
+.geo-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(169,184,135,0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(169,184,135,0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridDrift 24s linear infinite;
 }
 
-/* Geospatial Scanning Radar & Orbital Animations */
+/* ── Dot grid pattern ─────────────────────────────────────────────────────── */
+.dot-grid {
+  background-image: radial-gradient(rgba(46,61,40,0.12) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ── Marquee ──────────────────────────────────────────────────────────────── */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track {
+  display: flex; width: max-content;
+  animation: marquee 32s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-track-slow {
+  display: flex; width: max-content;
+  animation: marquee 22s linear infinite;
+}
+.marquee-track-slow:hover { animation-play-state: paused; }
+
+/* ── Animations — purposeful, hardware-accelerated only ─────────────────── */
+@keyframes gridDrift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
 @keyframes geoScan {
-  0% { transform: translateY(-100%); opacity: 0; }
-  50% { opacity: 0.6; }
+  0%   { transform: translateY(-100%); opacity: 0; }
+  50%  { opacity: 0.55; }
   100% { transform: translateY(100%); opacity: 0; }
 }
 
 @keyframes pulseGlow {
-  0%, 100% { transform: scale(1); opacity: 0.4; }
-  50% { transform: scale(1.08); opacity: 0.8; }
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1; transform: scale(1.06); }
 }
 
 @keyframes float3D {
-  0%, 100% { transform: translateY(0px) rotateZ(0deg) scale(1); }
-  50% { transform: translateY(-10px) rotateZ(1deg) scale(1.01); }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
 }
 
-@keyframes floatSlow {
-  0%, 100% { transform: translateY(0px) translateZ(0); }
-  50% { transform: translateY(-14px) translateZ(20px); }
+@keyframes orbitSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
-@keyframes gridDrift {
-  0% { background-position: 0 0; }
-  100% { background-position: 40px 40px; }
+@keyframes ping-slow {
+  0%        { transform: scale(1); opacity: 0.8; }
+  70%, 100% { transform: scale(2.4); opacity: 0; }
 }
 
-.animate-geo-scan {
-  animation: geoScan 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+@keyframes satelliteDash {
+  to { stroke-dashoffset: -200; }
 }
 
-.animate-pulse-glow {
-  animation: pulseGlow 3s ease-in-out infinite;
+@keyframes dataStream {
+  0%   { opacity: 0; transform: translateX(0); }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(40px); }
 }
 
-.animate-float-3d {
-  animation: float3D 6s ease-in-out infinite;
+/* ── Animation utility classes ────────────────────────────────────────────── */
+.animate-geo-scan { animation: geoScan 3.5s cubic-bezier(0.4,0,0.2,1) infinite; }
+.animate-pulse-glow { animation: pulseGlow 2.8s ease-in-out infinite; }
+.animate-float-3d { animation: float3D 7s ease-in-out infinite; }
+.animate-orbit { animation: orbitSpin 60s linear infinite; }
+.animate-orbit-reverse { animation: orbitSpin 90s linear infinite reverse; }
+.animate-ping-slow { animation: ping-slow 2.2s cubic-bezier(0,0,0.2,1) infinite; }
+.animate-data-stream { animation: dataStream 2s ease-in-out infinite; }
+
+/* ── Card 3D tilt hover ───────────────────────────────────────────────────── */
+.card-3d {
+  transition: transform 0.45s cubic-bezier(0.25,1,0.5,1), box-shadow 0.45s ease;
+  transform: perspective(1200px) rotateX(0deg) rotateY(0deg) translateZ(0);
+  will-change: transform;
+}
+.card-3d:hover {
+  transform: perspective(1200px) translateY(-7px) translateZ(22px) rotateX(2deg);
+  box-shadow: 0 32px 60px -16px rgba(46,61,40,0.20), 0 0 0 1px rgba(169,184,135,0.14);
 }
 
-.animate-float-slow {
-  animation: floatSlow 8s ease-in-out infinite;
+/* ── Scan line (appears on image hover via group) ─────────────────────────── */
+.scan-line {
+  position: absolute; inset-x: 0; top: 0; height: 2px;
+  background: linear-gradient(to right, transparent, #A9B887, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.group:hover .scan-line { opacity: 1; animation: geoScan 2.8s ease-in-out infinite; }
+
+/* ── HUD terminal tag ─────────────────────────────────────────────────────── */
+.hud-tag {
+  @apply inline-flex items-center gap-2 rounded-md border border-emerald/20 bg-navy/70 px-3 py-1.5 font-mono text-[10px] tracking-[0.14em] uppercase text-emerald/85 shadow-xl backdrop-blur-md;
 }
 
-.geo-grid-bg {
-  background-image: 
-    linear-gradient(to right, rgba(169, 184, 135, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(169, 184, 135, 0.05) 1px, transparent 1px);
-  background-size: 36px 36px;
-  animation: gridDrift 20s linear infinite;
+/* ── Eyebrow pill ─────────────────────────────────────────────────────────── */
+.eyebrow-pill {
+  @apply inline-flex items-center gap-2 rounded-full border border-emerald/25 bg-emerald/10 px-4 py-1.5 font-mono text-[11px] tracking-[0.16em] uppercase text-emerald backdrop-blur-sm;
 }
 
-@media (prefers-reduced-motion: reduce) { 
-  html { scroll-behavior: auto; } 
-  *:not(video) { animation: none !important; transition-duration: .01ms !important; } 
+/* ── Reduced motion ───────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *:not(video) { animation: none !important; transition-duration: .01ms !important; }
 }
-
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.marquee-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
-.marquee-track:hover { animation-play-state: paused; }
-.marquee-track-slow { display: flex; width: max-content; animation: marquee 20s linear infinite; }
-.marquee-track-slow:hover { animation-play-state: paused; }
