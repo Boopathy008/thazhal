@@ -13,6 +13,39 @@ import DetailPage from './pages/Detail'
 import Legal from './pages/Legal'
 import NotFound from './pages/NotFound'
 
+// Super 3D Page Transition Variant (3D Flip / Depth Lift)
+const page3DVariants = {
+  initial: {
+    opacity: 0,
+    rotateY: 8,
+    scale: 0.94,
+    y: 20,
+    filter: 'blur(8px)',
+  },
+  animate: {
+    opacity: 1,
+    rotateY: 0,
+    scale: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    rotateY: -8,
+    scale: 0.94,
+    y: -20,
+    filter: 'blur(8px)',
+    transition: {
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
+
 export default function App() {
   const loc = useLocation()
   return (
@@ -22,22 +55,32 @@ export default function App() {
         <MagicCursor />
       </div>
       <Navbar />
-      <AnimatePresence mode="wait">
-        <motion.main id="main" key={loc.pathname} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
-          <Routes location={loc}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/products/:slug" element={<DetailPage kind="product" />} />
-            <Route path="/solutions/:slug" element={<DetailPage kind="solution" />} />
-            <Route path="/privacy" element={<Legal kind="privacy" />} />
-            <Route path="/terms" element={<Legal kind="terms" />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </motion.main>
-      </AnimatePresence>
+      <div style={{ perspective: 1400, overflowX: 'hidden' }}>
+        <AnimatePresence mode="wait">
+          <motion.main
+            id="main"
+            key={loc.pathname}
+            variants={page3DVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            style={{ transformStyle: 'preserve-3d', willChange: 'transform, opacity' }}
+          >
+            <Routes location={loc}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/products/:slug" element={<DetailPage kind="product" />} />
+              <Route path="/solutions/:slug" element={<DetailPage kind="solution" />} />
+              <Route path="/privacy" element={<Legal kind="privacy" />} />
+              <Route path="/terms" element={<Legal kind="terms" />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </motion.main>
+        </AnimatePresence>
+      </div>
       <Footer />
       <ScrollToTop />
     </>

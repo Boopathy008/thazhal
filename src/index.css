@@ -3,16 +3,15 @@
 @tailwind utilities;
 
 /* ─── DESIGN SYSTEM — THAZHAL Geospatial Intelligence ─────────────────────────
-   Based on taste-skill anti-slop principles + awesome-design-md framework.
-   Palette: navy #2E3D28 · forest #3D5234 · emerald #A9B887 · paper #E8E9DF
+   Palette: Monochrome Obsidian Black (#090A0F) · Pure Clean Slate (#F8FAFC) 
+   Accent: Cyber Sky Blue (#38BDF8)
    Fonts: Playfair Display (display) · DM Sans (body) · JetBrains Mono (mono)
-   Motion intensity: purposeful, hardware-accelerated, scroll-driven only.
    ─────────────────────────────────────────────────────────────────────────── */
 
 html { scroll-behavior: smooth; font-size: 15px; }
 body { @apply bg-paper text-navy font-sans antialiased; overflow-x: hidden; line-height: 1.65; }
 h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.02em; line-height: 1.1; }
-:focus-visible { outline: 2px solid #A9B887; outline-offset: 3px; border-radius: 4px; }
+:focus-visible { outline: 2px solid #38BDF8; outline-offset: 3px; border-radius: 4px; }
 
 /* ── Utility classes ──────────────────────────────────────────────────────── */
 .eyebrow {
@@ -23,24 +22,24 @@ h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.02em; line-height: 1.1;
 
 /* ── Surface backgrounds ──────────────────────────────────────────────────── */
 .section-dark {
-  background: #0f1a0e;
+  background: #090A0F;
 }
 .section-gradient {
-  background: linear-gradient(160deg, #1a2818 0%, #2E3D28 45%, #1a2818 100%);
+  background: linear-gradient(160deg, #090A0F 0%, #0F131D 50%, #090A0F 100%);
 }
 
 /* ── Geospatial grid background texture ──────────────────────────────────── */
 .geo-grid-bg {
   background-image:
-    linear-gradient(to right, rgba(169,184,135,0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(169,184,135,0.07) 1px, transparent 1px);
+    linear-gradient(to right, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
   background-size: 40px 40px;
   animation: gridDrift 24s linear infinite;
 }
 
 /* ── Dot grid pattern ─────────────────────────────────────────────────────── */
 .dot-grid {
-  background-image: radial-gradient(rgba(46,61,40,0.12) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(15, 23, 42, 0.12) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
@@ -57,7 +56,7 @@ h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.02em; line-height: 1.1;
 }
 .marquee-track-slow:hover { animation-play-state: paused; }
 
-/* ── Animations — purposeful, hardware-accelerated only ─────────────────── */
+/* ── Animations — purposeful, hardware-accelerated ───────────────────────── */
 @keyframes gridDrift {
   0%   { background-position: 0 0; }
   100% { background-position: 40px 40px; }
@@ -65,7 +64,7 @@ h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.02em; line-height: 1.1;
 
 @keyframes geoScan {
   0%   { transform: translateY(-100%); opacity: 0; }
-  50%  { opacity: 0.55; }
+  50%  { opacity: 0.65; }
   100% { transform: translateY(100%); opacity: 0; }
 }
 
@@ -89,25 +88,62 @@ h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.02em; line-height: 1.1;
   70%, 100% { transform: scale(2.4); opacity: 0; }
 }
 
-@keyframes satelliteDash {
-  to { stroke-dashoffset: -200; }
+/* ── Animated Border Shimmer ──────────────────────────────────────────────── */
+@keyframes borderRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-@keyframes dataStream {
-  0%   { opacity: 0; transform: translateX(0); }
-  20%  { opacity: 1; }
-  80%  { opacity: 1; }
-  100% { opacity: 0; transform: translateX(40px); }
+.anim-border-box {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  padding: 1.5px;
+  background: rgba(226, 232, 240, 0.8);
+  transition: all 0.4s ease;
+}
+
+.anim-border-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent,
+    rgba(56, 189, 248, 0.6),
+    #38BDF8,
+    transparent 60%
+  );
+  animation: borderRotate 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.anim-border-box:hover::before {
+  opacity: 1;
+}
+
+.anim-border-box:hover {
+  box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.35);
+  transform: translateY(-3px);
+}
+
+.anim-border-inner {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
 }
 
 /* ── Animation utility classes ────────────────────────────────────────────── */
 .animate-geo-scan { animation: geoScan 3.5s cubic-bezier(0.4,0,0.2,1) infinite; }
 .animate-pulse-glow { animation: pulseGlow 2.8s ease-in-out infinite; }
 .animate-float-3d { animation: float3D 7s ease-in-out infinite; }
-.animate-orbit { animation: orbitSpin 60s linear infinite; }
-.animate-orbit-reverse { animation: orbitSpin 90s linear infinite reverse; }
 .animate-ping-slow { animation: ping-slow 2.2s cubic-bezier(0,0,0.2,1) infinite; }
-.animate-data-stream { animation: dataStream 2s ease-in-out infinite; }
 
 /* ── Card 3D tilt hover ───────────────────────────────────────────────────── */
 .card-3d {
@@ -117,13 +153,13 @@ h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.02em; line-height: 1.1;
 }
 .card-3d:hover {
   transform: perspective(1200px) translateY(-7px) translateZ(22px) rotateX(2deg);
-  box-shadow: 0 32px 60px -16px rgba(46,61,40,0.20), 0 0 0 1px rgba(169,184,135,0.14);
+  box-shadow: 0 32px 60px -16px rgba(9,10,15,0.20), 0 0 0 1px rgba(56,189,248,0.18);
 }
 
-/* ── Scan line (appears on image hover via group) ─────────────────────────── */
+/* ── Scan line ────────────────────────────────────────────────────────────── */
 .scan-line {
   position: absolute; inset-x: 0; top: 0; height: 2px;
-  background: linear-gradient(to right, transparent, #A9B887, transparent);
+  background: linear-gradient(to right, transparent, #38BDF8, transparent);
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -131,12 +167,7 @@ h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.02em; line-height: 1.1;
 
 /* ── HUD terminal tag ─────────────────────────────────────────────────────── */
 .hud-tag {
-  @apply inline-flex items-center gap-2 rounded-md border border-emerald/20 bg-navy/70 px-3 py-1.5 font-mono text-[10px] tracking-[0.14em] uppercase text-emerald/85 shadow-xl backdrop-blur-md;
-}
-
-/* ── Eyebrow pill ─────────────────────────────────────────────────────────── */
-.eyebrow-pill {
-  @apply inline-flex items-center gap-2 rounded-full border border-emerald/25 bg-emerald/10 px-4 py-1.5 font-mono text-[11px] tracking-[0.16em] uppercase text-emerald backdrop-blur-sm;
+  @apply inline-flex items-center gap-2 rounded-md border border-emerald/20 bg-navy/80 px-3 py-1.5 font-mono text-[10px] tracking-[0.14em] uppercase text-emerald/90 shadow-xl backdrop-blur-md;
 }
 
 /* ── Reduced motion ───────────────────────────────────────────────────────── */

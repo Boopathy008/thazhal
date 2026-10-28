@@ -1,6 +1,6 @@
 /**
  * Home.tsx — THAZHAL homepage
- * Premium editorial layout: taste-skill anti-slop + Linear/Vercel design system.
+ * Monochrome Black & White + Cyber Sky Blue accent with animated borders and 3D interactions.
  */
 
 import { Link } from 'react-router-dom'
@@ -19,12 +19,14 @@ export function LogoMarquee({ list, slow = false }: { list: { name: string; logo
         {items.map((p, i) => (
           <div
             key={i}
-            className="mx-4 flex shrink-0 items-center justify-center rounded-xl border border-slate-200/80 bg-white px-8 shadow-sm transition-all duration-300 hover:shadow-md hover:border-emerald/30"
+            className="anim-border-box mx-4 shrink-0"
             style={{ height: '160px', width: '280px' }}
           >
-            {p.logo
-              ? <img src={p.logo} alt={p.name} loading="lazy" className="max-h-full max-w-full object-contain" style={{ maxHeight: '110px' }} />
-              : <span className="font-mono text-xs text-slate-300">Logo</span>}
+            <div className="anim-border-inner flex items-center justify-center px-8 shadow-sm">
+              {p.logo
+                ? <img src={p.logo} alt={p.name} loading="lazy" className="max-h-full max-w-full object-contain filter contrast-105" style={{ maxHeight: '105px' }} />
+                : <span className="font-mono text-xs text-slate-400">Logo</span>}
+            </div>
           </div>
         ))}
       </div>
@@ -34,15 +36,14 @@ export function LogoMarquee({ list, slow = false }: { list: { name: string; logo
 
 export function SupporterGrid({ list }: { list: { name: string; logo: string }[] }) {
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 items-stretch">
+    <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 items-stretch">
       {list.map((p, i) => (
-        <div
-          key={i}
-          className="flex h-32 items-center justify-center rounded-xl border border-slate-200/80 bg-white px-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-emerald/30 hover:-translate-y-0.5"
-        >
-          {p.logo
-            ? <img src={p.logo} alt={p.name} loading="lazy" className="max-h-20 max-w-full object-contain" />
-            : <span className="font-mono text-xs text-slate-300">Logo</span>}
+        <div key={i} className="anim-border-box h-32 w-full">
+          <div className="anim-border-inner flex h-full items-center justify-center px-6 shadow-sm">
+            {p.logo
+              ? <img src={p.logo} alt={p.name} loading="lazy" className="max-h-20 max-w-full object-contain filter contrast-105" />
+              : <span className="font-mono text-xs text-slate-400">Logo</span>}
+          </div>
         </div>
       ))}
     </div>
@@ -56,8 +57,8 @@ export default function Home() {
       <Hero />
 
       {/* ── Stats strip — geospatial data metrics ── */}
-      <section id="impact" className="relative border-y border-emerald/15 section-gradient py-12 text-white overflow-hidden">
-        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-15" />
+      <section id="impact" className="relative border-y border-white/10 section-gradient py-12 text-white overflow-hidden">
+        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-20" />
         <div className="wrap relative grid grid-cols-2 gap-5 sm:grid-cols-4">
           {[
             { icon: Layers,     label: 'Observation Satellites', val: '24/7',   desc: 'Real-time constellation links' },
@@ -68,16 +69,16 @@ export default function Home() {
             const Icon = stat.icon
             return (
               <Reveal key={stat.label} delay={idx * 0.08}>
-                <div className="group relative flex flex-col gap-3 rounded-xl border border-white/8 bg-white/[0.03] p-5 backdrop-blur-sm transition-all duration-350 hover:border-emerald/35 hover:bg-white/[0.06] hover:shadow-lg hover:shadow-emerald/8">
+                <div className="group relative flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-md transition-all duration-350 hover:border-emerald/50 hover:bg-white/[0.07] hover:shadow-[0_12px_30px_rgba(56,189,248,0.15)]">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald/12 text-emerald transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                      <Icon size={18} aria-hidden />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald/15 text-emerald transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                      <Icon size={20} aria-hidden />
                     </div>
                     <span className="font-display text-2xl font-bold text-white sm:text-3xl">{stat.val}</span>
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold text-emerald">{stat.label}</h4>
-                    <p className="mt-0.5 text-[12px] text-white/50">{stat.desc}</p>
+                    <p className="mt-1 text-[12px] text-white/60">{stat.desc}</p>
                   </div>
                 </div>
               </Reveal>
@@ -88,33 +89,32 @@ export default function Home() {
 
       {/* ── About us ── */}
       <section className="relative overflow-hidden bg-white section">
-        {/* Dot-grid texture */}
         <div aria-hidden className="pointer-events-none absolute inset-0 dot-grid opacity-60" />
         <div className="wrap relative grid items-center gap-14 lg:grid-cols-12">
           {/* Text — 7 cols */}
           <div className="lg:col-span-7">
             <Reveal>
               <SectionHeading eyebrow="About us" title="Welcome to THAZHAL" />
-              <p className="mt-4 text-[15px] font-medium text-forest">
+              <p className="mt-4 text-[16px] font-semibold text-emerald">
                 Innovation meets geospatial intelligence.
               </p>
-              <p className="mt-4 text-[15px] leading-relaxed text-slate-500">
+              <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
                 THAZHAL focuses on developing forward-thinking solutions that combine geospatial technologies,
                 imagery analytics, and intelligent monitoring to help organizations better understand the world around them.
               </p>
-              <p className="mt-3.5 text-[15px] leading-relaxed text-slate-500">
+              <p className="mt-3.5 text-[15px] leading-relaxed text-slate-600">
                 We bring data and technology together to support informed decision-making, environmental awareness,
                 and more resilient infrastructure.
               </p>
-              <ul className="mt-7 space-y-3">
+              <ul className="mt-7 space-y-3.5">
                 {[
                   'Environmental Monitoring with Satellite Precision',
                   'Imagery Analytics for Informed Decision-Making',
                   'Cutting-Edge Technology for Comprehensive Surveys',
                   'Geospatial Intelligence for Infrastructure Assessment',
                 ].map((x) => (
-                  <li key={x} className="flex items-center gap-3 text-[14px] text-navy group">
-                    <span className="h-[2px] w-5 shrink-0 rounded-full bg-emerald transition-all duration-300 group-hover:w-8 group-hover:bg-forest" />
+                  <li key={x} className="flex items-center gap-3 text-[14px] text-navy font-medium group">
+                    <span className="h-[2px] w-5 shrink-0 rounded-full bg-emerald transition-all duration-300 group-hover:w-8" />
                     {x}
                   </li>
                 ))}
@@ -125,19 +125,17 @@ export default function Home() {
             </Reveal>
           </div>
 
-          {/* Image — 5 cols, reduced size */}
+          {/* Image — 5 cols, compact with 3D Card */}
           <div className="lg:col-span-5 flex justify-center">
-            <Reveal delay={0.1} className="w-full max-w-[320px]">
-              <Card3D className="aspect-[4/4.5] overflow-hidden rounded-2xl shadow-xl border border-slate-200/60">
+            <Reveal delay={0.1} className="w-full max-w-[340px]">
+              <Card3D className="aspect-[4/4.5] overflow-hidden rounded-2xl shadow-2xl border border-slate-200">
                 <div className="relative h-full w-full group overflow-hidden">
                   <img
                     src="/images/about.jpg"
                     alt="About THAZHAL"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  {/* Scan line */}
                   <div className="scan-line pointer-events-none" />
-                  {/* Corner geospatial label */}
                   <div className="absolute bottom-3 left-3 hud-tag text-[9px]">
                     <span className="h-1 w-1 rounded-full bg-emerald animate-ping-slow" />
                     GEOSPATIAL CORE
@@ -150,8 +148,8 @@ export default function Home() {
       </section>
 
       {/* ── Our products ── */}
-      <section className="section-gradient section relative overflow-hidden">
-        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-12" />
+      <section className="section-gradient section relative overflow-hidden text-white">
+        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-15" />
         <div className="wrap relative">
           <Reveal>
             <SectionHeading
@@ -186,14 +184,13 @@ export default function Home() {
       </section>
 
       {/* ── From Observation to Insight ── */}
-      <section className="section-gradient section relative overflow-hidden">
-        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-12" />
+      <section className="section-gradient section relative overflow-hidden text-white">
+        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-15" />
         <div className="wrap relative">
           <Reveal>
             <SectionHeading dark title="From Observation to Insight" />
           </Reveal>
           <ol className="relative mt-14 grid gap-7 md:grid-cols-3 items-stretch">
-            {/* connecting line */}
             <div className="absolute left-0 right-0 top-8 hidden h-px bg-gradient-to-r from-transparent via-emerald/40 to-transparent md:block" aria-hidden />
             {[
               ['01', 'Observe', 'Gather relevant geospatial information and imagery from satellites and sensors.'],
@@ -202,13 +199,11 @@ export default function Home() {
             ].map(([n, t, d], i) => (
               <Reveal key={n} delay={i * 0.1} className="h-full flex flex-col">
                 <Card3D className="h-full flex flex-col">
-                  <li className="relative flex flex-1 flex-col justify-start rounded-2xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur-sm transition-all duration-350 hover:border-emerald/35 hover:bg-white/[0.07] list-none">
-                    {/* number */}
+                  <li className="relative flex flex-1 flex-col justify-start rounded-2xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur-sm transition-all duration-350 hover:border-emerald/40 hover:bg-white/[0.07] hover:shadow-[0_15px_35px_rgba(56,189,248,0.12)] list-none">
                     <span className="font-display text-6xl font-bold text-emerald/40 leading-none">{n}</span>
-                    {/* step dot on the horizontal line */}
                     <div className="absolute -top-[1.5px] left-8 hidden h-3 w-3 -translate-y-1/2 rounded-full border-2 border-emerald bg-navy md:block" />
                     <h3 className="mt-5 text-xl font-bold text-white">{t}</h3>
-                    <p className="mt-2.5 text-[14px] leading-relaxed text-white/60">{d}</p>
+                    <p className="mt-2.5 text-[14px] leading-relaxed text-white/70">{d}</p>
                   </li>
                 </Card3D>
               </Reveal>
@@ -217,7 +212,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Our Network & Supported By ── */}
+      {/* ── Our Network & Supported By (with animated borders) ── */}
       <section className="bg-white section">
         <div className="wrap">
           <Reveal>
@@ -246,8 +241,8 @@ export default function Home() {
       </section>
 
       {/* ── Blog preview ── */}
-      <section className="section-gradient section relative overflow-hidden">
-        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-12" />
+      <section className="section-gradient section relative overflow-hidden text-white">
+        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-15" />
         <div className="wrap relative">
           <Reveal>
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
@@ -259,7 +254,7 @@ export default function Home() {
               />
               <Link
                 to="/blog"
-                className="shrink-0 text-sm font-semibold text-emerald transition-all duration-300 hover:text-white hover:translate-x-0.5 inline-flex items-center gap-1"
+                className="shrink-0 text-sm font-semibold text-emerald transition-all duration-300 hover:text-white hover:translate-x-1 inline-flex items-center gap-1"
               >
                 View all 8 articles →
               </Link>

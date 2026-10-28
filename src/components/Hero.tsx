@@ -51,7 +51,7 @@ export default function Hero() {
             look={{
               clouds: 6,
               lights: 6,
-              atmosphere: '#A9B887',
+              atmosphere: '#38BDF8',
             }}
             style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
           />
