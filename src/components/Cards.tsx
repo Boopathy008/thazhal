@@ -21,19 +21,19 @@ export function ProductCard({ p }: { p: Detail }) {
   return (
     <Card3D className="h-full">
       <Link to={pathOf(p)} className="group relative flex h-full flex-col overflow-hidden bg-white rounded-2xl border border-slate-200/80 shadow-md transition-all duration-500 hover:shadow-2xl hover:border-emerald/40">
-        <div className="relative aspect-[4/3] overflow-hidden">
+        <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
           <div className="h-full transition-transform duration-700 group-hover:scale-105">
             <Visual variant={p.variant} image={p.image} label={`${p.name} visual`} />
           </div>
           {/* Geospatial scanning sweep line on card image hover */}
           <div className="pointer-events-none absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-emerald to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:animate-geo-scan" />
         </div>
-        <div className="flex flex-1 flex-col p-7">
-          <h3 className="text-xl font-bold text-navy transition-colors duration-300 group-hover:text-forest">{p.name}</h3>
-          <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-500">{p.summary}</p>
-          <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald transition-transform duration-300 group-hover:translate-x-1">
+        <div className="flex flex-1 flex-col p-5 sm:p-6">
+          <h3 className="text-lg font-bold text-navy transition-colors duration-300 group-hover:text-forest">{p.name}</h3>
+          <p className="mt-2.5 flex-1 text-xs leading-relaxed text-slate-500 line-clamp-3">{p.summary}</p>
+          <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-emerald transition-transform duration-300 group-hover:translate-x-1">
             Explore {p.name}
-            <ArrowUpRight size={15} className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden />
+            <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden />
           </span>
         </div>
       </Link>

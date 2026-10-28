@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { useReducedMotion } from 'framer-motion'
 
 export default function CustomCursor() {
   const reduce = useReducedMotion()
@@ -8,24 +8,29 @@ export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    // Only run on devices with a mouse cursor
+    // Only run on devices with a mouse
     if (window.matchMedia('(pointer: coarse)').matches) return
 
     const onMouseMove = (e: MouseEvent) => {
       setPos({ x: e.clientX, y: e.clientY })
       if (!isVisible) setIsVisible(true)
 
-      const target = e.target as HTMLElement | null
+      // Use document.elementFromPoint to inspect the true element directly under pointer
+      const target = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement | null
       const hoverable = target?.closest(
-        'a, button, input, textarea, select, .card-3d, article, [role="button"]'
+        'a, button, input, textarea, select, .card-3d, article, [role="button"], label'
       )
       setIsHovered(!!hoverable)
     }
 
-    const onMouseLeave = () => setIsVisible(false)
+    const onMouseLeave = () => {
+      setIsVisible(false)
+      setIsHovered(false)
+    }
+
     const onMouseEnter = () => setIsVisible(true)
 
-    window.addEventListener('mousemove', onMouseMove)
+    window.addEventListener('mousemove', onMouseMove, { passive: true })
     document.addEventListener('mouseleave', onMouseLeave)
     document.addEventListener('mouseenter', onMouseEnter)
 
@@ -38,17 +43,19 @@ export default function CustomCursor() {
 
   if (reduce || !isVisible) return null
 
-  // Size specifications:
-  // Normal state: 28px wide
-  // Hovered state: spreads outward to 56px with a smooth spring transition
-  const size = isHovered ? 56 : 28
-  const half = size / 2
-  const bracketLength = isHovered ? 12 : 7
-  const borderThickness = 1.8
+  // SVG coordinate dimensions:
+  // Normal state: 34px box, 17px center
+  // Hovered state: 58px box, 29px center
+  const boxSize = isHovered ? 58 : 34
+  const center = boxSize / 2
+  const bracketLen = isHovered ? 13 : 8
+  const pad = 3
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[999999] overflow-hidden">
-      {/* ── Outer Position Controller (Directly locked to cursor) ── */}
+    <div
+      className="pointer-events-none fixed inset-0 z-[999999] overflow-hidden"
+      aria-hidden="true"
+    >
       <div
         style={{
           position: 'fixed',
@@ -58,86 +65,68 @@ export default function CustomCursor() {
           willChange: 'transform',
         }}
       >
-        {/* ── 1. Target Center Dot (always locked dead center) ── */}
-        <div
-          className="rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.9)]"
-          style={{
-            position: 'absolute',
-            left: -2,
-            top: -2,
-            width: 4,
-            height: 4,
-          }}
-        />
-
-        {/* ── 2. Rotating Viewfinder Brackets ── */}
-        <div
+        <svg
+          width={boxSize}
+          height={boxSize}
+          viewBox={`0 0 ${boxSize} ${boxSize}`}
           className="animate-[spin_9s_linear_infinite]"
           style={{
             position: 'absolute',
-            left: -half,
-            top: -half,
-            width: size,
-            height: size,
-            transition: 'width 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.2), height 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.2), left 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.2), top 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.2)',
+            left: -center,
+            top: -center,
+            transition: 'width 0.22s ease-out, height 0.22s ease-out, left 0.22s ease-out, top 0.22s ease-out',
+            overflow: 'visible',
           }}
         >
-          {/* Top-Left Bracket */}
-          <span
-            style={{
-              position: 'absolute',
-              left: 0,
-              top: 0,
-              width: bracketLength,
-              height: bracketLength,
-              borderLeft: `${borderThickness}px solid rgba(255,255,255,0.95)`,
-              borderTop: `${borderThickness}px solid rgba(255,255,255,0.95)`,
-              transition: 'all 0.28s ease',
-            }}
+          {/* Top-Left Corner */}
+          <path
+            d={`M ${pad} ${pad + bracketLen} L ${pad} ${pad} L ${pad + bracketLen} ${pad}`}
+            fill="none"
+            stroke="rgba(255,255,255,0.95)"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
 
-          {/* Top-Right Bracket */}
-          <span
-            style={{
-              position: 'absolute',
-              right: 0,
-              top: 0,
-              width: bracketLength,
-              height: bracketLength,
-              borderRight: `${borderThickness}px solid rgba(255,255,255,0.95)`,
-              borderTop: `${borderThickness}px solid rgba(255,255,255,0.95)`,
-              transition: 'all 0.28s ease',
-            }}
+          {/* Top-Right Corner */}
+          <path
+            d={`M ${boxSize - pad - bracketLen} ${pad} L ${boxSize - pad} ${pad} L ${boxSize - pad} ${pad + bracketLen}`}
+            fill="none"
+            stroke="rgba(255,255,255,0.95)"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
 
-          {/* Bottom-Left Bracket */}
-          <span
-            style={{
-              position: 'absolute',
-              left: 0,
-              bottom: 0,
-              width: bracketLength,
-              height: bracketLength,
-              borderLeft: `${borderThickness}px solid rgba(255,255,255,0.95)`,
-              borderBottom: `${borderThickness}px solid rgba(255,255,255,0.95)`,
-              transition: 'all 0.28s ease',
-            }}
+          {/* Bottom-Right Corner */}
+          <path
+            d={`M ${boxSize - pad} ${boxSize - pad - bracketLen} L ${boxSize - pad} ${boxSize - pad} L ${boxSize - pad - bracketLen} ${boxSize - pad}`}
+            fill="none"
+            stroke="rgba(255,255,255,0.95)"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
 
-          {/* Bottom-Right Bracket */}
-          <span
-            style={{
-              position: 'absolute',
-              right: 0,
-              bottom: 0,
-              width: bracketLength,
-              height: bracketLength,
-              borderRight: `${borderThickness}px solid rgba(255,255,255,0.95)`,
-              borderBottom: `${borderThickness}px solid rgba(255,255,255,0.95)`,
-              transition: 'all 0.28s ease',
-            }}
+          {/* Bottom-Left Corner */}
+          <path
+            d={`M ${pad + bracketLen} ${boxSize - pad} L ${pad} ${boxSize - pad} L ${pad} ${boxSize - pad - bracketLen}`}
+            fill="none"
+            stroke="rgba(255,255,255,0.95)"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
-        </div>
+
+          {/* Precision Center Dot (Mathematically guaranteed dead-center) */}
+          <circle
+            cx={center}
+            cy={center}
+            r="2"
+            fill="#FFFFFF"
+            filter="drop-shadow(0 0 4px rgba(255,255,255,0.8))"
+          />
+        </svg>
       </div>
     </div>
   )
