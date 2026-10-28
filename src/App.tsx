@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import MagicCursor from './components/MagicCursor'
 import Home from './pages/Home'
 import About from './pages/About'
 import Blog from './pages/Blog'
@@ -17,6 +18,9 @@ export default function App() {
   return (
     <>
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-emerald focus:px-4 focus:py-2">Skip to content</a>
+      <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
+        <MagicCursor />
+      </div>
       <Navbar />
       <AnimatePresence mode="wait">
         <motion.main id="main" key={loc.pathname} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
