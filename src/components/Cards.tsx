@@ -71,16 +71,18 @@ export function SolutionBlock({ s, flip, light }: { s: Detail; flip?: boolean; l
   const body    = light ? 'text-slate-500' : 'text-white/65'
   const listTxt = light ? 'text-navy'     : 'text-white/80'
   return (
-    <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-      <Card3D className={flip ? 'lg:order-2' : ''}>
-        <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg border border-slate-200/50">
-          <Visual variant={s.variant} image={s.image} label={`${s.name} visual`} />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/20 via-transparent to-transparent" />
-          {/* Scan overlay */}
-          <div className="scan-line pointer-events-none" />
-        </div>
-      </Card3D>
-      <div>
+    <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+      <div className={`lg:col-span-5 flex justify-center ${flip ? 'lg:order-2' : ''}`}>
+        <Card3D className="w-full max-w-md">
+          <div className="group relative aspect-[16/10] overflow-hidden rounded-2xl shadow-lg border border-slate-200/50">
+            <Visual variant={s.variant} image={s.image} label={`${s.name} visual`} />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/20 via-transparent to-transparent" />
+            {/* Scan overlay */}
+            <div className="scan-line pointer-events-none" />
+          </div>
+        </Card3D>
+      </div>
+      <div className="lg:col-span-7">
         <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald/10 border border-emerald/20 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-emerald">
           <span className="h-1 w-1 rounded-full bg-emerald animate-pulse" />
           Geospatial Solution

@@ -42,11 +42,7 @@ export default function Navbar() {
   return (
     <header
       ref={ref}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-350 ${
-        solid
-          ? 'border-b border-white/8 bg-navy/92 backdrop-blur-xl shadow-lg shadow-navy/20'
-          : 'bg-transparent'
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy/95 backdrop-blur-xl shadow-lg shadow-navy/20 transition-all duration-300`}
     >
       <div className="wrap flex h-[70px] items-center justify-between">
         {/* Logo */}
