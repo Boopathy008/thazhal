@@ -1,23 +1,11 @@
 /**
- * Hero — homepage hero with the Terra-Dusk 3-D Earth globe.
+ * Hero — homepage hero with the TopologyField 3D interactive component.
  */
 
-import { Suspense, Component, type ReactNode } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { Btn } from './ui'
-import TerraDusk from './TerraDusk'
-
-/* ── Error boundary so a globe crash never whites out the whole app ─ */
-interface EBState { error: boolean }
-class HeroGlobeEB extends Component<{ children: ReactNode }, EBState> {
-  state: EBState = { error: false }
-  static getDerivedStateFromError() { return { error: true } }
-  render() {
-    if (this.state.error) return null
-    return this.props.children
-  }
-}
+import TopologyField from './TopologyField'
 
 /* ── Animation factory ─────────────────────────────────────────── */
 function item(i: number, reduce: boolean | null) {
@@ -28,46 +16,48 @@ function item(i: number, reduce: boolean | null) {
   }
 }
 
-/* ── Component ─────────────────────────────────────────────────── */
 export default function Hero() {
   const reduce = useReducedMotion()
 
   return (
     <section
-      className="relative flex min-h-[100svh] overflow-hidden"
+      className="relative flex min-h-[100svh] items-center overflow-hidden"
       style={{ background: '#111a13' }}
     >
-      {/* ── Globe (right half desktop / full-screen mobile) ─────────── */}
+      {/* ── Topology Field Canvas Background ──────────────────────── */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 flex items-center justify-end"
+        className="pointer-events-auto absolute inset-0 z-0 flex items-center justify-end"
       >
-        <div className="h-full w-full lg:w-[65%]">
-          <HeroGlobeEB>
-            <Suspense fallback={null}>
-              <TerraDusk className="h-full w-full" />
-            </Suspense>
-          </HeroGlobeEB>
-        </div>
+        <TopologyField
+          background="transparent"
+          edgeColor="#A9B887"
+          nodeColor="#5EEAD4"
+          density={140}
+          dotSize={110}
+          speed={40}
+          hover={120}
+          style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
+        />
       </div>
 
-      {/* ── Dark veil — left (desktop) ──────────────────────────────── */}
+      {/* ── Left-side dark gradient veil so text stays crisp & legible ── */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            'linear-gradient(to right, rgba(10,18,12,0.97) 35%, rgba(10,18,12,0.6) 58%, transparent 100%)',
+            'linear-gradient(to right, rgba(17,26,19,0.95) 0%, rgba(17,26,19,0.85) 45%, rgba(17,26,19,0.4) 70%, transparent 100%)',
         }}
       />
 
-      {/* ── Dark veil — bottom (mobile) ─────────────────────────────── */}
+      {/* ── Mobile bottom veil ──────────────────────────────────────── */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 lg:hidden"
+        className="pointer-events-none absolute inset-0 z-[1] lg:hidden"
         style={{
           background:
-            'linear-gradient(to top, rgba(10,18,12,0.95) 40%, rgba(10,18,12,0.5) 70%, transparent 100%)',
+            'linear-gradient(to top, rgba(17,26,19,0.95) 40%, rgba(17,26,19,0.6) 70%, transparent 100%)',
         }}
       />
 
