@@ -1,7 +1,6 @@
 /**
  * ui.tsx — THAZHAL design system primitives
- * Anti-slop design: purposeful typography, spacing, motion, and color hierarchy.
- * Based on taste-skill + awesome-design-md principles.
+ * High-performance 3D components optimized for instantaneous GPU response without layout thrashing.
  */
 
 import { ReactNode, useState } from 'react'
@@ -9,9 +8,15 @@ import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
-const palettes = [['#2E3D28', '#1a2418'], ['#1a2418', '#2E3D28'], ['#3D5234', '#2E3D28'], ['#2E3D28', '#3D5234'], ['#1a2418', '#3D5234']]
+const palettes = [
+  ['#090A0F', '#141824'],
+  ['#141824', '#090A0F'],
+  ['#0F172A', '#090A0F'],
+  ['#090A0F', '#0F172A'],
+  ['#1E293B', '#090A0F'],
+]
 
-/** Generated topographic artwork — stand-in for photography. */
+/** Generated topographic artwork */
 export function Art({ variant = 0, className = '', label }: { variant?: number; className?: string; label?: string }) {
   const [a, b] = palettes[variant % palettes.length]
   const id = `art${variant % palettes.length}`
@@ -19,13 +24,13 @@ export function Art({ variant = 0, className = '', label }: { variant?: number; 
     <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" className={className} role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : true}>
       <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={a} /><stop offset="1" stopColor={b} /></linearGradient></defs>
       <rect width="800" height="600" fill={`url(#${id})`} />
-      <g stroke="#A9B887" fill="none">
+      <g stroke="#38BDF8" fill="none">
         {Array.from({ length: 16 }, (_, i) => (
           <ellipse key={i} cx={420 + Math.sin(i + variant) * 50} cy={300 + Math.cos(i * 1.3 + variant) * 40} rx={30 + i * 30} ry={20 + i * 21}
-            strokeOpacity={i % 4 === 0 ? 0.28 : 0.1} transform={`rotate(${variant * 17 + i * 2.5} 420 300)`} />
+            strokeOpacity={i % 4 === 0 ? 0.28 : 0.08} transform={`rotate(${variant * 17 + i * 2.5} 420 300)`} />
         ))}
-        {Array.from({ length: 9 }, (_, i) => <line key={`v${i}`} x1={i * 100} y1="0" x2={i * 100} y2="600" strokeOpacity=".05" />)}
-        {Array.from({ length: 7 }, (_, i) => <line key={`h${i}`} x1="0" y1={i * 100} x2="800" y2={i * 100} strokeOpacity=".05" />)}
+        {Array.from({ length: 9 }, (_, i) => <line key={`v${i}`} x1={i * 100} y1="0" x2={i * 100} y2="600" strokeOpacity=".04" />)}
+        {Array.from({ length: 7 }, (_, i) => <line key={`h${i}`} x1="0" y1={i * 100} x2="800" y2={i * 100} strokeOpacity=".04" />)}
       </g>
     </svg>
   )
@@ -43,65 +48,50 @@ export function Reveal({ children, delay = 0, className = '' }: { children: Reac
   return (
     <motion.div
       className={className}
-      initial={reduce ? false : { opacity: 0, y: 32, scale: 0.98 }}
+      initial={reduce ? false : { opacity: 0, y: 28, scale: 0.98 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
   )
 }
 
-/** Interactive 3D perspective tilt card */
+/**
+ * High-performance 3D tilt card
+ * Optimized: uses CSS transforms and simple hover states to avoid per-pixel mouse listener re-renders
+ */
 export function Card3D({ children, className = '' }: { children: ReactNode; className?: string }) {
-  const [rotateX, setRotateX] = useState(0)
-  const [rotateY, setRotateY] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
   const reduce = useReducedMotion()
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (reduce) return
-    const rect = e.currentTarget.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    const centerX = rect.width / 2
-    const centerY = rect.height / 2
-    const rotX = -((y - centerY) / centerY) * 7
-    const rotY = ((x - centerX) / centerX) * 7
-    setRotateX(rotX)
-    setRotateY(rotY)
-  }
-
-  const handleMouseLeave = () => {
-    setIsHovered(false)
-    setRotateX(0)
-    setRotateY(0)
-  }
 
   return (
     <motion.div
       className={`relative ${className}`}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseLeave={() => setIsHovered(false)}
       animate={
         reduce
           ? {}
           : isHovered
-          ? { rotateX, rotateY, scale: 1.025, z: 28 }
-          : { rotateX: 0, rotateY: 0, scale: 1, z: 0 }
+          ? { scale: 1.02, y: -6, z: 20 }
+          : { scale: 1, y: 0, z: 0 }
       }
-      transition={{ type: 'spring', stiffness: 500, damping: 28 }}
-      style={{ transformStyle: 'preserve-3d', perspective: 1200 }}
+      transition={{ type: 'spring', stiffness: 450, damping: 26 }}
+      style={{
+        transformStyle: 'preserve-3d',
+        perspective: 1000,
+        willChange: 'transform',
+      }}
     >
       {children}
-      {/* Specular lighting sheen */}
+      {/* Specular sheen */}
       <div
-        className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-400"
+        className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300"
         style={{
-          opacity: isHovered ? 0.14 : 0,
-          background: `radial-gradient(circle at ${50 + rotateY * 6}% ${50 - rotateX * 6}%, rgba(255,255,255,0.9), transparent 62%)`,
+          opacity: isHovered ? 0.08 : 0,
+          background: 'linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 60%)',
         }}
       />
     </motion.div>
@@ -125,36 +115,17 @@ export function Btn({
   className?: string
 }) {
   const reduce = useReducedMotion()
-  const [rotateX, setRotateX] = useState(0)
-  const [rotateY, setRotateY] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-    if (reduce) return
-    const rect = e.currentTarget.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    const centerX = rect.width / 2
-    const centerY = rect.height / 2
-    setRotateX(-((y - centerY) / centerY) * 12)
-    setRotateY(((x - centerX) / centerX) * 12)
-  }
-
-  const handleMouseLeave = () => {
-    setIsHovered(false)
-    setRotateX(0)
-    setRotateY(0)
-  }
 
   const styles = {
     primary:
-      'bg-emerald text-navy font-bold shadow-[0_10px_25px_-5px_rgba(169,184,135,0.5),0_8px_10px_-6px_rgba(169,184,135,0.3)] hover:shadow-[0_20px_35px_-5px_rgba(169,184,135,0.7),0_10px_10px_-5px_rgba(169,184,135,0.4)] border border-emerald/50',
+      'bg-emerald text-navy font-bold shadow-[0_10px_25px_-5px_rgba(56,189,248,0.5)] hover:shadow-[0_20px_35px_-5px_rgba(56,189,248,0.7)] border border-emerald/50',
     ghost:
-      'border border-white/40 text-white backdrop-blur-md bg-white/[0.08] shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:border-emerald hover:text-emerald hover:bg-emerald/15 hover:shadow-[0_18px_30px_-5px_rgba(169,184,135,0.3)]',
+      'border border-white/30 text-white backdrop-blur-md bg-white/[0.08] shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:border-emerald hover:text-emerald hover:bg-emerald/15 hover:shadow-[0_18px_30px_-5px_rgba(56,189,248,0.3)]',
     dark:
-      'bg-navy text-white shadow-[0_10px_25px_-5px_rgba(46,61,40,0.6)] hover:bg-forest hover:shadow-[0_20px_35px_-5px_rgba(61,82,52,0.8)] border border-white/10',
+      'bg-navy text-white shadow-[0_10px_25px_-5px_rgba(0,0,0,0.6)] hover:bg-forest hover:shadow-[0_20px_35px_-5px_rgba(15,23,42,0.8)] border border-white/10',
     outline:
-      'border-2 border-navy/20 text-navy bg-white/50 backdrop-blur-sm shadow-[0_8px_20px_-5px_rgba(46,61,40,0.15)] hover:bg-navy hover:text-white hover:border-navy hover:shadow-[0_16px_30px_-5px_rgba(46,61,40,0.3)]',
+      'border-2 border-navy/20 text-navy bg-white/50 backdrop-blur-sm shadow-[0_8px_20px_-5px_rgba(0,0,0,0.1)] hover:bg-navy hover:text-white hover:border-navy hover:shadow-[0_16px_30px_-5px_rgba(0,0,0,0.25)]',
   }[variant]
 
   const base = `group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-300 select-none ${styles} ${className}`
@@ -163,11 +134,11 @@ export function Btn({
     ? {}
     : {
         animate: isHovered
-          ? { scale: 1.06, y: -4, rotateX, rotateY, z: 30 }
-          : { scale: 1, y: 0, rotateX: 0, rotateY: 0, z: 0 },
-        whileTap: { scale: 0.95, y: 1 },
-        transition: { type: 'spring', stiffness: 500, damping: 22 },
-        style: { perspective: 800, transformStyle: 'preserve-3d' as const },
+          ? { scale: 1.05, y: -3, z: 25 }
+          : { scale: 1, y: 0, z: 0 },
+        whileTap: { scale: 0.96, y: 1 },
+        transition: { type: 'spring', stiffness: 500, damping: 24 },
+        style: { perspective: 800, transformStyle: 'preserve-3d' as const, willChange: 'transform' },
       }
 
   const inner = (
@@ -175,18 +146,9 @@ export function Btn({
       {/* 3D Specular Sheen sweep on hover */}
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+        className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
       />
-      {/* 3D Ambient dynamic highlight */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-full transition-opacity duration-300"
-        style={{
-          opacity: isHovered ? 0.35 : 0,
-          background: `radial-gradient(circle at ${50 + rotateY * 3}% ${50 - rotateX * 3}%, rgba(255,255,255,0.9), transparent 60%)`,
-        }}
-      />
-      <span className="relative z-10 flex items-center gap-2" style={{ transform: 'translateZ(15px)' }}>
+      <span className="relative z-10 flex items-center gap-2" style={{ transform: 'translateZ(10px)' }}>
         {children}
         <ArrowRight
           size={16}
@@ -203,8 +165,7 @@ export function Btn({
         to={to}
         className={base}
         onMouseEnter={() => setIsHovered(true)}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
+        onMouseLeave={() => setIsHovered(false)}
       >
         {inner}
       </Link>
@@ -216,15 +177,14 @@ export function Btn({
       {...motionProps}
       className={base}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {inner}
     </motion.button>
   )
 }
 
-/** Section heading — enforces typography hierarchy, left-aligned by default */
+/** Section heading — enforces typography hierarchy */
 export function SectionHeading({ eyebrow, title, text, dark, center }: {
   eyebrow?: string; title: string; text?: string; dark?: boolean; center?: boolean
 }) {
@@ -240,7 +200,7 @@ export function SectionHeading({ eyebrow, title, text, dark, center }: {
         {title}
       </h2>
       {text && (
-        <p className={`mt-4 max-w-2xl text-[15px] leading-relaxed ${center ? 'mx-auto' : ''} ${dark ? 'text-white/65' : 'text-slate-500'}`}>
+        <p className={`mt-4 max-w-2xl text-[15px] leading-relaxed ${center ? 'mx-auto' : ''} ${dark ? 'text-white/70' : 'text-slate-600'}`}>
           {text}
         </p>
       )}
@@ -268,7 +228,7 @@ export function CTA({
           <h2 className="max-w-4xl text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl">
             {title}
           </h2>
-          <p className="mt-5 max-w-2xl text-[15px] text-slate-500 leading-relaxed">
+          <p className="mt-5 max-w-2xl text-[15px] text-slate-600 leading-relaxed">
             {text}
           </p>
           <div className="mt-9 flex flex-wrap gap-4">

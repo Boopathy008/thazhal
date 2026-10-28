@@ -13,29 +13,33 @@ import DetailPage from './pages/Detail'
 import Legal from './pages/Legal'
 import NotFound from './pages/NotFound'
 
-// Super 3D Spatial Fly-Through & Dimensional Zoom (GPU accelerated with translate3d)
+// Super 3D Dimensional Flip & Depth Portal Transition
+// Fast, lightweight, pure GPU matrix-3d transform without layout lag
 const super3DPageVariants = {
   initial: {
     opacity: 0,
-    scale: 0.96,
-    y: 28,
+    rotateX: 6,
+    scale: 0.95,
+    y: 30,
   },
   animate: {
     opacity: 1,
+    rotateX: 0,
     scale: 1,
     y: 0,
     transition: {
       duration: 0.45,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.22, 1, 0.36, 1],
     },
   },
   exit: {
     opacity: 0,
-    scale: 1.03,
-    y: -20,
+    rotateX: -6,
+    scale: 0.96,
+    y: -30,
     transition: {
-      duration: 0.3,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 0.35,
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 }
@@ -47,7 +51,7 @@ export default function App() {
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-emerald focus:px-4 focus:py-2">Skip to content</a>
       <MagicCursor />
       <Navbar />
-      <div style={{ perspective: 1200 }}>
+      <div style={{ perspective: 1200, transformStyle: 'preserve-3d' }}>
         <AnimatePresence mode="wait">
           <motion.main
             id="main"
@@ -56,7 +60,10 @@ export default function App() {
             initial="initial"
             animate="animate"
             exit="exit"
-            style={{ transformStyle: 'preserve-3d', willChange: 'transform, opacity' }}
+            style={{
+              transformStyle: 'preserve-3d',
+              willChange: 'transform, opacity',
+            }}
           >
             <Routes location={loc}>
               <Route path="/" element={<Home />} />
