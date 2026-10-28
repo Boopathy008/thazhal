@@ -1,40 +1,29 @@
 /**
  * TerraDusk — Interactive 3-D Earth globe with dusk/dawn lighting.
- *
  * Inspired by originkit.dev/components/terra-dusk
- * Built with React Three Fiber + Drei + Three.js
- *
- * Features
- * ─────────
- * • Rotating Earth using NASA Blue-Marble textures (CDN)
- * • Semi-transparent cloud layer rotating slightly faster
- * • Cursor-tracked directional "sun" light (the "dusk" effect)
- * • Atmospheric glow ring via custom GLSL shader
- * • Stars background via <Stars> from @react-three/drei
- * • Lazy-loaded via React.Suspense — never blocks the page
+ * Built with @react-three/fiber + @react-three/drei + Three.js
  */
 
-import { Suspense, useRef, useEffect } from 'react'
+import { Suspense, useRef, useEffect, Component, type ReactNode } from 'react'
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
 import { Stars, OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
 
-/* ── Texture URLs (CDN — no local download needed) ───────────────── */
+/* ── Texture CDN URLs ────────────────────────────────────────────── */
 const EARTH_DAY   = 'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg'
 const EARTH_BUMP  = 'https://unpkg.com/three-globe/example/img/earth-topology.png'
 const EARTH_WATER = 'https://unpkg.com/three-globe/example/img/earth-water.png'
 const CLOUDS      = 'https://unpkg.com/three-globe/example/img/earth-clouds.png'
 
-/* ── Atmosphere glow shader ──────────────────────────────────────── */
-const atmosphereVertex = /* glsl */`
+/* ── Atmosphere GLSL shaders ─────────────────────────────────────── */
+const atmosphereVertex = `
   varying vec3 vNormal;
   void main() {
     vNormal = normalize(normalMatrix * normal);
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
   }
 `
-
-const atmosphereFragment = /* glsl */`
+const atmosphereFragment = `
   varying vec3 vNormal;
   void main() {
     float intensity = pow(0.62 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.5);
@@ -42,27 +31,23 @@ const atmosphereFragment = /* glsl */`
   }
 `
 
-/* ── Sun directional light that follows the mouse ────────────────── */
+/* ── Sun light that follows the cursor ───────────────────────────── */
 function SunLight() {
-  const lightRef = useThree((s) => {
-    // grab a stable ref to the scene so we can mutate via light ref below
-    return s
-  })
-  const ref = useRef<THREE.DirectionalLight>(null)
+  const ref   = useRef<THREE.DirectionalLight>(null)
+  const { gl } = useThree()
 
   useEffect(() => {
-    const canvas = document.querySelector('canvas')
-    if (!canvas) return
+    const canvas = gl.domElement
     const onMove = (e: MouseEvent) => {
       if (!ref.current) return
       const rect = canvas.getBoundingClientRect()
-      const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1   // -1 … 1
-      const ny = -((e.clientY - rect.top) / rect.height) * 2 + 1  // -1 … 1
+      const nx = ((e.clientX - rect.left) / rect.width)  * 2 - 1
+      const ny = -((e.clientY - rect.top)  / rect.height) * 2 + 1
       ref.current.position.set(nx * 7, ny * 5, 5)
     }
     window.addEventListener('mousemove', onMove)
     return () => window.removeEventListener('mousemove', onMove)
-  }, [])
+  }, [gl])
 
   return (
     <directionalLight
@@ -70,21 +55,17 @@ function SunLight() {
       color="#fff8e7"
       intensity={2.4}
       position={[4, 2, 5]}
-      castShadow={false}
     />
   )
 }
 
-/* ── Earth + clouds + atmosphere ─────────────────────────────────── */
+/* ── Earth mesh (needs Suspense parent for useLoader) ────────────── */
 function Earth() {
   const earthRef  = useRef<THREE.Mesh>(null)
   const cloudsRef = useRef<THREE.Mesh>(null)
 
   const [dayMap, bumpMap, waterMap, cloudsMap] = useLoader(THREE.TextureLoader, [
-    EARTH_DAY,
-    EARTH_BUMP,
-    EARTH_WATER,
-    CLOUDS,
+    EARTH_DAY, EARTH_BUMP, EARTH_WATER, CLOUDS,
   ])
 
   useFrame(({ clock }) => {
@@ -95,7 +76,7 @@ function Earth() {
 
   return (
     <group>
-      {/* Atmosphere glow (back-side shader) */}
+      {/* Atmosphere glow */}
       <mesh scale={1.13}>
         <sphereGeometry args={[1, 32, 32]} />
         <shaderMaterial
@@ -107,7 +88,7 @@ function Earth() {
         />
       </mesh>
 
-      {/* Cloud shell */}
+      {/* Clouds */}
       <mesh ref={cloudsRef} scale={1.017}>
         <sphereGeometry args={[1, 64, 64]} />
         <meshStandardMaterial
@@ -135,23 +116,16 @@ function Earth() {
   )
 }
 
-/* ── Inner scene (needs to be a child of <Canvas>) ───────────────── */
+/* ── Scene — everything inside <Canvas> ──────────────────────────── */
 function Scene() {
   return (
     <>
-      {/* Star field */}
       <Stars radius={180} depth={55} count={4500} factor={4} saturation={0} fade speed={0.6} />
-
-      {/* Lights */}
       <ambientLight intensity={0.08} />
       <SunLight />
-
-      {/* Globe (suspense-friendly) */}
       <Suspense fallback={null}>
         <Earth />
       </Suspense>
-
-      {/* Limited orbit — drag to rotate, no zoom/pan */}
       <OrbitControls
         enablePan={false}
         enableZoom={false}
@@ -165,17 +139,30 @@ function Scene() {
   )
 }
 
-/* ── Public component ────────────────────────────────────────────── */
+/* ── Error boundary — keeps a globe crash from killing the whole app */
+interface EBState { error: boolean }
+class GlobeErrorBoundary extends Component<{ children: ReactNode }, EBState> {
+  state: EBState = { error: false }
+  static getDerivedStateFromError() { return { error: true } }
+  render() {
+    if (this.state.error) return null   // silently hide globe on error
+    return this.props.children
+  }
+}
+
+/* ── Public export ───────────────────────────────────────────────── */
 export default function TerraDusk({ className = '' }: { className?: string }) {
   return (
-    <Canvas
-      className={className}
-      dpr={[1, 2]}
-      camera={{ position: [0, 0, 2.7], fov: 42 }}
-      gl={{ antialias: true, alpha: true }}
-      style={{ background: 'transparent' }}
-    >
-      <Scene />
-    </Canvas>
+    <GlobeErrorBoundary>
+      <Canvas
+        className={className}
+        dpr={[1, 2]}
+        camera={{ position: [0, 0, 2.7], fov: 42 }}
+        gl={{ antialias: true, alpha: true }}
+        style={{ background: 'transparent' }}
+      >
+        <Scene />
+      </Canvas>
+    </GlobeErrorBoundary>
   )
 }
