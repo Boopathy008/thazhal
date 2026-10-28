@@ -78,85 +78,22 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Orbital rings ── */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 z-[2] overflow-hidden">
-        {/* Orbit ring 1 — slow clockwise */}
-        <div
-          className="absolute right-[-8%] top-[12%] h-[520px] w-[520px] rounded-full border border-emerald/12 opacity-50"
-          style={{ animation: 'orbitSpin 70s linear infinite' }}
-        />
-        {/* Orbit ring 2 — slow counter-clockwise */}
-        <div
-          className="absolute right-[4%] top-[6%] h-[700px] w-[700px] rounded-full border border-dashed border-emerald/18 opacity-35"
-          style={{ animation: 'orbitSpin 100s linear infinite reverse' }}
-        />
-        {/* Inner orbital accent */}
-        <div
-          className="absolute right-[18%] top-[28%] h-[280px] w-[280px] rounded-full border border-emerald/20 opacity-25"
-          style={{ animation: 'orbitSpin 45s linear infinite' }}
-        />
-
-        {/* HUD telemetry: coordinate tag */}
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.7 }}
-          className="absolute right-8 top-28 hidden lg:flex items-center gap-2 hud-tag"
-        >
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping-slow rounded-full bg-emerald opacity-75" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald" />
-          </span>
-          <span>LAT 13.0827° N · LON 80.2707° E · LIVE</span>
-        </motion.div>
-
-        {/* HUD telemetry: altitude tag */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.95 }}
-          className="absolute right-12 bottom-24 hidden lg:flex items-center gap-2 hud-tag"
-        >
-          <Satellite size={12} className="text-emerald" aria-hidden />
-          <span>ALT 550KM · 0.5M RESOLUTION · MULTISPECTRAL</span>
-        </motion.div>
-
-        {/* HUD telemetry: analytics tag */}
-        <motion.div
-          initial={{ opacity: 0, x: 12 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-1.5"
-        >
-          {[
-            { label: 'NDVI INDEX', value: '0.842', status: 'NOMINAL' },
-            { label: 'CLOUD COVER', value: '14%', status: 'CLEAR' },
-          ].map((item) => (
-            <div key={item.label} className="hud-tag flex-col !items-start gap-0.5 px-3 py-2">
-              <span className="text-white/40 text-[9px] tracking-widest">{item.label}</span>
-              <div className="flex items-center gap-2">
-                <span className="text-emerald text-[13px] font-bold font-mono">{item.value}</span>
-                <span className="text-emerald/60 text-[9px] border border-emerald/20 rounded px-1 py-0.5">{item.status}</span>
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
+      {/* ── (HUD overlays removed) ── */}
 
       {/* ── Hero content — strictly left-aligned ── */}
       <div className="wrap pointer-events-none relative z-10 w-full py-28 sm:py-36">
         <div className="pointer-events-auto max-w-lg text-left lg:max-w-xl">
 
-          {/* Eyebrow badge */}
+          {/* Eyebrow glass badge */}
           <motion.div
             {...item(0, reduce)}
-            className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-emerald/25 bg-emerald/10 px-4 py-1.5 backdrop-blur-sm"
+            className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 shadow-lg shadow-black/20 backdrop-blur-md ring-1 ring-white/10"
           >
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping-slow rounded-full bg-emerald opacity-70" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald" />
             </span>
-            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-emerald">
+            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-white/90">
               Geospatial Intelligence · Environmental Innovation
             </span>
           </motion.div>

@@ -92,7 +92,7 @@ export function Card3D({ children, className = '' }: { children: ReactNode; clas
           ? { rotateX, rotateY, scale: 1.025, z: 28 }
           : { rotateX: 0, rotateY: 0, scale: 1, z: 0 }
       }
-      transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+      transition={{ type: 'spring', stiffness: 500, damping: 28 }}
       style={{ transformStyle: 'preserve-3d', perspective: 1200 }}
     >
       {children}
@@ -144,7 +144,7 @@ export function Btn({
     : {
         whileHover: { scale: 1.04, y: -2 },
         whileTap: { scale: 0.97, y: 0.5 },
-        transition: { type: 'spring', stiffness: 400, damping: 24 },
+        transition: { type: 'spring', stiffness: 550, damping: 26 },
       }
 
   const inner = (
