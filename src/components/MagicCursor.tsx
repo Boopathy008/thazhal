@@ -266,7 +266,7 @@ function OriginkitMagicCursor({
 const presetProps = {
   label: false,
   fillColor: '#ffffff',
-  cursorSize: 30,
+  cursorSize: 20,
   enableStretch: true,
   enableGlow: true,
   glowColor: '#1a2818',

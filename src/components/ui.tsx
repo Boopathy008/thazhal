@@ -109,7 +109,7 @@ export function Card3D({ children, className = '' }: { children: ReactNode; clas
 }
 
 /**
- * Primary button — premium spring physics, sheen sweep, elevation depth.
+ * Super 3D Button with dynamic tilt, physical elevation depth, glowing border, and sheen.
  */
 export function Btn({
   to,
@@ -125,40 +125,72 @@ export function Btn({
   className?: string
 }) {
   const reduce = useReducedMotion()
+  const [rotateX, setRotateX] = useState(0)
+  const [rotateY, setRotateY] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+    if (reduce) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+    setRotateX(-((y - centerY) / centerY) * 12)
+    setRotateY(((x - centerX) / centerX) * 12)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+    setRotateX(0)
+    setRotateY(0)
+  }
 
   const styles = {
     primary:
-      'bg-emerald text-navy font-bold shadow-md shadow-emerald/25 hover:bg-[#c0cfa0] hover:shadow-lg hover:shadow-emerald/30',
+      'bg-emerald text-navy font-bold shadow-[0_10px_25px_-5px_rgba(169,184,135,0.5),0_8px_10px_-6px_rgba(169,184,135,0.3)] hover:shadow-[0_20px_35px_-5px_rgba(169,184,135,0.7),0_10px_10px_-5px_rgba(169,184,135,0.4)] border border-emerald/50',
     ghost:
-      'border border-white/30 text-white backdrop-blur-sm hover:border-emerald/60 hover:text-emerald hover:bg-emerald/8 hover:shadow-md hover:shadow-emerald/10',
+      'border border-white/40 text-white backdrop-blur-md bg-white/[0.08] shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] hover:border-emerald hover:text-emerald hover:bg-emerald/15 hover:shadow-[0_18px_30px_-5px_rgba(169,184,135,0.3)]',
     dark:
-      'bg-navy text-white shadow-md shadow-navy/20 hover:bg-forest hover:shadow-lg hover:shadow-forest/25',
+      'bg-navy text-white shadow-[0_10px_25px_-5px_rgba(46,61,40,0.6)] hover:bg-forest hover:shadow-[0_20px_35px_-5px_rgba(61,82,52,0.8)] border border-white/10',
     outline:
-      'border border-navy/20 text-navy bg-transparent hover:bg-navy hover:text-white hover:shadow-md',
+      'border-2 border-navy/20 text-navy bg-white/50 backdrop-blur-sm shadow-[0_8px_20px_-5px_rgba(46,61,40,0.15)] hover:bg-navy hover:text-white hover:border-navy hover:shadow-[0_16px_30px_-5px_rgba(46,61,40,0.3)]',
   }[variant]
 
-  const base = `group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-300 ${styles} ${className}`
+  const base = `group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-300 select-none ${styles} ${className}`
 
   const motionProps = reduce
     ? {}
     : {
-        whileHover: { scale: 1.04, y: -2 },
-        whileTap: { scale: 0.97, y: 0.5 },
-        transition: { type: 'spring', stiffness: 550, damping: 26 },
+        animate: isHovered
+          ? { scale: 1.06, y: -4, rotateX, rotateY, z: 30 }
+          : { scale: 1, y: 0, rotateX: 0, rotateY: 0, z: 0 },
+        whileTap: { scale: 0.95, y: 1 },
+        transition: { type: 'spring', stiffness: 500, damping: 22 },
+        style: { perspective: 800, transformStyle: 'preserve-3d' as const },
       }
 
   const inner = (
     <>
-      {/* Sheen sweep on hover */}
+      {/* 3D Specular Sheen sweep on hover */}
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-in-out group-hover:translate-x-full"
+        className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
       />
-      <span className="relative z-10 flex items-center gap-2">
+      {/* 3D Ambient dynamic highlight */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-full transition-opacity duration-300"
+        style={{
+          opacity: isHovered ? 0.35 : 0,
+          background: `radial-gradient(circle at ${50 + rotateY * 3}% ${50 - rotateX * 3}%, rgba(255,255,255,0.9), transparent 60%)`,
+        }}
+      />
+      <span className="relative z-10 flex items-center gap-2" style={{ transform: 'translateZ(15px)' }}>
         {children}
         <ArrowRight
-          size={15}
-          className="transition-transform duration-300 group-hover:translate-x-1"
+          size={16}
+          className="transition-transform duration-300 group-hover:translate-x-1.5"
           aria-hidden
         />
       </span>
@@ -167,12 +199,26 @@ export function Btn({
 
   return to ? (
     <motion.div {...motionProps} className="inline-block">
-      <Link to={to} className={base}>
+      <Link
+        to={to}
+        className={base}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
         {inner}
       </Link>
     </motion.div>
   ) : (
-    <motion.button type="button" onClick={onClick} {...motionProps} className={base}>
+    <motion.button
+      type="button"
+      onClick={onClick}
+      {...motionProps}
+      className={base}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       {inner}
     </motion.button>
   )
