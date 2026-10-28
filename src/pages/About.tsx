@@ -93,7 +93,7 @@ export default function About() {
       <section className="bg-paper section">
         <div className="wrap">
           <Reveal>
-            <SectionHeading eyebrow="People behind THAZHAL" title="Our Team" text="A passionate interdisciplinary team driving innovations at the intersection of geospatial sciences, AI, and environmental resilience." center />
+            <SectionHeading title="Our Team" text="A passionate interdisciplinary team driving innovations at the intersection of geospatial sciences, AI, and environmental resilience." center />
           </Reveal>
           <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
             {teamMembers.map((m, i) => (
@@ -106,7 +106,7 @@ export default function About() {
           {/* Advisors Subheading */}
           <div className="mt-28">
             <Reveal>
-              <SectionHeading eyebrow="Guidance & Scientific Leadership" title="Advisors" text="Distinguished researchers and scientists helping guide THAZHAL's technological horizon and global impact." center />
+              <SectionHeading title="Advisors" text="Distinguished researchers and scientists helping guide THAZHAL's technological horizon and global impact." center />
             </Reveal>
             <div className="mx-auto mt-14 grid max-w-4xl gap-8 sm:grid-cols-2 items-stretch">
               {advisors.map((m, i) => (

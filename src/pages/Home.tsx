@@ -26,12 +26,11 @@ export function LogoMarquee({ list, slow = false }: { list: { name: string; logo
 
 export function SupporterGrid({ list }: { list: { name: string; logo: string }[] }) {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-6">
+    <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 items-stretch">
       {list.map((p, i) => (
-        <div key={i} className="flex items-center justify-center rounded-xl border border-slate-200 bg-white px-10 shadow-sm transition-shadow hover:shadow-md"
-          style={{ height: '160px', width: '280px' }}>
+        <div key={i} className="flex h-36 items-center justify-center rounded-xl border border-slate-200 bg-white px-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-emerald/40">
           {p.logo
-            ? <img src={p.logo} alt={p.name} loading="lazy" className="max-h-full max-w-full object-contain" style={{ maxHeight: '110px' }} />
+            ? <img src={p.logo} alt={p.name} loading="lazy" className="max-h-24 max-w-full object-contain" />
             : <span className="font-mono text-xs text-slate2">Logo</span>}
         </div>
       ))}
@@ -74,38 +73,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── About Section with 3D Tilt Artwork ── */}
+      {/* ── About Section with 3D Tilt Artwork (Image Size Reduced) ── */}
       <section className="relative overflow-hidden bg-white section">
-        <div className="wrap relative grid items-center gap-14 lg:grid-cols-2">
-          <Reveal>
-            <SectionHeading eyebrow="About us" title="Welcome to THAZHAL" />
-            <p className="mt-4 font-display text-lg text-emerald">Innovation meets geospatial intelligence.</p>
-            <p className="mt-5 text-base text-slate-600">THAZHAL focuses on developing forward-thinking solutions that combine geospatial technologies, imagery analytics, and intelligent monitoring to help organizations better understand the world around them.</p>
-            <p className="mt-3.5 text-base text-slate-600">We bring data and technology together to support informed decision-making, environmental awareness, and more resilient infrastructure.</p>
-            <ul className="mt-6 space-y-3 text-navy">
-              {[
-                'Environmental Monitoring with Satellite Precision',
-                'Imagery Analytics for Informed Decision-Making',
-                'Cutting-Edge Technology for Comprehensive Surveys',
-                'Geospatial Intelligence for Infrastructure Assessment'
-              ].map((x) => (
-                <li key={x} className="flex items-center gap-2.5 text-base group">
-                  <span className="h-1.5 w-5 shrink-0 bg-emerald rounded-full transition-all group-hover:w-8 group-hover:bg-forest" />
-                  {x}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-9"><Btn to="/contact">Contact Us</Btn></div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <Card3D className="aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl border border-slate-200">
-              <div className="relative h-full w-full group overflow-hidden">
-                <img src="/images/about.jpg" alt="About THAZHAL" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                {/* 3D Scanning Line Effect on image */}
-                <div className="pointer-events-none absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-emerald to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:animate-geo-scan" />
-              </div>
-            </Card3D>
-          </Reveal>
+        <div className="wrap relative grid items-center gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <Reveal>
+              <SectionHeading eyebrow="About us" title="Welcome to THAZHAL" />
+              <p className="mt-4 font-display text-lg text-emerald">Innovation meets geospatial intelligence.</p>
+              <p className="mt-5 text-base text-slate-600">THAZHAL focuses on developing forward-thinking solutions that combine geospatial technologies, imagery analytics, and intelligent monitoring to help organizations better understand the world around them.</p>
+              <p className="mt-3.5 text-base text-slate-600">We bring data and technology together to support informed decision-making, environmental awareness, and more resilient infrastructure.</p>
+              <ul className="mt-6 space-y-3 text-navy">
+                {[
+                  'Environmental Monitoring with Satellite Precision',
+                  'Imagery Analytics for Informed Decision-Making',
+                  'Cutting-Edge Technology for Comprehensive Surveys',
+                  'Geospatial Intelligence for Infrastructure Assessment'
+                ].map((x) => (
+                  <li key={x} className="flex items-center gap-2.5 text-base group">
+                    <span className="h-1.5 w-5 shrink-0 bg-emerald rounded-full transition-all group-hover:w-8 group-hover:bg-forest" />
+                    {x}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-9"><Btn to="/contact">Contact Us</Btn></div>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-5 flex justify-center">
+            <Reveal delay={0.1} className="w-full max-w-sm">
+              <Card3D className="aspect-square overflow-hidden rounded-2xl shadow-xl border border-slate-200">
+                <div className="relative h-full w-full group overflow-hidden">
+                  <img src="/images/about.jpg" alt="About THAZHAL" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  {/* 3D Scanning Line Effect on image */}
+                  <div className="pointer-events-none absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-emerald to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:animate-geo-scan" />
+                </div>
+              </Card3D>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -125,18 +128,19 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── From Observation to Insight (Equal Height Cards) ── */}
       <section className="section-gradient section relative overflow-hidden">
         <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-10" />
         <div className="wrap relative">
           <Reveal><SectionHeading dark title="From Observation to Insight" /></Reveal>
-          <ol className="relative mt-12 grid gap-8 md:grid-cols-3">
+          <ol className="relative mt-12 grid gap-8 md:grid-cols-3 items-stretch">
             <div className="absolute left-0 right-0 top-7 hidden h-px bg-emerald/50 md:block" aria-hidden />
             {[['01', 'Observe', 'Gather relevant geospatial information and imagery.'], ['02', 'Understand', 'Analyze spatial information to identify patterns, changes, and useful insights.'], ['03', 'Act', 'Support better-informed planning and decisions.']].map(([n, t, d], i) => (
-              <Reveal key={n} delay={i * 0.12}>
-                <Card3D>
-                  <li className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-colors hover:border-emerald/40 hover:bg-white/[0.06]">
-                    <span className="relative inline-block pr-3 font-display text-5xl font-bold text-emerald/60">{n}</span>
-                    <h3 className="mt-3 text-xl font-bold text-white">{t}</h3>
+              <Reveal key={n} delay={i * 0.12} className="h-full flex flex-col">
+                <Card3D className="h-full flex flex-col">
+                  <li className="relative flex flex-1 flex-col justify-start rounded-2xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm transition-colors hover:border-emerald/40 hover:bg-white/[0.06]">
+                    <span className="relative inline-block font-display text-5xl font-bold text-emerald/60">{n}</span>
+                    <h3 className="mt-4 text-xl font-bold text-white">{t}</h3>
                     <p className="mt-2 text-sm text-white/75 leading-relaxed">{d}</p>
                   </li>
                 </Card3D>
@@ -146,6 +150,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Our Network & Supported By (Aligned Left) ── */}
       <section className="bg-white section">
         <div className="wrap">
           <Reveal><SectionHeading eyebrow="Our network" title="Working with Leading Organisations" text="Building meaningful connections with organizations working toward a more informed, resilient, and sustainable future." /></Reveal>
@@ -153,9 +158,13 @@ export default function Home() {
         <div className="mt-12">
           <LogoMarquee list={partners} />
         </div>
-        <div className="wrap">
-          <h3 className="mb-8 mt-16 text-center text-2xl font-bold text-navy">Supported By</h3>
-          <SupporterGrid list={supporters} />
+        <div className="wrap mt-20">
+          <Reveal>
+            <SectionHeading eyebrow="Backed by Excellence" title="Supported By" text="Organizations and institutions championing our geospatial and environmental innovations." />
+          </Reveal>
+          <div className="mt-10">
+            <SupporterGrid list={supporters} />
+          </div>
         </div>
       </section>
 
