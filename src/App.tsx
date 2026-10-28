@@ -13,35 +13,29 @@ import DetailPage from './pages/Detail'
 import Legal from './pages/Legal'
 import NotFound from './pages/NotFound'
 
-// Super 3D Page Transition Variant (3D Flip / Depth Lift)
-const page3DVariants = {
+// Super 3D Spatial Fly-Through & Dimensional Zoom (GPU accelerated with translate3d)
+const super3DPageVariants = {
   initial: {
     opacity: 0,
-    rotateY: 8,
-    scale: 0.94,
-    y: 20,
-    filter: 'blur(8px)',
+    scale: 0.96,
+    y: 28,
   },
   animate: {
     opacity: 1,
-    rotateY: 0,
     scale: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: {
-      duration: 0.55,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.45,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
   exit: {
     opacity: 0,
-    rotateY: -8,
-    scale: 0.94,
+    scale: 1.03,
     y: -20,
-    filter: 'blur(8px)',
     transition: {
-      duration: 0.4,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.3,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 }
@@ -51,16 +45,14 @@ export default function App() {
   return (
     <>
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-emerald focus:px-4 focus:py-2">Skip to content</a>
-      <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
-        <MagicCursor />
-      </div>
+      <MagicCursor />
       <Navbar />
-      <div style={{ perspective: 1400, overflowX: 'hidden' }}>
+      <div style={{ perspective: 1200 }}>
         <AnimatePresence mode="wait">
           <motion.main
             id="main"
             key={loc.pathname}
-            variants={page3DVariants}
+            variants={super3DPageVariants}
             initial="initial"
             animate="animate"
             exit="exit"

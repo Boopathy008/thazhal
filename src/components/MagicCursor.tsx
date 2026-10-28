@@ -1,39 +1,20 @@
 /**
- * MagicCursor — Originkit Spin Cursor (adapted for React + Vite, no "use client")
- * A physics-based custom cursor that stretches with velocity and rotates toward movement.
+ * MagicCursor — High-Performance Originkit Spin Cursor
+ * Optimized for butter-smooth 60-120fps motion without main-thread or scroll lag.
  */
 
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 type MagicCursorProps = {
-  label?: boolean
-  labelText?: string
-  labelColor?: string
-  labelFont?: React.CSSProperties
   fillColor?: string
   cursorSize?: number
   enableStretch?: boolean
-  enableGlow?: boolean
-  glowColor?: string
-  glowIntensity?: number
   style?: React.CSSProperties
 }
 
-const DEFAULT_LABEL_FONT: React.CSSProperties = {
-  fontFamily: 'Inter, sans-serif',
-  fontWeight: 600,
-  fontSize: '48px',
-  lineHeight: '1.5em',
-  letterSpacing: '0em',
-  textAlign: 'left',
-}
-
 const CLICK_EFFECT = true
-const GLOW_CORE_PX = 6
-const GLOW_BLOOM_PX = 18
-
-const FOLLOW_TAU = 0.02
-const VELOCITY_TAU = 0.05
+const FOLLOW_TAU = 0.015
+const VELOCITY_TAU = 0.04
 
 const ARROW = 'M0,0 L18,11 L9,13 L6,21 Z'
 const ARROW_W = 18
@@ -47,49 +28,24 @@ function angleDelta(from: number, to: number) {
   return d
 }
 
-function OriginkitMagicCursor({
+export default function MagicCursor({
   fillColor = '#FFFFFF',
-  cursorSize = 30,
+  cursorSize = 20,
   enableStretch = true,
-  enableGlow = false,
-  glowColor = '#4C8DFF',
-  glowIntensity = 50,
-  label = false,
-  labelText = 'HOVER AROUND',
-  labelColor = 'rgba(255, 255, 255)',
-  labelFont,
   style,
 }: MagicCursorProps) {
   const hostRef = useRef<HTMLDivElement>(null)
-  const frameRef = useRef<HTMLDivElement>(null)
-
-  const glowFilter = useMemo(() => {
-    if (!enableGlow) return 'none'
-    const t = Math.max(0, Math.min(100, glowIntensity)) / 100
-    const core = (GLOW_CORE_PX * t).toFixed(2)
-    const bloom = (GLOW_BLOOM_PX * t).toFixed(2)
-    return `drop-shadow(0 0 ${core}px ${glowColor}) drop-shadow(0 0 ${bloom}px ${glowColor})`
-  }, [enableGlow, glowColor, glowIntensity])
-
-  const live = useRef({ cursorSize, enableStretch })
-  live.current = { cursorSize, enableStretch }
-
-  const resolvedLabelFont = { ...DEFAULT_LABEL_FONT, ...labelFont }
 
   useEffect(() => {
+    // Only initialize on pointer-capable devices (not touch screens)
+    if (window.matchMedia('(pointer: coarse)').matches) return
+
     const host = hostRef.current
-    const frameEl = frameRef.current
-    if (!host || !frameEl) return
+    if (!host) return
 
     const tag = document.createElement('style')
-    tag.textContent = `*, a, button, [role="button"] { cursor: none !important; }`
-    let cursorHidden = false
-    const hideNativeCursor = (hide: boolean) => {
-      if (hide === cursorHidden) return
-      cursorHidden = hide
-      if (hide) document.head.appendChild(tag)
-      else tag.remove()
-    }
+    tag.textContent = `html, body, *, a, button, [role="button"] { cursor: none !important; }`
+    document.head.appendChild(tag)
 
     let targetX = -9999
     let targetY = -9999
@@ -101,25 +57,12 @@ function OriginkitMagicCursor({
     let pressed = 0
     let down = false
     let seen = false
-    let inside = false
+    let inside = true
 
-    const onMove = (e: PointerEvent) => {
-      const rect = frameEl.getBoundingClientRect()
-      const over =
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right &&
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom
-      hideNativeCursor(over)
-      if (!over) {
-        inside = false
-        return
-      }
-      const sx = rect.width > 0 ? frameEl.clientWidth / rect.width : 1
-      const sy = rect.height > 0 ? frameEl.clientHeight / rect.height : 1
-      targetX = (e.clientX - rect.left) * sx
-      targetY = (e.clientY - rect.top) * sy
-      if (!seen || !inside) {
+    const onMove = (e: MouseEvent) => {
+      targetX = e.clientX
+      targetY = e.clientY
+      if (!seen) {
         x = targetX
         y = targetY
         vx = 0
@@ -128,25 +71,26 @@ function OriginkitMagicCursor({
       }
       inside = true
     }
+
     const onWindowLeave = () => {
       inside = false
-      hideNativeCursor(false)
+      if (host) host.style.opacity = '0'
     }
+
     const onDown = () => { down = true }
     const onUp = () => { down = false }
 
-    window.addEventListener('pointermove', onMove, { passive: true })
-    document.documentElement.addEventListener('pointerleave', onWindowLeave)
-    window.addEventListener('pointerdown', onDown, { passive: true })
-    window.addEventListener('pointerup', onUp, { passive: true })
+    window.addEventListener('mousemove', onMove, { passive: true })
+    document.documentElement.addEventListener('mouseleave', onWindowLeave)
+    window.addEventListener('mousedown', onDown, { passive: true })
+    window.addEventListener('mouseup', onUp, { passive: true })
 
     let raf = 0
     let last = performance.now()
 
     const frame = (now: number) => {
-      const dt = Math.min(0.05, Math.max(0, (now - last) / 1000))
+      const dt = Math.min(0.04, Math.max(0.001, (now - last) / 1000))
       last = now
-      const p = live.current
 
       const followEase = 1 - Math.exp(-dt / FOLLOW_TAU)
       const prevX = x
@@ -162,24 +106,23 @@ function OriginkitMagicCursor({
 
       const speed = Math.hypot(vx, vy)
 
-      if (speed > 40) {
+      if (speed > 35) {
         const target = Math.atan2(vy, vx) - ARROW_REST
-        angle += angleDelta(angle, target) * (1 - Math.exp(-dt / 0.06))
+        angle += angleDelta(angle, target) * (1 - Math.exp(-dt / 0.05))
       }
 
-      const stretch = p.enableStretch ? 1 + Math.min(speed / 3000, 0.35) : 1
-      const squash = p.enableStretch ? 1 / Math.sqrt(stretch) : 1
+      const stretch = enableStretch ? 1 + Math.min(speed / 3000, 0.35) : 1
+      const squash = enableStretch ? 1 / Math.sqrt(stretch) : 1
 
       const clickTarget = CLICK_EFFECT && down ? 1 : 0
       pressed += (clickTarget - pressed) * (1 - Math.exp(-dt / 0.05))
       const press = 1 - pressed * 0.2
 
-      const s = (p.cursorSize / ARROW_H) * press
+      const s = (cursorSize / ARROW_H) * press
+
       host.style.opacity = seen && inside ? '1' : '0'
-      host.style.transform =
-        `translate(${x}px, ${y}px) ` +
-        `rotate(${angle}rad) ` +
-        `scale(${s * squash}, ${s * stretch})`
+      // Hardware-accelerated 3D transform (translate3d forces GPU compositor layer)
+      host.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${angle}rad) scale(${s * squash}, ${s * stretch})`
 
       raf = requestAnimationFrame(frame)
     }
@@ -187,92 +130,57 @@ function OriginkitMagicCursor({
 
     return () => {
       cancelAnimationFrame(raf)
-      hideNativeCursor(false)
-      window.removeEventListener('pointermove', onMove)
-      document.documentElement.removeEventListener('pointerleave', onWindowLeave)
-      window.removeEventListener('pointerdown', onDown)
-      window.removeEventListener('pointerup', onUp)
+      tag.remove()
+      window.removeEventListener('mousemove', onMove)
+      document.documentElement.removeEventListener('mouseleave', onWindowLeave)
+      window.removeEventListener('mousedown', onDown)
+      window.removeEventListener('mouseup', onUp)
     }
-  }, [])
-
-  const arrow = (
-    <svg
-      width={ARROW_W}
-      height={ARROW_H}
-      viewBox={`0 0 ${ARROW_W} ${ARROW_H}`}
-      style={{ display: 'block', overflow: 'visible' }}
-      aria-hidden
-    >
-      <path
-        d={ARROW}
-        fill={fillColor}
-        stroke="rgba(0,0,0,0.55)"
-        strokeWidth={1.2}
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-
-  const labelNode = label ? (
-    <div
-      style={{
-        position: 'absolute',
-        left: '50%',
-        top: '50%',
-        transform: 'translate(-50%, -50%)',
-        whiteSpace: 'pre',
-        pointerEvents: 'none',
-        userSelect: 'none',
-        ...resolvedLabelFont,
-        color: labelColor,
-      }}
-    >
-      {labelText}
-    </div>
-  ) : null
+  }, [cursorSize, enableStretch])
 
   return (
     <div
-      ref={frameRef}
       style={{
-        position: 'relative',
-        width: '100%',
-        height: '100%',
-        overflow: 'hidden',
+        position: 'fixed',
+        inset: 0,
         pointerEvents: 'none',
+        zIndex: 99999,
+        overflow: 'hidden',
         ...style,
       }}
     >
-      {labelNode}
       <div
         ref={hostRef}
         style={{
-          position: 'absolute',
+          position: 'fixed',
           top: 0,
           left: 0,
           transformOrigin: '0 0',
           opacity: 0,
           pointerEvents: 'none',
           willChange: 'transform',
-          filter: glowFilter,
         }}
       >
-        {arrow}
+        <svg
+          width={ARROW_W}
+          height={ARROW_H}
+          viewBox={`0 0 ${ARROW_W} ${ARROW_H}`}
+          style={{
+            display: 'block',
+            overflow: 'visible',
+            filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.45)) drop-shadow(0 0 10px rgba(56,189,248,0.4))',
+          }}
+          aria-hidden
+        >
+          <path
+            d={ARROW}
+            fill={fillColor}
+            stroke="#090A0F"
+            strokeWidth={1.2}
+            strokeLinejoin="round"
+          />
+        </svg>
       </div>
     </div>
   )
-}
-
-const presetProps = {
-  label: false,
-  fillColor: '#ffffff',
-  cursorSize: 20,
-  enableStretch: true,
-  enableGlow: true,
-  glowColor: '#1a2818',
-  glowIntensity: 70,
-}
-
-export default function MagicCursor(props: MagicCursorProps) {
-  return <OriginkitMagicCursor {...presetProps} {...props} />
 }
