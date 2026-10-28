@@ -454,7 +454,7 @@ export default function TerraDusk(props: TerraDuskProps) {
             vYaw = 0
             vPitch = 0
             root.setPointerCapture?.(e.pointerId)
-            root.style.cursor = "grabbing"
+
         }
         const onUp = (e: PointerEvent) => {
             if (!dragging || e.pointerId !== dragId) return
@@ -464,7 +464,6 @@ export default function TerraDusk(props: TerraDuskProps) {
                 vYaw = 0
                 vPitch = 0
             }
-            root.style.cursor = ""
             if (e.type === "pointercancel") over = false
         }
         root.addEventListener("pointermove", onMove)
@@ -627,7 +626,6 @@ export default function TerraDusk(props: TerraDuskProps) {
                 ...style,
                 overflow: "hidden",
                 background,
-                cursor: drag ? "grab" : undefined,
                 touchAction: "pan-y",
             }}
         >
