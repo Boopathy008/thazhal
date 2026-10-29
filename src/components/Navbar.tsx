@@ -182,7 +182,8 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 8, scale: 0.95 }}
                         transition={{ type: 'spring', stiffness: 400, damping: 26 }}
-                        className="absolute left-0 top-full mt-3 w-80 rounded-2xl border border-white/15 bg-[#090A0F]/98 p-3 shadow-[0_25px_60px_rgba(0,0,0,0.7)] backdrop-blur-2xl ring-1 ring-white/10"
+                        className="absolute left-0 top-full mt-3 w-80 rounded-2xl border border-white/20 bg-[#090A0F] p-3 shadow-[0_30px_70px_rgba(0,0,0,0.85),0_0_0_1px_rgba(255,255,255,0.15)] ring-1 ring-white/10"
+                        style={{ backgroundColor: '#090A0F' }}
                       >
                         {g.items.map((it) => {
                           const I = icons[it.icon]
@@ -193,18 +194,18 @@ export default function Navbar() {
                                 role="menuitem"
                                 className={({ isActive }) =>
                                   `group flex gap-3.5 rounded-xl p-3 transition-all duration-200 ${
-                                    isActive ? 'bg-white/10 text-emerald' : 'hover:bg-white/10 hover:translate-x-1'
+                                    isActive ? 'bg-white/15 text-emerald' : 'hover:bg-white/10 hover:translate-x-1'
                                   }`
                                 }
                               >
-                                <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald/15 text-emerald transition-all duration-200 group-hover:scale-110 group-hover:bg-emerald group-hover:text-navy group-hover:rotate-6">
-                                  <I size={16} aria-hidden />
+                                <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald/20 text-emerald transition-all duration-200 group-hover:scale-110 group-hover:bg-emerald group-hover:text-navy group-hover:rotate-6">
+                                  <I size={17} aria-hidden />
                                 </div>
                                 <span>
-                                  <span className="block text-[13px] font-semibold text-white group-hover:text-emerald transition-colors">
+                                  <span className="block text-[14px] font-bold text-white group-hover:text-emerald transition-colors">
                                     {it.label}
                                   </span>
-                                  <span className="block text-[11px] leading-snug text-white/60 mt-0.5">
+                                  <span className="block text-[12px] leading-snug text-slate-300 mt-0.5 group-hover:text-white/80">
                                     {it.desc}
                                   </span>
                                 </span>
