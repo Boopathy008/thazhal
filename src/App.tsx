@@ -13,33 +13,38 @@ import DetailPage from './pages/Detail'
 import Legal from './pages/Legal'
 import NotFound from './pages/NotFound'
 
-// Super 3D Dimensional Flip & Depth Portal Transition
-// Fast, lightweight, pure GPU matrix-3d transform without layout lag
-const super3DPageVariants = {
+// Futuristic 3D Dimensional Warp & Zoom Transition
+const dimensional3DVariants = {
   initial: {
     opacity: 0,
-    rotateX: 6,
-    scale: 0.95,
-    y: 30,
+    rotateY: 10,
+    rotateX: -4,
+    scale: 0.92,
+    z: -120,
+    y: 35,
   },
   animate: {
     opacity: 1,
+    rotateY: 0,
     rotateX: 0,
     scale: 1,
+    z: 0,
     y: 0,
     transition: {
-      duration: 0.45,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
   exit: {
     opacity: 0,
-    rotateX: -6,
-    scale: 0.96,
+    rotateY: -10,
+    rotateX: 4,
+    scale: 0.94,
+    z: -100,
     y: -30,
     transition: {
-      duration: 0.35,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.4,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 }
@@ -51,12 +56,12 @@ export default function App() {
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-emerald focus:px-4 focus:py-2">Skip to content</a>
       <MagicCursor />
       <Navbar />
-      <div style={{ perspective: 1200, transformStyle: 'preserve-3d' }}>
+      <div style={{ perspective: 1600, transformStyle: 'preserve-3d', overflowX: 'hidden' }}>
         <AnimatePresence mode="wait">
           <motion.main
             id="main"
             key={loc.pathname}
-            variants={super3DPageVariants}
+            variants={dimensional3DVariants}
             initial="initial"
             animate="animate"
             exit="exit"
