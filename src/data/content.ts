@@ -25,9 +25,9 @@ const steps = [
 
 export const products: Detail[] = [
   {
-    kind: 'product', slug: 'swoad', name: 'SWOAD', variant: 0, image: '/images/swoad.jpg',
+    kind: 'product', slug: 'swoad', name: 'Water Body Monitoring', variant: 0, image: '/images/swoad.jpg',
     tagline: 'A THAZHAL offering for geospatial intelligence.',
-    summary: 'SWOAD (Surface Water Observation and Assessment Dashboard) combines multi-satellite earth observation with localized hydro-spatial intelligence to deliver continuous water surface tracking, catchment capacity estimation, and early anomaly alerts.',
+    summary: 'Track lake extent, surface-water changes, vegetation, encroachment and long-term trendsover time.',
     overview: [
       'SWOAD serves municipal water authorities, irrigation boards, and environmental stewards with near-real-time digital surface water twins.',
       'Integrating Synthetic Aperture Radar (SAR) with high-resolution multispectral feeds ensures round-the-clock surface water visibility through cloud cover and extreme storms.',
@@ -44,7 +44,7 @@ export const products: Detail[] = [
   {
     kind: 'product', slug: 'climate-audit', name: 'Climate Audit', variant: 1, image: '/images/climate-audit.jpg',
     tagline: 'Structured geospatial insight for climate-focused assessment.',
-    summary: 'Support climate-focused assessment through environmental information, geospatial analysis, and structured insights that can inform sustainability planning.',
+    summary: 'Understand historical and future climate risks around assets, including floods, cyclones, sea-level rise and fire.',
     overview: [
       'Climate Audit brings environmental information and spatial analysis together so organisations can better understand conditions that matter to sustainability planning.',
       'Scope, data sources and deliverables are agreed per project.',
@@ -81,7 +81,7 @@ export const solutions: Detail[] = [
   {
     kind: 'solution', slug: 'environmental-monitoring', name: 'Environmental Monitoring', variant: 3, image: '/images/environmental-monitoring.jpg',
     tagline: 'Observe, assess and understand changing environments.',
-    summary: 'Understand changing environmental conditions with geospatial monitoring and imagery analytics designed to support observation, assessment, and informed environmental decisions.',
+    summary: 'Assess ecosystem health and quantify environmental risks and the impact of nature-based interventions.',
     overview: [
       'Environmental monitoring uses geospatial data and imagery to observe how landscapes, vegetation and water systems change over time.',
       'These are general solution areas. Specific capabilities are scoped with each organisation.',
@@ -98,7 +98,7 @@ export const solutions: Detail[] = [
   {
     kind: 'solution', slug: 'infrastructure-monitoring', name: 'Infrastructure Monitoring', variant: 4, image: '/images/infrastructure-monitoring.jpg',
     tagline: 'A clearer view of critical infrastructure.',
-    summary: 'Gain a clearer view of critical infrastructure through geospatial information, imagery analysis, and monitoring workflows that support assessment and operational planning.',
+    summary: 'Monitor buildings, dams, ports, airports and utility networks to support risk assessment and operational decisions.',
     overview: [
       'Infrastructure monitoring applies geospatial information and imagery analysis to roads, bridges, utilities and industrial facilities.',
       'These are general solution areas. Specific capabilities are scoped with each organisation.',
@@ -115,7 +115,7 @@ export const solutions: Detail[] = [
   {
     kind: 'solution', slug: 'forest-intelligence', name: 'Forest Intelligence', variant: 5, image: '/images/environmental-monitoring.jpg',
     tagline: 'Canopy health, biomass auditing, and illegal logging surveillance.',
-    summary: 'High-cadence satellite intelligence to monitor forest ecosystems, estimate above-ground biomass, detect illegal deforestation, and protect biodiversity corridors.',
+    summary: 'Use satellite imagery, drone data and LiDAR to support tree counting, species classification and precise measurements.',
     overview: [
       'Forest Intelligence applies multi-temporal radar and optical satellite data to track canopy health, land clearing, and carbon sequestration potentials.',
       'Enables government agencies and conservation organizations to enforce ecological governance and protect critical green cover.',
@@ -132,7 +132,7 @@ export const solutions: Detail[] = [
   {
     kind: 'solution', slug: 'geospatial-platforms', name: 'Geospatial Platforms', variant: 0, image: '/images/infrastructure-monitoring.jpg',
     tagline: 'Custom cloud portals and spatial intelligence engines.',
-    summary: 'Scalable cloud geospatial platforms, web GIS dashboards, and interactive spatial data engines built to integrate multi-source remote sensing data, vector analytics, and enterprise decision tools.',
+    summary: 'Bring spatial data and analysis together through web GIS applications, dashboards and scalable data pipelines.',
     overview: [
       'Geospatial Platforms empower organizations with customized, secure spatial infrastructure tailored to their unique operational requirements.',
       'From real-time sensor streaming to interactive 3D map views and analytical spatial pipelines, we deploy production-ready cloud GIS systems that bridge raw data and business decisions.',

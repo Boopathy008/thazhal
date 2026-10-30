@@ -154,9 +154,9 @@ export default function Home() {
           <Reveal>
             <SectionHeading
               dark
-              eyebrow="Our products"
-              title="Purpose-Built Intelligence. Real-World Impact."
-              text="Explore technology and services designed to help organizations assess risk, understand environmental conditions, and make better-informed decisions."
+              eyebrow="Our Solutions"
+              title="See the change. Understand the risk. Act with confidence."
+              text="Space-based intelligence designed to help monitor assets, protect ecosystems and plan for a changing climate."
             />
           </Reveal>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
