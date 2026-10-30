@@ -73,58 +73,24 @@ export const products: Detail[] = [
       { q: 'Can Fire Audit predict fires?', a: 'No. It supports risk assessment and planning with spatial information.' },
       { q: 'What areas can it cover?', a: 'Coverage is agreed per project. Contact the team to discuss your area.' },
     ],
-    related: ['/products/forest-intelligence', '/products/infrastructure-monitoring'],
+    related: ['/solutions/forest-intelligence', '/solutions/infrastructure-monitoring'],
   },
   {
-    kind: 'product', slug: 'environmental-monitoring', name: 'Environmental Monitoring', variant: 3, image: '/images/environmental-monitoring.jpg',
-    tagline: 'Observe, assess and understand changing environments.',
-    summary: 'Understand changing environmental conditions with geospatial monitoring and imagery analytics designed to support observation, assessment, and informed environmental decisions.',
+    kind: 'product', slug: 'geospatial-platforms', name: 'Geospatial Platforms', variant: 0, image: '/images/infrastructure-monitoring.jpg',
+    tagline: 'Custom cloud portals and spatial intelligence engines.',
+    summary: 'Scalable cloud geospatial platforms, web GIS dashboards, and interactive spatial data engines built to integrate multi-source remote sensing data, vector analytics, and enterprise decision tools.',
     overview: [
-      'Environmental monitoring uses geospatial data and imagery to observe how landscapes, vegetation and water systems change over time.',
-      'Delivers automated spectral indices (NDVI, NDWI, EVI) and time-series change detection across vast geographies.',
+      'Geospatial Platforms empower organizations with customized, secure spatial infrastructure tailored to their unique operational requirements.',
+      'From real-time sensor streaming to interactive 3D map views and analytical spatial pipelines, we deploy production-ready cloud GIS systems that bridge raw data and business decisions.',
     ],
-    uses: ['Environmental change observation', 'Geospatial imagery analysis', 'Land and landscape assessment', 'Environmental reporting and insights'],
-    benefits: ['Consistent observation over large areas', 'Evidence for environmental decisions', 'Clear, shareable reporting'],
+    uses: ['Enterprise Web GIS & Spatial Portals', 'Automated Earth Observation data pipelines', 'Custom analytical dashboards & map viewers', 'Cross-departmental spatial data governance'],
+    benefits: ['Centralized geospatial data infrastructure', 'Real-time collaborative mapping and analytics', 'High-speed cloud performance on massive spatial layers'],
     steps,
     faqs: [
-      { q: 'What data is used?', a: 'Sources depend on the question and area. High-cadence satellite constellations, SAR, and multispectral sensors are agreed during scoping.' },
-      { q: 'Can this be ongoing?', a: 'Monitoring can be configured for automated periodic reporting or continuous alert streams.' },
+      { q: 'What technologies power these platforms?', a: 'Open-source and enterprise geospatial stacks including PostGIS, GeoServer, GDAL, Maplibre, and customized cloud APIs.' },
+      { q: 'Can it integrate with existing ERP or internal databases?', a: 'Yes. Our platforms provide REST APIs and standard OGC endpoints (WMS, WFS, COG) for seamless interoperability.' },
     ],
-    related: ['/products/swoad', '/products/forest-intelligence'],
-  },
-  {
-    kind: 'product', slug: 'infrastructure-monitoring', name: 'Infrastructure Monitoring', variant: 4, image: '/images/infrastructure-monitoring.jpg',
-    tagline: 'A clearer view of critical infrastructure.',
-    summary: 'Gain a clearer view of critical infrastructure through geospatial information, imagery analysis, and monitoring workflows that support assessment and operational planning.',
-    overview: [
-      'Infrastructure monitoring applies geospatial information, SAR interferometry (InSAR), and multispectral analytics to linear assets, bridges, utilities, and industrial facilities.',
-      'Enables engineering teams to detect structural displacement, corridor encroachment, and slope instability long before failures occur.',
-    ],
-    uses: ['Infrastructure visibility & asset corridors', 'Millimeter-scale surface displacement', 'Corridor encroachment tracking', 'Risk-informed maintenance planning'],
-    benefits: ['Network-wide visibility across linear assets', 'Proactive identification of structural displacement', 'Optimized field inspection scheduling'],
-    steps,
-    faqs: [
-      { q: 'Which assets can be assessed?', a: 'Highways, rail corridors, bridges, pipelines, dams, energy grids, and industrial installations.' },
-      { q: 'Does it replace on-site inspection?', a: 'No. It prioritizes and guides field inspections with macro-level spatial telemetry.' },
-    ],
-    related: ['/products/fire-audit', '/products/environmental-monitoring'],
-  },
-  {
-    kind: 'product', slug: 'forest-intelligence', name: 'Forest Intelligence', variant: 5, image: '/images/environmental-monitoring.jpg',
-    tagline: 'Canopy health, biomass auditing, and illegal logging surveillance.',
-    summary: 'High-cadence satellite intelligence to monitor forest ecosystems, estimate above-ground biomass, detect illegal deforestation, and protect biodiversity corridors.',
-    overview: [
-      'Forest Intelligence applies multi-temporal radar and high-resolution optical imagery to track changes in canopy density, tree cover loss, and habitat fragmentation.',
-      'Designed for conservation trusts, forest departments, carbon credit auditors, and commercial forestry managers.',
-    ],
-    uses: ['Canopy cover & deforestation tracking', 'Above-ground biomass & carbon stock estimation', 'Wildfire burn-severity assessment', 'Biodiversity corridor mapping'],
-    benefits: ['Rapid detection of illegal logging and clearing', 'Verifiable spatial evidence for carbon projects', 'Automated alerts on forest degradation'],
-    steps,
-    faqs: [
-      { q: 'How frequently is forest data updated?', a: 'Weekly to daily updates depending on the satellite constellation chosen for your target area.' },
-      { q: 'Can it differentiate between seasonal changes and deforestation?', a: 'Yes. Our time-series AI models account for seasonal leaf-fall and phenology to prevent false positives.' },
-    ],
-    related: ['/products/environmental-monitoring', '/products/fire-audit'],
+    related: ['/products/swoad', '/solutions/environmental-monitoring'],
   },
 ]
 
@@ -161,7 +127,7 @@ export const solutions: Detail[] = [
       { q: 'Which assets can be assessed?', a: 'Roads, bridges, industrial sites and similar assets, depending on scope.' },
       { q: 'Does it replace on-site inspection?', a: 'No. It complements field inspection with spatial context.' },
     ],
-    related: ['/solutions/forest-intelligence', '/products/infrastructure-monitoring'],
+    related: ['/solutions/forest-intelligence', '/products/geospatial-platforms'],
   },
   {
     kind: 'solution', slug: 'forest-intelligence', name: 'Forest Intelligence', variant: 5, image: '/images/environmental-monitoring.jpg',
@@ -178,15 +144,32 @@ export const solutions: Detail[] = [
       { q: 'What sensors are utilized?', a: 'Optical multispectral satellites, SAR (Synthetic Aperture Radar), and LiDAR elevation datasets.' },
       { q: 'Can it track historical trends?', a: 'Yes. Historical archive analysis going back over two decades can be conducted.' },
     ],
-    related: ['/solutions/environmental-monitoring', '/products/forest-intelligence'],
+    related: ['/solutions/environmental-monitoring', '/solutions/geospatial-platforms'],
+  },
+  {
+    kind: 'solution', slug: 'geospatial-platforms', name: 'Geospatial Platforms', variant: 0, image: '/images/infrastructure-monitoring.jpg',
+    tagline: 'Custom cloud portals and spatial intelligence engines.',
+    summary: 'Scalable cloud geospatial platforms, web GIS dashboards, and interactive spatial data engines built to integrate multi-source remote sensing data, vector analytics, and enterprise decision tools.',
+    overview: [
+      'Geospatial Platforms empower organizations with customized, secure spatial infrastructure tailored to their unique operational requirements.',
+      'From real-time sensor streaming to interactive 3D map views and analytical spatial pipelines, we deploy production-ready cloud GIS systems that bridge raw data and business decisions.',
+    ],
+    uses: ['Enterprise Web GIS & Spatial Portals', 'Automated Earth Observation data pipelines', 'Custom analytical dashboards & map viewers', 'Cross-departmental spatial data governance'],
+    benefits: ['Centralized geospatial data infrastructure', 'Real-time collaborative mapping and analytics', 'High-speed cloud performance on massive spatial layers'],
+    steps,
+    faqs: [
+      { q: 'What technologies power these platforms?', a: 'Open-source and enterprise geospatial stacks including PostGIS, GeoServer, GDAL, Maplibre, and customized cloud APIs.' },
+      { q: 'Can it integrate with existing ERP or internal databases?', a: 'Yes. Our platforms provide REST APIs and standard OGC endpoints (WMS, WFS, COG) for seamless interoperability.' },
+    ],
+    related: ['/products/swoad', '/solutions/environmental-monitoring'],
   },
 ]
 
 export const details = [...products, ...solutions]
 export const pathOf = (d: Detail) => `/${d.kind === 'product' ? 'products' : 'solutions'}/${d.slug}`
 
-const productIcons = ['Layers', 'Thermometer', 'Flame', 'Activity', 'Building2', 'Trees']
-const solutionIcons = ['Activity', 'Building2', 'Trees']
+const productIcons = ['Layers', 'Thermometer', 'Flame', 'Building2']
+const solutionIcons = ['Activity', 'Building2', 'Trees', 'Layers']
 
 export const nav = {
   products: products.map((p, i) => ({ label: p.name, to: pathOf(p), desc: p.tagline, icon: productIcons[i] || 'Layers' })),

@@ -159,42 +159,13 @@ export default function Home() {
               text="Explore technology and services designed to help organizations assess risk, understand environmental conditions, and make better-informed decisions."
             />
           </Reveal>
-          <div className="mt-14 grid gap-6 md:grid-cols-3 items-stretch">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
             {products.map((p, i) => (
               <Reveal key={p.slug} delay={i * 0.08} className="h-full">
                 <ProductCard p={p} />
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── From Observation to Insight ── */}
-      <section className="section-gradient section relative overflow-hidden text-white">
-        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-15" />
-        <div className="wrap relative">
-          <Reveal>
-            <SectionHeading dark title="From Observation to Insight" />
-          </Reveal>
-          <ol className="relative mt-14 grid gap-7 md:grid-cols-3 items-stretch">
-            <div className="absolute left-0 right-0 top-8 hidden h-px bg-gradient-to-r from-transparent via-emerald/40 to-transparent md:block" aria-hidden />
-            {[
-              ['01', 'Observe', 'Gather relevant geospatial information and imagery from satellites and sensors.'],
-              ['02', 'Understand', 'Analyze spatial information to identify patterns, changes, and meaningful insights.'],
-              ['03', 'Act', 'Support better-informed planning, decisions, and environmental interventions.'],
-            ].map(([n, t, d], i) => (
-              <Reveal key={n} delay={i * 0.1} className="h-full flex flex-col">
-                <Card3D className="h-full flex flex-col">
-                  <li className="relative flex flex-1 flex-col justify-start rounded-2xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur-sm transition-all duration-350 hover:border-emerald/40 hover:bg-white/[0.07] hover:shadow-[0_15px_35px_rgba(56,189,248,0.12)] list-none">
-                    <span className="font-display text-6xl font-bold text-emerald/40 leading-none">{n}</span>
-                    <div className="absolute -top-[1.5px] left-8 hidden h-3 w-3 -translate-y-1/2 rounded-full border-2 border-emerald bg-navy md:block" />
-                    <h3 className="mt-5 text-xl font-bold text-white">{t}</h3>
-                    <p className="mt-2.5 text-[14px] leading-relaxed text-white/70">{d}</p>
-                  </li>
-                </Card3D>
-              </Reveal>
-            ))}
-          </ol>
         </div>
       </section>
 
