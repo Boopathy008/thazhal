@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
 import { Btn, CTA, Reveal, SectionHeading, Card3D } from '../components/ui'
 import { BlogCard, ProductCard } from '../components/Cards'
-import { articles, partners, products, supporters } from '../data/content'
+import { articles, details, partners, products, solutions, supporters } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { Layers, Activity, Compass, ShieldCheck } from 'lucide-react'
 
@@ -147,7 +147,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Our products ── */}
+      {/* ── Our products & Solutions ── */}
       <section id="products" className="section-gradient section relative overflow-hidden text-white">
         <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-15" />
         <div className="wrap relative">
@@ -159,9 +159,9 @@ export default function Home() {
               text="Explore technology and services designed to help organizations assess risk, understand environmental conditions, and make better-informed decisions."
             />
           </Reveal>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
-            {products.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 0.08} className="h-full">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+            {details.map((p, i) => (
+              <Reveal key={`${p.kind}-${p.slug}`} delay={i * 0.06} className="h-full">
                 <ProductCard p={p} />
               </Reveal>
             ))}

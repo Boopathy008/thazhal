@@ -75,23 +75,6 @@ export const products: Detail[] = [
     ],
     related: ['/solutions/forest-intelligence', '/solutions/infrastructure-monitoring'],
   },
-  {
-    kind: 'product', slug: 'geospatial-platforms', name: 'Geospatial Platforms', variant: 0, image: '/images/infrastructure-monitoring.jpg',
-    tagline: 'Custom cloud portals and spatial intelligence engines.',
-    summary: 'Scalable cloud geospatial platforms, web GIS dashboards, and interactive spatial data engines built to integrate multi-source remote sensing data, vector analytics, and enterprise decision tools.',
-    overview: [
-      'Geospatial Platforms empower organizations with customized, secure spatial infrastructure tailored to their unique operational requirements.',
-      'From real-time sensor streaming to interactive 3D map views and analytical spatial pipelines, we deploy production-ready cloud GIS systems that bridge raw data and business decisions.',
-    ],
-    uses: ['Enterprise Web GIS & Spatial Portals', 'Automated Earth Observation data pipelines', 'Custom analytical dashboards & map viewers', 'Cross-departmental spatial data governance'],
-    benefits: ['Centralized geospatial data infrastructure', 'Real-time collaborative mapping and analytics', 'High-speed cloud performance on massive spatial layers'],
-    steps,
-    faqs: [
-      { q: 'What technologies power these platforms?', a: 'Open-source and enterprise geospatial stacks including PostGIS, GeoServer, GDAL, Maplibre, and customized cloud APIs.' },
-      { q: 'Can it integrate with existing ERP or internal databases?', a: 'Yes. Our platforms provide REST APIs and standard OGC endpoints (WMS, WFS, COG) for seamless interoperability.' },
-    ],
-    related: ['/products/swoad', '/solutions/environmental-monitoring'],
-  },
 ]
 
 export const solutions: Detail[] = [
@@ -168,7 +151,7 @@ export const solutions: Detail[] = [
 export const details = [...products, ...solutions]
 export const pathOf = (d: Detail) => `/${d.kind === 'product' ? 'products' : 'solutions'}/${d.slug}`
 
-const productIcons = ['Layers', 'Thermometer', 'Flame', 'Building2']
+const productIcons = ['Layers', 'Thermometer', 'Flame']
 const solutionIcons = ['Activity', 'Building2', 'Trees', 'Layers']
 
 export const nav = {

@@ -44,7 +44,7 @@ export function ProductCard({ p }: { p: Detail }) {
           <div className="scan-line pointer-events-none" />
           {/* Tag overlay */}
           <div className="absolute top-3 left-3 rounded-md bg-navy/80 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-emerald/90 backdrop-blur-sm">
-            GEO PRODUCT
+            {p.kind === 'product' ? 'PRODUCT' : 'SOLUTION'}
           </div>
         </div>
 
