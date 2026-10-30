@@ -7,14 +7,14 @@ import { usePageMeta } from '../hooks/usePageMeta'
 
 // 8 award images — most recent first. Place files in /public/images/awards/
 const awardImages = [
-  { src: '/images/awards/award-1.jpg', year: '2025', alt: 'Award 2025 – Recognition 1' },
-  { src: '/images/awards/award-2.jpg', year: '2025', alt: 'Award 2025 – Recognition 2' },
-  { src: '/images/awards/award-3.jpg', year: '2024', alt: 'Award 2024 – Recognition 3' },
-  { src: '/images/awards/award-4.jpg', year: '2024', alt: 'Award 2024 – Recognition 4' },
-  { src: '/images/awards/award-5.jpg', year: '2024', alt: 'Award 2024 – Recognition 5' },
-  { src: '/images/awards/award-6.jpg', year: '2023', alt: 'Award 2023 – Recognition 6' },
-  { src: '/images/awards/award-7.jpg', year: '2023', alt: 'Award 2023 – Recognition 7' },
-  { src: '/images/awards/award-8.jpg', year: '2022', alt: 'Award 2022 – Recognition 8' },
+  { src: '/images/awards/award-1.jpg', year: 'October 2026', alt: 'Award 1 – PM & CM Meeting', title: 'Met the Hon\'ble Prime Minister & Chief Minister of Tamil Nadu', desc: 'Had the opportunity to meet the Hon\'ble Prime Minister of India and the Hon\'ble Chief Minister of Tamil Nadu during the Chennai Metro event.' },
+  { src: '/images/awards/award-2.jpg', year: 'June 2026', alt: 'Award 2 – India-Bhutan Delegation', title: 'India-Led Deep-Tech Delegation to Bhutan', desc: 'Thazhal Geospatial Analytics participated in an India-led deep-tech delegation to Bhutan, organized by IN-SPACe. The delegation met with the Prime Minister of Bhutan.' },
+  { src: '/images/awards/award-3.jpg', year: 'October 2025', alt: 'Award 7 – MoU with NIT Calicut', title: 'MoU with NIT Calicut for Research Collaboration', desc: 'Signed a Memorandum of Understanding with NIT Calicut to advance research collaboration in geospatial technologies and earth observation.' },
+  { src: '/images/awards/award-4.jpg', year: 'July 2025', alt: 'Award 3 – National Geospatial Award', title: 'National Geospatial Award – Best Geospatial Startup', desc: 'Received the National Geospatial Award for Best Geospatial Startup from IIT Bombay, FOSSEE — recognizing innovation in open-source geospatial intelligence.' },
+  { src: '/images/awards/award-5.jpg', year: 'November 2024', alt: 'Award 4 – Operation Dronagiri', title: 'Selected Startup in Operation Dronagiri by DST', desc: 'Selected as a startup in "Operation Dronagiri" by the Department of Science and Technology (DST), India — supporting advanced drone-based geospatial initiatives.' },
+  { src: '/images/awards/award-6.jpg', year: 'March 2024', alt: 'Award 6 – HDFC Parivarthan Grant', title: 'HDFC Parivarthan Grant for Environmental Monitoring', desc: 'Awarded the HDFC Parivarthan grant in recognition of our impactful work in environmental monitoring using satellite-based geospatial intelligence.' },
+  { src: '/images/awards/award-7.jpg', year: 'January 2024', alt: 'Award 5 – JETRO Indo-Japan Challenge', title: 'Selected in JETRO – Indo-Japan Innovation Challenges', desc: 'Selected as a participating startup in the JETRO Indo-Japan Innovation Challenges, bridging Indian geospatial innovation with Japanese technology ecosystems.' },
+  { src: '/images/awards/award-8.jpg', year: 'January 2023', alt: 'Award 8 – Appreciation by District Collector', title: 'Appreciation Certificate by District Collector', desc: 'Awarded an Appreciation Certificate by District Collector Mr. Vishnu Venugopalan IAS for outstanding contributions to geospatial development in the district.' },
 ]
 
 export default function Awards() {
@@ -77,9 +77,9 @@ export default function Awards() {
                 const isLeft = idx % 2 === 0
                 return (
                   <Reveal key={idx} delay={idx * 0.07}>
-                    <div className={`relative flex flex-col items-center gap-6 lg:flex-row lg:items-center lg:gap-0 ${isLeft ? '' : 'lg:flex-row-reverse'}`}>
+                    <div className={`relative flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:gap-0 ${isLeft ? '' : 'lg:flex-row-reverse'}`}>
 
-                      {/* Image */}
+                      {/* Image side */}
                       <motion.div
                         initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -87,6 +87,12 @@ export default function Awards() {
                         transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
                         className={`w-full lg:w-[calc(50%-52px)] ${isLeft ? 'lg:pr-10' : 'lg:pl-10'}`}
                       >
+                        {/* Mobile year + title */}
+                        <div className="mb-3 flex items-center gap-2 lg:hidden">
+                          <Trophy size={14} className="text-emerald" />
+                          <span className="font-mono text-xs font-bold text-emerald">{award.year}</span>
+                        </div>
+
                         <div className="group relative overflow-hidden rounded-2xl border border-slate-200 shadow-md transition-all duration-400 hover:border-emerald/40 hover:shadow-2xl hover:shadow-navy/10">
                           <div className="aspect-[4/3] overflow-hidden bg-slate-100">
                             <img
@@ -103,7 +109,7 @@ export default function Awards() {
                                   ph.className = 'img-placeholder flex h-full w-full flex-col items-center justify-center gap-3 bg-slate-50 py-12'
                                   ph.innerHTML = `
                                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 16l5-5 4 4 3-3 6 5"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
-                                    <span style="font-family:monospace;font-size:12px;color:#94a3b8;text-align:center">Award Image ${idx + 1}<br/>Drop: /public/images/awards/award-${idx + 1}.jpg</span>
+                                    <span style="font-family:monospace;font-size:12px;color:#94a3b8;text-align:center">Award Image ${idx + 1}</span>
                                   `
                                   parent.appendChild(ph)
                                 }
@@ -111,6 +117,12 @@ export default function Awards() {
                             />
                           </div>
                           <div className="scan-line pointer-events-none" />
+                        </div>
+
+                        {/* Content below image — mobile only */}
+                        <div className="mt-4 lg:hidden">
+                          <h3 className="text-lg font-bold leading-snug text-navy">{award.title}</h3>
+                          <p className="mt-2 text-sm leading-relaxed text-slate-500">{award.desc}</p>
                         </div>
                       </motion.div>
 
@@ -125,17 +137,23 @@ export default function Awards() {
                         >
                           <Trophy size={20} className="text-navy" aria-hidden />
                         </motion.div>
-                        <span className="font-mono text-xs font-bold tracking-wider text-emerald">{award.year}</span>
+                        <span className="font-mono text-[11px] font-bold tracking-wider text-emerald text-center leading-tight">{award.year}</span>
                       </div>
 
-                      {/* Mobile year badge */}
-                      <div className="flex items-center gap-2 self-start lg:hidden">
-                        <span className="flex h-2 w-2 rounded-full bg-emerald shadow-[0_0_8px_rgba(56,189,248,0.8)]" />
-                        <span className="font-mono text-xs font-bold text-emerald">{award.year}</span>
-                      </div>
-
-                      {/* Spacer — other side on desktop */}
-                      <div className="hidden lg:block lg:w-[calc(50%-52px)]" />
+                      {/* Text content — opposite side, desktop only */}
+                      <motion.div
+                        initial={{ opacity: 0, x: isLeft ? 50 : -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: '-60px' }}
+                        transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
+                        className={`hidden lg:flex lg:w-[calc(50%-52px)] lg:flex-col ${isLeft ? 'lg:pl-10 lg:items-start lg:text-left' : 'lg:pr-10 lg:items-end lg:text-right'}`}
+                      >
+                        <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald/30 bg-emerald/10 px-3 py-1">
+                          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald">{award.year}</span>
+                        </div>
+                        <h3 className="text-xl font-bold leading-snug text-navy sm:text-2xl">{award.title}</h3>
+                        <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-slate-500">{award.desc}</p>
+                      </motion.div>
                     </div>
                   </Reveal>
                 )
