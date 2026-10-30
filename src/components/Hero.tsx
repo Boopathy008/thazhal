@@ -143,7 +143,7 @@ export default function Hero() {
 
           {/* CTA buttons */}
           <motion.div {...item(4, reduce)} className="mt-9 flex flex-wrap items-center gap-3.5">
-            <Btn to="/#solutions">Explore Our Solutions</Btn>
+            <Btn to="/#products">Explore Our Products</Btn>
             <Btn to="/about" variant="ghost">Discover THAZHAL</Btn>
           </motion.div>
         </div>

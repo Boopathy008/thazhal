@@ -99,11 +99,17 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Explore */}
+          {/* Explore / Company */}
           <div>
             <h4 className="mb-5 text-[11px] font-mono font-bold uppercase tracking-[0.22em] text-emerald">Explore</h4>
             <ul className="space-y-3">
-              {[['Home', '/'], ['About', '/about'], ['Blog', '/blog'], ['Contact', '/contact']].map(([l, t]) => (
+              {[
+                ['Home', '/'],
+                ['About', '/about'],
+                ['Blog', '/blog'],
+                ['Awards & Recognitions', '/awards'],
+                ['Contact', '/contact'],
+              ].map(([l, t]) => (
                 <li key={t}>
                   <Link
                     className="group inline-flex items-center gap-2 text-[14px] text-white/60 transition-all duration-200 hover:translate-x-1.5 hover:text-white"

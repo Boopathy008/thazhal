@@ -6,6 +6,7 @@ import ScrollToTop from './components/ScrollToTop'
 import MagicCursor from './components/MagicCursor'
 import Home from './pages/Home'
 import About from './pages/About'
+import Awards from './pages/Awards'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import Contact from './pages/Contact'
@@ -73,6 +74,7 @@ export default function App() {
             <Routes location={loc}>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/awards" element={<Awards />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />

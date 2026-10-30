@@ -27,19 +27,19 @@ export const products: Detail[] = [
   {
     kind: 'product', slug: 'swoad', name: 'SWOAD', variant: 0, image: '/images/swoad.jpg',
     tagline: 'A THAZHAL offering for geospatial intelligence.',
-    summary: 'SWOAD is a THAZHAL offering. Replace this introduction with the official product description when it is available.',
+    summary: 'SWOAD (Surface Water Observation and Assessment Dashboard) combines multi-satellite earth observation with localized hydro-spatial intelligence to deliver continuous water surface tracking, catchment capacity estimation, and early anomaly alerts.',
     overview: [
-      'This page is driven by structured data in src/data/content.ts. The official SWOAD description, capabilities and terminology should be added there.',
-      'Until then, the content on this page describes general geospatial workflows and makes no claims about specific SWOAD features.',
+      'SWOAD serves municipal water authorities, irrigation boards, and environmental stewards with near-real-time digital surface water twins.',
+      'Integrating Synthetic Aperture Radar (SAR) with high-resolution multispectral feeds ensures round-the-clock surface water visibility through cloud cover and extreme storms.',
     ],
-    uses: ['Use case to be confirmed', 'Application area to be confirmed', 'Intended users to be confirmed'],
-    benefits: ['Benefit to be confirmed', 'Outcome to be confirmed', 'Integration details to be confirmed'],
+    uses: ['Reservoir and lake capacity monitoring', 'Flood extent mapping and early warning', 'Surface water balance and drainage analysis', 'Industrial water security audits'],
+    benefits: ['Automated 24/7 hydrological observation', 'Cloud-penetrating radar analytics', 'Actionable alerts for decision-makers'],
     steps,
     faqs: [
-      { q: 'What is SWOAD?', a: 'SWOAD is a THAZHAL offering. Official details will be published here. Contact the team to learn more.' },
-      { q: 'Who is it for?', a: 'Intended audiences will be confirmed with the official description.' },
+      { q: 'What is SWOAD?', a: 'SWOAD is THAZHAL’s flagship surface water observation and intelligence dashboard designed for proactive water resources governance.' },
+      { q: 'Who is it for?', a: 'Water resource departments, irrigation engineers, agricultural cooperatives, and environmental compliance teams.' },
     ],
-    related: ['/products/climate-audit', '/solutions/environmental-monitoring'],
+    related: ['/products/environmental-monitoring', '/products/forest-intelligence'],
   },
   {
     kind: 'product', slug: 'climate-audit', name: 'Climate Audit', variant: 1, image: '/images/climate-audit.jpg',
@@ -56,7 +56,7 @@ export const products: Detail[] = [
       { q: 'What does a Climate Audit deliver?', a: 'Deliverables depend on scope and are agreed with you at the start of a project.' },
       { q: 'Does it replace regulatory assessments?', a: 'No. It provides spatial insight that can inform planning; it is not a certification.' },
     ],
-    related: ['/products/fire-audit', '/solutions/environmental-monitoring'],
+    related: ['/products/fire-audit', '/products/environmental-monitoring'],
   },
   {
     kind: 'product', slug: 'fire-audit', name: 'Fire Audit', variant: 2, image: '/images/fire-audit.jpg',
@@ -73,7 +73,58 @@ export const products: Detail[] = [
       { q: 'Can Fire Audit predict fires?', a: 'No. It supports risk assessment and planning with spatial information.' },
       { q: 'What areas can it cover?', a: 'Coverage is agreed per project. Contact the team to discuss your area.' },
     ],
-    related: ['/products/climate-audit', '/solutions/infrastructure-monitoring'],
+    related: ['/products/forest-intelligence', '/products/infrastructure-monitoring'],
+  },
+  {
+    kind: 'product', slug: 'environmental-monitoring', name: 'Environmental Monitoring', variant: 3, image: '/images/environmental-monitoring.jpg',
+    tagline: 'Observe, assess and understand changing environments.',
+    summary: 'Understand changing environmental conditions with geospatial monitoring and imagery analytics designed to support observation, assessment, and informed environmental decisions.',
+    overview: [
+      'Environmental monitoring uses geospatial data and imagery to observe how landscapes, vegetation and water systems change over time.',
+      'Delivers automated spectral indices (NDVI, NDWI, EVI) and time-series change detection across vast geographies.',
+    ],
+    uses: ['Environmental change observation', 'Geospatial imagery analysis', 'Land and landscape assessment', 'Environmental reporting and insights'],
+    benefits: ['Consistent observation over large areas', 'Evidence for environmental decisions', 'Clear, shareable reporting'],
+    steps,
+    faqs: [
+      { q: 'What data is used?', a: 'Sources depend on the question and area. High-cadence satellite constellations, SAR, and multispectral sensors are agreed during scoping.' },
+      { q: 'Can this be ongoing?', a: 'Monitoring can be configured for automated periodic reporting or continuous alert streams.' },
+    ],
+    related: ['/products/swoad', '/products/forest-intelligence'],
+  },
+  {
+    kind: 'product', slug: 'infrastructure-monitoring', name: 'Infrastructure Monitoring', variant: 4, image: '/images/infrastructure-monitoring.jpg',
+    tagline: 'A clearer view of critical infrastructure.',
+    summary: 'Gain a clearer view of critical infrastructure through geospatial information, imagery analysis, and monitoring workflows that support assessment and operational planning.',
+    overview: [
+      'Infrastructure monitoring applies geospatial information, SAR interferometry (InSAR), and multispectral analytics to linear assets, bridges, utilities, and industrial facilities.',
+      'Enables engineering teams to detect structural displacement, corridor encroachment, and slope instability long before failures occur.',
+    ],
+    uses: ['Infrastructure visibility & asset corridors', 'Millimeter-scale surface displacement', 'Corridor encroachment tracking', 'Risk-informed maintenance planning'],
+    benefits: ['Network-wide visibility across linear assets', 'Proactive identification of structural displacement', 'Optimized field inspection scheduling'],
+    steps,
+    faqs: [
+      { q: 'Which assets can be assessed?', a: 'Highways, rail corridors, bridges, pipelines, dams, energy grids, and industrial installations.' },
+      { q: 'Does it replace on-site inspection?', a: 'No. It prioritizes and guides field inspections with macro-level spatial telemetry.' },
+    ],
+    related: ['/products/fire-audit', '/products/environmental-monitoring'],
+  },
+  {
+    kind: 'product', slug: 'forest-intelligence', name: 'Forest Intelligence', variant: 5, image: '/images/environmental-monitoring.jpg',
+    tagline: 'Canopy health, biomass auditing, and illegal logging surveillance.',
+    summary: 'High-cadence satellite intelligence to monitor forest ecosystems, estimate above-ground biomass, detect illegal deforestation, and protect biodiversity corridors.',
+    overview: [
+      'Forest Intelligence applies multi-temporal radar and high-resolution optical imagery to track changes in canopy density, tree cover loss, and habitat fragmentation.',
+      'Designed for conservation trusts, forest departments, carbon credit auditors, and commercial forestry managers.',
+    ],
+    uses: ['Canopy cover & deforestation tracking', 'Above-ground biomass & carbon stock estimation', 'Wildfire burn-severity assessment', 'Biodiversity corridor mapping'],
+    benefits: ['Rapid detection of illegal logging and clearing', 'Verifiable spatial evidence for carbon projects', 'Automated alerts on forest degradation'],
+    steps,
+    faqs: [
+      { q: 'How frequently is forest data updated?', a: 'Weekly to daily updates depending on the satellite constellation chosen for your target area.' },
+      { q: 'Can it differentiate between seasonal changes and deforestation?', a: 'Yes. Our time-series AI models account for seasonal leaf-fall and phenology to prevent false positives.' },
+    ],
+    related: ['/products/environmental-monitoring', '/products/fire-audit'],
   },
 ]
 
@@ -93,7 +144,7 @@ export const solutions: Detail[] = [
       { q: 'What data is used?', a: 'Sources depend on the question and area. They are agreed during scoping.' },
       { q: 'Can this be ongoing?', a: 'Monitoring can be one-off or repeated; discuss cadence with the team.' },
     ],
-    related: ['/products/climate-audit', '/products/swoad'],
+    related: ['/solutions/forest-intelligence', '/products/swoad'],
   },
   {
     kind: 'solution', slug: 'infrastructure-monitoring', name: 'Infrastructure Monitoring', variant: 4, image: '/images/infrastructure-monitoring.jpg',
@@ -110,16 +161,41 @@ export const solutions: Detail[] = [
       { q: 'Which assets can be assessed?', a: 'Roads, bridges, industrial sites and similar assets, depending on scope.' },
       { q: 'Does it replace on-site inspection?', a: 'No. It complements field inspection with spatial context.' },
     ],
-    related: ['/products/fire-audit', '/solutions/environmental-monitoring'],
+    related: ['/solutions/forest-intelligence', '/products/infrastructure-monitoring'],
+  },
+  {
+    kind: 'solution', slug: 'forest-intelligence', name: 'Forest Intelligence', variant: 5, image: '/images/environmental-monitoring.jpg',
+    tagline: 'Canopy health, biomass auditing, and illegal logging surveillance.',
+    summary: 'High-cadence satellite intelligence to monitor forest ecosystems, estimate above-ground biomass, detect illegal deforestation, and protect biodiversity corridors.',
+    overview: [
+      'Forest Intelligence applies multi-temporal radar and optical satellite data to track canopy health, land clearing, and carbon sequestration potentials.',
+      'Enables government agencies and conservation organizations to enforce ecological governance and protect critical green cover.',
+    ],
+    uses: ['Canopy cover loss detection', 'Biomass and carbon stock analysis', 'Forest fire recovery monitoring', 'Protected reserve surveillance'],
+    benefits: ['Continuous spatial evidence of canopy health', 'Independent verification for ESG and forestry standards', 'Early alert on logging activities'],
+    steps,
+    faqs: [
+      { q: 'What sensors are utilized?', a: 'Optical multispectral satellites, SAR (Synthetic Aperture Radar), and LiDAR elevation datasets.' },
+      { q: 'Can it track historical trends?', a: 'Yes. Historical archive analysis going back over two decades can be conducted.' },
+    ],
+    related: ['/solutions/environmental-monitoring', '/products/forest-intelligence'],
   },
 ]
 
 export const details = [...products, ...solutions]
 export const pathOf = (d: Detail) => `/${d.kind === 'product' ? 'products' : 'solutions'}/${d.slug}`
 
+const productIcons = ['Layers', 'Thermometer', 'Flame', 'Activity', 'Building2', 'Trees']
+const solutionIcons = ['Activity', 'Building2', 'Trees']
+
 export const nav = {
-  products: products.map((p, i) => ({ label: p.name, to: pathOf(p), desc: p.tagline, icon: ['Layers', 'Thermometer', 'Flame'][i] })),
-  solutions: solutions.map((s, i) => ({ label: s.name, to: pathOf(s), desc: s.tagline, icon: ['Trees', 'Building2'][i] })),
+  products: products.map((p, i) => ({ label: p.name, to: pathOf(p), desc: p.tagline, icon: productIcons[i] || 'Layers' })),
+  solutions: solutions.map((s, i) => ({ label: s.name, to: pathOf(s), desc: s.tagline, icon: solutionIcons[i] || 'Trees' })),
+  company: [
+    { label: 'About', to: '/about', desc: 'Our mission, team, and geospatial vision.', icon: 'Building2' },
+    { label: 'Blogs', to: '/blog', desc: 'Insights, research, and technical articles.', icon: 'Layers' },
+    { label: 'Awards & Recognitions', to: '/awards', desc: 'Honors, milestones, and industry achievements.', icon: 'Flame' },
+  ],
 }
 
 export type Article = { slug: string; title: string; category: string; author?: string; date: string; excerpt: string; body: string[]; variant: number; image?: string }

@@ -6,11 +6,24 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Building2, ChevronDown, Flame, Layers, Menu, Thermometer, Trees, X, LucideIcon } from 'lucide-react'
+import { Activity, Award, Building2, ChevronDown, Flame, Layers, Menu, Thermometer, Trees, X, LucideIcon } from 'lucide-react'
 import { nav } from '../data/content'
 
-const icons: Record<string, LucideIcon> = { Layers, Thermometer, Flame, Trees, Building2 }
-const groups = [{ key: 'Products', items: nav.products }, { key: 'Solutions', items: nav.solutions }]
+const icons: Record<string, LucideIcon> = {
+  Layers,
+  Thermometer,
+  Flame,
+  Trees,
+  Building2,
+  Activity,
+  Award,
+}
+
+const groups = [
+  { key: 'Products', items: nav.products },
+  { key: 'Solutions', items: nav.solutions },
+  { key: 'Company', items: nav.company },
+]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -220,7 +233,7 @@ export default function Navbar() {
               ))}
 
               {/* Static links */}
-              {['About', 'Blog', 'Contact'].map((item) => {
+              {['Contact'].map((item) => {
                 const path = `/${item.toLowerCase()}`
                 return (
                   <NavLink
@@ -346,22 +359,6 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
-
-              <Link
-                to="/about"
-                onClick={() => setMobile(false)}
-                className="flex items-center justify-between border-b border-white/10 py-4 text-xl font-bold text-white transition-colors hover:text-emerald active:text-emerald"
-              >
-                <span>About</span>
-              </Link>
-
-              <Link
-                to="/blog"
-                onClick={() => setMobile(false)}
-                className="flex items-center justify-between border-b border-white/10 py-4 text-xl font-bold text-white transition-colors hover:text-emerald active:text-emerald"
-              >
-                <span>Blog</span>
-              </Link>
 
               <Link
                 to="/contact"

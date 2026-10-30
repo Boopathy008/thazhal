@@ -6,8 +6,8 @@
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
 import { Btn, CTA, Reveal, SectionHeading, Card3D } from '../components/ui'
-import { BlogCard, ProductCard, SolutionBlock } from '../components/Cards'
-import { articles, partners, products, solutions, supporters } from '../data/content'
+import { BlogCard, ProductCard } from '../components/Cards'
+import { articles, partners, products, supporters } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { Layers, Activity, Compass, ShieldCheck } from 'lucide-react'
 
@@ -148,7 +148,7 @@ export default function Home() {
       </section>
 
       {/* ── Our products ── */}
-      <section className="section-gradient section relative overflow-hidden text-white">
+      <section id="products" className="section-gradient section relative overflow-hidden text-white">
         <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-15" />
         <div className="wrap relative">
           <Reveal>
@@ -166,20 +166,6 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── Solutions ── */}
-      <section id="solutions" className="bg-white section">
-        <div className="wrap space-y-24">
-          <Reveal>
-            <SectionHeading title="Technology That Connects Data to Decisions" />
-          </Reveal>
-          {solutions.map((s, i) => (
-            <Reveal key={s.slug}>
-              <SolutionBlock s={s} flip={i % 2 === 1} light />
-            </Reveal>
-          ))}
         </div>
       </section>
 
