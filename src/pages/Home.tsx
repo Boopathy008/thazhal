@@ -55,6 +55,22 @@ export default function Home() {
     <>
       <Hero />
 
+      {/* ── All Partners & Supporters Marquee in One Row ── */}
+      <section className="bg-white py-12 border-b border-slate-100">
+        <div className="wrap mb-8">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Partners & Backing"
+              title="Working with Leading Organisations & Supported By"
+              text="Building meaningful connections with premier institutions championing our geospatial and environmental innovations."
+            />
+          </Reveal>
+        </div>
+        <div>
+          <LogoMarquee list={[...partners, ...supporters]} />
+        </div>
+      </section>
+
       {/* ── About us ── */}
       <section className="relative overflow-hidden bg-white section">
         <div aria-hidden className="pointer-events-none absolute inset-0 dot-grid opacity-60" />
@@ -134,22 +150,6 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── All Partners & Supporters Marquee in One Row ── */}
-      <section className="bg-white section">
-        <div className="wrap">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Partners & Backing"
-              title="Working with Leading Organisations & Supported By"
-              text="Building meaningful connections with premier institutions championing our geospatial and environmental innovations."
-            />
-          </Reveal>
-        </div>
-        <div className="mt-12">
-          <LogoMarquee list={[...partners, ...supporters]} />
         </div>
       </section>
 
