@@ -101,14 +101,10 @@ export default function Hero() {
           {/* Heading — tight tracking, editorial feel */}
           <motion.h1
             {...item(1, reduce)}
-            className="text-left font-display text-[42px] font-bold leading-[1.04] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl"
+            className="text-left font-display text-[44px] font-bold leading-[1.05] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl"
           >
-            See the Earth{' '}
-            <span className="text-emerald">Differently.</span>
-            <br />
-            Build a More{' '}
-            <span className="text-emerald">Resilient</span>{' '}
-            Future.
+            Intelligence From{' '}
+            <span className="text-emerald">Space.</span>
           </motion.h1>
 
           {/* Description */}
@@ -127,7 +123,7 @@ export default function Hero() {
             className="mt-6 flex flex-wrap items-center gap-2.5"
           >
             {[
-              { icon: Satellite, label: 'Satellite Observation' },
+              { icon: Satellite, label: 'Geospatial +AI' },
               { icon: Orbit, label: 'Real-Time Analytics' },
               { icon: Globe, label: '3D Digital Twin' },
             ].map(({ icon: Icon, label }) => (
