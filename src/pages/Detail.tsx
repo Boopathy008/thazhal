@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
-import { Check } from 'lucide-react'
-import { Btn, CTA, Reveal, SectionHeading, Visual } from '../components/ui'
+import { ArrowRight, Check, Trees, Leaf, LineChart, ShieldAlert } from 'lucide-react'
+import { Btn, Card3D, CTA, Reveal, SectionHeading, Visual } from '../components/ui'
 import { Detail as D, details, pathOf } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
 import NotFound from './NotFound'
@@ -12,6 +12,8 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
   if (!d) return <NotFound />
   const related = d.related.map((p) => details.find((x) => pathOf(x) === p)).filter(Boolean) as D[]
   const label = kind === 'product' ? 'Product' : 'Solution'
+  const isForest = slug === 'forest-intelligence'
+
   return (
     <>
       <section className="relative flex min-h-[60vh] items-end overflow-hidden bg-navy pb-16 pt-32">
@@ -25,17 +27,112 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
         </div>
       </section>
 
-      <section className="section"><div className="wrap grid gap-12 lg:grid-cols-3">
-        <Reveal><SectionHeading title="Overview" /></Reveal>
-        <Reveal className="space-y-5 text-lg text-slate-700 lg:col-span-2"><p className="font-display text-2xl text-navy">{d.summary}</p>{d.overview.map((p) => <p key={p}>{p}</p>)}</Reveal>
-      </div></section>
+      {isForest ? (
+        /* ── Custom Forest Intelligence Section ── */
+        <section className="bg-white section">
+          <div className="wrap space-y-16">
+            <Reveal>
+              <div className="max-w-4xl">
+                <span className="hud-tag mb-4 inline-flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald animate-ping-slow" />
+                  Ecosystem Intelligence
+                </span>
+                <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl">
+                  Monitor Forest Health, Track Deforestation, and Support Carbon Assessment with Thazhal’s Geospatial Intelligence
+                </h2>
+                <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl">
+                  Leverage satellite imagery, remote sensing, GIS, and AI-powered analytics to monitor forest ecosystems,
+                  assess vegetation changes, and support afforestation and carbon assessment initiatives.
+                </p>
+                <ul className="mt-6 space-y-3">
+                  {[
+                    'Canopy Density & Tree Cover Change Detection',
+                    'Plantation Monitoring & Carbon Stock Estimation',
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-base font-semibold text-navy">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald/20 text-emerald">
+                        <ArrowRight size={14} />
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
 
-      <section className="bg-white section"><div className="wrap grid gap-14 md:grid-cols-2">
-        <Reveal><h2 className="text-3xl font-bold">{kind === 'product' ? 'Intended use cases' : 'Potential applications'}</h2>
-          <ul className="mt-6 space-y-3">{d.uses.map((u) => <li key={u} className="flex gap-3"><Check className="mt-0.5 shrink-0 text-emerald" size={20} aria-hidden />{u}</li>)}</ul></Reveal>
-        <Reveal delay={0.1}><h2 className="text-3xl font-bold">Benefits</h2>
-          <ul className="mt-6 space-y-3">{d.benefits.map((u) => <li key={u} className="flex gap-3"><Check className="mt-0.5 shrink-0 text-emerald" size={20} aria-hidden />{u}</li>)}</ul></Reveal>
-      </div></section>
+            {/* 3 Interactive 3D Cards */}
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 items-stretch pt-4">
+              {[
+                {
+                  id: 'card-1',
+                  num: '01',
+                  icon: Trees,
+                  title: 'Forest Health Monitoring',
+                  desc: 'Card 1 content description will be added here.',
+                },
+                {
+                  id: 'card-2',
+                  num: '02',
+                  icon: LineChart,
+                  title: 'Carbon Stock Estimation & Plantation Planning',
+                  desc: 'Card 2 content description will be added here.',
+                },
+                {
+                  id: 'card-3',
+                  num: '03',
+                  icon: ShieldAlert,
+                  title: 'Deforestation & Biodiversity Monitoring',
+                  desc: 'Card 3 content description will be added here.',
+                },
+              ].map((card, i) => {
+                const Icon = card.icon
+                return (
+                  <Reveal key={card.id} delay={i * 0.1} className="h-full">
+                    <Card3D className="h-full">
+                      <div className="group relative flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-350 hover:border-emerald/40 hover:shadow-xl hover:shadow-navy/5">
+                        <div>
+                          <div className="flex items-center justify-between">
+                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald/15 text-emerald transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                              <Icon size={24} aria-hidden />
+                            </div>
+                            <span className="font-mono text-2xl font-bold text-slate-300 group-hover:text-emerald transition-colors">
+                              {card.num}
+                            </span>
+                          </div>
+                          <h3 className="mt-6 text-xl font-bold leading-snug text-navy group-hover:text-forest transition-colors">
+                            {card.title}
+                          </h3>
+                          <p className="mt-3 text-[14px] leading-relaxed text-slate-500">
+                            {card.desc}
+                          </p>
+                        </div>
+                        <div className="mt-8 pt-4 border-t border-slate-100 flex items-center text-xs font-mono font-semibold uppercase tracking-wider text-emerald">
+                          <span>Intelligence Layer</span>
+                        </div>
+                      </div>
+                    </Card3D>
+                  </Reveal>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+      ) : (
+        /* ── Default Sections for other pages ── */
+        <>
+          <section className="section"><div className="wrap grid gap-12 lg:grid-cols-3">
+            <Reveal><SectionHeading title="Overview" /></Reveal>
+            <Reveal className="space-y-5 text-lg text-slate-700 lg:col-span-2"><p className="font-display text-2xl text-navy">{d.summary}</p>{d.overview.map((p) => <p key={p}>{p}</p>)}</Reveal>
+          </div></section>
+
+          <section className="bg-white section"><div className="wrap grid gap-14 md:grid-cols-2">
+            <Reveal><h2 className="text-3xl font-bold">{kind === 'product' ? 'Intended use cases' : 'Potential applications'}</h2>
+              <ul className="mt-6 space-y-3">{d.uses.map((u) => <li key={u} className="flex gap-3"><Check className="mt-0.5 shrink-0 text-emerald" size={20} aria-hidden />{u}</li>)}</ul></Reveal>
+            <Reveal delay={0.1}><h2 className="text-3xl font-bold">Benefits</h2>
+              <ul className="mt-6 space-y-3">{d.benefits.map((u) => <li key={u} className="flex gap-3"><Check className="mt-0.5 shrink-0 text-emerald" size={20} aria-hidden />{u}</li>)}</ul></Reveal>
+          </div></section>
+        </>
+      )}
 
       <section className="bg-forest section"><div className="wrap">
         <Reveal><SectionHeading dark title={kind === 'product' ? 'How it works' : 'Geospatial intelligence in practice'} /></Reveal>
