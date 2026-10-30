@@ -7,9 +7,8 @@ import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
 import { Btn, CTA, Reveal, SectionHeading, Card3D } from '../components/ui'
 import { BlogCard, ProductCard } from '../components/Cards'
-import { articles, details, partners, products, solutions, supporters } from '../data/content'
+import { articles, details, partners, supporters } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
-import { Layers, Activity, Compass, ShieldCheck } from 'lucide-react'
 
 export function LogoMarquee({ list, slow = false }: { list: { name: string; logo: string }[]; slow?: boolean }) {
   const items = [...list, ...list]
@@ -55,37 +54,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-
-      {/* ── Stats strip — geospatial data metrics ── */}
-      <section id="impact" className="relative border-y border-white/10 section-gradient py-12 text-white overflow-hidden">
-        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-20" />
-        <div className="wrap relative grid grid-cols-2 gap-5 sm:grid-cols-4">
-          {[
-            { icon: Layers,     label: 'Observation Satellites', val: '24/7',   desc: 'Real-time constellation links' },
-            { icon: Activity,   label: 'Analytics Resolution',   val: '< 0.5m', desc: 'High-precision multispectral' },
-            { icon: Compass,    label: 'Monitored Acreage',      val: '1.2M+',  desc: 'Land, forest & water systems' },
-            { icon: ShieldCheck,label: 'Predictive Accuracy',    val: '99.4%',  desc: 'AI-driven hazard modeling' },
-          ].map((stat, idx) => {
-            const Icon = stat.icon
-            return (
-              <Reveal key={stat.label} delay={idx * 0.08}>
-                <div className="group relative flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-md transition-all duration-350 hover:border-emerald/50 hover:bg-white/[0.07] hover:shadow-[0_12px_30px_rgba(56,189,248,0.15)]">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald/15 text-emerald transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                      <Icon size={20} aria-hidden />
-                    </div>
-                    <span className="font-display text-2xl font-bold text-white sm:text-3xl">{stat.val}</span>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-emerald">{stat.label}</h4>
-                    <p className="mt-1 text-[12px] text-white/60">{stat.desc}</p>
-                  </div>
-                </div>
-              </Reveal>
-            )
-          })}
-        </div>
-      </section>
 
       {/* ── About us ── */}
       <section className="relative overflow-hidden bg-white section">
