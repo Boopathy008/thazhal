@@ -80,23 +80,14 @@ export default function Navbar() {
     <>
       <header
         ref={ref}
-        className={`fixed inset-x-0 top-0 z-[100] transition-all duration-500 ${
-          solid ? 'py-2.5' : 'py-3 sm:py-4'
+        className={`fixed inset-x-0 top-0 z-[100] transition-all duration-300 border-b ${
+          solid
+            ? 'border-white/15 bg-[#090A0F]/95 shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-2xl'
+            : 'border-white/10 bg-[#090A0F]/90 shadow-[0_12px_36px_rgba(0,0,0,0.3)] backdrop-blur-xl'
         }`}
       >
-        <div className="wrap">
-          <motion.div
-            animate={{
-              y: solid ? 0 : 2,
-              scale: solid ? 0.99 : 1,
-            }}
-            transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-            className={`flex h-[66px] items-center justify-between rounded-2xl px-5 sm:px-6 transition-all duration-500 border ${
-              solid
-                ? 'border-white/15 bg-[#090A0F]/95 shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-2xl'
-                : 'border-white/10 bg-[#090A0F]/85 shadow-[0_12px_36px_rgba(0,0,0,0.3)] backdrop-blur-xl'
-            }`}
-          >
+        <div className="w-full px-5 sm:px-8">
+          <div className="flex h-[68px] items-center justify-between">
             {/* Logo */}
             <Link
               to="/"
@@ -296,7 +287,7 @@ export default function Navbar() {
             >
               {mobile ? <X size={24} /> : <Menu size={24} />}
             </button>
-          </motion.div>
+          </div>
         </div>
       </header>
 

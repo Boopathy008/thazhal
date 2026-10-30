@@ -137,31 +137,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Our Network & Supported By (with animated borders) ── */}
+      {/* ── All Partners & Supporters Marquee in One Row ── */}
       <section className="bg-white section">
         <div className="wrap">
           <Reveal>
             <SectionHeading
-              eyebrow="Our network"
-              title="Working with Leading Organisations"
-              text="Building meaningful connections with organizations working toward a more informed, resilient, and sustainable future."
+              eyebrow="Partners & Backing"
+              title="Working with Leading Organisations & Supported By"
+              text="Building meaningful connections with premier institutions championing our geospatial and environmental innovations."
             />
           </Reveal>
         </div>
         <div className="mt-12">
-          <LogoMarquee list={partners} />
-        </div>
-        <div className="wrap mt-20">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Backed by excellence"
-              title="Supported By"
-              text="Organizations and institutions championing our geospatial and environmental innovations."
-            />
-          </Reveal>
-          <div className="mt-10">
-            <SupporterGrid list={supporters} />
-          </div>
+          <LogoMarquee list={[...partners, ...supporters]} />
         </div>
       </section>
 
