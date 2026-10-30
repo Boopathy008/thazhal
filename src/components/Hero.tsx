@@ -83,24 +83,9 @@ export default function Hero() {
       {/* ── Hero content — strictly left-aligned ── */}
       <div className="wrap pointer-events-none relative z-10 w-full py-28 sm:py-36">
         <div className="pointer-events-auto max-w-lg text-left lg:max-w-xl">
-
-          {/* Eyebrow glass badge */}
-          <motion.div
-            {...item(0, reduce)}
-            className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 shadow-lg shadow-black/20 backdrop-blur-md ring-1 ring-white/10"
-          >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping-slow rounded-full bg-emerald opacity-70" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald" />
-            </span>
-            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-white/90">
-              Geospatial Intelligence · Environmental Innovation
-            </span>
-          </motion.div>
-
           {/* Heading — tight tracking, editorial feel */}
           <motion.h1
-            {...item(1, reduce)}
+            {...item(0, reduce)}
             className="text-left font-display text-[44px] font-bold leading-[1.05] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl"
           >
             Intelligence From{' '}
@@ -109,7 +94,7 @@ export default function Hero() {
 
           {/* Description */}
           <motion.p
-            {...item(2, reduce)}
+            {...item(1, reduce)}
             className="mt-6 max-w-md text-left text-[15px] leading-[1.7] text-white/65 sm:text-base"
           >
             THAZHAL transforms geospatial data into meaningful intelligence, helping
