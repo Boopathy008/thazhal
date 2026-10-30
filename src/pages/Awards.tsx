@@ -1,62 +1,24 @@
-import { Award, Trophy, Star, ShieldCheck, Sparkles } from 'lucide-react'
-import { CTA, Reveal, SectionHeading, Card3D } from '../components/ui'
+import { Trophy } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { CTA, Reveal, SectionHeading } from '../components/ui'
 import { LogoMarquee } from './Home'
 import { partners, supporters } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
 
-const recognitions = [
-  {
-    title: 'Top Geospatial Innovation 2025',
-    organization: 'National Geospatial & Earth Observation Forum',
-    year: '2025',
-    category: 'Innovation in Remote Sensing',
-    description: 'Recognized for pioneering automated surface water monitoring and predictive environmental change analytics with SWOAD.',
-    badge: 'Winner',
-  },
-  {
-    title: 'Excellence in Environmental Stewardship',
-    organization: 'Climate Tech & Sustainable Future Summit',
-    year: '2024',
-    category: 'Climate Impact & Sustainability',
-    description: 'Honored for building high-resolution climate hazard models supporting vulnerable watersheds and biodiversity reserves.',
-    badge: 'Special Mention',
-  },
-  {
-    title: 'Infrastructure Resilience Leadership Award',
-    organization: 'Smart Infrastructure & Urban Geospatial Consortium',
-    year: '2024',
-    category: 'Critical Infrastructure Analytics',
-    description: 'Awarded for developing autonomous radar and satellite observation workflows for highway, bridge, and energy network safety.',
-    badge: 'Gold Award',
-  },
-  {
-    title: 'National Agritech Spatial Innovation Grant',
-    organization: 'Department of Science & Innovation',
-    year: '2024',
-    category: 'Agritech & Precision Mapping',
-    description: 'Supported and felicitated for AI-powered automated farm boundary delineation empowering smallholder farmers and crop insurance auditors.',
-    badge: 'Selected Cohort',
-  },
-  {
-    title: 'Emerging DeepTech Startup of the Year',
-    organization: 'Asia-Pacific Space & Geospatial Awards',
-    year: '2023',
-    category: 'DeepTech & AI Sensing',
-    description: 'Selected among top emerging earth observation intelligence startups tackling large-scale climate adaptation challenges.',
-    badge: 'Finalist',
-  },
-  {
-    title: 'Forest & Biodiversity Preservation Accolade',
-    organization: 'Ecological Intelligence Network',
-    year: '2023',
-    category: 'Ecosystem Protection',
-    description: 'Commended for high-cadence satellite monitoring of canopy cover loss, biomass estimation, and wildfire risk mitigation.',
-    badge: 'Excellence Citation',
-  },
+// 8 award images — most recent first. Place files in /public/images/awards/
+const awardImages = [
+  { src: '/images/awards/award-1.jpg', year: '2025', alt: 'Award 2025 – Recognition 1' },
+  { src: '/images/awards/award-2.jpg', year: '2025', alt: 'Award 2025 – Recognition 2' },
+  { src: '/images/awards/award-3.jpg', year: '2024', alt: 'Award 2024 – Recognition 3' },
+  { src: '/images/awards/award-4.jpg', year: '2024', alt: 'Award 2024 – Recognition 4' },
+  { src: '/images/awards/award-5.jpg', year: '2024', alt: 'Award 2024 – Recognition 5' },
+  { src: '/images/awards/award-6.jpg', year: '2023', alt: 'Award 2023 – Recognition 6' },
+  { src: '/images/awards/award-7.jpg', year: '2023', alt: 'Award 2023 – Recognition 7' },
+  { src: '/images/awards/award-8.jpg', year: '2022', alt: 'Award 2022 – Recognition 8' },
 ]
 
 export default function Awards() {
-  usePageMeta('Awards & Recognitions', 'Discover THAZHAL’s awards, achievements, and industry recognitions in geospatial innovation and environmental technology.')
+  usePageMeta('Awards & Recognitions', 'Discover THAZHAL\u2019s awards, achievements, and industry recognitions in geospatial innovation and environmental technology.')
 
   return (
     <>
@@ -77,7 +39,7 @@ export default function Awards() {
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald/30 bg-emerald/10 px-4 py-1.5 backdrop-blur-md">
             <Trophy size={14} className="text-emerald" />
             <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald">
-              Company · Honors & Milestones
+              Company &middot; Honors &amp; Milestones
             </span>
           </div>
           <h1 className="max-w-4xl text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
@@ -89,56 +51,96 @@ export default function Awards() {
         </div>
       </section>
 
-      {/* Main Awards Grid */}
+      {/* Zigzag Timeline Section */}
       <section className="bg-white section relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0 dot-grid opacity-60" />
         <div className="wrap relative">
           <Reveal>
             <SectionHeading
-              eyebrow="Milestones"
-              title="Recognized for Pioneering Innovation"
-              text="Our contributions to earth observation, critical infrastructure surveillance, and environmental resilience have been honored across key national and international platforms."
+              eyebrow="Timeline · Recent to Past"
+              title="Our Awards & Recognitions"
+              text="A journey of milestones — from our most recent honors to the achievements that started it all."
             />
           </Reveal>
 
-          <div className="mt-14 grid gap-7 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
-            {recognitions.map((item, idx) => (
-              <Reveal key={item.title} delay={idx * 0.08} className="h-full flex flex-col">
-                <Card3D className="h-full flex flex-col">
-                  <div className="group flex h-full flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition-all duration-300 hover:border-emerald/40 hover:shadow-xl">
-                    <div>
-                      <div className="flex items-center justify-between gap-3 mb-5">
-                        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald/10 text-emerald transition-transform group-hover:scale-110 group-hover:bg-emerald group-hover:text-navy">
-                          <Award size={22} />
+          {/* Timeline */}
+          <div className="relative mt-20">
+            {/* Vertical center line — desktop only */}
+            <div
+              className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 lg:block"
+              style={{ background: 'linear-gradient(to bottom, #38BDF8 0%, rgba(56,189,248,0.15) 100%)' }}
+              aria-hidden
+            />
+
+            <div className="flex flex-col gap-20">
+              {awardImages.map((award, idx) => {
+                const isLeft = idx % 2 === 0
+                return (
+                  <Reveal key={idx} delay={idx * 0.07}>
+                    <div className={`relative flex flex-col items-center gap-6 lg:flex-row lg:items-center lg:gap-0 ${isLeft ? '' : 'lg:flex-row-reverse'}`}>
+
+                      {/* Image */}
+                      <motion.div
+                        initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: '-60px' }}
+                        transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+                        className={`w-full lg:w-[calc(50%-52px)] ${isLeft ? 'lg:pr-10' : 'lg:pl-10'}`}
+                      >
+                        <div className="group relative overflow-hidden rounded-2xl border border-slate-200 shadow-md transition-all duration-400 hover:border-emerald/40 hover:shadow-2xl hover:shadow-navy/10">
+                          <div className="aspect-[4/3] overflow-hidden bg-slate-100">
+                            <img
+                              src={award.src}
+                              alt={award.alt}
+                              loading="lazy"
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                              onError={(e) => {
+                                const el = e.currentTarget
+                                el.style.display = 'none'
+                                const parent = el.parentElement
+                                if (parent && !parent.querySelector('.img-placeholder')) {
+                                  const ph = document.createElement('div')
+                                  ph.className = 'img-placeholder flex h-full w-full flex-col items-center justify-center gap-3 bg-slate-50 py-12'
+                                  ph.innerHTML = `
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 16l5-5 4 4 3-3 6 5"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
+                                    <span style="font-family:monospace;font-size:12px;color:#94a3b8;text-align:center">Award Image ${idx + 1}<br/>Drop: /public/images/awards/award-${idx + 1}.jpg</span>
+                                  `
+                                  parent.appendChild(ph)
+                                }
+                              }}
+                            />
+                          </div>
+                          <div className="scan-line pointer-events-none" />
                         </div>
-                        <span className="rounded-full bg-navy/5 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-navy">
-                          {item.year}
-                        </span>
+                      </motion.div>
+
+                      {/* Centre dot + year — desktop */}
+                      <div className="hidden lg:flex lg:w-[104px] lg:shrink-0 lg:flex-col lg:items-center lg:gap-2">
+                        <motion.div
+                          initial={{ scale: 0, opacity: 0 }}
+                          whileInView={{ scale: 1, opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.4, delay: idx * 0.07 + 0.3 }}
+                          className="relative flex h-14 w-14 items-center justify-center rounded-full border-4 border-white bg-emerald shadow-[0_0_0_4px_rgba(56,189,248,0.2),0_0_24px_rgba(56,189,248,0.5)]"
+                        >
+                          <Trophy size={20} className="text-navy" aria-hidden />
+                        </motion.div>
+                        <span className="font-mono text-xs font-bold tracking-wider text-emerald">{award.year}</span>
                       </div>
 
-                      <div className="inline-block rounded-md bg-emerald/15 px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-emerald mb-3">
-                        {item.category}
+                      {/* Mobile year badge */}
+                      <div className="flex items-center gap-2 self-start lg:hidden">
+                        <span className="flex h-2 w-2 rounded-full bg-emerald shadow-[0_0_8px_rgba(56,189,248,0.8)]" />
+                        <span className="font-mono text-xs font-bold text-emerald">{award.year}</span>
                       </div>
 
-                      <h3 className="text-lg font-bold leading-snug text-navy transition-colors group-hover:text-forest">
-                        {item.title}
-                      </h3>
-                      <p className="mt-1.5 text-xs font-semibold text-slate-500">
-                        {item.organization}
-                      </p>
-                      <p className="mt-3.5 text-sm leading-relaxed text-slate-600">
-                        {item.description}
-                      </p>
+                      {/* Spacer — other side on desktop */}
+                      <div className="hidden lg:block lg:w-[calc(50%-52px)]" />
                     </div>
-
-                    <div className="mt-6 flex items-center gap-2 border-t border-slate-100 pt-4">
-                      <Sparkles size={14} className="text-emerald" />
-                      <span className="font-mono text-xs font-bold text-navy">{item.badge}</span>
-                    </div>
-                  </div>
-                </Card3D>
-              </Reveal>
-            ))}
+                  </Reveal>
+                )
+              })}
+            </div>
           </div>
         </div>
       </section>
