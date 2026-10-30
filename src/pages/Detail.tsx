@@ -33,10 +33,6 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
           <div className="wrap space-y-16">
             <Reveal>
               <div className="max-w-4xl">
-                <span className="hud-tag mb-4 inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald animate-ping-slow" />
-                  Ecosystem Intelligence
-                </span>
                 <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl">
                   Monitor Forest Health, Track Deforestation, and Support Carbon Assessment with Thazhal’s Geospatial Intelligence
                 </h2>
@@ -68,21 +64,21 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   num: '01',
                   icon: Trees,
                   title: 'Forest Health Monitoring',
-                  desc: 'Card 1 content description will be added here.',
+                  desc: 'Monitor canopy density, tree cover, vegetation health, and changes across forest blocks using Earth Observation (EO) data and geospatial analytics. Integrate available environmental datasets to assess forest conditions and generate GIS-based maps, monitoring reports, and decision-support insights for conservation planning and impact assessment.',
                 },
                 {
                   id: 'card-2',
                   num: '02',
                   icon: LineChart,
                   title: 'Carbon Stock Estimation & Plantation Planning',
-                  desc: 'Card 2 content description will be added here.',
+                  desc: 'Assess plantation areas, map vegetation, and evaluate afforestation sites using satellite imagery, GIS, and remote sensing techniques. Support tree counting, species classification where data permits, vegetation structure analysis, and carbon stock estimation to help inform restoration planning and carbon assessment initiatives.',
                 },
                 {
                   id: 'card-3',
                   num: '03',
                   icon: ShieldAlert,
                   title: 'Deforestation & Biodiversity Monitoring',
-                  desc: 'Card 3 content description will be added here.',
+                  desc: 'Use satellite-based change detection, Land Use and Land Cover (LULC) classification, and spatial analysis to identify forest cover loss, encroachment, invasive species, and ecosystem changes. Support forest departments and environmental organisations with geospatial insights for conservation planning, ecosystem monitoring, and restoration activities.',
                 },
               ].map((card, i) => {
                 const Icon = card.icon
