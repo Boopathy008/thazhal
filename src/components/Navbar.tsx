@@ -6,7 +6,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Activity, Award, Building2, ChevronDown, Flame, Layers, Menu, Thermometer, Trees, X, LucideIcon } from 'lucide-react'
+import { Activity, Award, Building2, ChevronDown, Flame, Layers, Menu, Mountain, AlertTriangle, Thermometer, Trees, X, LucideIcon } from 'lucide-react'
 import { nav } from '../data/content'
 
 const icons: Record<string, LucideIcon> = {
@@ -17,6 +17,8 @@ const icons: Record<string, LucideIcon> = {
   Building2,
   Activity,
   Award,
+  Mountain,
+  AlertTriangle,
 }
 
 const groups = [
@@ -186,7 +188,7 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 8, scale: 0.95 }}
                         transition={{ type: 'spring', stiffness: 400, damping: 26 }}
-                        className="absolute left-0 top-full mt-3 w-80 rounded-2xl border border-white/20 bg-[#090A0F] p-3 shadow-[0_30px_70px_rgba(0,0,0,0.85),0_0_0_1px_rgba(255,255,255,0.15)] ring-1 ring-white/10"
+                        className="absolute left-0 top-full mt-3 w-80 rounded-2xl border border-white/20 bg-[#090A0F] p-3 shadow-[0_30px_70px_rgba(0,0,0,0.85),0_0_0_1px_rgba(255,255,255,0.15)] ring-1 ring-white/10 max-h-[80vh] overflow-y-auto"
                         style={{ backgroundColor: '#090A0F' }}
                       >
                         {g.items.map((it) => {
