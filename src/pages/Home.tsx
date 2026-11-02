@@ -189,14 +189,12 @@ export default function Home() {
             className="mt-12 flex gap-6 overflow-x-auto pb-6 pt-2 scroll-smooth [scrollbar-width:thin] [scrollbar-color:#38BDF8_rgba(255,255,255,0.05)] snap-x snap-mandatory"
             style={{ WebkitOverflowScrolling: 'touch' }}
           >
-            {items.map((p, i) => (
+            {items.map((p) => (
               <div
                 key={`${p.kind}-${p.slug}`}
-                className="w-[300px] sm:w-[350px] md:w-[380px] shrink-0 snap-start h-full"
+                className="w-[280px] sm:w-[320px] md:w-[340px] shrink-0 snap-start h-auto flex flex-col"
               >
-                <Reveal delay={i * 0.04} className="h-full">
-                  <ProductCard p={p} />
-                </Reveal>
+                <ProductCard p={p} disableHover={true} />
               </div>
             ))}
           </div>

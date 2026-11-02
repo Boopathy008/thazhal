@@ -28,40 +28,50 @@ export function ImageCard({ title, text, to, variant, image }: {
   )
 }
 
-export function ProductCard({ p }: { p: Detail }) {
+export function ProductCard({ p, disableHover = false }: { p: Detail; disableHover?: boolean }) {
+  const content = (
+    <Link
+      to={pathOf(p)}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white border border-slate-200/70 shadow-sm transition-colors duration-200 ${
+        disableHover ? '' : 'hover:shadow-xl hover:shadow-navy/8 hover:border-emerald/30'
+      }`}
+    >
+      {/* Image area — 16:9 aspect */}
+      <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
+        <div className={`h-full ${disableHover ? '' : 'transition-transform duration-700 group-hover:scale-106'}`}>
+          <Visual variant={p.variant} image={p.image} label={`${p.name} visual`} />
+        </div>
+        {/* Geo scan line on hover */}
+        {!disableHover && <div className="scan-line pointer-events-none" />}
+        {/* Tag overlay */}
+        <div className="absolute top-3 left-3 rounded-md bg-navy/80 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-emerald/90 backdrop-blur-sm">
+          {p.kind === 'product' ? 'PRODUCT' : 'SOLUTION'}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className={`text-base font-bold leading-snug text-navy ${disableHover ? '' : 'transition-colors duration-300 group-hover:text-forest'}`}>
+          {p.name}
+        </h3>
+        <p className="mt-2 flex-1 text-[13px] leading-relaxed text-slate-500 line-clamp-3">
+          {p.summary}
+        </p>
+        <span className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-wider text-emerald">
+          Explore
+          <ArrowUpRight size={13} aria-hidden />
+        </span>
+      </div>
+    </Link>
+  )
+
+  if (disableHover) {
+    return <div className="h-full">{content}</div>
+  }
+
   return (
     <Card3D className="h-full">
-      <Link
-        to={pathOf(p)}
-        className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white border border-slate-200/70 shadow-sm transition-all duration-400 hover:shadow-xl hover:shadow-navy/8 hover:border-emerald/30"
-      >
-        {/* Image area — 16:9 aspect */}
-        <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
-          <div className="h-full transition-transform duration-700 group-hover:scale-106">
-            <Visual variant={p.variant} image={p.image} label={`${p.name} visual`} />
-          </div>
-          {/* Geo scan line on hover */}
-          <div className="scan-line pointer-events-none" />
-          {/* Tag overlay */}
-          <div className="absolute top-3 left-3 rounded-md bg-navy/80 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-emerald/90 backdrop-blur-sm">
-            {p.kind === 'product' ? 'PRODUCT' : 'SOLUTION'}
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="flex flex-1 flex-col p-5">
-          <h3 className="text-base font-bold leading-snug text-navy transition-colors duration-300 group-hover:text-forest">
-            {p.name}
-          </h3>
-          <p className="mt-2 flex-1 text-[13px] leading-relaxed text-slate-500 line-clamp-3">
-            {p.summary}
-          </p>
-          <span className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-wider text-emerald transition-all duration-300 group-hover:translate-x-1">
-            Explore
-            <ArrowUpRight size={13} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-          </span>
-        </div>
-      </Link>
+      {content}
     </Card3D>
   )
 }
