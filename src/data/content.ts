@@ -146,13 +146,47 @@ export const solutions: Detail[] = [
     ],
     related: ['/products/swoad', '/solutions/environmental-monitoring'],
   },
+  {
+    kind: 'solution', slug: 'mining', name: 'Mining', variant: 1, image: '/images/infrastructure-monitoring.jpg',
+    tagline: 'Satellite-driven intelligence for safe and sustainable mining operations.',
+    summary: 'Monitor active mine sites, track surface deformation, assess environmental impact and support compliance with space-based analytics.',
+    overview: [
+      'Mining intelligence uses high-resolution satellite imagery and SAR-based deformation mapping to provide continuous visibility over active quarries, open-pit mines and tailing storage facilities.',
+      'These are general solution areas. Specific capabilities are scoped with each organisation.',
+    ],
+    uses: ['Mine pit boundary and volume change monitoring', 'Surface subsidence and deformation mapping', 'Dust, erosion and sediment plume tracking', 'Environmental compliance and reclamation assessment'],
+    benefits: ['Wide-area surveillance without ground-team risk', 'Objective spatial evidence for regulatory reporting', 'Early detection of structural or environmental anomalies'],
+    steps,
+    faqs: [
+      { q: 'What kind of mines can be monitored?', a: 'Open-pit, quarry and underground (surface-expression) operations can be assessed, subject to site-specific scoping.' },
+      { q: 'Can it support environmental compliance?', a: 'Yes. Spatial change detection and vegetation/soil indices can support compliance monitoring and rehabilitation assessment.' },
+    ],
+    related: ['/solutions/environmental-monitoring', '/solutions/infrastructure-monitoring'],
+  },
+  {
+    kind: 'solution', slug: 'disaster-management', name: 'Disaster Management', variant: 2, image: '/images/environmental-monitoring.jpg',
+    tagline: 'Rapid geospatial response for preparedness, relief and recovery.',
+    summary: 'Map flood extents, landslide zones, cyclone damage and wildfire burns to support emergency response, recovery planning and risk reduction.',
+    overview: [
+      'Disaster Management leverages multi-sensor satellite data to deliver rapid damage assessments and situational awareness across floods, landslides, wildfires and cyclone events.',
+      'These are general solution areas. Specific capabilities are scoped with each organisation.',
+    ],
+    uses: ['Flood inundation and damage extent mapping', 'Landslide initiation zone and run-out assessment', 'Cyclone and storm surge impact delineation', 'Wildfire burn scar and recovery monitoring'],
+    benefits: ['Near-real-time spatial intelligence during crises', 'Cloud-penetrating SAR imaging through storms', 'Evidence base for relief prioritisation and recovery planning'],
+    steps,
+    faqs: [
+      { q: 'How quickly can assessments be delivered?', a: 'Rapid assessment products can typically be generated within hours of satellite acquisition, subject to imagery availability.' },
+      { q: 'What disaster types are covered?', a: 'Floods, landslides, cyclones, wildfires and earthquakes are key areas, with scope agreed per event and organisation.' },
+    ],
+    related: ['/solutions/environmental-monitoring', '/solutions/forest-intelligence'],
+  },
 ]
 
 export const details = [...products, ...solutions]
 export const pathOf = (d: Detail) => `/${d.kind === 'product' ? 'products' : 'solutions'}/${d.slug}`
 
 const productIcons = ['Layers', 'Thermometer', 'Flame']
-const solutionIcons = ['Activity', 'Building2', 'Trees', 'Layers']
+const solutionIcons = ['Activity', 'Building2', 'Trees', 'Layers', 'Mountain', 'AlertTriangle']
 
 export const nav = {
   products: products.map((p, i) => ({ label: p.name, to: pathOf(p), desc: p.tagline, icon: productIcons[i] || 'Layers' })),
