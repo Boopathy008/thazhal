@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowRight, Check, Trees, Leaf, LineChart, ShieldAlert } from 'lucide-react'
+import { ArrowRight, Check, Trees, Leaf, LineChart, ShieldAlert, Building2, Monitor, LayoutGrid, AlertCircle, Sprout, Headphones } from 'lucide-react'
 import { Btn, Card3D, CTA, Reveal, SectionHeading, Visual } from '../components/ui'
 import { Detail as D, details, pathOf } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
@@ -13,6 +13,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
   const related = d.related.map((p) => details.find((x) => pathOf(x) === p)).filter(Boolean) as D[]
   const label = kind === 'product' ? 'Product' : 'Solution'
   const isForest = slug === 'forest-intelligence'
+  const isSwoad = slug === 'swoad'
 
   return (
     <>
@@ -113,6 +114,117 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
             </div>
           </div>
         </section>
+      ) : isSwoad ? (
+        /* ── Custom SWOAD / Water Body Monitoring Sections ── */
+        <>
+          {/* Section 1 — Why to use this product */}
+          <section className="bg-white section">
+            <div className="wrap">
+              <Reveal>
+                <p className="eyebrow mb-3 text-amber-500 font-bold uppercase tracking-wider text-xs">OUR PRODUCTS</p>
+                <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl max-w-xl">
+                  Why to use this product ?
+                </h2>
+                <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-slate-500">
+                  Monitor the surface water body at your fingertips and make proactive decisions with advanced analytics.
+                  Tackle water scarcity by leveraging historical data from satellites, enabling informed and effective
+                  management strategies.
+                </p>
+                <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6 max-w-2xl">
+                  {[
+                    'Comprehensive analysis',
+                    'Environmental sustainability',
+                    'Data-driven approach & Technology leverage',
+                    'Advanced analytics & Water scarcity',
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-3.5">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-amber-500 text-amber-500">
+                        <Check size={14} strokeWidth={3} />
+                      </span>
+                      <span className="text-[15px] font-bold text-navy leading-snug">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
+          </section>
+
+          {/* Section 2 — Why you should have this */}
+          <section className="section bg-slate-50 overflow-hidden">
+            <div className="wrap">
+              <div className="grid gap-12 lg:grid-cols-12 items-center">
+                {/* Left — features grid */}
+                <div className="lg:col-span-7">
+                  <Reveal>
+                    <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl mb-10">
+                      Why you should have this
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+                      {[
+                        {
+                          icon: Building2,
+                          title: 'City administration',
+                          desc: 'Unified application specific portals for smart workflow improving transparency.',
+                        },
+                        {
+                          icon: Monitor,
+                          title: 'Real-time monitoring',
+                          desc: 'Drone based assessment of all government assets.',
+                        },
+                        {
+                          icon: LayoutGrid,
+                          title: 'Infrastructure',
+                          desc: 'Leverages solutions for city developments maintaining effectiveness.',
+                        },
+                        {
+                          icon: AlertCircle,
+                          title: 'Emergency management',
+                          desc: 'Customized warning alerts on extreme events.',
+                        },
+                        {
+                          icon: Sprout,
+                          title: 'Sustainable developments',
+                          desc: 'Active monitoring and actionable developments of natural/economic resources.',
+                        },
+                        {
+                          icon: Headphones,
+                          title: 'Decision support',
+                          desc: 'Provides solutions on task management for that last miles visibility.',
+                        },
+                      ].map((item) => {
+                        const Icon = item.icon
+                        return (
+                          <div key={item.title} className="flex gap-4 items-start">
+                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                              <Icon size={22} aria-hidden />
+                            </div>
+                            <div>
+                              <h3 className="text-[16px] font-bold text-navy">{item.title}</h3>
+                              <p className="mt-1.5 text-[13px] leading-relaxed text-slate-500">{item.desc}</p>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </Reveal>
+                </div>
+
+                {/* Right — dam image */}
+                <div className="lg:col-span-5">
+                  <Reveal delay={0.1} className="relative">
+                    <div className="overflow-hidden rounded-2xl shadow-xl aspect-[4/3] lg:aspect-[4/5] border border-slate-200">
+                      <img
+                        src="/images/swoad.jpg"
+                        alt="Water body monitoring — dam infrastructure"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
       ) : (
         /* ── Default Sections for other pages ── */
         <>
