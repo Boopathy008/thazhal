@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowRight, Check, Trees, Leaf, LineChart, ShieldAlert, Building2, Monitor, LayoutGrid, AlertCircle, Sprout, Headphones } from 'lucide-react'
+import { ArrowRight, Check, Trees, Leaf, LineChart, ShieldAlert, Building2, Monitor, LayoutGrid, AlertCircle, Sprout, Headphones, Waves, CloudRain, Sun, Mountain, TrendingUp, Thermometer, Wind, RefreshCw, Zap, Landmark, Shield } from 'lucide-react'
 import { Btn, Card3D, CTA, Reveal, SectionHeading, Visual } from '../components/ui'
 import { Detail as D, details, pathOf } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
@@ -14,6 +14,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
   const label = kind === 'product' ? 'Product' : 'Solution'
   const isForest = slug === 'forest-intelligence'
   const isSwoad = slug === 'swoad'
+  const isClimateAudit = slug === 'climate-audit'
 
   return (
     <>
@@ -216,6 +217,176 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                       <img
                         src="/images/swoad.jpg"
                         alt="Water body monitoring — dam infrastructure"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
+      ) : isClimateAudit ? (
+        /* ── Custom Climate Audit Sections ── */
+        <>
+          {/* Section 1 — Why to use this product */}
+          <section className="bg-white section">
+            <div className="wrap">
+              <Reveal>
+                <p className="mb-3 text-xs font-bold uppercase tracking-wider text-amber-500">OUR PRODUCTS</p>
+                <h2 className="max-w-xl text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl">
+                  Why to use this product ?
+                </h2>
+                <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-slate-500">
+                  Equips organizations with the tools to forecast, prepare for and reduce climate-related disruptions.
+                  Understanding climate risks allows companies to protect long term value, ensuring business continuity
+                  and investor confidence. Identifying location-specific hazards helps to prioritize adaptation actions
+                  at any level.
+                </p>
+                <div className="mt-10 grid max-w-2xl grid-cols-1 gap-x-12 gap-y-6 sm:grid-cols-2">
+                  {[
+                    'Comprehensive vulnerability Assessment and Risk Scoring',
+                    'Environmental sustainability',
+                    'Data-driven approach & Technology leverage',
+                    'Advanced analytics & Water scarcity',
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-3.5">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-amber-500 text-amber-500">
+                        <Check size={14} strokeWidth={3} />
+                      </span>
+                      <span className="text-[15px] font-bold leading-snug text-navy">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
+          </section>
+
+          {/* Section 2 — List of Hazards */}
+          <section className="section bg-slate-50">
+            <div className="wrap">
+              <Reveal>
+                <h2 className="mb-12 text-center text-3xl font-bold text-navy sm:text-4xl">List of Hazards</h2>
+              </Reveal>
+              <div className="grid grid-cols-1 gap-x-16 gap-y-10 sm:grid-cols-2">
+                {[
+                  {
+                    icon: Waves,
+                    title: 'Flood',
+                    desc: 'Evaluate the frequency and intensity of flooding events including river overflows, storm surges and sudden flash floods that pose serious threats to assets and livelihoods.',
+                  },
+                  {
+                    icon: CloudRain,
+                    title: 'Extreme Rainfall',
+                    desc: 'Evaluate patterns of intense and prolonged rainfall that increase the risk of urban flooding, waterlogging, infrastructure damage and disruption to essential services.',
+                  },
+                  {
+                    icon: Sun,
+                    title: 'Drought',
+                    desc: 'Identify areas vulnerable to prolonged water scarcity, affecting agriculture, groundwater levels and industrial operations.',
+                  },
+                  {
+                    icon: Mountain,
+                    title: 'Landslide',
+                    desc: 'Identify landslide-prone zones triggered by heavy rainfall, soil erosion or seismic activity which can endanger lives, block transport routes, and damage property.',
+                  },
+                  {
+                    icon: TrendingUp,
+                    title: 'Sea Level Rise',
+                    desc: 'Assess long-term sea level rise and tidal intrusion risks that threaten coastal infrastructure, freshwater supplies and low-lying communities.',
+                  },
+                  {
+                    icon: Thermometer,
+                    title: 'Temperature',
+                    desc: 'Identify geographic areas and sectors at risk from rising temperatures and heat stress, enabling targeted mitigation for health, productivity and infrastructure stability.',
+                  },
+                  {
+                    icon: Wind,
+                    title: 'Wind',
+                    desc: 'Analyze high-wind events, including cyclonic gusts and storm winds, that can damage buildings, power lines, transportation systems and outdoor operations.',
+                  },
+                  {
+                    icon: RefreshCw,
+                    title: 'Cyclone',
+                    desc: 'Analyze cyclone-prone zones and wind damage potential to safeguard critical assets and minimize downtime.',
+                  },
+                ].map((item, i) => {
+                  const Icon = item.icon
+                  return (
+                    <Reveal key={item.title} delay={i * 0.05}>
+                      <div className="flex gap-4 items-start">
+                        <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                          <Icon size={24} aria-hidden />
+                        </div>
+                        <div>
+                          <h3 className="text-[17px] font-bold text-navy">{item.title}</h3>
+                          <p className="mt-1.5 text-[14px] leading-relaxed text-slate-500">{item.desc}</p>
+                        </div>
+                      </div>
+                    </Reveal>
+                  )
+                })}
+              </div>
+            </div>
+          </section>
+
+          {/* Section 3 — Who Can We Assist? */}
+          <section className="section bg-white overflow-hidden">
+            <div className="wrap">
+              <div className="grid gap-12 lg:grid-cols-12 items-center">
+                {/* Left — audience grid */}
+                <div className="lg:col-span-7">
+                  <Reveal>
+                    <h2 className="mb-10 text-3xl font-bold leading-tight text-navy sm:text-4xl">
+                      Who Can We Assist?
+                    </h2>
+                    <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
+                      {[
+                        {
+                          icon: Building2,
+                          title: 'Real Estate Developers and Investors',
+                          desc: 'Protect long-term asset value, optimize site selection and ensure climate-resilient investments with forward-looking risk insights tailored for real estate development and acquisitions.',
+                        },
+                        {
+                          icon: Zap,
+                          title: 'Energy Companies',
+                          desc: 'Strengthen infrastructure, reduce downtime, and optimize future investments against rising temperatures, extreme weather, and supply chain disruptions.',
+                        },
+                        {
+                          icon: Landmark,
+                          title: 'Banks and Financial Institutions',
+                          desc: 'Future-proof lending and investment strategies by integrating climate risk into asset valuations, credit risk models, and regulatory compliance frameworks.',
+                        },
+                        {
+                          icon: Shield,
+                          title: 'Insurance Providers',
+                          desc: 'Strengthen risk assessments, optimize policy offerings, and reduce claims volatility by integrating climate hazard insights into insurance workflows.',
+                        },
+                      ].map((item) => {
+                        const Icon = item.icon
+                        return (
+                          <div key={item.title} className="flex gap-4 items-start">
+                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                              <Icon size={22} aria-hidden />
+                            </div>
+                            <div>
+                              <h3 className="text-[16px] font-bold text-navy">{item.title}</h3>
+                              <p className="mt-1.5 text-[13px] leading-relaxed text-slate-500">{item.desc}</p>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </Reveal>
+                </div>
+
+                {/* Right — cyclone satellite image */}
+                <div className="lg:col-span-5">
+                  <Reveal delay={0.1}>
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/4.5]">
+                      <img
+                        src="/images/climate-audit.jpg"
+                        alt="Climate risk — satellite view of cyclone"
                         className="h-full w-full object-cover"
                       />
                     </div>
