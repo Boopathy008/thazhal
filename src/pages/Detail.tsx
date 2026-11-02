@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowRight, Check, Trees, Leaf, LineChart, ShieldAlert, Building2, Monitor, LayoutGrid, AlertCircle, Sprout, Headphones, Waves, CloudRain, Sun, Mountain, TrendingUp, Thermometer, Wind, RefreshCw, Zap, Landmark, Shield, Flame, Map, BarChart2, FileText, Briefcase, GraduationCap, Activity, Factory, Database, Scan, Share2, Users } from 'lucide-react'
+import { ArrowRight, Check, Trees, Leaf, LineChart, ShieldAlert, Building2, Monitor, LayoutGrid, AlertCircle, Sprout, Headphones, Waves, CloudRain, Sun, Mountain, TrendingUp, Thermometer, Wind, RefreshCw, Zap, Landmark, Shield, Flame, Map, BarChart2, FileText, Briefcase, GraduationCap, Activity, Factory, Database, Scan, Share2, Users, DollarSign, UserPlus } from 'lucide-react'
 import { Btn, Card3D, CTA, Reveal, SectionHeading, Visual } from '../components/ui'
 import { Detail as D, details, pathOf } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
@@ -17,6 +17,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
   const isClimateAudit = slug === 'climate-audit'
   const isFireAudit = slug === 'fire-audit'
   const isEnvMonitoring = slug === 'environmental-monitoring'
+  const isInfraMonitoring = slug === 'infrastructure-monitoring'
 
   return (
     <>
@@ -703,6 +704,117 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                       <img
                         src="/images/environmental-monitoring.jpg"
                         alt="Environmental monitoring — satellite vegetation analysis"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
+      ) : isInfraMonitoring ? (
+        /* ── Custom Infrastructure Monitoring Sections ── */
+        <>
+          {/* Section 1 — Our Solution: 3 cards */}
+          <section className="bg-white section">
+            <div className="wrap">
+              <Reveal>
+                <h2 className="mb-12 text-center text-3xl font-bold text-navy sm:text-4xl">Our Solution</h2>
+              </Reveal>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                {[
+                  {
+                    title: 'Monitor assets for better future',
+                    desc: 'Regular monitoring using satellite imagery reduces the need for frequent physical inspections, saving time and resources.',
+                  },
+                  {
+                    title: 'Geospatial Business Intelligence',
+                    desc: 'Leveraging geospatial data for protecting assets.',
+                  },
+                  {
+                    title: 'Early Warning System',
+                    desc: 'Ensuring proactive decision making for assets management.',
+                  },
+                ].map((card, i) => (
+                  <Reveal key={card.title} delay={i * 0.1}>
+                    <div className="flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-10 text-center shadow-sm min-h-[200px] hover:border-emerald/40 hover:shadow-md transition-all duration-300">
+                      <h3 className="text-xl font-bold text-navy leading-snug">{card.title}</h3>
+                      <p className="mt-3 text-[13px] leading-relaxed text-slate-400">{card.desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Section 2 — Why you should use our solution */}
+          <section className="section bg-slate-50 overflow-hidden">
+            <div className="wrap">
+              <div className="grid gap-12 lg:grid-cols-12 items-start">
+                {/* Left — features */}
+                <div className="lg:col-span-7">
+                  <Reveal>
+                    <h2 className="mb-10 text-3xl font-bold leading-tight text-navy sm:text-4xl">
+                      Why you should use our solution
+                    </h2>
+                    <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
+                      {[
+                        {
+                          icon: TrendingUp,
+                          title: 'Improved Efficiency',
+                          desc: 'Regular monitoring using satellite imagery and aerial photography reduces the need for frequent physical inspections, saving time and resources.',
+                        },
+                        {
+                          icon: UserPlus,
+                          title: 'Enhanced Safety',
+                          desc: 'Satellite based inspections minimize the risk of sending personnel into hazardous environments like high bridges or confined spaces.',
+                        },
+                        {
+                          icon: Flame,
+                          title: 'Fire Detection and Analysis',
+                          desc: 'Fire detection and analysis are crucial aspects of fire prevention and management. By utilizing advanced technologies and methodologies, fire detection systems can efficiently identify and respond to fire incidents.',
+                        },
+                        {
+                          icon: Database,
+                          title: 'Data-Driven Decision Making',
+                          desc: 'GIS allows for analyzing vast amounts of data to identify trends, predict potential problems before they escalate, and prioritize maintenance needs.',
+                        },
+                        {
+                          icon: Share2,
+                          title: 'Improved Communication and Collaboration',
+                          desc: 'Sharing data and visualizations through GIS platforms facilitates better communication and collaboration among different stakeholders involved in infrastructure management.',
+                        },
+                        {
+                          icon: DollarSign,
+                          title: 'Cost Savings',
+                          desc: 'Early detection of infrastructure problems through geospatial monitoring can prevent costly repairs and disruptions down the line.',
+                        },
+                      ].map((item) => {
+                        const Icon = item.icon
+                        return (
+                          <div key={item.title} className="flex gap-4 items-start">
+                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                              <Icon size={22} aria-hidden />
+                            </div>
+                            <div>
+                              <h3 className="text-[15px] font-bold text-navy">{item.title}</h3>
+                              <p className="mt-1.5 text-[13px] leading-relaxed text-slate-500">{item.desc}</p>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </Reveal>
+                </div>
+
+                {/* Right — dam/infrastructure image */}
+                <div className="lg:col-span-5">
+                  <Reveal delay={0.15} className="sticky top-28">
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[3/4]">
+                      <img
+                        src="/images/infrastructure-monitoring.jpg"
+                        alt="Infrastructure monitoring — aerial dam view"
                         className="h-full w-full object-cover"
                       />
                     </div>
