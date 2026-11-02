@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowRight, Check, Trees, Leaf, LineChart, ShieldAlert, Building2, Monitor, LayoutGrid, AlertCircle, Sprout, Headphones, Waves, CloudRain, Sun, Mountain, TrendingUp, Thermometer, Wind, RefreshCw, Zap, Landmark, Shield } from 'lucide-react'
+import { ArrowRight, Check, Trees, Leaf, LineChart, ShieldAlert, Building2, Monitor, LayoutGrid, AlertCircle, Sprout, Headphones, Waves, CloudRain, Sun, Mountain, TrendingUp, Thermometer, Wind, RefreshCw, Zap, Landmark, Shield, Flame, Map, BarChart2, FileText, Briefcase, GraduationCap, Activity, Factory } from 'lucide-react'
 import { Btn, Card3D, CTA, Reveal, SectionHeading, Visual } from '../components/ui'
 import { Detail as D, details, pathOf } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
@@ -15,6 +15,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
   const isForest = slug === 'forest-intelligence'
   const isSwoad = slug === 'swoad'
   const isClimateAudit = slug === 'climate-audit'
+  const isFireAudit = slug === 'fire-audit'
 
   return (
     <>
@@ -387,6 +388,216 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                       <img
                         src="/images/climate-audit.jpg"
                         alt="Climate risk — satellite view of cyclone"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
+      ) : isFireAudit ? (
+        /* ── Custom Fire Audit Sections ── */
+        <>
+          {/* Section 1 — Intro with floor plan image */}
+          <section className="bg-white section">
+            <div className="wrap">
+              <div className="grid gap-12 lg:grid-cols-12 items-center">
+                <div className="lg:col-span-6">
+                  <Reveal>
+                    <h2 className="text-3xl font-bold text-navy sm:text-4xl uppercase tracking-wide">Fire Audit</h2>
+                    <p className="mt-5 text-[15px] leading-relaxed text-slate-600">
+                      At Thazhal, we combine geospatial intelligence and AI to assess fire risks, strengthen safety
+                      systems, and ensure compliance. Our audits help organizations protect people, property, and assets
+                      with precision and confidence.
+                    </p>
+                    <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
+                      Our intelligent system analyzes indoor video and spatial data to detect fire-prone materials,
+                      hotspot zones, and missing safety infrastructure — providing actionable insights in under 2 hours
+                      per building.
+                    </p>
+                  </Reveal>
+                </div>
+                <div className="lg:col-span-6">
+                  <Reveal delay={0.1}>
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200">
+                      <img
+                        src="/images/fire-audit.jpg"
+                        alt="Fire Audit — building floor plan"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 2 — Why to use this product (image left, text right) */}
+          <section className="section bg-slate-50 overflow-hidden">
+            <div className="wrap">
+              <div className="grid gap-12 lg:grid-cols-12 items-center">
+                {/* Left — thermal image */}
+                <div className="lg:col-span-5">
+                  <Reveal>
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/3]">
+                      <img
+                        src="/images/fire-audit.jpg"
+                        alt="Fire Audit — thermal heatmap"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </Reveal>
+                </div>
+                {/* Right — content */}
+                <div className="lg:col-span-7">
+                  <Reveal delay={0.1}>
+                    <p className="mb-3 text-xs font-bold uppercase tracking-wider text-amber-500">OUR PRODUCTS</p>
+                    <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl">
+                      Why to use this product ?
+                    </h2>
+                    <p className="mt-5 text-[15px] leading-relaxed text-slate-500">
+                      Equips organizations with the tools to forecast, prepare for and reduce fire-related disruptions.
+                      Understanding fire risks allows companies to protect long-term value, ensuring business continuity
+                      and investor confidence. Identifying location-specific hazards helps to prioritize adaptation
+                      actions at any level.
+                    </p>
+                    <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2">
+                      {[
+                        'Prevent fire incidents through early risk identification',
+                        'Ensure compliance with fire safety standards',
+                        'Access data-driven severity scores for each building',
+                        'Prioritize upgrades in vulnerable zones',
+                      ].map((item) => (
+                        <div key={item} className="flex items-start gap-3">
+                          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-amber-500 text-amber-500">
+                            <Check size={14} strokeWidth={3} />
+                          </span>
+                          <span className="text-[14px] font-bold leading-snug text-navy">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 3 — What We Assess */}
+          <section className="section bg-white">
+            <div className="wrap">
+              <Reveal>
+                <h2 className="mb-12 text-center text-3xl font-bold text-navy sm:text-4xl">What We Assess</h2>
+              </Reveal>
+              <div className="grid grid-cols-1 gap-x-16 gap-y-10 sm:grid-cols-2">
+                {[
+                  {
+                    icon: Flame,
+                    title: 'Fire-Prone Objects',
+                    desc: 'Detect flammable materials, electrical points, and unprotected machinery using AI object recognition.',
+                  },
+                  {
+                    icon: Map,
+                    title: 'Indoor Hotspot Mapping',
+                    desc: 'Map and visualize high-risk fire zones across floors and rooms using spatial intelligence.',
+                  },
+                  {
+                    icon: Shield,
+                    title: 'Fire Safety Infrastructure',
+                    desc: 'Identify missing extinguishers, hydrants, alarms, and exits critical for compliance.',
+                  },
+                  {
+                    icon: BarChart2,
+                    title: 'Fire Severity Scoring',
+                    desc: 'Generate building-wise risk scores to prioritize mitigation actions.',
+                  },
+                  {
+                    icon: FileText,
+                    title: 'Rapid Audit & Reporting',
+                    desc: 'Complete assessment and deliver a digital audit report within 2 hours per building.',
+                  },
+                ].map((item, i) => {
+                  const Icon = item.icon
+                  return (
+                    <Reveal key={item.title} delay={i * 0.05}>
+                      <div className="flex gap-4 items-start">
+                        <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                          <Icon size={24} aria-hidden />
+                        </div>
+                        <div>
+                          <h3 className="text-[17px] font-bold text-navy">{item.title}</h3>
+                          <p className="mt-1.5 text-[14px] leading-relaxed text-slate-500">{item.desc}</p>
+                        </div>
+                      </div>
+                    </Reveal>
+                  )
+                })}
+              </div>
+            </div>
+          </section>
+
+          {/* Section 4 — Who Can We Assist? */}
+          <section className="section bg-slate-50 overflow-hidden">
+            <div className="wrap">
+              <div className="grid gap-12 lg:grid-cols-12 items-center">
+                {/* Left — audience grid */}
+                <div className="lg:col-span-7">
+                  <Reveal>
+                    <h2 className="mb-10 text-3xl font-bold leading-tight text-navy sm:text-4xl">
+                      Who Can We Assist?
+                    </h2>
+                    <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
+                      {[
+                        {
+                          icon: Building2,
+                          title: 'Government Buildings',
+                          desc: 'Ensure public safety and strengthen compliance through regular fire audits.',
+                        },
+                        {
+                          icon: Briefcase,
+                          title: 'Corporate Offices',
+                          desc: 'Safeguard assets, data centers, and employees with intelligent risk detection.',
+                        },
+                        {
+                          icon: GraduationCap,
+                          title: 'Schools & Colleges',
+                          desc: 'Protect students and staff by proactively addressing indoor fire hazards.',
+                        },
+                        {
+                          icon: Activity,
+                          title: 'Hospitals & Public Infrastructure',
+                          desc: 'Ensure continuous operations in high-occupancy and critical facilities.',
+                        },
+                        {
+                          icon: Factory,
+                          title: 'Industrial & Commercial Spaces',
+                          desc: 'Protect workers and assets by proactively identifying and mitigating indoor fire hazards.',
+                        },
+                      ].map((item) => {
+                        const Icon = item.icon
+                        return (
+                          <div key={item.title} className="flex gap-4 items-start">
+                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                              <Icon size={22} aria-hidden />
+                            </div>
+                            <div>
+                              <h3 className="text-[16px] font-bold text-navy">{item.title}</h3>
+                              <p className="mt-1.5 text-[13px] leading-relaxed text-slate-500">{item.desc}</p>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </Reveal>
+                </div>
+                {/* Right — fire safety image */}
+                <div className="lg:col-span-5">
+                  <Reveal delay={0.1}>
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-square">
+                      <img
+                        src="/images/fire-audit.jpg"
+                        alt="Fire Safety Audit"
                         className="h-full w-full object-cover"
                       />
                     </div>
