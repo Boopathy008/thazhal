@@ -82,22 +82,11 @@ const testimonials = [
 export default function Home() {
   usePageMeta('THAZHAL')
   const scrollRef = useRef<HTMLDivElement>(null)
-  const testimonialRef = useRef<HTMLDivElement>(null)
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const scrollAmount = 380
       scrollRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth',
-      })
-    }
-  }
-
-  const scrollTestimonial = (direction: 'left' | 'right') => {
-    if (testimonialRef.current) {
-      const scrollAmount = 380
-      testimonialRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth',
       })
@@ -187,6 +176,49 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Testimonials auto-marquee (right after About Us) ── */}
+      <section className="section-gradient section relative overflow-hidden text-white">
+        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-15" />
+        <div className="wrap relative mb-10">
+          <Reveal>
+            <SectionHeading
+              dark
+              eyebrow="Testimonials"
+              title="What our partners say"
+              text="Hear from the organisations and leaders who've experienced THAZHAL's geospatial intelligence first-hand."
+            />
+          </Reveal>
+        </div>
+
+        {/* Auto-scrolling marquee — right to left, loops infinitely */}
+        <div
+          className="overflow-hidden"
+          style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%)' }}
+        >
+          <div className="marquee-track">
+            {[...testimonials, ...testimonials].map((t, i) => (
+              <div
+                key={i}
+                className="mx-4 shrink-0 flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-7"
+                style={{ width: '320px' }}
+              >
+                {/* Quote mark */}
+                <span className="text-4xl leading-none text-emerald font-serif select-none">"</span>
+                {/* Quote text */}
+                <p className="flex-1 text-[15px] leading-relaxed text-white/80">{t.quote}</p>
+                {/* Divider */}
+                <div className="h-px w-full bg-white/10" />
+                {/* Author */}
+                <div>
+                  <p className="text-[15px] font-semibold text-white">{t.name}</p>
+                  <p className="mt-0.5 text-[13px] text-white/50">{t.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Our Solutions & Products Horizontal Scroll ── */}
       <section id="products" className="section-gradient section relative overflow-hidden text-white">
         <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-15" />
@@ -234,69 +266,6 @@ export default function Home() {
                 className="w-[280px] sm:w-[320px] md:w-[340px] shrink-0 snap-start h-auto flex flex-col"
               >
                 <ProductCard p={p} disableHover={true} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Testimonials ── */}
-      <section className="section-gradient section relative overflow-hidden text-white">
-        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-15" />
-        <div className="wrap relative">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-            <Reveal>
-              <SectionHeading
-                dark
-                eyebrow="Testimonials"
-                title="What our partners say"
-                text="Hear from the organisations and leaders who've experienced THAZHAL's geospatial intelligence first-hand."
-              />
-            </Reveal>
-
-            {/* Navigation buttons */}
-            <div className="flex items-center gap-3 shrink-0">
-              <button
-                type="button"
-                onClick={() => scrollTestimonial('left')}
-                aria-label="Scroll testimonials left"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white/80 transition-all duration-300 hover:border-emerald hover:bg-emerald hover:text-navy hover:scale-105 active:scale-95"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollTestimonial('right')}
-                aria-label="Scroll testimonials right"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white/80 transition-all duration-300 hover:border-emerald hover:bg-emerald hover:text-navy hover:scale-105 active:scale-95"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
-          </div>
-
-          {/* Horizontal scroll container */}
-          <div
-            ref={testimonialRef}
-            className="mt-12 flex gap-6 overflow-x-auto pb-6 pt-2 scroll-smooth [scrollbar-width:thin] [scrollbar-color:#38BDF8_rgba(255,255,255,0.05)] snap-x snap-mandatory"
-            style={{ WebkitOverflowScrolling: 'touch' }}
-          >
-            {testimonials.map((t, i) => (
-              <div
-                key={i}
-                className="w-[280px] sm:w-[320px] md:w-[360px] shrink-0 snap-start flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-7"
-              >
-                {/* Quote mark */}
-                <span className="text-4xl leading-none text-emerald font-serif select-none">"</span>
-                {/* Quote text */}
-                <p className="flex-1 text-[15px] leading-relaxed text-white/80">{t.quote}</p>
-                {/* Divider */}
-                <div className="h-px w-full bg-white/10" />
-                {/* Author */}
-                <div>
-                  <p className="text-[15px] font-semibold text-white">{t.name}</p>
-                  <p className="mt-0.5 text-[13px] text-white/50">{t.role}</p>
-                </div>
               </div>
             ))}
           </div>
