@@ -3,11 +3,13 @@
  * Monochrome Black & White + Cyber Sky Blue accent with animated borders and 3D interactions.
  */
 
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Hero from '../components/Hero'
 import { Btn, CTA, Reveal, SectionHeading, Card3D } from '../components/ui'
 import { BlogCard, ProductCard } from '../components/Cards'
-import { articles, details, partners, supporters } from '../data/content'
+import { articles, partners, products, solutions, supporters } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
 
 export function LogoMarquee({ list, slow = false }: { list: { name: string; logo: string }[]; slow?: boolean }) {
@@ -51,6 +53,21 @@ export function SupporterGrid({ list }: { list: { name: string; logo: string }[]
 
 export default function Home() {
   usePageMeta('THAZHAL')
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 380
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      })
+    }
+  }
+
+  // First solutions, then products as requested
+  const items = [...solutions, ...products]
+
   return (
     <>
       <Hero />
@@ -131,23 +148,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Our products & Solutions ── */}
+      {/* ── Our Solutions & Products Horizontal Scroll ── */}
       <section id="products" className="section-gradient section relative overflow-hidden text-white">
         <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-15" />
         <div className="wrap relative">
-          <Reveal>
-            <SectionHeading
-              dark
-              eyebrow="Our Solutions"
-              title="See the change. Understand the risk. Act with confidence."
-              text="Space-based intelligence designed to help monitor assets, protect ecosystems and plan for a changing climate."
-            />
-          </Reveal>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
-            {details.map((p, i) => (
-              <Reveal key={`${p.kind}-${p.slug}`} delay={i * 0.06} className="h-full">
-                <ProductCard p={p} />
-              </Reveal>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+            <Reveal>
+              <SectionHeading
+                dark
+                eyebrow="Our Solutions"
+                title="See the change. Understand the risk. Act with confidence."
+                text="Space-based intelligence designed to help monitor assets, protect ecosystems and plan for a changing climate."
+              />
+            </Reveal>
+
+            {/* Navigation buttons for scroll left / right */}
+            <div className="flex items-center gap-3 shrink-0">
+              <button
+                type="button"
+                onClick={() => scroll('left')}
+                aria-label="Scroll left"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white/80 transition-all duration-300 hover:border-emerald hover:bg-emerald hover:text-navy hover:scale-105 active:scale-95"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                type="button"
+                onClick={() => scroll('right')}
+                aria-label="Scroll right"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white/80 transition-all duration-300 hover:border-emerald hover:bg-emerald hover:text-navy hover:scale-105 active:scale-95"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          </div>
+
+          {/* Horizontal scroll container */}
+          <div
+            ref={scrollRef}
+            className="mt-12 flex gap-6 overflow-x-auto pb-6 pt-2 scroll-smooth [scrollbar-width:thin] [scrollbar-color:#38BDF8_rgba(255,255,255,0.05)] snap-x snap-mandatory"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
+            {items.map((p, i) => (
+              <div
+                key={`${p.kind}-${p.slug}`}
+                className="w-[300px] sm:w-[350px] md:w-[380px] shrink-0 snap-start h-full"
+              >
+                <Reveal delay={i * 0.04} className="h-full">
+                  <ProductCard p={p} />
+                </Reveal>
+              </div>
             ))}
           </div>
         </div>

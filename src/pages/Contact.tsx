@@ -1,53 +1,31 @@
 import { Mail, MapPin, Globe2, Compass } from 'lucide-react'
-import { motion } from 'framer-motion'
 import ContactForm from '../components/ContactForm'
 import { contact } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
-import { Reveal } from '../components/ui'
+import { Reveal, SectionHeading } from '../components/ui'
 
 export default function Contact() {
   usePageMeta('Contact', 'Talk to the THAZHAL team about your geospatial project.')
   return (
     <>
-      {/* Hero */}
-      <section className="relative flex min-h-[380px] items-center overflow-hidden bg-[#0A1208] pb-20 pt-36 sm:min-h-[440px]">
-        {/* Background photo */}
-        <div className="absolute inset-0">
-          <img
-            src="/images/contact-hero.jpg"
-            alt="THAZHAL contact hero background"
-            onError={(e) => {
-              ;(e.currentTarget as HTMLElement).style.display = 'none'
-            }}
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-[#0A1208]/75" />
-          <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-15" />
-        </div>
-
-        <div className="wrap relative">
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 backdrop-blur-md">
+      {/* Main Content */}
+      <section className="relative overflow-hidden bg-paper section pt-28 sm:pt-36">
+        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-8" />
+        <div className="wrap relative mb-12">
+          <Reveal>
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald/20 bg-emerald/10 px-4 py-1.5 backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald animate-pulse" />
-              <p className="eyebrow !text-white/90">Contact Us</p>
+              <p className="eyebrow !text-emerald">Contact Us</p>
             </div>
-            <h1 className="max-w-4xl text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-4xl text-3xl font-bold tracking-tight text-navy sm:text-5xl lg:text-6xl">
               Let's Start a <span className="text-emerald">Conversation.</span>
             </h1>
-            <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-white/70">
+            <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-slate-600">
               Tell us about your project, your organization, or the geospatial and monitoring challenge you are looking to solve. Our team is ready to collaborate.
             </p>
-          </motion.div>
+          </Reveal>
         </div>
-      </section>
 
-      {/* Main Content */}
-      <section className="relative overflow-hidden bg-paper section">
-        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-8" />
         <div className="wrap relative grid gap-14 lg:grid-cols-5 items-start">
           {/* Contact Details Cards */}
           <div className="space-y-6 lg:col-span-2">
