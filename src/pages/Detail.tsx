@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowRight, Check, Trees, Leaf, LineChart, ShieldAlert, Building2, Monitor, LayoutGrid, AlertCircle, Sprout, Headphones, Waves, CloudRain, Sun, Mountain, TrendingUp, Thermometer, Wind, RefreshCw, Zap, Landmark, Shield, Flame, Map, BarChart2, FileText, Briefcase, GraduationCap, Activity, Factory } from 'lucide-react'
+import { ArrowRight, Check, Trees, Leaf, LineChart, ShieldAlert, Building2, Monitor, LayoutGrid, AlertCircle, Sprout, Headphones, Waves, CloudRain, Sun, Mountain, TrendingUp, Thermometer, Wind, RefreshCw, Zap, Landmark, Shield, Flame, Map, BarChart2, FileText, Briefcase, GraduationCap, Activity, Factory, Database, Scan, Share2, Users } from 'lucide-react'
 import { Btn, Card3D, CTA, Reveal, SectionHeading, Visual } from '../components/ui'
 import { Detail as D, details, pathOf } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
@@ -16,6 +16,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
   const isSwoad = slug === 'swoad'
   const isClimateAudit = slug === 'climate-audit'
   const isFireAudit = slug === 'fire-audit'
+  const isEnvMonitoring = slug === 'environmental-monitoring'
 
   return (
     <>
@@ -598,6 +599,110 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                       <img
                         src="/images/fire-audit.jpg"
                         alt="Fire Safety Audit"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
+      ) : isEnvMonitoring ? (
+        /* ── Custom Environmental Monitoring Sections ── */
+        <>
+          {/* Section 1 — Headline + 2 cards */}
+          <section className="bg-white section">
+            <div className="wrap">
+              <Reveal>
+                <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl max-w-4xl">
+                  Save the Environment by monitoring and data driven decision making
+                </h2>
+              </Reveal>
+              <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                {[
+                  {
+                    title: 'Environmental Intelligence System',
+                    desc: 'AI based intelligence system to monitor the environment.',
+                  },
+                  {
+                    title: 'Advance Risk Assessment',
+                    desc: 'Assessing risk for proactive decision making.',
+                  },
+                ].map((card, i) => (
+                  <Reveal key={card.title} delay={i * 0.1}>
+                    <div className="flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-10 text-center shadow-sm min-h-[180px]">
+                      <h3 className="text-xl font-bold text-navy">{card.title}</h3>
+                      <p className="mt-3 text-[14px] leading-relaxed text-slate-400">{card.desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Section 2 — Why you should have this */}
+          <section className="section bg-slate-50 overflow-hidden">
+            <div className="wrap">
+              <div className="grid gap-12 lg:grid-cols-12 items-start">
+                {/* Left — features */}
+                <div className="lg:col-span-6">
+                  <Reveal>
+                    <h2 className="mb-10 text-3xl font-bold leading-tight text-navy sm:text-4xl">
+                      Why you should have this
+                    </h2>
+                    <div className="space-y-8">
+                      {[
+                        {
+                          icon: Database,
+                          title: 'Enhanced Data Collection',
+                          desc: 'Remote sensing allows for gathering data over vast areas, overcoming limitations of traditional ground-based methods, and enabling efficient monitoring of remote locations.',
+                        },
+                        {
+                          icon: Scan,
+                          title: 'Improved Detection and Tracking',
+                          desc: 'Geospatial technology facilitates early detection of environmental changes like deforestation, pollution events, or wildfires. This allows for timely intervention and mitigation strategies.',
+                        },
+                        {
+                          icon: Share2,
+                          title: 'Spatial Analysis and Modeling',
+                          desc: 'GIS analysis helps identify spatial patterns and trends in environmental data, enabling scientists to understand complex environmental processes and predict future scenarios.',
+                        },
+                        {
+                          icon: Users,
+                          title: 'Effective Communication and Collaboration',
+                          desc: 'Geospatial tools like maps and visualizations provide a powerful communication platform for scientists, policymakers, and the public, fostering collaboration and environmental awareness.',
+                        },
+                        {
+                          icon: BarChart2,
+                          title: 'Data-Driven Decision Making',
+                          desc: 'Environmental data collected and analyzed through geospatial technology provides valuable insights for informed decision-making regarding conservation efforts, pollution control strategies, and sustainable resource management.',
+                        },
+                      ].map((item) => {
+                        const Icon = item.icon
+                        return (
+                          <div key={item.title} className="flex gap-4 items-start">
+                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald/10 text-emerald">
+                              <Icon size={22} aria-hidden />
+                            </div>
+                            <div>
+                              <h3 className="text-[16px] font-bold text-navy">{item.title}</h3>
+                              <p className="mt-1.5 text-[13px] leading-relaxed text-slate-500">{item.desc}</p>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </Reveal>
+                </div>
+
+                {/* Right — satellite NDVI image */}
+                <div className="lg:col-span-6">
+                  <Reveal delay={0.15} className="sticky top-28">
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[3/4]">
+                      <img
+                        src="/images/environmental-monitoring.jpg"
+                        alt="Environmental monitoring — satellite vegetation analysis"
                         className="h-full w-full object-cover"
                       />
                     </div>
