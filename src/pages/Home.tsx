@@ -129,18 +129,17 @@ export default function Home() {
               </p>
               <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
                 THAZHAL focuses on developing forward-thinking solutions that combine geospatial technologies,
-                imagery analytics, and intelligent monitoring to help organizations better understand the world around them.
+                imagery analytics, and intelligent monitoring to help organizations better understand the world around them,
+                supporting informed decision-making and resilient infrastructure.
               </p>
-              <p className="mt-3.5 text-[15px] leading-relaxed text-slate-600">
-                We bring data and technology together to support informed decision-making, environmental awareness,
-                and more resilient infrastructure.
-              </p>
-              <ul className="mt-7 space-y-3.5">
+              <h3 className="mt-6 text-[17px] font-bold text-navy">
+                Core Capabilities & Focus
+              </h3>
+              <ul className="mt-4 space-y-3.5">
                 {[
                   'Environmental Monitoring with Satellite Precision',
                   'Imagery Analytics for Informed Decision-Making',
                   'Cutting-Edge Technology for Comprehensive Surveys',
-                  'Geospatial Intelligence for Infrastructure Assessment',
                 ].map((x) => (
                   <li key={x} className="flex items-center gap-3 text-[14px] text-navy font-medium group">
                     <span className="h-[2px] w-5 shrink-0 rounded-full bg-emerald transition-all duration-300 group-hover:w-8" />

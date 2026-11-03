@@ -122,35 +122,52 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
       ) : isSwoad ? (
         /* ── Custom SWOAD / Water Body Monitoring Sections ── */
         <>
-          {/* Section 1 — Why to use this product */}
+          {/* Section 1 — Why to use this product (image left, content right) */}
           <section className="bg-white section">
             <div className="wrap">
-              <Reveal>
-                <p className="eyebrow mb-3 text-amber-500 font-bold uppercase tracking-wider text-xs">OUR PRODUCTS</p>
-                <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl max-w-xl">
-                  Why to use this product ?
-                </h2>
-                <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-slate-500">
-                  Monitor the surface water body at your fingertips and make proactive decisions with advanced analytics.
-                  Tackle water scarcity by leveraging historical data from satellites, enabling informed and effective
-                  management strategies.
-                </p>
-                <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6 max-w-2xl">
-                  {[
-                    'Comprehensive analysis',
-                    'Environmental sustainability',
-                    'Data-driven approach & Technology leverage',
-                    'Advanced analytics & Water scarcity',
-                  ].map((item) => (
-                    <div key={item} className="flex items-start gap-3.5">
-                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-amber-500 text-amber-500">
-                        <Check size={14} strokeWidth={3} />
-                      </span>
-                      <span className="text-[15px] font-bold text-navy leading-snug">{item}</span>
+              <div className="grid gap-12 lg:grid-cols-12 items-center">
+                {/* Left — image */}
+                <div className="lg:col-span-5">
+                  <Reveal>
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/3]">
+                      <img
+                        src="/images/swoad.jpg"
+                        alt="Water Body Monitoring"
+                        className="h-full w-full object-cover"
+                      />
                     </div>
-                  ))}
+                  </Reveal>
                 </div>
-              </Reveal>
+                {/* Right — content */}
+                <div className="lg:col-span-7">
+                  <Reveal delay={0.1}>
+                    <p className="eyebrow mb-3 text-sky-500 font-bold uppercase tracking-wider text-xs">OUR PRODUCTS</p>
+                    <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl">
+                      Why to use this product ?
+                    </h2>
+                    <p className="mt-5 text-[15px] leading-relaxed text-slate-500">
+                      Monitor the surface water body at your fingertips and make proactive decisions with advanced analytics.
+                      Tackle water scarcity by leveraging historical data from satellites, enabling informed and effective
+                      management strategies.
+                    </p>
+                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
+                      {[
+                        'Comprehensive analysis',
+                        'Environmental sustainability',
+                        'Data-driven approach & Technology leverage',
+                        'Advanced analytics & Water scarcity',
+                      ].map((item) => (
+                        <div key={item} className="flex items-start gap-3">
+                          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-sky-500 text-sky-500">
+                            <Check size={14} strokeWidth={3} />
+                          </span>
+                          <span className="text-[14px] font-bold text-navy leading-snug">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -200,7 +217,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                         const Icon = item.icon
                         return (
                           <div key={item.title} className="flex gap-4 items-start">
-                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
                               <Icon size={22} aria-hidden />
                             </div>
                             <div>
@@ -233,36 +250,53 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
       ) : isClimateAudit ? (
         /* ── Custom Climate Audit Sections ── */
         <>
-          {/* Section 1 — Why to use this product */}
+          {/* Section 1 — Why to use this product (image left, content right) */}
           <section className="bg-white section">
             <div className="wrap">
-              <Reveal>
-                <p className="mb-3 text-xs font-bold uppercase tracking-wider text-amber-500">OUR PRODUCTS</p>
-                <h2 className="max-w-xl text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl">
-                  Why to use this product ?
-                </h2>
-                <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-slate-500">
-                  Equips organizations with the tools to forecast, prepare for and reduce climate-related disruptions.
-                  Understanding climate risks allows companies to protect long term value, ensuring business continuity
-                  and investor confidence. Identifying location-specific hazards helps to prioritize adaptation actions
-                  at any level.
-                </p>
-                <div className="mt-10 grid max-w-2xl grid-cols-1 gap-x-12 gap-y-6 sm:grid-cols-2">
-                  {[
-                    'Comprehensive vulnerability Assessment and Risk Scoring',
-                    'Environmental sustainability',
-                    'Data-driven approach & Technology leverage',
-                    'Advanced analytics & Water scarcity',
-                  ].map((item) => (
-                    <div key={item} className="flex items-start gap-3.5">
-                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-amber-500 text-amber-500">
-                        <Check size={14} strokeWidth={3} />
-                      </span>
-                      <span className="text-[15px] font-bold leading-snug text-navy">{item}</span>
+              <div className="grid gap-12 lg:grid-cols-12 items-center">
+                {/* Left — image */}
+                <div className="lg:col-span-5">
+                  <Reveal>
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/3]">
+                      <img
+                        src="/images/climate-audit.jpg"
+                        alt="Climate Audit"
+                        className="h-full w-full object-cover"
+                      />
                     </div>
-                  ))}
+                  </Reveal>
                 </div>
-              </Reveal>
+                {/* Right — content */}
+                <div className="lg:col-span-7">
+                  <Reveal delay={0.1}>
+                    <p className="mb-3 text-xs font-bold uppercase tracking-wider text-sky-500">OUR PRODUCTS</p>
+                    <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl">
+                      Why to use this product ?
+                    </h2>
+                    <p className="mt-5 text-[15px] leading-relaxed text-slate-500">
+                      Equips organizations with the tools to forecast, prepare for and reduce climate-related disruptions.
+                      Understanding climate risks allows companies to protect long term value, ensuring business continuity
+                      and investor confidence. Identifying location-specific hazards helps to prioritize adaptation actions
+                      at any level.
+                    </p>
+                    <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2">
+                      {[
+                        'Comprehensive vulnerability Assessment and Risk Scoring',
+                        'Environmental sustainability',
+                        'Data-driven approach & Technology leverage',
+                        'Advanced analytics & Water scarcity',
+                      ].map((item) => (
+                        <div key={item} className="flex items-start gap-3">
+                          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-sky-500 text-sky-500">
+                            <Check size={14} strokeWidth={3} />
+                          </span>
+                          <span className="text-[14px] font-bold leading-snug text-navy">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -319,7 +353,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   return (
                     <Reveal key={item.title} delay={i * 0.05}>
                       <div className="flex gap-4 items-start">
-                        <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                        <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
                           <Icon size={24} aria-hidden />
                         </div>
                         <div>
@@ -370,7 +404,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                         const Icon = item.icon
                         return (
                           <div key={item.title} className="flex gap-4 items-start">
-                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
                               <Icon size={22} aria-hidden />
                             </div>
                             <div>
@@ -456,7 +490,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                 {/* Right — content */}
                 <div className="lg:col-span-7">
                   <Reveal delay={0.1}>
-                    <p className="mb-3 text-xs font-bold uppercase tracking-wider text-amber-500">OUR PRODUCTS</p>
+                    <p className="mb-3 text-xs font-bold uppercase tracking-wider text-sky-500">OUR PRODUCTS</p>
                     <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl">
                       Why to use this product ?
                     </h2>
@@ -474,7 +508,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                         'Prioritize upgrades in vulnerable zones',
                       ].map((item) => (
                         <div key={item} className="flex items-start gap-3">
-                          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-amber-500 text-amber-500">
+                          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-sky-500 text-sky-500">
                             <Check size={14} strokeWidth={3} />
                           </span>
                           <span className="text-[14px] font-bold leading-snug text-navy">{item}</span>
@@ -525,7 +559,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   return (
                     <Reveal key={item.title} delay={i * 0.05}>
                       <div className="flex gap-4 items-start">
-                        <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                        <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
                           <Icon size={24} aria-hidden />
                         </div>
                         <div>
@@ -581,7 +615,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                         const Icon = item.icon
                         return (
                           <div key={item.title} className="flex gap-4 items-start">
-                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
                               <Icon size={22} aria-hidden />
                             </div>
                             <div>
@@ -795,7 +829,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                         const Icon = item.icon
                         return (
                           <div key={item.title} className="flex gap-4 items-start">
-                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
                               <Icon size={22} aria-hidden />
                             </div>
                             <div>
@@ -832,7 +866,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
           <section className="bg-white section">
             <div className="wrap">
               <Reveal>
-                <p className="mb-3 text-xs font-bold uppercase tracking-wider text-amber-500">OUR SOLUTIONS</p>
+                <p className="mb-3 text-xs font-bold uppercase tracking-wider text-sky-500">OUR SOLUTIONS</p>
                 <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl max-w-3xl">
                   Area Audit & Monitoring
                 </h2>
@@ -896,8 +930,8 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                     <Reveal key={item.title} delay={i * 0.06}>
                       <div className="flex gap-5 items-start">
                         <div className="flex flex-col items-center gap-2 shrink-0">
-                          <span className="font-mono text-lg font-bold text-amber-500">{item.num}</span>
-                          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                          <span className="font-mono text-lg font-bold text-sky-500">{item.num}</span>
+                          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
                             <Icon size={22} aria-hidden />
                           </div>
                         </div>
@@ -953,7 +987,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                       const Icon = item.icon
                       return (
                         <div key={item.title} className="flex gap-4 items-start">
-                          <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+                          <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
                             <Icon size={20} aria-hidden />
                           </div>
                           <div>
@@ -968,8 +1002,8 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
 
                 {/* Right — closing insight text */}
                 <Reveal delay={0.1}>
-                  <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-8 h-full flex flex-col justify-center">
-                    <span className="font-mono text-xs font-bold uppercase tracking-wider text-amber-500 mb-4">
+                  <div className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-8 h-full flex flex-col justify-center">
+                    <span className="font-mono text-xs font-bold uppercase tracking-wider text-sky-500 mb-4">
                       Intelligence Summary
                     </span>
                     <h3 className="text-2xl font-bold text-navy leading-snug">
