@@ -236,7 +236,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   <Reveal delay={0.1} className="relative">
                     <div className="overflow-hidden rounded-2xl shadow-xl aspect-[4/3] lg:aspect-[4/5] border border-slate-200">
                       <img
-                        src="/images/swoad.jpg"
+                        src="/images/swoad-why.webp"
                         alt="Water body monitoring — dam infrastructure"
                         className="h-full w-full object-cover"
                       />
@@ -423,7 +423,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   <Reveal delay={0.1}>
                     <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/4.5]">
                       <img
-                        src="/images/climate-audit.jpg"
+                        src="/images/climate-assist.webp"
                         alt="Climate risk — satellite view of cyclone"
                         className="h-full w-full object-cover"
                       />
@@ -480,7 +480,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   <Reveal>
                     <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/3]">
                       <img
-                        src="/images/fire-audit.jpg"
+                        src="/images/fire-product.webp"
                         alt="Fire Audit — thermal heatmap"
                         className="h-full w-full object-cover"
                       />
@@ -633,7 +633,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   <Reveal delay={0.1}>
                     <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-square">
                       <img
-                        src="/images/fire-audit.jpg"
+                        src="/images/fire-assist.webp"
                         alt="Fire Safety Audit"
                         className="h-full w-full object-cover"
                       />

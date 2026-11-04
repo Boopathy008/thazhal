@@ -25,7 +25,7 @@ const steps = [
 
 export const products: Detail[] = [
   {
-    kind: 'product', slug: 'swoad', name: 'Water Body Monitoring', variant: 0, image: '/images/swoad.jpg',
+    kind: 'product', slug: 'swoad', name: 'Water Body Monitoring', variant: 0, image: '/images/swoad.webp',
     tagline: 'A THAZHAL offering for geospatial intelligence.',
     summary: 'Track lake extent, surface-water changes, vegetation, encroachment and long-term trendsover time.',
     overview: [
@@ -42,7 +42,7 @@ export const products: Detail[] = [
     related: ['/products/environmental-monitoring', '/products/forest-intelligence'],
   },
   {
-    kind: 'product', slug: 'climate-audit', name: 'Climate Audit', variant: 1, image: '/images/climate-audit.jpg',
+    kind: 'product', slug: 'climate-audit', name: 'Climate Audit', variant: 1, image: '/images/climate-audit.webp',
     tagline: 'Structured geospatial insight for climate-focused assessment.',
     summary: 'Understand historical and future climate risks around assets, including floods, cyclones, sea-level rise and fire.',
     overview: [
@@ -59,7 +59,7 @@ export const products: Detail[] = [
     related: ['/products/fire-audit', '/products/environmental-monitoring'],
   },
   {
-    kind: 'product', slug: 'fire-audit', name: 'Fire Audit', variant: 2, image: '/images/fire-audit.jpg',
+    kind: 'product', slug: 'fire-audit', name: 'Fire Audit', variant: 2, image: '/images/fire-audit.webp',
     tagline: 'Spatial context for fire-risk assessment and planning.',
     summary: 'Support fire-risk assessment and informed planning through relevant spatial information, environmental context, and infrastructure insights.',
     overview: [
@@ -79,7 +79,7 @@ export const products: Detail[] = [
 
 export const solutions: Detail[] = [
   {
-    kind: 'solution', slug: 'environmental-monitoring', name: 'Environmental Monitoring', variant: 3, image: '/images/environmental-monitoring.jpg',
+    kind: 'solution', slug: 'environmental-monitoring', name: 'Environmental Monitoring', variant: 3, image: '/images/environmental-monitoring.webp',
     tagline: 'Observe, assess and understand changing environments.',
     summary: 'Assess ecosystem health and quantify environmental risks and the impact of nature-based interventions.',
     overview: [
@@ -96,7 +96,7 @@ export const solutions: Detail[] = [
     related: ['/solutions/forest-intelligence', '/products/swoad'],
   },
   {
-    kind: 'solution', slug: 'infrastructure-monitoring', name: 'Infrastructure Monitoring', variant: 4, image: '/images/infrastructure-monitoring.jpg',
+    kind: 'solution', slug: 'infrastructure-monitoring', name: 'Infrastructure Monitoring', variant: 4, image: '/images/infrastructure-monitoring.webp',
     tagline: 'A clearer view of critical infrastructure.',
     summary: 'Monitor buildings, dams, ports, airports and utility networks to support risk assessment and operational decisions.',
     overview: [
@@ -113,7 +113,7 @@ export const solutions: Detail[] = [
     related: ['/solutions/forest-intelligence', '/products/geospatial-platforms'],
   },
   {
-    kind: 'solution', slug: 'forest-intelligence', name: 'Forest Intelligence', variant: 5, image: '/images/environmental-monitoring.jpg',
+    kind: 'solution', slug: 'forest-intelligence', name: 'Forest Intelligence', variant: 5, image: '/images/forest-intelligence.webp',
     tagline: 'Canopy health, biomass auditing, and illegal logging surveillance.',
     summary: 'Use satellite imagery, drone data and LiDAR to support tree counting, species classification and precise measurements.',
     overview: [
@@ -130,7 +130,7 @@ export const solutions: Detail[] = [
     related: ['/solutions/environmental-monitoring', '/solutions/geospatial-platforms'],
   },
   {
-    kind: 'solution', slug: 'geospatial-platforms', name: 'Geospatial Platforms', variant: 0, image: '/images/infrastructure-monitoring.jpg',
+    kind: 'solution', slug: 'geospatial-platforms', name: 'Geospatial Platforms', variant: 0, image: '/images/geospatial-platforms.webp',
     tagline: 'Custom cloud portals and spatial intelligence engines.',
     summary: 'Bring spatial data and analysis together through web GIS applications, dashboards and scalable data pipelines.',
     overview: [
@@ -147,7 +147,7 @@ export const solutions: Detail[] = [
     related: ['/products/swoad', '/solutions/environmental-monitoring'],
   },
   {
-    kind: 'solution', slug: 'mining', name: 'Mining', variant: 1, image: '/images/infrastructure-monitoring.jpg',
+    kind: 'solution', slug: 'mining', name: 'Mining', variant: 1, image: '/images/mining.webp',
     tagline: 'Satellite-driven intelligence for safe and sustainable mining operations.',
     summary: 'Monitor active mine sites, track surface deformation, assess environmental impact and support compliance with space-based analytics.',
     overview: [
@@ -164,7 +164,7 @@ export const solutions: Detail[] = [
     related: ['/solutions/environmental-monitoring', '/solutions/infrastructure-monitoring'],
   },
   {
-    kind: 'solution', slug: 'disaster-management', name: 'Disaster Management', variant: 2, image: '/images/environmental-monitoring.jpg',
+    kind: 'solution', slug: 'disaster-management', name: 'Disaster Management', variant: 2, image: '/images/disaster-management.webp',
     tagline: 'Rapid geospatial response for preparedness, relief and recovery.',
     summary: 'Map flood extents, landslide zones, cyclone damage and wildfire burns to support emergency response, recovery planning and risk reduction.',
     overview: [
