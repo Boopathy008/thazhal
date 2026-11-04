@@ -10,7 +10,6 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
   const d = details.find((x) => x.kind === kind && x.slug === slug)
   usePageMeta(d?.name ?? 'Not found', d?.summary)
   if (!d) return <NotFound />
-  const related = d.related.map((p) => details.find((x) => pathOf(x) === p)).filter(Boolean) as D[]
   const label = kind === 'product' ? 'Product' : 'Solution'
   const isForest = slug === 'forest-intelligence'
   const isSwoad = slug === 'swoad'
@@ -1225,12 +1224,6 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
         <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">{d.steps.map((s, i) => <li key={s.title} className="border-t border-emerald/60 pt-5"><span className="font-mono text-sm text-emerald">{String(i + 1).padStart(2, '0')}</span><h3 className="mt-2 text-xl font-bold text-white">{s.title}</h3><p className="mt-2 text-white/70">{s.text}</p></li>)}</ol>
       </div></section>
 
-      <section className="section"><div className="wrap grid gap-14 lg:grid-cols-2">
-        <div><h2 className="text-3xl font-bold">Frequently asked questions</h2>
-          <div className="mt-6 divide-y divide-slate2/30 border-y border-slate2/30">{d.faqs.map((f) => <details key={f.q} className="group py-4"><summary className="cursor-pointer list-none font-semibold marker:hidden">{f.q}</summary><p className="mt-2 text-slate-600">{f.a}</p></details>)}</div></div>
-        <div><h2 className="text-3xl font-bold">Related</h2>
-          <ul className="mt-6 space-y-3">{related.map((r) => <li key={r.slug}><Link to={pathOf(r)} className="block border border-slate2/30 bg-white p-5 transition-shadow hover:shadow-lg"><span className="font-display text-lg font-bold">{r.name}</span><span className="block text-sm text-slate-600">{r.tagline}</span></Link></li>)}</ul></div>
-      </div></section>
       <CTA title={`Interested in ${d.name}?`} text="Tell us about your project and we will get back to you." />
     </>
   )
