@@ -38,7 +38,7 @@ export function Art({ variant = 0, className = '', label }: { variant?: number; 
 
 export function Visual({ variant, image, label, className = '' }: { variant: number; image?: string; label: string; className?: string }) {
   return image
-    ? <img src={image} alt={label} loading="lazy" className={`h-full w-full object-cover ${className}`} />
+    ? <img src={image} alt={label} decoding="async" className={`h-full w-full object-cover ${className}`} />
     : <Art variant={variant} label={label} className={`h-full w-full ${className}`} />
 }
 

@@ -254,13 +254,13 @@ export default function Home() {
           {/* Horizontal scroll container */}
           <div
             ref={scrollRef}
-            className="mt-12 flex gap-6 overflow-x-auto pb-6 pt-2 scroll-smooth [scrollbar-width:thin] [scrollbar-color:#38BDF8_rgba(255,255,255,0.05)] snap-x snap-mandatory"
-            style={{ WebkitOverflowScrolling: 'touch' }}
+            className="mt-12 flex gap-6 overflow-x-auto pb-6 pt-2 scroll-smooth [scrollbar-width:thin] [scrollbar-color:#38BDF8_rgba(255,255,255,0.05)] snap-x snap-mandatory will-change-scroll transform-gpu"
+            style={{ WebkitOverflowScrolling: 'touch', contain: 'layout' }}
           >
             {items.map((p) => (
               <div
                 key={`${p.kind}-${p.slug}`}
-                className="w-[280px] sm:w-[320px] md:w-[340px] shrink-0 snap-start h-auto flex flex-col"
+                className="w-[280px] sm:w-[320px] md:w-[340px] shrink-0 snap-start h-auto flex flex-col transform-gpu"
               >
                 <ProductCard p={p} disableHover={true} />
               </div>

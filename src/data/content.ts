@@ -214,7 +214,7 @@ export const articles: Article[] = [
     date: '22 NOV',
     excerpt: 'How spatial digital twins and geospatial technologies are transforming surface and groundwater monitoring, predictive management, and resilience.',
     variant: 0,
-    image: '/images/blog/blog-1.jpg',
+    image: '/images/blog/blog-1.webp',
     body: [
       '### What is a Digital Water Twin?',
       'A Digital Water Twin is a virtual, dynamic representation of physical water systems—ranging from river basins and urban drainage networks to reservoirs, aquifers, and irrigation canals. By synchronizing real-time sensor data, spatial earth observation, and high-fidelity hydrological models, a Digital Water Twin replicates the real-world behavior of water assets in a computational environment. It allows water authorities, environmental scientists, and civil engineers to simulate scenarios, forecast flood or drought events, and optimize distribution with unprecedented accuracy.',
@@ -257,7 +257,7 @@ export const articles: Article[] = [
     date: '25 OCT',
     excerpt: 'Automating agricultural field boundary mapping with high-resolution imagery and computer vision to empower precision farming and crop auditing.',
     variant: 1,
-    image: '/images/blog/blog-2.jpg',
+    image: '/images/blog/blog-2.webp',
     body: [
       '### Introducing Thazhal’s Automated Farm Boundary Detection',
       'Accurate parcel and field boundary mapping is the bedrock of digital agriculture, precision farming, crop insurance, and subsidy administration. Historically, delineating farm boundaries relied on labor-intensive manual GPS surveys or subjective on-screen digitization. THAZHAL introduces an automated farm boundary detection engine that leverages high-resolution satellite imagery, multi-temporal vegetation indices, and state-of-the-art computer vision segmentation models to delineate individual crop fields with pinpoint precision.',
@@ -283,7 +283,7 @@ export const articles: Article[] = [
     date: '07 AUG',
     excerpt: 'THAZHAL showcases its cutting-edge remote sensing and climate intelligence solutions on the global stage at the Japan-India Innovation Pitch.',
     variant: 2,
-    image: '/images/blog/blog-3.png',
+    image: '/images/blog/blog-3.webp',
     body: [
       '### Introduction',
       'We’re thrilled to announce that Thazhal Geospatial Analytics has been selected as one of the top 15 startup finalists for the prestigious Japan-India Innovation Pitch! Hosted by JETRO (Japan External Trade Organization) and the Ministry of Economy, Trade, and Industry (METI), this esteemed event brought together innovators and industry leaders from Japan and India.',
@@ -309,7 +309,7 @@ export const articles: Article[] = [
     date: '03 AUG',
     excerpt: 'Comprehensive geospatial assessment and rapid imagery analytics to evaluate slope failures, infrastructure impact, and terrain changes in Wayanad.',
     variant: 3,
-    image: '/images/blog/blog-4.jpg',
+    image: '/images/blog/blog-4.webp',
     body: [
       '### Wayanad Damage Assessment',
       'In the wake of the catastrophic landslides that devastated communities across the Wayanad district of Kerala, THAZHAL deployed its rapid geospatial response workflow. Using high-resolution satellite imagery, multi-temporal Synthetic Aperture Radar (SAR), and terrain elevation models, our analytics team conducted an extensive damage assessment to map the initiation zones, debris flow trajectories, and downstream deposition extents.',
@@ -335,7 +335,7 @@ export const articles: Article[] = [
     date: '20 JUL',
     excerpt: 'Leveraging SAR and multi-spectral satellite data to map inundation extent, soil waterlogging, and quantify crop losses accurately for farming communities.',
     variant: 4,
-    image: '/images/blog/blog-5.jpg',
+    image: '/images/blog/blog-5.webp',
     body: [
       '### Assessing Flood Damage in Agricultural Land with Thazhal’s Geospatial Solutions',
       'When extreme monsoon rains and overflowing river systems breach embankments, agricultural fields bear the brunt of devastating inundation. Swift response and recovery hinge on immediate, reliable data detailing where water has accumulated, how long fields have remained submerged, and the specific crops affected.',
@@ -361,7 +361,7 @@ export const articles: Article[] = [
     date: '20 JUN',
     excerpt: 'Meet SWOAD — an intelligent, sensor-to-satellite platform engineered for continuous surface water observation, depth estimation, and quality metrics.',
     variant: 0,
-    image: '/images/blog/blog-6.jpg',
+    image: '/images/blog/blog-6.webp',
     body: [
       '### Introducing SWOAD: A Revolutionary Solution for Surface Water Management',
       'Freshwater bodies across the globe are under severe stress from urbanization, unregulated extraction, pollution, and climate variability. To safeguard these critical assets, THAZHAL introduces **SWOAD (Surface Water Observation and Assessment Dashboard)**—an advanced geospatial intelligence platform engineered for comprehensive surface water tracking.',
@@ -390,7 +390,7 @@ export const articles: Article[] = [
     date: '10 JUN',
     excerpt: 'Analyzing industrial runoff, urban effluents, and turbidity trends across water bodies through high-cadence satellite monitoring and spectral indicators.',
     variant: 1,
-    image: '/images/blog/blog-7.jpg',
+    image: '/images/blog/blog-7.webp',
     body: [
       '### From Last Year to Now: A Disturbing Trend',
       'Water quality monitoring across major water basins reveals an alarming upward trajectory in industrial chemical effluents, untreated municipal wastewater, and agricultural runoff. Over the past year alone, multi-temporal satellite analyses indicate a steep rise in eutrophic conditions and chronic turbidity spikes across urban lakes and river tributaries.',
@@ -419,7 +419,7 @@ export const articles: Article[] = [
     date: '25 MAY',
     excerpt: 'Early detection and predictive tracking of chlorophyll anomalies and toxic algal blooms in inland reservoirs and coastal waters using satellite spectra.',
     variant: 2,
-    image: '/images/blog/blog-8.jpg',
+    image: '/images/blog/blog-8.webp',
     body: [
       '### How Satellite Remote Sensing Works',
       'Harmful Algae Blooms (HABs) are characterized by dense concentrations of phytoplankton and cyanobacteria that alter the optical properties of water. Chlorophyll-a and phycocyanin pigments inside algae absorb blue and red light while strongly reflecting green and near-infrared (NIR) wavelengths. Multi-spectral sensors aboard satellites like Sentinel-2, Sentinel-3, and Landsat capture these subtle spectral reflections, allowing automated algorithms to detect microscopic algae proliferation long before it forms visible surface scums.',
