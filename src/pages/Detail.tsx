@@ -1071,9 +1071,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                       Satellite Intelligence for Disaster Preparedness, Response & Recovery
                     </h2>
                     <p className="mt-6 text-[15px] leading-relaxed text-slate-600">
-                      We deliver end-to-end spaceborne intelligence to anticipate natural hazards and safeguard vulnerable ecosystems.
-                      Our high-cadence Earth Observation pipelines synthesize multispectral optical feeds and Synthetic Aperture Radar (SAR)
-                      to cut through extreme cloud cover, precipitation, and complex terrain constraints during active emergencies.
+                      Track disasters from space and respond faster with satellite imagery, remote sensing, and geospatial analytics. Thazhal helps government agencies, disaster management authorities, and organisations identify affected areas, assess damage, map vulnerable locations, and monitor recovery through actionable maps, alerts, and reports.
                     </p>
                   </Reveal>
                 </div>
@@ -1091,11 +1089,11 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                 {[
                   {
                     title: 'Rapid Assessment of Disaster Impact',
-                    desc: 'Generate immediate post-event situational reports through high-resolution change detection models within hours of event occurrence. Pinpoint severed transit lifelines, collapsed built structures, and inundated farmland to accelerate targeted humanitarian relief and emergency triage logistics.',
+                    desc: 'Quickly identify flood-affected areas, damaged infrastructure, impacted settlements, and potential contamination zones using satellite imagery, drone data, and geospatial analytics. Generate damage assessment maps to support emergency response, recovery planning, and impact reporting.',
                   },
                   {
                     title: 'Flood Risk & Extent Analysis',
-                    desc: 'Delineate standing water bodies and flash flood corridors with cloud-penetrating radar altimetry and spatial elevation models. Quantify waterlogging depth, duration, and sediment transport to empower disaster authorities with actionable containment and evacuation strategies.',
+                    desc: 'Map flood extent and assess flood exposure by combining satellite observations, terrain models, drainage networks, and spatial data. Identify vulnerable settlements, roads, infrastructure, and agricultural areas to support preparedness, response planning, and post-flood recovery.',
                   },
                 ].map((card, i) => (
                   <Reveal key={card.title} delay={i * 0.1}>
@@ -1124,32 +1122,32 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                         {
                           icon: Waves,
                           title: 'Flood Monitoring',
-                          desc: 'Continuous spatial monitoring of flood extents and water retention dynamics across river basins.',
+                          desc: 'Map inundated areas and track changes in flood extent using satellite imagery.',
                         },
                         {
                           icon: Building2,
                           title: 'Infrastructure Damage Assessment',
-                          desc: 'High-resolution detection of structural failures, breached embankments, and severed road networks.',
+                          desc: 'Identify potentially affected roads, buildings, and other critical assets to prioritise field inspections.',
                         },
                         {
                           icon: ShieldAlert,
                           title: 'Disaster Risk Mapping',
-                          desc: 'Predictive spatial vulnerability modeling to identify high-risk zones ahead of seasonal climate events.',
+                          desc: 'Analyse terrain, land use, drainage, and exposure to identify areas vulnerable to natural hazards.',
                         },
                         {
                           icon: Sun,
                           title: 'Drought Monitoring',
-                          desc: 'Satellite soil moisture and vegetative stress tracking to anticipate prolonged agricultural scarcity.',
+                          desc: 'Assess vegetation conditions and changes in land surface characteristics to support drought impact assessment.',
                         },
                         {
                           icon: Mountain,
                           title: 'Landslide Susceptibility Mapping',
-                          desc: 'Terrain slope stability and soil moisture threshold modeling to flag imminent slope failure risks.',
+                          desc: 'Identify terrain characteristics associated with landslide susceptibility to support risk assessment and preparedness.',
                         },
                         {
                           icon: Activity,
                           title: 'Post-Disaster Recovery Monitoring',
-                          desc: 'Long-term change tracking to verify structural rehabilitation, vegetation regrowth, and settlement recovery.',
+                          desc: 'Compare pre- and post-event imagery to track visible changes, assess damage, and monitor recovery progress.',
                         },
                       ].map((item) => {
                         const Icon = item.icon
@@ -1196,10 +1194,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   Turning Disaster Data into Actionable Intelligence
                 </h2>
                 <p className="mt-6 text-[15px] sm:text-[16px] leading-relaxed text-slate-600">
-                  Raw Earth Observation feeds and radar returns are only valuable when transformed into direct operational guidance for teams on the ground.
-                  Thazhal bridges the gap between petabyte-scale satellite constellations and field command centers by deploying automated spatial analytics pipelines.
-                  Our models quantify asset exposure, delineate safe evacuation corridors, and deliver audit-grade damage figures to disaster response authorities.
-                  By combining deep-tech remote sensing with domain expertise, we ensure organizations act decisively when every hour matters most.
+                  Thazhal integrates satellite remote sensing, GIS, drone surveys, and geospatial analytics to transform complex disaster data into clear, decision-ready information. Interactive maps and structured reports help response teams understand the extent of an event, prioritise affected areas, and coordinate recovery efforts.
                 </p>
                 <div className="mt-8 flex justify-center">
                   <Btn to="/contact">Talk to Our Team</Btn>
