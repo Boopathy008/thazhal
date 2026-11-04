@@ -19,6 +19,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
   const isEnvMonitoring = slug === 'environmental-monitoring'
   const isInfraMonitoring = slug === 'infrastructure-monitoring'
   const isMining = slug === 'mining'
+  const isDisaster = slug === 'disaster-management'
 
   return (
     <>
@@ -1039,6 +1040,171 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   </Reveal>
                 </div>
               </div>
+            </div>
+          </section>
+        </>
+      ) : isDisaster ? (
+        /* ── Custom Disaster Management Sections ── */
+        <>
+          {/* Section 1 — Hero Image (Left) + Satellite Intelligence Content (Right) */}
+          <section className="bg-white section">
+            <div className="wrap">
+              <div className="grid gap-12 lg:grid-cols-12 items-center">
+                {/* Left — hero section image */}
+                <div className="lg:col-span-5">
+                  <Reveal>
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/3] lg:aspect-[4/4.5]">
+                      <img
+                        src="/images/disaster-management.webp"
+                        alt="Disaster Management"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </Reveal>
+                </div>
+
+                {/* Right — content */}
+                <div className="lg:col-span-7">
+                  <Reveal delay={0.1}>
+                    <p className="mb-3 text-xs font-bold uppercase tracking-wider text-sky-500">OUR SOLUTIONS</p>
+                    <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl">
+                      Satellite Intelligence for Disaster Preparedness, Response & Recovery
+                    </h2>
+                    <p className="mt-6 text-[15px] leading-relaxed text-slate-600">
+                      We deliver end-to-end spaceborne intelligence to anticipate natural hazards and safeguard vulnerable ecosystems.
+                      Our high-cadence Earth Observation pipelines synthesize multispectral optical feeds and Synthetic Aperture Radar (SAR)
+                      to cut through extreme cloud cover, precipitation, and complex terrain constraints during active emergencies.
+                    </p>
+                  </Reveal>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 2 — Damage Mapping (2 highlight cards) */}
+          <section className="section bg-slate-50">
+            <div className="wrap">
+              <Reveal>
+                <h2 className="mb-12 text-center text-3xl font-bold text-navy sm:text-4xl">Damage Mapping</h2>
+              </Reveal>
+              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+                {[
+                  {
+                    title: 'Rapid Assessment of Disaster Impact',
+                    desc: 'Generate immediate post-event situational reports through high-resolution change detection models within hours of event occurrence. Pinpoint severed transit lifelines, collapsed built structures, and inundated farmland to accelerate targeted humanitarian relief and emergency triage logistics.',
+                  },
+                  {
+                    title: 'Flood Risk & Extent Analysis',
+                    desc: 'Delineate standing water bodies and flash flood corridors with cloud-penetrating radar altimetry and spatial elevation models. Quantify waterlogging depth, duration, and sediment transport to empower disaster authorities with actionable containment and evacuation strategies.',
+                  },
+                ].map((card, i) => (
+                  <Reveal key={card.title} delay={i * 0.1}>
+                    <div className="flex flex-col justify-center rounded-2xl border border-slate-200 bg-white p-8 sm:p-10 shadow-sm min-h-[220px] transition-all duration-300 hover:-translate-y-1 hover:border-emerald/40 hover:shadow-xl hover:shadow-navy/5">
+                      <h3 className="text-xl font-bold text-navy">{card.title}</h3>
+                      <p className="mt-4 text-[14px] leading-relaxed text-slate-500">{card.desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Section 3 — Key Capabilities (6 Points Left + Image Right) */}
+          <section className="section bg-white overflow-hidden">
+            <div className="wrap">
+              <div className="grid gap-16 lg:grid-cols-12 items-center">
+                {/* Left — 6 capabilities */}
+                <div className="lg:col-span-7">
+                  <Reveal>
+                    <h2 className="mb-8 text-3xl font-bold text-navy sm:text-4xl">
+                      Key Capabilities
+                    </h2>
+                    <div className="space-y-6">
+                      {[
+                        {
+                          icon: Waves,
+                          title: 'Flood Monitoring',
+                          desc: 'Continuous spatial monitoring of flood extents and water retention dynamics across river basins.',
+                        },
+                        {
+                          icon: Building2,
+                          title: 'Infrastructure Damage Assessment',
+                          desc: 'High-resolution detection of structural failures, breached embankments, and severed road networks.',
+                        },
+                        {
+                          icon: ShieldAlert,
+                          title: 'Disaster Risk Mapping',
+                          desc: 'Predictive spatial vulnerability modeling to identify high-risk zones ahead of seasonal climate events.',
+                        },
+                        {
+                          icon: Sun,
+                          title: 'Drought Monitoring',
+                          desc: 'Satellite soil moisture and vegetative stress tracking to anticipate prolonged agricultural scarcity.',
+                        },
+                        {
+                          icon: Mountain,
+                          title: 'Landslide Susceptibility Mapping',
+                          desc: 'Terrain slope stability and soil moisture threshold modeling to flag imminent slope failure risks.',
+                        },
+                        {
+                          icon: Activity,
+                          title: 'Post-Disaster Recovery Monitoring',
+                          desc: 'Long-term change tracking to verify structural rehabilitation, vegetation regrowth, and settlement recovery.',
+                        },
+                      ].map((item) => {
+                        const Icon = item.icon
+                        return (
+                          <div key={item.title} className="flex gap-4 items-start">
+                            <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
+                              <Icon size={20} aria-hidden />
+                            </div>
+                            <div>
+                              <h3 className="text-[15px] font-bold text-navy">{item.title}</h3>
+                              <p className="mt-1 text-[13px] leading-relaxed text-slate-500">{item.desc}</p>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </Reveal>
+                </div>
+
+                {/* Right — disaster-capabilities image */}
+                <div className="lg:col-span-5">
+                  <Reveal delay={0.1}>
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/3] lg:aspect-[4/5]">
+                      <img
+                        src="/images/disaster-capabilities.webp"
+                        alt="Disaster Key Capabilities"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 4 — Turning Disaster Data into Actionable Intelligence */}
+          <section className="section bg-slate-50">
+            <div className="wrap max-w-4xl text-center">
+              <Reveal>
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-sky-500 mb-3 block">
+                  Actionable Intelligence
+                </span>
+                <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl">
+                  Turning Disaster Data into Actionable Intelligence
+                </h2>
+                <p className="mt-6 text-[15px] sm:text-[16px] leading-relaxed text-slate-600">
+                  Raw Earth Observation feeds and radar returns are only valuable when transformed into direct operational guidance for teams on the ground.
+                  Thazhal bridges the gap between petabyte-scale satellite constellations and field command centers by deploying automated spatial analytics pipelines.
+                  Our models quantify asset exposure, delineate safe evacuation corridors, and deliver audit-grade damage figures to disaster response authorities.
+                  By combining deep-tech remote sensing with domain expertise, we ensure organizations act decisively when every hour matters most.
+                </p>
+                <div className="mt-8 flex justify-center">
+                  <Btn to="/contact">Talk to Our Team</Btn>
+                </div>
+              </Reveal>
             </div>
           </section>
         </>
