@@ -131,7 +131,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   <Reveal>
                     <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/3]">
                       <img
-                        src="/images/swoad.jpg"
+                        src="/images/swoad.webp"
                         alt="Water Body Monitoring"
                         className="h-full w-full object-cover"
                       />
@@ -259,7 +259,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   <Reveal>
                     <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/3]">
                       <img
-                        src="/images/climate-audit.jpg"
+                        src="/images/climate-audit.webp"
                         alt="Climate Audit"
                         className="h-full w-full object-cover"
                       />
@@ -460,7 +460,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   <Reveal delay={0.1}>
                     <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200">
                       <img
-                        src="/images/fire-audit.jpg"
+                        src="/images/fire-audit.webp"
                         alt="Fire Audit — building floor plan"
                         className="h-full w-full object-cover"
                       />

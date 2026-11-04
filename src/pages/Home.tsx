@@ -157,7 +157,7 @@ export default function Home() {
               <Card3D className="aspect-[4/4.5] overflow-hidden rounded-2xl shadow-2xl border border-slate-200">
                 <div className="relative h-full w-full group overflow-hidden">
                   <img
-                    src="/images/about.jpg"
+                    src="/images/about.webp"
                     alt="About THAZHAL"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
