@@ -121,49 +121,47 @@ export function SolutionBlock({ s, flip, light }: { s: Detail; flip?: boolean; l
 
 export function BlogCard({ a, dark }: { a: Article; dark?: boolean }) {
   return (
-    <Card3D className="h-full">
-      <article
-        className={`group flex h-full flex-col overflow-hidden rounded-2xl border transition-all duration-350 hover:shadow-xl ${
-          dark
-            ? 'border-white/10 bg-white/[0.04] backdrop-blur-sm hover:border-emerald/30 hover:bg-white/[0.07]'
-            : 'border-slate-200/70 bg-white shadow-sm hover:border-emerald/25 hover:shadow-navy/8'
-        }`}
-      >
-        <Link to={`/blog/${a.slug}`} className="flex flex-1 flex-col">
-          {/* Cover image */}
-          <div className="relative aspect-[16/9] overflow-hidden">
-            <div className="h-full transition-transform duration-700 group-hover:scale-105">
-              <Visual variant={a.variant} image={a.image} label={`Cover for ${a.title}`} />
-            </div>
-            <div className="scan-line pointer-events-none" />
-            {/* Date overlay chip */}
-            <div className="absolute bottom-3 left-3 rounded-md bg-navy/80 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-emerald/90 backdrop-blur-sm">
-              {a.date}
-            </div>
+    <article
+      className={`group flex h-full flex-col overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+        dark
+          ? 'border-white/10 bg-white/[0.04] backdrop-blur-sm hover:border-emerald/30 hover:bg-white/[0.07]'
+          : 'border-slate-200/70 bg-white shadow-sm hover:border-emerald/25 hover:shadow-navy/8'
+      }`}
+    >
+      <Link to={`/blog/${a.slug}`} className="flex flex-1 flex-col">
+        {/* Cover image */}
+        <div className="relative aspect-[16/9] overflow-hidden">
+          <div className="h-full transition-transform duration-500 group-hover:scale-105">
+            <Visual variant={a.variant} image={a.image} label={`Cover for ${a.title}`} />
           </div>
+          <div className="scan-line pointer-events-none" />
+          {/* Date overlay chip */}
+          <div className="absolute bottom-3 left-3 rounded-md bg-navy/80 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-emerald/90 backdrop-blur-sm">
+            {a.date}
+          </div>
+        </div>
 
-          {/* Body */}
-          <div className="flex flex-1 flex-col p-4">
-            <div className="mb-2 flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-emerald">
-              <span className="h-1 w-1 rounded-full bg-emerald" />
-              <span className={dark ? 'text-white/55' : 'text-slate-400'}>by {a.author ?? 'Thazhal'}</span>
-            </div>
-            <h3
-              className={`flex-1 text-[15px] font-bold leading-snug transition-colors duration-300 ${
-                dark ? 'text-white group-hover:text-emerald' : 'text-navy group-hover:text-forest'
-              }`}
-            >
-              {a.title}
-            </h3>
-            <p className={`mt-2.5 text-[13px] line-clamp-2 leading-relaxed ${dark ? 'text-white/55' : 'text-slate-500'}`}>
-              {a.excerpt}
-            </p>
-            <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-emerald transition-all duration-300 group-hover:translate-x-1">
-              Read Article <ArrowUpRight size={12} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-            </span>
+        {/* Body */}
+        <div className="flex flex-1 flex-col p-4">
+          <div className="mb-2 flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-emerald">
+            <span className="h-1 w-1 rounded-full bg-emerald" />
+            <span className={dark ? 'text-white/55' : 'text-slate-400'}>by {a.author ?? 'Thazhal'}</span>
           </div>
-        </Link>
-      </article>
-    </Card3D>
+          <h3
+            className={`flex-1 text-[15px] font-bold leading-snug transition-colors duration-300 ${
+              dark ? 'text-white group-hover:text-emerald' : 'text-navy group-hover:text-forest'
+            }`}
+          >
+            {a.title}
+          </h3>
+          <p className={`mt-2.5 text-[13px] line-clamp-2 leading-relaxed ${dark ? 'text-white/55' : 'text-slate-500'}`}>
+            {a.excerpt}
+          </p>
+          <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-emerald transition-all duration-300 group-hover:translate-x-1">
+            Read Article <ArrowUpRight size={12} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+          </span>
+        </div>
+      </Link>
+    </article>
   )
 }

@@ -38,27 +38,41 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
         <section className="bg-white section">
           <div className="wrap space-y-16">
             <Reveal>
-              <div className="max-w-4xl">
-                <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl">
-                  Monitor Forest Health, Track Deforestation, and Support Carbon Assessment with Thazhal’s Geospatial Intelligence
-                </h2>
-                <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl">
-                  Leverage satellite imagery, remote sensing, GIS, and AI-powered analytics to monitor forest ecosystems,
-                  assess vegetation changes, and support afforestation and carbon assessment initiatives.
-                </p>
-                <ul className="mt-6 space-y-3">
-                  {[
-                    'Canopy Density & Tree Cover Change Detection',
-                    'Plantation Monitoring & Carbon Stock Estimation',
-                  ].map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-base font-semibold text-navy">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald/20 text-emerald">
-                        <ArrowRight size={14} />
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+              <div className="grid gap-12 lg:grid-cols-12 items-center">
+                {/* Left — hero section image */}
+                <div className="lg:col-span-5">
+                  <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/3] lg:aspect-[4/4.5]">
+                    <img
+                      src="/images/forest-intelligence.webp"
+                      alt="Forest Intelligence"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                {/* Right — content */}
+                <div className="lg:col-span-7">
+                  <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl">
+                    Monitor Forest Health, Track Deforestation, and Support Carbon Assessment with Thazhal’s Geospatial Intelligence
+                  </h2>
+                  <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl">
+                    Leverage satellite imagery, remote sensing, GIS, and AI-powered analytics to monitor forest ecosystems,
+                    assess vegetation changes, and support afforestation and carbon assessment initiatives.
+                  </p>
+                  <ul className="mt-6 space-y-3">
+                    {[
+                      'Canopy Density & Tree Cover Change Detection',
+                      'Plantation Monitoring & Carbon Stock Estimation',
+                    ].map((item) => (
+                      <li key={item} className="flex items-center gap-3 text-base font-semibold text-navy">
+                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald/20 text-emerald">
+                          <ArrowRight size={14} />
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </Reveal>
 
@@ -666,9 +680,9 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                     desc: 'Assessing risk for proactive decision making.',
                   },
                 ].map((card, i) => (
-                  <Reveal key={card.title} delay={i * 0.1}>
-                    <div className="flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-10 text-center shadow-sm min-h-[180px]">
-                      <h3 className="text-xl font-bold text-navy">{card.title}</h3>
+                  <Reveal key={card.title} delay={i * 0.15}>
+                    <div className="group flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-10 text-center shadow-sm min-h-[180px] transition-all duration-300 hover:-translate-y-2 hover:border-emerald/40 hover:shadow-xl hover:shadow-navy/5">
+                      <h3 className="text-xl font-bold text-navy transition-colors duration-300 group-hover:text-emerald">{card.title}</h3>
                       <p className="mt-3 text-[14px] leading-relaxed text-slate-400">{card.desc}</p>
                     </div>
                   </Reveal>
@@ -737,7 +751,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   <Reveal delay={0.15} className="sticky top-28">
                     <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[3/4]">
                       <img
-                        src="/images/environmental-monitoring.jpg"
+                        src="/images/environmental-monitoring.webp"
                         alt="Environmental monitoring — satellite vegetation analysis"
                         className="h-full w-full object-cover"
                       />
@@ -848,7 +862,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   <Reveal delay={0.15} className="sticky top-28">
                     <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[3/4]">
                       <img
-                        src="/images/infrastructure-monitoring.jpg"
+                        src="/images/infrastructure-monitoring.webp"
                         alt="Infrastructure monitoring — aerial dam view"
                         className="h-full w-full object-cover"
                       />
@@ -865,28 +879,46 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
           {/* Section 1 — Intro: Area Audit & Monitoring */}
           <section className="bg-white section">
             <div className="wrap">
-              <Reveal>
-                <p className="mb-3 text-xs font-bold uppercase tracking-wider text-sky-500">OUR SOLUTIONS</p>
-                <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl max-w-3xl">
-                  Area Audit & Monitoring
-                </h2>
-                <p className="mt-3 text-lg font-semibold text-emerald">
-                  Satellite and Drone-Based Intelligence for Mining Operations
-                </p>
-                <p className="mt-5 max-w-3xl text-[15px] leading-relaxed text-slate-500">
-                  Accurate monitoring of mining activities is essential for resource estimation, operational efficiency,
-                  slope safety, and regulatory compliance.
-                </p>
-                <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-slate-500">
-                  At Thazhal Geospatial Analytics, we combine drone surveys, satellite imagery, LiDAR, and geospatial
-                  analytics to help mining companies monitor site changes, calculate extracted material volumes, assess
-                  ground deformation, and support environmental and regulatory reporting.
-                </p>
-              </Reveal>
+              <div className="grid gap-12 lg:grid-cols-12 items-center">
+                {/* Left — hero section image */}
+                <div className="lg:col-span-5">
+                  <Reveal>
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/3] lg:aspect-[4/4.5]">
+                      <img
+                        src="/images/mining.webp"
+                        alt="Mining Operations"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </Reveal>
+                </div>
+
+                {/* Right — content */}
+                <div className="lg:col-span-7">
+                  <Reveal delay={0.1}>
+                    <p className="mb-3 text-xs font-bold uppercase tracking-wider text-sky-500">OUR SOLUTIONS</p>
+                    <h2 className="text-3xl font-bold leading-tight text-navy sm:text-4xl lg:text-5xl">
+                      Area Audit & Monitoring
+                    </h2>
+                    <p className="mt-3 text-lg font-semibold text-emerald">
+                      Satellite and Drone-Based Intelligence for Mining Operations
+                    </p>
+                    <p className="mt-5 text-[15px] leading-relaxed text-slate-500">
+                      Accurate monitoring of mining activities is essential for resource estimation, operational efficiency,
+                      slope safety, and regulatory compliance.
+                    </p>
+                    <p className="mt-3 text-[15px] leading-relaxed text-slate-500">
+                      At Thazhal Geospatial Analytics, we combine drone surveys, satellite imagery, LiDAR, and geospatial
+                      analytics to help mining companies monitor site changes, calculate extracted material volumes, assess
+                      ground deformation, and support environmental and regulatory reporting.
+                    </p>
+                  </Reveal>
+                </div>
+              </div>
             </div>
           </section>
 
-          {/* Section 2 — Key Capabilities (numbered, 2-col) */}
+          {/* Section 2 — Key Capabilities (2-col without 01-05 numbers) */}
           <section className="section bg-slate-50">
             <div className="wrap">
               <Reveal>
@@ -895,31 +927,26 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
               <div className="grid grid-cols-1 gap-x-16 gap-y-10 sm:grid-cols-2">
                 {[
                   {
-                    num: '01',
                     icon: Camera,
                     title: 'Drone & Satellite Data Collection',
                     desc: 'Conduct periodic surveys using drone imagery and satellite data to capture detailed mine surface information, map excavation areas, and monitor changes in mining sites over time.',
                   },
                   {
-                    num: '02',
                     icon: Layers,
                     title: 'Mining Volume Estimation',
                     desc: 'Compare Digital Surface Models (DSMs) and terrain models from different survey dates to estimate excavated material, stockpile volumes, and changes in overburden and waste dump areas.',
                   },
                   {
-                    num: '03',
                     icon: Activity,
                     title: 'InSAR-Based Ground Deformation Monitoring',
                     desc: 'Use satellite radar data to detect and monitor ground movement around mine slopes, tailings facilities, waste dumps, and surrounding infrastructure, supporting the identification of areas requiring further geotechnical investigation.',
                   },
                   {
-                    num: '04',
                     icon: Mountain,
                     title: 'Slope Stability Risk Assessment',
                     desc: 'Analyse terrain characteristics and ground deformation patterns to support slope-risk screening and mine safety assessments. Integrate satellite-derived insights with field surveys and geotechnical information for a more comprehensive assessment.',
                   },
                   {
-                    num: '05',
                     icon: FileText,
                     title: 'Compliance & Royalty Reporting Support',
                     desc: 'Generate geospatial maps, volume estimates, and periodic change reports to support mining audits, operational documentation, regulatory reporting, and mineral royalty calculations.',
@@ -928,12 +955,9 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   const Icon = item.icon
                   return (
                     <Reveal key={item.title} delay={i * 0.06}>
-                      <div className="flex gap-5 items-start">
-                        <div className="flex flex-col items-center gap-2 shrink-0">
-                          <span className="font-mono text-lg font-bold text-sky-500">{item.num}</span>
-                          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
-                            <Icon size={22} aria-hidden />
-                          </div>
+                      <div className="flex gap-4 items-start">
+                        <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
+                          <Icon size={22} aria-hidden />
                         </div>
                         <div>
                           <h3 className="text-[16px] font-bold text-navy">{item.title}</h3>
@@ -947,82 +971,73 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
             </div>
           </section>
 
-          {/* Section 3 — Benefits + Closing CTA text */}
+          {/* Section 3 — Benefits for Mining Operations + mining-benefits.webp */}
           <section className="section bg-white overflow-hidden">
             <div className="wrap">
-              <div className="grid gap-16 lg:grid-cols-2">
+              <div className="grid gap-16 lg:grid-cols-12 items-center">
                 {/* Left — benefits */}
-                <Reveal>
-                  <h2 className="mb-8 text-3xl font-bold text-navy sm:text-4xl">
-                    Benefits for Mining Operations
-                  </h2>
-                  <div className="space-y-6">
-                    {[
-                      {
-                        icon: BarChart2,
-                        title: 'Accurate Volume Estimation',
-                        desc: 'Quantify changes in excavation areas and stockpiles using repeat surveys and surface models.',
-                      },
-                      {
-                        icon: Eye,
-                        title: 'Improved Operational Visibility',
-                        desc: 'Track mining progress and surface changes across large operational areas.',
-                      },
-                      {
-                        icon: AlertCircle,
-                        title: 'Early Identification of Ground Movement',
-                        desc: 'Monitor deformation trends and flag areas requiring further investigation.',
-                      },
-                      {
-                        icon: Database,
-                        title: 'Data-Driven Decision-Making',
-                        desc: 'Support mine planning, resource management, and operational assessments with geospatial data.',
-                      },
-                      {
-                        icon: FileText,
-                        title: 'Streamlined Reporting',
-                        desc: 'Provide consistent maps, measurements, and reports for audit and compliance workflows.',
-                      },
-                    ].map((item) => {
-                      const Icon = item.icon
-                      return (
-                        <div key={item.title} className="flex gap-4 items-start">
-                          <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
-                            <Icon size={20} aria-hidden />
+                <div className="lg:col-span-7">
+                  <Reveal>
+                    <h2 className="mb-8 text-3xl font-bold text-navy sm:text-4xl">
+                      Benefits for Mining Operations
+                    </h2>
+                    <div className="space-y-6">
+                      {[
+                        {
+                          icon: BarChart2,
+                          title: 'Accurate Volume Estimation',
+                          desc: 'Quantify changes in excavation areas and stockpiles using repeat surveys and surface models.',
+                        },
+                        {
+                          icon: Eye,
+                          title: 'Improved Operational Visibility',
+                          desc: 'Track mining progress and surface changes across large operational areas.',
+                        },
+                        {
+                          icon: AlertCircle,
+                          title: 'Early Identification of Ground Movement',
+                          desc: 'Monitor deformation trends and flag areas requiring further investigation.',
+                        },
+                        {
+                          icon: Database,
+                          title: 'Data-Driven Decision-Making',
+                          desc: 'Support mine planning, resource management, and operational assessments with geospatial data.',
+                        },
+                        {
+                          icon: FileText,
+                          title: 'Streamlined Reporting',
+                          desc: 'Provide consistent maps, measurements, and reports for audit and compliance workflows.',
+                        },
+                      ].map((item) => {
+                        const Icon = item.icon
+                        return (
+                          <div key={item.title} className="flex gap-4 items-start">
+                            <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
+                              <Icon size={20} aria-hidden />
+                            </div>
+                            <div>
+                              <h3 className="text-[15px] font-bold text-navy">{item.title}</h3>
+                              <p className="mt-1 text-[13px] leading-relaxed text-slate-500">{item.desc}</p>
+                            </div>
                           </div>
-                          <div>
-                            <h3 className="text-[15px] font-bold text-navy">{item.title}</h3>
-                            <p className="mt-1 text-[13px] leading-relaxed text-slate-500">{item.desc}</p>
-                          </div>
-                        </div>
-                      )
-                    })}
-                  </div>
-                </Reveal>
-
-                {/* Right — closing insight text */}
-                <Reveal delay={0.1}>
-                  <div className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-8 h-full flex flex-col justify-center">
-                    <span className="font-mono text-xs font-bold uppercase tracking-wider text-sky-500 mb-4">
-                      Intelligence Summary
-                    </span>
-                    <h3 className="text-2xl font-bold text-navy leading-snug">
-                      From Survey Data to Actionable Mining Intelligence
-                    </h3>
-                    <p className="mt-5 text-[14px] leading-relaxed text-slate-600">
-                      Thazhal combines drone surveys, satellite remote sensing, LiDAR, and GIS-based analytics to
-                      deliver practical insights for mining operations — from volume estimation and site audits to
-                      ground deformation monitoring.
-                    </p>
-                    <p className="mt-4 text-[14px] leading-relaxed text-slate-600">
-                      Explore how geospatial intelligence can improve the accuracy, efficiency, and monitoring of
-                      your mining operations.
-                    </p>
-                    <div className="mt-8">
-                      <Btn to="/contact">Talk to Our Team</Btn>
+                        )
+                      })}
                     </div>
-                  </div>
-                </Reveal>
+                  </Reveal>
+                </div>
+
+                {/* Right — mining-benefits image */}
+                <div className="lg:col-span-5">
+                  <Reveal delay={0.1}>
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/3] lg:aspect-[4/5]">
+                      <img
+                        src="/images/mining-benefits.webp"
+                        alt="Mining Operations Benefits"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </Reveal>
+                </div>
               </div>
             </div>
           </section>

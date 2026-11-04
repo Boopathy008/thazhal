@@ -110,7 +110,7 @@ export const solutions: Detail[] = [
       { q: 'Which assets can be assessed?', a: 'Roads, bridges, industrial sites and similar assets, depending on scope.' },
       { q: 'Does it replace on-site inspection?', a: 'No. It complements field inspection with spatial context.' },
     ],
-    related: ['/solutions/forest-intelligence', '/products/geospatial-platforms'],
+    related: ['/solutions/forest-intelligence', '/solutions/environmental-monitoring'],
   },
   {
     kind: 'solution', slug: 'forest-intelligence', name: 'Forest Intelligence', variant: 5, image: '/images/forest-intelligence.webp',
@@ -127,24 +127,7 @@ export const solutions: Detail[] = [
       { q: 'What sensors are utilized?', a: 'Optical multispectral satellites, SAR (Synthetic Aperture Radar), and LiDAR elevation datasets.' },
       { q: 'Can it track historical trends?', a: 'Yes. Historical archive analysis going back over two decades can be conducted.' },
     ],
-    related: ['/solutions/environmental-monitoring', '/solutions/geospatial-platforms'],
-  },
-  {
-    kind: 'solution', slug: 'geospatial-platforms', name: 'Geospatial Platforms', variant: 0, image: '/images/geospatial-platforms.webp',
-    tagline: 'Custom cloud portals and spatial intelligence engines.',
-    summary: 'Bring spatial data and analysis together through web GIS applications, dashboards and scalable data pipelines.',
-    overview: [
-      'Geospatial Platforms empower organizations with customized, secure spatial infrastructure tailored to their unique operational requirements.',
-      'From real-time sensor streaming to interactive 3D map views and analytical spatial pipelines, we deploy production-ready cloud GIS systems that bridge raw data and business decisions.',
-    ],
-    uses: ['Enterprise Web GIS & Spatial Portals', 'Automated Earth Observation data pipelines', 'Custom analytical dashboards & map viewers', 'Cross-departmental spatial data governance'],
-    benefits: ['Centralized geospatial data infrastructure', 'Real-time collaborative mapping and analytics', 'High-speed cloud performance on massive spatial layers'],
-    steps,
-    faqs: [
-      { q: 'What technologies power these platforms?', a: 'Open-source and enterprise geospatial stacks including PostGIS, GeoServer, GDAL, Maplibre, and customized cloud APIs.' },
-      { q: 'Can it integrate with existing ERP or internal databases?', a: 'Yes. Our platforms provide REST APIs and standard OGC endpoints (WMS, WFS, COG) for seamless interoperability.' },
-    ],
-    related: ['/products/swoad', '/solutions/environmental-monitoring'],
+    related: ['/solutions/environmental-monitoring', '/solutions/mining'],
   },
   {
     kind: 'solution', slug: 'mining', name: 'Mining', variant: 1, image: '/images/mining.webp',
@@ -186,7 +169,7 @@ export const details = [...products, ...solutions]
 export const pathOf = (d: Detail) => `/${d.kind === 'product' ? 'products' : 'solutions'}/${d.slug}`
 
 const productIcons = ['Layers', 'Thermometer', 'Flame']
-const solutionIcons = ['Activity', 'Building2', 'Trees', 'Layers', 'Mountain', 'AlertTriangle']
+const solutionIcons = ['Activity', 'Building2', 'Trees', 'Mountain', 'AlertTriangle']
 
 export const nav = {
   products: products.map((p, i) => ({ label: p.name, to: pathOf(p), desc: p.tagline, icon: productIcons[i] || 'Layers' })),
