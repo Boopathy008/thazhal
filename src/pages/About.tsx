@@ -9,13 +9,13 @@ import { LogoMarquee } from './Home'
 import { advisors, partners, teamMembers, TeamMember } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
 
-function MemberCard({ m }: { m: TeamMember }) {
+function MemberCard({ m, imageHeight = 'h-64 sm:h-72' }: { m: TeamMember; imageHeight?: string }) {
   return (
     <Card3D className="h-full">
       <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-sm transition-all duration-350 hover:shadow-xl hover:border-emerald/25">
         {/* Photo — full size */}
         <div className="relative overflow-hidden bg-slate-50">
-          <div className="relative h-64 w-full overflow-hidden rounded-xl sm:h-72">
+          <div className={`relative w-full overflow-hidden ${imageHeight}`}>
             {m.image ? (
               <img
                 src={m.image}
@@ -40,22 +40,25 @@ function MemberCard({ m }: { m: TeamMember }) {
             {/* Scan line on hover */}
             <div className="scan-line pointer-events-none" />
           </div>
+        </div>
 
-          {m.linkedin && (
+        {/* LinkedIn button — outside clipped image so it's always clickable */}
+        {m.linkedin && (
+          <div className="relative">
             <a
               href={m.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${m.name} on LinkedIn`}
-              className="absolute bottom-4 right-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/95 text-navy shadow-md backdrop-blur-sm transition-all duration-250 hover:scale-110 hover:bg-emerald hover:text-navy"
+              className="absolute -top-5 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-navy shadow-md border border-slate-200 transition-all duration-250 hover:scale-110 hover:bg-emerald hover:text-navy hover:border-emerald"
             >
-              <Linkedin size={14} />
+              <Linkedin size={16} />
             </a>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Name & role */}
-        <div className="flex flex-1 flex-col justify-between p-4">
+        <div className="flex flex-1 flex-col justify-between p-4 pt-6">
           <div>
             <h4 className="text-[15px] font-bold text-navy leading-snug">{m.name}</h4>
             <p className="mt-1 text-[12px] leading-snug text-slate-500">{m.role}</p>
@@ -196,32 +199,10 @@ export default function About() {
             <div className="mx-auto mt-12 grid max-w-3xl gap-6 sm:grid-cols-2 items-stretch">
               {advisors.map((m, i) => (
                 <Reveal key={m.name} delay={i * 0.1} className="h-full flex flex-col">
-                  <MemberCard m={m} />
+                  <MemberCard m={m} imageHeight="h-80 sm:h-96" />
                 </Reveal>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries served */}
-      <section className="section bg-white">
-        <div className="wrap">
-          <Reveal>
-            <SectionHeading eyebrow="Expertise" title="Industries Served" />
-          </Reveal>
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
-            {[
-              ['Infrastructure', 'Highways, bridges, urban systems and industrial facilities.'],
-              ['Environmental', 'Forests, rivers, landscapes and environmental change.'],
-            ].map(([t, d]) => (
-              <Reveal key={t} delay={0.05}>
-                <div className="rounded-2xl border border-slate-200/70 bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-md hover:border-emerald/25 border-l-[3px] border-l-emerald">
-                  <h3 className="text-xl font-bold text-navy">{t}</h3>
-                  <p className="mt-2.5 text-[14px] leading-relaxed text-slate-500">{d}</p>
-                </div>
-              </Reveal>
-            ))}
           </div>
         </div>
       </section>
