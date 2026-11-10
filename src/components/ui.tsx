@@ -233,7 +233,6 @@ export function CTA({
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
             <Btn to="/contact">Talk to Our Team</Btn>
-            <Btn to="/#solutions" variant="outline">Explore Our Solutions</Btn>
           </div>
         </Reveal>
       </div>

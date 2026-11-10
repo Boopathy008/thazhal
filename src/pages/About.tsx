@@ -13,9 +13,9 @@ function MemberCard({ m }: { m: TeamMember }) {
   return (
     <Card3D className="h-full">
       <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-sm transition-all duration-350 hover:shadow-xl hover:border-emerald/25">
-        {/* Photo with reduced, elegant size */}
-        <div className="relative aspect-[16/11] overflow-hidden bg-slate-50 flex items-center justify-center p-2">
-          <div className="relative h-full w-full overflow-hidden rounded-xl">
+        {/* Photo — full size */}
+        <div className="relative overflow-hidden bg-slate-50">
+          <div className="relative h-64 w-full overflow-hidden rounded-xl sm:h-72">
             {m.image ? (
               <img
                 src={m.image}

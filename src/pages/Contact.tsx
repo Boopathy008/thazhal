@@ -1,4 +1,4 @@
-import { Mail, MapPin, Globe2, Compass } from 'lucide-react'
+import { Mail, MapPin, Globe2 } from 'lucide-react'
 import ContactForm from '../components/ContactForm'
 import { contact } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
@@ -62,18 +62,6 @@ export default function Contact() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.15}>
-              <div className="rounded-2xl border border-emerald/20 bg-gradient-to-br from-navy to-forest p-7 text-white shadow-xl">
-                <div className="flex items-center gap-3 text-emerald mb-3">
-                  <Compass size={20} />
-                  <span className="font-mono text-xs uppercase tracking-wider">Geospatial Advisory</span>
-                </div>
-                <h4 className="font-display text-lg font-bold">Looking for Custom Sensing?</h4>
-                <p className="mt-2 text-xs text-white/70 leading-relaxed">
-                  We configure specialized multispectral orbits and sensor payloads tailored to environmental hazards, pipeline corridors, and watershed analysis.
-                </p>
-              </div>
-            </Reveal>
           </div>
 
           {/* Form */}
