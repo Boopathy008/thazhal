@@ -12,7 +12,10 @@ import { usePageMeta } from '../hooks/usePageMeta'
 function MemberCard({ m, imageHeight = 'h-64 sm:h-72' }: { m: TeamMember; imageHeight?: string }) {
   return (
     <Card3D className="h-full">
-      <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-sm transition-all duration-350 hover:shadow-xl hover:border-emerald/25">
+      <div
+        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-sm transition-all duration-350 hover:shadow-xl hover:border-emerald/25"
+        style={{ transformStyle: 'flat' }}
+      >
         {/* Photo — full size */}
         <div className="relative overflow-hidden bg-slate-50">
           <div className={`relative w-full overflow-hidden ${imageHeight}`}>
@@ -51,7 +54,8 @@ function MemberCard({ m, imageHeight = 'h-64 sm:h-72' }: { m: TeamMember; imageH
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${m.name} on LinkedIn`}
-              className="mt-1 flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-sm transition-all duration-250 hover:scale-110 hover:bg-emerald hover:text-white hover:border-emerald"
+              className="mt-1 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-sm transition-all duration-250 hover:scale-110 hover:bg-emerald hover:text-white hover:border-emerald"
+              style={{ position: 'relative', zIndex: 10 }}
             >
               <Linkedin size={15} />
             </a>
