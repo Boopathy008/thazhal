@@ -36,33 +36,26 @@ function MemberCard({ m, imageHeight = 'h-64 sm:h-72' }: { m: TeamMember; imageH
             >
               <User size={40} strokeWidth={1.5} />
             </div>
-
             {/* Scan line on hover */}
             <div className="scan-line pointer-events-none" />
           </div>
         </div>
 
-        {/* LinkedIn button — outside clipped image so it's always clickable */}
-        {m.linkedin && (
-          <div className="relative">
+        {/* Name, role & LinkedIn */}
+        <div className="flex flex-1 flex-col items-center justify-center gap-2 p-4 text-center">
+          <h4 className="text-[15px] font-bold text-navy leading-snug">{m.name}</h4>
+          <p className="text-[12px] leading-snug text-slate-500">{m.role}</p>
+          {m.linkedin && (
             <a
               href={m.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${m.name} on LinkedIn`}
-              className="absolute -top-5 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-navy shadow-md border border-slate-200 transition-all duration-250 hover:scale-110 hover:bg-emerald hover:text-navy hover:border-emerald"
+              className="mt-1 flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-sm transition-all duration-250 hover:scale-110 hover:bg-emerald hover:text-white hover:border-emerald"
             >
-              <Linkedin size={16} />
+              <Linkedin size={15} />
             </a>
-          </div>
-        )}
-
-        {/* Name & role */}
-        <div className="flex flex-1 flex-col justify-between p-4 pt-6">
-          <div>
-            <h4 className="text-[15px] font-bold text-navy leading-snug">{m.name}</h4>
-            <p className="mt-1 text-[12px] leading-snug text-slate-500">{m.role}</p>
-          </div>
+          )}
         </div>
       </div>
     </Card3D>

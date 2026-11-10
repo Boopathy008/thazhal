@@ -54,10 +54,10 @@ export function SupporterGrid({ list }: { list: { name: string; logo: string }[]
 // ── Testimonials data ──
 const testimonials = [
   {
-    name: 'Name 1',
-    role: 'Role, Organization',
+    name: 'Meera Chandra',
+    role: 'Cofounder and Secretary, Forest First Samithi',
     quote:
-      'Testimonial text placeholder. Working with THAZHAL has transformed how we monitor our environmental assets.',
+      'The satellite study, combined with ground-truthing, helped us visualise and understand the changes in these restored habitats between 2021 and 2025. Thazhal Geospatial Analytics Pvt Ltd\'s support in hand-holding us through the development of remote sensing maps has enabled us to depict our restoration journey and its impact in a visually clear and meaningful way. We appreciate their technical support and partnership.',
   },
   {
     name: 'Name 2',
