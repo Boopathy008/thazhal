@@ -489,9 +489,9 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
             <div className="wrap">
               <div className="grid gap-12 lg:grid-cols-12 items-stretch">
                 {/* Left — thermal image */}
-                <div className="lg:col-span-5">
-                  <Reveal>
-                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 h-full min-h-[380px]">
+                <div className="lg:col-span-5 flex">
+                  <Reveal className="w-full">
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 h-full min-h-[380px] my-1.5">
                       <img
                         src="/images/fire-product.webp"
                         alt="Fire Audit — thermal heatmap"
@@ -548,7 +548,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                 </p>
                 <p className="mt-8 text-[15px] font-semibold text-navy">With this system, you can:</p>
               </Reveal>
-              <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4 items-stretch">
                 {[
                   'Digitize fire safety inspections',
                   'Reduce repetitive manual documentation',
@@ -559,8 +559,8 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   'Generate structured audit reports',
                   'Support better safety-related decision-making',
                 ].map((item, i) => (
-                  <Reveal key={item} delay={i * 0.07}>
-                    <div className="flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-sky-200">
+                  <Reveal key={item} delay={i * 0.07} className="h-full">
+                    <div className="flex h-full flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-sky-200">
                       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-sky-500 bg-sky-50 text-sky-500">
                         <Check size={15} strokeWidth={3} />
                       </span>
