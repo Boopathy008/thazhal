@@ -468,6 +468,11 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                       hotspot zones, and missing safety infrastructure — providing actionable insights in under 2 hours
                       per building.
                     </p>
+                    <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
+                      We work closely with safety officers, facility managers, and compliance teams to ensure every audit
+                      is thorough, documented, and actionable — turning raw observations into structured digital reports
+                      that support better decision-making.
+                    </p>
                   </Reveal>
                 </div>
                 <div className="lg:col-span-6">
@@ -485,7 +490,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
             </div>
           </section>
 
-          {/* Section 2 — Why to use this product (image left, text right) */}
+          {/* Section 2 — OUR PRODUCTS (image left, text right) */}
           <section className="section bg-slate-50 overflow-hidden">
             <div className="wrap">
               <div className="grid gap-12 lg:grid-cols-12 items-center">
@@ -514,18 +519,18 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                       and investor confidence. Identifying location-specific hazards helps to prioritize adaptation
                       actions at any level.
                     </p>
-                    <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2">
+                    <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                       {[
-                        'Prevent fire incidents through early risk identification',
-                        'Ensure compliance with fire safety standards',
-                        'Access data-driven severity scores for each building',
-                        'Prioritize upgrades in vulnerable zones',
+                        { title: 'Faster Audits', desc: 'Complete fire safety assessments in a fraction of the time using intelligent video analysis and automated reporting workflows.' },
+                        { title: 'Better Visibility', desc: 'Get a clear, room-level view of fire hazards, missing safety equipment, and risk zones across your entire building.' },
+                        { title: 'Visual Evidence', desc: 'Capture and store image-based evidence for every identified observation, making findings transparent and verifiable.' },
+                        { title: 'Standardized Assessment', desc: 'Follow a consistent, structured audit process across all buildings to ensure reliable and comparable safety data.' },
+                        { title: 'Easy Reporting', desc: 'Generate clear digital audit reports automatically, reducing manual effort and making it easier to share findings.' },
+                        { title: 'Digital Monitoring', desc: 'Track safety conditions over time with digital records, enabling ongoing monitoring and timely follow-up actions.' },
                       ].map((item) => (
-                        <div key={item} className="flex items-start gap-3">
-                          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-sky-500 text-sky-500">
-                            <Check size={14} strokeWidth={3} />
-                          </span>
-                          <span className="text-[14px] font-bold leading-snug text-navy">{item}</span>
+                        <div key={item.title}>
+                          <h3 className="text-[15px] font-bold text-navy">{item.title}</h3>
+                          <p className="mt-1 text-[13px] leading-relaxed text-slate-500">{item.desc}</p>
                         </div>
                       ))}
                     </div>
@@ -535,56 +540,42 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
             </div>
           </section>
 
-          {/* Section 3 — What We Assess */}
+          {/* Section 3 — Why Should You Have This? */}
           <section className="section bg-white">
             <div className="wrap">
               <Reveal>
-                <h2 className="mb-12 text-center text-3xl font-bold text-navy sm:text-4xl">What We Assess</h2>
+                <h2 className="mb-6 text-3xl font-bold text-navy sm:text-4xl">Why Should You Have This?</h2>
               </Reveal>
-              <div className="grid grid-cols-1 gap-x-16 gap-y-10 sm:grid-cols-2">
-                {[
-                  {
-                    icon: Flame,
-                    title: 'Fire-Prone Objects',
-                    desc: 'Detect flammable materials, electrical points, and unprotected machinery using AI object recognition.',
-                  },
-                  {
-                    icon: Map,
-                    title: 'Indoor Hotspot Mapping',
-                    desc: 'Map and visualize high-risk fire zones across floors and rooms using spatial intelligence.',
-                  },
-                  {
-                    icon: Shield,
-                    title: 'Fire Safety Infrastructure',
-                    desc: 'Identify missing extinguishers, hydrants, alarms, and exits critical for compliance.',
-                  },
-                  {
-                    icon: BarChart2,
-                    title: 'Fire Severity Scoring',
-                    desc: 'Generate building-wise risk scores to prioritize mitigation actions.',
-                  },
-                  {
-                    icon: FileText,
-                    title: 'Rapid Audit & Reporting',
-                    desc: 'Complete assessment and deliver a digital audit report within 2 hours per building.',
-                  },
-                ].map((item, i) => {
-                  const Icon = item.icon
-                  return (
-                    <Reveal key={item.title} delay={i * 0.05}>
-                      <div className="flex gap-4 items-start">
-                        <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
-                          <Icon size={24} aria-hidden />
-                        </div>
-                        <div>
-                          <h3 className="text-[17px] font-bold text-navy">{item.title}</h3>
-                          <p className="mt-1.5 text-[14px] leading-relaxed text-slate-500">{item.desc}</p>
-                        </div>
-                      </div>
-                    </Reveal>
-                  )
-                })}
-              </div>
+              <Reveal delay={0.05}>
+                <p className="text-[15px] leading-relaxed text-slate-600">
+                  Fire safety is not just about conducting an inspection — it is about knowing what was identified,
+                  where it was identified, and having clear evidence to support the findings.
+                </p>
+                <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
+                  Our solution helps organizations move from conventional inspection records to a digital and
+                  evidence-based fire safety assessment workflow.
+                </p>
+                <p className="mt-6 text-[15px] font-semibold text-navy">With this system, you can:</p>
+                <ul className="mt-3 space-y-2">
+                  {[
+                    'Digitize fire safety inspections',
+                    'Reduce repetitive manual documentation',
+                    'Maintain visual evidence of observations',
+                    'Review building and room-level findings',
+                    'Identify potential fire-safety concerns',
+                    'Monitor safety equipment and identified hazards',
+                    'Generate structured audit reports',
+                    'Support better safety-related decision-making',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-[14px] text-slate-600">
+                      <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-sky-500 text-sky-500">
+                        <Check size={12} strokeWidth={3} />
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
             </div>
           </section>
 
@@ -595,51 +586,39 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                 {/* Left — audience grid */}
                 <div className="lg:col-span-7">
                   <Reveal>
-                    <h2 className="mb-10 text-3xl font-bold leading-tight text-navy sm:text-4xl">
+                    <h2 className="mb-6 text-3xl font-bold leading-tight text-navy sm:text-4xl">
                       Who Can We Assist?
                     </h2>
-                    <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
+                    <p className="mb-8 text-[15px] leading-relaxed text-slate-600">
+                      Our fire safety audit solution is designed for any organization that occupies or manages a
+                      built environment and is responsible for the safety of the people within it.
+                    </p>
+                    <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                       {[
-                        {
-                          icon: Building2,
-                          title: 'Government Buildings',
-                          desc: 'Ensure public safety and strengthen compliance through regular fire audits.',
-                        },
-                        {
-                          icon: Briefcase,
-                          title: 'Corporate Offices',
-                          desc: 'Safeguard assets, data centers, and employees with intelligent risk detection.',
-                        },
-                        {
-                          icon: GraduationCap,
-                          title: 'Schools & Colleges',
-                          desc: 'Protect students and staff by proactively addressing indoor fire hazards.',
-                        },
-                        {
-                          icon: Activity,
-                          title: 'Hospitals & Public Infrastructure',
-                          desc: 'Ensure continuous operations in high-occupancy and critical facilities.',
-                        },
-                        {
-                          icon: Factory,
-                          title: 'Industrial & Commercial Spaces',
-                          desc: 'Protect workers and assets by proactively identifying and mitigating indoor fire hazards.',
-                        },
-                      ].map((item) => {
-                        const Icon = item.icon
-                        return (
-                          <div key={item.title} className="flex gap-4 items-start">
-                            <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
-                              <Icon size={22} aria-hidden />
-                            </div>
-                            <div>
-                              <h3 className="text-[16px] font-bold text-navy">{item.title}</h3>
-                              <p className="mt-1.5 text-[13px] leading-relaxed text-slate-500">{item.desc}</p>
-                            </div>
+                        { title: 'Government Departments & Public Offices', desc: 'Ensure public safety and regulatory compliance through consistent, evidence-based fire safety audits.' },
+                        { title: 'Hospitals & Healthcare Facilities', desc: 'Protect patients, staff, and critical medical infrastructure with thorough and documented fire safety assessments.' },
+                        { title: 'Commercial Buildings', desc: 'Identify fire hazards and safety gaps across offices, retail spaces, and mixed-use buildings with ease.' },
+                        { title: 'Educational Institutions', desc: 'Safeguard students and educators by proactively identifying and addressing indoor fire risks in campus buildings.' },
+                        { title: 'Industrial Facilities', desc: 'Protect workers and assets by detecting fire-prone conditions and ensuring safety equipment is in place.' },
+                        { title: 'Hotels & Hospitality', desc: 'Maintain guest safety and regulatory compliance by regularly auditing fire safety conditions across all floors.' },
+                        { title: 'Residential & Apartment Buildings', desc: 'Help residents stay safe by identifying fire hazards and verifying that essential safety infrastructure is functional.' },
+                        { title: 'Facility Management & Safety Teams', desc: 'Streamline audit workflows, maintain digital records, and support structured safety reporting across multiple sites.' },
+                      ].map((item) => (
+                        <div key={item.title} className="flex gap-4 items-start">
+                          <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-sky-500 text-sky-500">
+                            <Check size={12} strokeWidth={3} />
+                          </span>
+                          <div>
+                            <h3 className="text-[15px] font-bold text-navy">{item.title}</h3>
+                            <p className="mt-1 text-[13px] leading-relaxed text-slate-500">{item.desc}</p>
                           </div>
-                        )
-                      })}
+                        </div>
+                      ))}
                     </div>
+                    <p className="mt-8 text-[15px] leading-relaxed text-slate-600">
+                      Turn building inspection videos into structured fire safety information and make your safety
+                      assessment process more efficient, consistent, and transparent.
+                    </p>
                   </Reveal>
                 </div>
                 {/* Right — fire safety image */}
