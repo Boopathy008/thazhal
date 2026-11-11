@@ -101,10 +101,11 @@ export default function Home() {
       <Hero />
 
       {/* ── All Partners & Supporters Marquee in One Row ── */}
-      <section className="bg-white py-12 border-b border-slate-100">
+      <section className="section-gradient section relative overflow-hidden py-12">
         <div className="wrap mb-8">
           <Reveal>
             <SectionHeading
+              dark
               eyebrow="Partners & Backing"
               title="Working with Leading Organisations & Supported By"
               text="Building meaningful connections with premier institutions championing our geospatial and environmental innovations."
@@ -217,13 +218,12 @@ export default function Home() {
       </section>
 
       {/* ── Our Solutions & Products Horizontal Scroll ── */}
-      <section id="products" className="section-gradient section relative overflow-hidden text-white">
-        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-15" />
+      <section id="products" className="bg-white section relative overflow-hidden">
+        <div className="geo-grid-bg pointer-events-none absolute inset-0 opacity-60" />
         <div className="wrap relative">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
             <Reveal>
               <SectionHeading
-                dark
                 eyebrow="Our Solutions"
                 title="See the change. Understand the risk. Act with confidence."
                 text="Space-based intelligence designed to help monitor assets, protect ecosystems and plan for a changing climate."
@@ -236,7 +236,7 @@ export default function Home() {
                 type="button"
                 onClick={() => scroll('left')}
                 aria-label="Scroll left"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white/80 transition-all duration-300 hover:border-emerald hover:bg-emerald hover:text-navy hover:scale-105 active:scale-95"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-navy transition-all duration-300 hover:border-emerald hover:bg-emerald hover:text-white hover:scale-105 active:scale-95"
               >
                 <ChevronLeft size={20} />
               </button>
@@ -244,7 +244,7 @@ export default function Home() {
                 type="button"
                 onClick={() => scroll('right')}
                 aria-label="Scroll right"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white/80 transition-all duration-300 hover:border-emerald hover:bg-emerald hover:text-navy hover:scale-105 active:scale-95"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-navy transition-all duration-300 hover:border-emerald hover:bg-emerald hover:text-white hover:scale-105 active:scale-95"
               >
                 <ChevronRight size={20} />
               </button>
@@ -254,7 +254,7 @@ export default function Home() {
           {/* Horizontal scroll container */}
           <div
             ref={scrollRef}
-            className="mt-12 flex gap-6 overflow-x-auto pb-6 pt-2 scroll-smooth [scrollbar-width:thin] [scrollbar-color:#38BDF8_rgba(255,255,255,0.05)] snap-x snap-mandatory will-change-scroll transform-gpu"
+            className="mt-12 flex gap-6 overflow-x-auto pb-6 pt-2 scroll-smooth [scrollbar-width:thin] [scrollbar-color:#38BDF8_rgba(0,0,0,0.05)] snap-x snap-mandatory will-change-scroll transform-gpu"
             style={{ WebkitOverflowScrolling: 'touch', contain: 'layout' }}
           >
             {items.map((p) => (

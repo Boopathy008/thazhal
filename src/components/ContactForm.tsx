@@ -139,19 +139,19 @@ export default function ContactForm() {
       <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
         <div className="grid gap-6 sm:grid-cols-2">
           <Field id="name" label="Full Name *" error={errors.name?.message}>
-            <input {...a('name', errors.name)} {...register('name')} autoComplete="name" placeholder="John Doe" className={inputClass} />
+            <input {...a('name', errors.name)} {...register('name')} autoComplete="name" className={inputClass} />
           </Field>
           <Field id="email" label="Work Email *" error={errors.email?.message}>
-            <input type="email" {...a('email', errors.email)} {...register('email')} autoComplete="email" placeholder="john@company.com" className={inputClass} />
+            <input type="email" {...a('email', errors.email)} {...register('email')} autoComplete="email" className={inputClass} />
           </Field>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2">
           <Field id="company" label="Company / Organization *" error={errors.company?.message}>
-            <input {...a('company', errors.company)} {...register('company')} autoComplete="organization" placeholder="Acme Environmental" className={inputClass} />
+            <input {...a('company', errors.company)} {...register('company')} autoComplete="organization" className={inputClass} />
           </Field>
           <Field id="phone" label="Phone Number (optional)" error={errors.phone?.message}>
-            <input type="tel" {...a('phone', errors.phone)} {...register('phone')} autoComplete="tel" placeholder="+1 (555) 000-0000" className={inputClass} />
+            <input type="tel" {...a('phone', errors.phone)} {...register('phone')} autoComplete="tel" className={inputClass} />
           </Field>
         </div>
 
