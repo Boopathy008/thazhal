@@ -4,65 +4,57 @@
  */
 
 import { Linkedin, User } from 'lucide-react'
-import { CTA, Reveal, SectionHeading, Art, Card3D } from '../components/ui'
+import { CTA, Reveal, SectionHeading, Art } from '../components/ui'
 import { LogoMarquee } from './Home'
 import { advisors, partners, teamMembers, TeamMember } from '../data/content'
 import { usePageMeta } from '../hooks/usePageMeta'
 
 function MemberCard({ m, imageHeight = 'h-64 sm:h-72' }: { m: TeamMember; imageHeight?: string }) {
   return (
-    <Card3D className="h-full">
-      <div
-        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-sm transition-all duration-350 hover:shadow-xl hover:border-emerald/25"
-        style={{ transformStyle: 'flat' }}
-      >
-        {/* Photo — full size */}
-        <div className="relative overflow-hidden bg-slate-50">
-          <div className={`relative w-full overflow-hidden ${imageHeight}`}>
-            {m.image ? (
-              <img
-                src={m.image}
-                alt={m.name}
-                onError={(e) => {
-                  (e.currentTarget as HTMLElement).style.display = 'none'
-                  const fallback = e.currentTarget.parentElement?.querySelector('.fallback-avatar')
-                  if (fallback) (fallback as HTMLElement).style.display = 'flex'
-                }}
-                loading="lazy"
-                className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-              />
-            ) : null}
-            <div
-              className={`fallback-avatar h-full w-full items-center justify-center bg-gradient-to-br from-forest/8 via-paper to-emerald/15 text-forest/35 ${
-                m.image ? 'hidden' : 'flex'
-              }`}
-            >
-              <User size={40} strokeWidth={1.5} />
-            </div>
-            {/* Scan line on hover */}
-            <div className="scan-line pointer-events-none" />
+    <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-emerald/25">
+      {/* Photo — full size */}
+      <div className="relative overflow-hidden bg-slate-50">
+        <div className={`relative w-full overflow-hidden ${imageHeight}`}>
+          {m.image ? (
+            <img
+              src={m.image}
+              alt={m.name}
+              onError={(e) => {
+                (e.currentTarget as HTMLElement).style.display = 'none'
+                const fallback = e.currentTarget.parentElement?.querySelector('.fallback-avatar')
+                if (fallback) (fallback as HTMLElement).style.display = 'flex'
+              }}
+              loading="lazy"
+              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : null}
+          <div
+            className={`fallback-avatar h-full w-full items-center justify-center bg-gradient-to-br from-forest/8 via-paper to-emerald/15 text-forest/35 ${
+              m.image ? 'hidden' : 'flex'
+            }`}
+          >
+            <User size={40} strokeWidth={1.5} />
           </div>
         </div>
-
-        {/* Name, role & LinkedIn */}
-        <div className="flex flex-1 flex-col items-center justify-center gap-2 p-4 text-center">
-          <h4 className="text-[15px] font-bold text-navy leading-snug">{m.name}</h4>
-          <p className="text-[12px] leading-snug text-slate-500">{m.role}</p>
-          {m.linkedin && (
-            <a
-              href={m.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${m.name} on LinkedIn`}
-              className="mt-1 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-sm transition-all duration-250 hover:scale-110 hover:bg-emerald hover:text-white hover:border-emerald"
-              style={{ position: 'relative', zIndex: 10 }}
-            >
-              <Linkedin size={15} />
-            </a>
-          )}
-        </div>
       </div>
-    </Card3D>
+
+      {/* Name, role & LinkedIn */}
+      <div className="flex flex-1 flex-col items-center justify-center gap-2 p-4 text-center">
+        <h4 className="text-[15px] font-bold text-navy leading-snug">{m.name}</h4>
+        <p className="text-[12px] leading-snug text-slate-500">{m.role}</p>
+        {m.linkedin && (
+          <a
+            href={m.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${m.name} on LinkedIn`}
+            className="mt-1 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-sm transition-all duration-250 hover:scale-110 hover:bg-emerald hover:text-white hover:border-emerald"
+          >
+            <Linkedin size={15} />
+          </a>
+        )}
+      </div>
+    </div>
   )
 }
 
