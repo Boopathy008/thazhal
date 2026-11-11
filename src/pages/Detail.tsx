@@ -487,11 +487,11 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
           {/* Section 2 — OUR PRODUCTS (image left, text right) */}
           <section className="section bg-slate-50 overflow-hidden">
             <div className="wrap">
-              <div className="grid gap-12 lg:grid-cols-12 items-center">
+              <div className="grid gap-12 lg:grid-cols-12 items-stretch">
                 {/* Left — thermal image */}
                 <div className="lg:col-span-5">
                   <Reveal>
-                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 aspect-[4/3]">
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 h-full min-h-[380px]">
                       <img
                         src="/images/fire-product.webp"
                         alt="Fire Audit — thermal heatmap"
@@ -533,40 +533,42 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
 
           {/* Section 3 — Why Should You Have This? */}
           <section className="section bg-white">
-            <div className="wrap max-w-4xl mx-auto text-center">
+            <div className="wrap text-center">
               <Reveal>
                 <h2 className="mb-6 text-3xl font-bold text-navy sm:text-4xl">Why Should You Have This?</h2>
               </Reveal>
               <Reveal delay={0.05}>
-                <p className="text-[15px] leading-relaxed text-slate-600">
+                <p className="mx-auto max-w-3xl text-[15px] leading-relaxed text-slate-600">
                   Fire safety is not just about conducting an inspection — it is about knowing what was identified,
                   where it was identified, and having clear evidence to support the findings.
                 </p>
-                <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
+                <p className="mx-auto mt-4 max-w-3xl text-[15px] leading-relaxed text-slate-600">
                   Our solution helps organizations move from conventional inspection records to a digital and
                   evidence-based fire safety assessment workflow.
                 </p>
-                <p className="mt-6 text-[15px] font-semibold text-navy">With this system, you can:</p>
-                <ul className="mt-5 grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2 text-left">
-                  {[
-                    'Digitize fire safety inspections',
-                    'Reduce repetitive manual documentation',
-                    'Maintain visual evidence of observations',
-                    'Review building and room-level findings',
-                    'Identify potential fire-safety concerns',
-                    'Monitor safety equipment and identified hazards',
-                    'Generate structured audit reports',
-                    'Support better safety-related decision-making',
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-[14px] text-slate-600">
-                      <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-sky-500 text-sky-500">
-                        <Check size={12} strokeWidth={3} />
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <p className="mt-8 text-[15px] font-semibold text-navy">With this system, you can:</p>
               </Reveal>
+              <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                {[
+                  'Digitize fire safety inspections',
+                  'Reduce repetitive manual documentation',
+                  'Maintain visual evidence of observations',
+                  'Review building and room-level findings',
+                  'Identify potential fire-safety concerns',
+                  'Monitor safety equipment and identified hazards',
+                  'Generate structured audit reports',
+                  'Support better safety-related decision-making',
+                ].map((item, i) => (
+                  <Reveal key={item} delay={i * 0.07}>
+                    <div className="flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-sky-200">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-sky-500 bg-sky-50 text-sky-500">
+                        <Check size={15} strokeWidth={3} />
+                      </span>
+                      <p className="text-[13px] font-medium leading-snug text-navy">{item}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </section>
 
