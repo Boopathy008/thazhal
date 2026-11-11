@@ -459,19 +459,13 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   <Reveal>
                     <h2 className="text-3xl font-bold text-navy sm:text-4xl uppercase tracking-wide">Fire Audit</h2>
                     <p className="mt-5 text-[15px] leading-relaxed text-slate-600">
-                      At Thazhal, we combine geospatial intelligence and AI to assess fire risks, strengthen safety
-                      systems, and ensure compliance. Our audits help organizations protect people, property, and assets
-                      with precision and confidence.
+                      Traditional fire safety inspections often rely on manual observation, documentation, and reporting. This can make large-scale assessments time-consuming and difficult to standardize.
                     </p>
                     <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
-                      Our intelligent system analyzes indoor video and spatial data to detect fire-prone materials,
-                      hotspot zones, and missing safety infrastructure — providing actionable insights in under 2 hours
-                      per building.
+                      Our solution uses AI-powered video analysis to automatically identify relevant fire-safety elements from inspection footage and convert them into structured audit information.
                     </p>
                     <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
-                      We work closely with safety officers, facility managers, and compliance teams to ensure every audit
-                      is thorough, documented, and actionable — turning raw observations into structured digital reports
-                      that support better decision-making.
+                      From video capture to final report, the system provides a streamlined digital workflow for fire safety assessment.
                     </p>
                   </Reveal>
                 </div>
@@ -514,19 +508,16 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                       Why to use this product ?
                     </h2>
                     <p className="mt-5 text-[15px] leading-relaxed text-slate-500">
-                      Equips organizations with the tools to forecast, prepare for and reduce fire-related disruptions.
-                      Understanding fire risks allows companies to protect long-term value, ensuring business continuity
-                      and investor confidence. Identifying location-specific hazards helps to prioritize adaptation
-                      actions at any level.
+                      Traditional fire safety audits can involve extensive manual inspection, documentation, and report preparation. Our AI-powered Fire Safety Audit System helps simplify this process by converting inspection videos into structured and actionable safety information.
                     </p>
                     <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                       {[
-                        { title: 'Faster Audits', desc: 'Complete fire safety assessments in a fraction of the time using intelligent video analysis and automated reporting workflows.' },
-                        { title: 'Better Visibility', desc: 'Get a clear, room-level view of fire hazards, missing safety equipment, and risk zones across your entire building.' },
-                        { title: 'Visual Evidence', desc: 'Capture and store image-based evidence for every identified observation, making findings transparent and verifiable.' },
-                        { title: 'Standardized Assessment', desc: 'Follow a consistent, structured audit process across all buildings to ensure reliable and comparable safety data.' },
-                        { title: 'Easy Reporting', desc: 'Generate clear digital audit reports automatically, reducing manual effort and making it easier to share findings.' },
-                        { title: 'Digital Monitoring', desc: 'Track safety conditions over time with digital records, enabling ongoing monitoring and timely follow-up actions.' },
+                        { title: 'Faster Audits', desc: 'Reduce the time required for manual observation and documentation by automating the analysis of inspection footage.' },
+                        { title: 'Better Visibility', desc: 'Identify fire hazards and safety equipment across different rooms and building spaces through a centralized digital system.' },
+                        { title: 'Visual Evidence', desc: 'Automatically capture relevant images from inspection videos to support audit findings and observations.' },
+                        { title: 'Standardized Assessment', desc: 'Follow a consistent digital workflow for collecting, analyzing, and reporting fire safety information.' },
+                        { title: 'Easy Reporting', desc: 'Generate structured building-level reports and summaries for faster review and decision-making.' },
+                        { title: 'Digital Monitoring', desc: 'Maintain organized inspection information and review findings through an interactive dashboard.' },
                       ].map((item) => (
                         <div key={item.title}>
                           <h3 className="text-[15px] font-bold text-navy">{item.title}</h3>
@@ -542,7 +533,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
 
           {/* Section 3 — Why Should You Have This? */}
           <section className="section bg-white">
-            <div className="wrap">
+            <div className="wrap max-w-4xl mx-auto text-center">
               <Reveal>
                 <h2 className="mb-6 text-3xl font-bold text-navy sm:text-4xl">Why Should You Have This?</h2>
               </Reveal>
@@ -556,7 +547,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                   evidence-based fire safety assessment workflow.
                 </p>
                 <p className="mt-6 text-[15px] font-semibold text-navy">With this system, you can:</p>
-                <ul className="mt-3 space-y-2">
+                <ul className="mt-5 grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2 text-left">
                   {[
                     'Digitize fire safety inspections',
                     'Reduce repetitive manual documentation',
@@ -590,19 +581,18 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                       Who Can We Assist?
                     </h2>
                     <p className="mb-8 text-[15px] leading-relaxed text-slate-600">
-                      Our fire safety audit solution is designed for any organization that occupies or manages a
-                      built environment and is responsible for the safety of the people within it.
+                      Our Fire Safety Audit System can support organizations that manage large buildings, multiple facilities, or frequent safety inspections.
                     </p>
                     <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                       {[
-                        { title: 'Government Departments & Public Offices', desc: 'Ensure public safety and regulatory compliance through consistent, evidence-based fire safety audits.' },
-                        { title: 'Hospitals & Healthcare Facilities', desc: 'Protect patients, staff, and critical medical infrastructure with thorough and documented fire safety assessments.' },
-                        { title: 'Commercial Buildings', desc: 'Identify fire hazards and safety gaps across offices, retail spaces, and mixed-use buildings with ease.' },
-                        { title: 'Educational Institutions', desc: 'Safeguard students and educators by proactively identifying and addressing indoor fire risks in campus buildings.' },
-                        { title: 'Industrial Facilities', desc: 'Protect workers and assets by detecting fire-prone conditions and ensuring safety equipment is in place.' },
-                        { title: 'Hotels & Hospitality', desc: 'Maintain guest safety and regulatory compliance by regularly auditing fire safety conditions across all floors.' },
-                        { title: 'Residential & Apartment Buildings', desc: 'Help residents stay safe by identifying fire hazards and verifying that essential safety infrastructure is functional.' },
-                        { title: 'Facility Management & Safety Teams', desc: 'Streamline audit workflows, maintain digital records, and support structured safety reporting across multiple sites.' },
+                        { title: 'Government Departments & Public Offices', desc: 'Support systematic fire safety assessments across government buildings and public facilities.' },
+                        { title: 'Hospitals & Healthcare Facilities', desc: 'Assist in documenting fire safety conditions across rooms, departments, and healthcare facilities.' },
+                        { title: 'Commercial Buildings', desc: 'Support fire safety assessments for offices, business centers, shopping and commercial facilities.' },
+                        { title: 'Educational Institutions', desc: 'Help schools, colleges, universities, and other educational facilities organize fire safety inspections.' },
+                        { title: 'Industrial Facilities', desc: 'Support safety assessment workflows across industrial and operational buildings.' },
+                        { title: 'Hotels & Hospitality', desc: 'Assist in assessing fire safety conditions across rooms, common areas, and other indoor spaces.' },
+                        { title: 'Residential & Apartment Buildings', desc: 'Support systematic inspection and documentation of fire safety conditions across residential facilities.' },
+                        { title: 'Facility Management & Safety Teams', desc: 'Provide a digital platform for organizations responsible for regular building inspections, safety monitoring, and reporting.' },
                       ].map((item) => (
                         <div key={item.title} className="flex gap-4 items-start">
                           <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-sky-500 text-sky-500">
