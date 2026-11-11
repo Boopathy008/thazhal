@@ -491,7 +491,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
                 {/* Left — thermal image */}
                 <div className="lg:col-span-5 flex flex-col">
                   <Reveal className="flex flex-1 flex-col">
-                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 max-h-[423px]">
+                    <div className="overflow-hidden rounded-2xl shadow-xl border border-slate-200 max-h-[428px]">
                       <img
                         src="/images/fire-product.webp"
                         alt="Fire Audit — thermal heatmap"
