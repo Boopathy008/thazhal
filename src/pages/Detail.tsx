@@ -487,7 +487,7 @@ export default function DetailPage({ kind }: { kind: D['kind'] }) {
           {/* Section 2 — OUR PRODUCTS (image left, text right) */}
           <section className="section bg-slate-50 overflow-hidden">
             <div className="wrap">
-              <div className="grid gap-12 lg:grid-cols-12 items-stretch">
+              <div className="grid gap-12 lg:grid-cols-12 items-center">
                 {/* Left — thermal image */}
                 <div className="lg:col-span-5 flex flex-col">
                   <Reveal className="flex flex-1 flex-col">
