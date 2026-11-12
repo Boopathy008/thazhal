@@ -12,9 +12,9 @@ import { Art } from './ui'
 export default function Footer() {
   const reduce = useReducedMotion()
   const soc = [
-    { n: 'X', I: Twitter, u: social.x },
     { n: 'LinkedIn', I: Linkedin, u: social.linkedin },
     { n: 'Instagram', I: Instagram, u: social.instagram },
+    { n: 'X', I: Twitter, u: social.x },
   ]
 
   return (
